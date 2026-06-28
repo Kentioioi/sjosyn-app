@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="#0f1923"/>
+
+  <!-- Radar rings -->
+  <circle cx="256" cy="272" r="160" fill="none" stroke="#00b4d8" stroke-width="6" opacity="0.18"/>
+  <circle cx="256" cy="272" r="105" fill="none" stroke="#00b4d8" stroke-width="5" opacity="0.25"/>
+  <circle cx="256" cy="272" r="52"  fill="none" stroke="#00b4d8" stroke-width="4" opacity="0.35"/>
+
+  <!-- Radar sweep line -->
+  <line x1="256" y1="272" x2="370" y2="158" stroke="#00b4d8" stroke-width="3" opacity="0.5"/>
+
+  <!-- Vessel triangle (pointing up) -->
+  <polygon points="256,108 304,220 256,196 208,220"
+           fill="#00b4d8" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- Blips -->
+  <circle cx="330" cy="200" r="7" fill="#7dd3fc" opacity="0.9"/>
+  <circle cx="190" cy="310" r="5" fill="#7dd3fc" opacity="0.7"/>
+  <circle cx="300" cy="340" r="6" fill="#7dd3fc" opacity="0.8"/>
+</svg>

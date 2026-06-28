@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personvernerklæring — Sjøsyn</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 24px; background: #0f1923; color: #d9e2ec; line-height: 1.6; }
+  h1 { color: #00b4d8; border-bottom: 2px solid #00b4d8; padding-bottom: 8px; }
+  h2 { color: #00b4d8; margin-top: 32px; }
+  h3 { color: #d9e2ec; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+  th, td { border: 1px solid #2c3e50; padding: 8px 12px; text-align: left; }
+  th { background: #1a2332; color: #00b4d8; }
+  a { color: #00b4d8; }
+  code { background: #1a2332; padding: 2px 6px; border-radius: 4px; }
+  .meta { color: #888; font-style: italic; }
+</style>
+</head>
+<body>
+<h1>Personvernerklæring — Sjøsyn</h1>
+<p class="meta">Sist oppdatert: 16. juni 2026</p>
+
+<p>Sjøsyn drives av <strong>[Sjøsyn AS / Kenneth K. — fyll inn]</strong>, organisasjonsnummer <strong>[fyll inn]</strong>, kontakt: <strong>kenneth222.kn@gmail.com</strong>.</p>
+
+<p>Vi tar personvernet ditt på alvor. Denne erklæringen forklarer hvilke opplysninger vi behandler, hvorfor, og hvilke rettigheter du har under GDPR og personopplysningsloven.</p>
+
+<h2>1. Hvilke opplysninger lagrer vi?</h2>
+<h3>Lokalt på enheten din (aldri sendt til oss)</h3>
+<ul>
+<li>BarentsWatch-credentials for AIS-tilkobling (kryptert med PIN, kun på din enhet)</li>
+<li>Vakt-linjer du har tegnet (lat/lon-koordinater)</li>
+<li>Lagrede fartøy (flåte — MMSI + navn + type)</li>
+<li>Hjem-posisjon (hvis satt)</li>
+<li>App-innstillinger (kart-stil, varselmodus osv.)</li>
+</ul>
+<p>Disse forsvinner hvis du sletter app-data eller avinstallerer.</p>
+
+<h3>På Sjøsyn-server (kun hvis du aktiverer bakgrunnsvarsling)</h3>
+<ul>
+<li><strong>Push-abonnement</strong> — opaque endepunkt fra nettleseren din. Inneholder ingen navn/e-post/IP.</li>
+<li><strong>Vakt-konfigurasjon</strong> — MMSI, koordinatpar, valgfritt fartøynavn.</li>
+<li><strong>Sist-kjente posisjoner</strong> for armerte fartøy (maks 24 t historikk).</li>
+<li><strong>Sist-sendt-varsel-timestamp</strong> per MMSI (cooldown).</li>
+<li><strong>Anti-misbruk-data</strong> — IP-adresse aggregert per minutt for rate-limiting (slettes etter 2 min).</li>
+</ul>
+<p>Vi lagrer <strong>ingen</strong> konto, e-post, navn, eller telefonnummer.</p>
+
+<h2>2. Hvorfor</h2>
+<table>
+<tr><th>Formål</th><th>Lovlig grunnlag (GDPR Art. 6)</th></tr>
+<tr><td>Levere AIS- og bølge-data til appen</td><td>Berettiget interesse (Art. 6.1(f))</td></tr>
+<tr><td>Sende bakgrunnsvarsler om kryssing</td><td>Avtale + samtykke (Art. 6.1(a) + (b))</td></tr>
+<tr><td>Forhindre misbruk (rate-limit)</td><td>Berettiget interesse (Art. 6.1(f))</td></tr>
+</table>
+
+<h2>3. Hvor lenge</h2>
+<ul>
+<li><strong>Push-abonnement + vakt-data</strong>: så lenge du har abonnement aktivt + 90 dager uten oppdatering</li>
+<li><strong>Sist-kjente posisjoner</strong>: maks 24 timer</li>
+<li><strong>Rate-limit-data</strong>: 2 minutter</li>
+<li><strong>Lokale enhetsdata</strong>: til du sletter dem selv</li>
+</ul>
+
+<h2>4. Hvem deler vi med?</h2>
+<table>
+<tr><th>Tjeneste</th><th>Hva</th><th>Lokasjon</th><th>Lovlig overføring</th></tr>
+<tr><td>Netlify</td><td>Hosting + funksjoner + Blobs</td><td>USA/EU</td><td>SCC</td></tr>
+<tr><td>Google FCM</td><td>Push til Android/Chrome</td><td>USA</td><td>EU-US Data Privacy Framework</td></tr>
+<tr><td>Apple APNs</td><td>Push til iOS Safari</td><td>USA</td><td>EU-US Data Privacy Framework</td></tr>
+<tr><td>Mozilla Push</td><td>Push til Firefox</td><td>USA</td><td>EU-US Data Privacy Framework</td></tr>
+</table>
+<p>Datakilder vi henter fra (ingen brukerdata sendt til dem): BarentsWatch (AIS), MET Norway (bølger), Kartverket (sjøkart), Fiskeridirektoratet (oppdrettsanlegg).</p>
+<p>Vi selger aldri data. Vi viser ingen reklame.</p>
+
+<h2>5. Dine rettigheter</h2>
+<table>
+<tr><th>Rett</th><th>Hvordan i Sjøsyn</th></tr>
+<tr><td>Innsyn (Art. 15)</td><td>All lokal data synlig i appen. Server-data: send e-post</td></tr>
+<tr><td>Sletting (Art. 17)</td><td>Innstillinger → Personvern → "Slett alle mine data"</td></tr>
+<tr><td>Trekke tilbake samtykke (Art. 7.3)</td><td>Skru av bakgrunnsvarsling i innstillinger</td></tr>
+<tr><td>Dataportabilitet (Art. 20)</td><td>Send forespørsel til kontakt-e-post</td></tr>
+<tr><td>Klage til Datatilsynet (Art. 77)</td><td><a href="https://datatilsynet.no">datatilsynet.no</a></td></tr>
+</table>
+
+<h2>6. Cookies + sporing</h2>
+<p>Sjøsyn bruker <strong>ingen</strong> cookies eller analyseverktøy. Ingen Google Analytics, ingen Facebook-piksel, ingen tredjeparts sporing. localStorage brukes kun for å lagre dine app-innstillinger lokalt.</p>
+
+<h2>7. Sikkerhet</h2>
+<ul>
+<li>AIS-credentials krypteres med din PIN på enheten, sendes aldri til oss</li>
+<li>Push-abonnement identifiseres med hemmelig unsubToken — forhindrer at andre kan slette eller endre ditt abonnement</li>
+<li>All trafikk over HTTPS</li>
+<li>Web Push-payload kryptert end-to-end med VAPID</li>
+</ul>
+
+<h2>8. Endringer</h2>
+<p>Vi varsler om vesentlige endringer i appen før de trer i kraft. Mindre endringer publiseres her med oppdatert dato over.</p>
+
+<h2>Kontakt</h2>
+<p>Spørsmål eller forespørsler: <strong>kenneth222.kn@gmail.com</strong></p>
+<p>Klage: <strong>Datatilsynet</strong> — postkasse@datatilsynet.no — <a href="https://datatilsynet.no">datatilsynet.no</a></p>
+
+</body>
+</html>

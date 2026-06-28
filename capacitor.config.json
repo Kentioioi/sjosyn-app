@@ -1,0 +1,8 @@
+{
+  "appId": "no.sjosyn.app",
+  "appName": "Sjøsyn",
+  "webDir": "dist",
+  "android": {
+    "backgroundColor": "#0f1923"
+  }
+}

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Sjøsyn – Vakt-veiledning</title>
+<!--
+  Animert in-app veiledning for VAKT-funksjonen (linje + rute/korridor).
+  "Vakt" er det nye navnet (erstatter "Tripwire"). Selvstendig fil: ekte Leaflet-kart
+  (Byfjorden — skipet ligger på vann), ekte app-strenger/farger/geometri (verifisert mot
+  src/App.jsx, src/components/TripwireOverlay.jsx, src/utils/geom.js, src/index.css).
+  Starter med tittelkort "Slik lager du en vakt" (INGEN meny oppe). Antar at fartøy er valgt.
+  Til slutt åpnes menyen igjen og "📡 Aktiver bakgrunnsvarsling" BLINKER så bruker ser den.
+  Deep-link en klipp: ?clip=line | ?clip=corridor . Standard = linje, med Linje/Rute-bryter.
+-->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root{ --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+         --bg2:#16212e; --bg3:#1c2a3a; --border:#2a3a4d; --text-muted:#9fb0c0; --yellow:#ffd166; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; height:100%; background:#0b131d; font-family:var(--font); color:#fff;
+             display:flex; align-items:center; justify-content:center; }
+  .tw-phone{ width:min(94vw,330px); aspect-ratio:330/620; background:#0b131d; border-radius:32px;
+             border:1px solid rgba(255,255,255,.14); overflow:hidden; position:relative; display:flex; flex-direction:column; }
+  .tw-status{ height:24px; flex:0 0 auto; display:flex; align-items:center; justify-content:space-between;
+              padding:0 18px; color:#c7d2dd; font-size:11px; background:#0e1b2b; }
+  .appbar{ height:48px; flex:0 0 auto; display:flex; align-items:center; justify-content:space-between;
+           padding:0 8px; background:#0e1b2b; border-bottom:1px solid rgba(255,255,255,.08); }
+  .tbtn{ display:flex; flex-direction:column; align-items:center; gap:1px; padding:3px 4px; border-radius:8px;
+         color:#8aa0b5; font-size:8.5px; min-width:36px; }
+  .tbtn .ic{ font-size:14px; }
+  .tbtn.act{ background:rgba(255,209,102,.14); border:1px solid var(--yellow); color:var(--yellow); }
+  .tw-stage{ position:relative; flex:1 1 auto; background:#c9e1f0; overflow:hidden; }
+  #map{ position:absolute; inset:0; z-index:1; }
+  #ov{ position:absolute; inset:0; z-index:2; pointer-events:none; }
+
+  .tw-menu-backdrop{ position:absolute; inset:0; z-index:8; background:rgba(8,14,20,.4);
+                     opacity:0; transition:opacity .3s; pointer-events:none; }
+  .tw-menu-backdrop.show{ opacity:1; }
+  .tw-menu{ position:absolute; top:8px; left:50%; width:min(92%,300px); background:var(--bg2);
+            border:1px solid var(--border); border-radius:14px; box-shadow:0 12px 40px rgba(0,0,0,.5);
+            overflow:hidden; opacity:0; transform:translate(-50%,-10px); transition:opacity .3s,transform .3s; z-index:9; }
+  .tw-menu.show{ opacity:1; transform:translate(-50%,0); }
+  .tw-menu-title{ padding:11px 14px; font-weight:600; color:#fff; font-size:13px; border-bottom:1px solid var(--border); }
+  .tw-menu-item{ display:flex; flex-direction:column; gap:2px; padding:10px 14px; text-align:left;
+                 border-bottom:1px solid rgba(255,255,255,.06); }
+  .tw-menu-item:last-child{ border-bottom:none; }
+  .tw-menu-item strong{ font-size:12.5px; color:#fff; font-weight:500; }
+  .tw-menu-item span{ font-size:10.5px; color:var(--text-muted); }
+  .hot{ box-shadow:inset 0 0 0 2px var(--yellow); animation:ringPulse 1s infinite; }
+  .pushblink{ animation:pushBlink .85s ease-in-out infinite; border-radius:8px; }
+
+  .draw-control{ position:absolute; top:8px; left:50%; width:min(92%,270px); background:#1a2332; color:#fff;
+                 border:1px solid var(--yellow); border-radius:10px; padding:8px 12px; display:flex; flex-direction:column;
+                 gap:6px; text-align:center; font-size:11px; line-height:1.25; box-shadow:0 6px 18px rgba(0,0,0,.4);
+                 transform:translate(-50%,-220%); opacity:0; transition:transform .35s,opacity .3s; z-index:7; }
+  .draw-control.show{ transform:translate(-50%,0); opacity:1; }
+  .draw-btn{ padding:5px 12px; border-radius:6px; font-size:11px; font-weight:500; border:1px solid var(--yellow);
+             background:transparent; color:var(--yellow); }
+  .draw-btn--primary{ background:var(--yellow); color:#0b1018; }
+  .draw-btn--cancel{ border-color:var(--text-muted); color:var(--text-muted); }
+  .chip{ flex:1; padding:5px 0; border-radius:6px; font-size:10px; border:1px solid var(--border);
+         background:var(--bg3); color:#fff; }
+  .chip.on{ border-color:var(--yellow); color:var(--yellow); }
+
+  .tripwire-banner{ position:absolute; top:8px; left:50%; width:min(92%,282px); background:#1a2332; color:#fff;
+                    border:1px solid var(--yellow); border-radius:10px; padding:10px 12px; display:flex; align-items:center;
+                    gap:10px; box-shadow:0 6px 18px rgba(0,0,0,.4); transform:translate(-50%,-240%); opacity:0;
+                    transition:transform .4s,opacity .3s; z-index:11; }
+  .tripwire-banner.show{ transform:translate(-50%,0); opacity:1; }
+  .tripwire-banner--alarm{ border-color:#ff6b6b; box-shadow:0 6px 22px rgba(255,107,107,.5); animation:tpulse .7s ease-in-out infinite alternate; }
+  .banner-btn{ padding:5px 12px; background:var(--yellow); color:#0b1018; border:none; border-radius:6px; font-weight:500; font-size:11px; }
+  .banner-btn--danger{ background:transparent; color:#ff8b8b; border:1px solid #d94545; }
+
+  .ripple{ position:absolute; width:18px; height:18px; border-radius:50%; border:2px solid #1a2332;
+           transform:translate(-50%,-50%) scale(0); opacity:0; z-index:10; pointer-events:none; }
+  .caption{ position:absolute; left:0; right:0; bottom:68px; background:rgba(7,11,17,.86); padding:7px 12px;
+            text-align:center; color:#e7edf2; font-size:11.5px; z-index:5; min-height:14px; }
+  .vesselbar{ position:absolute; left:0; right:0; bottom:40px; height:28px; background:#11202e;
+              border-top:1px solid rgba(255,255,255,.07); display:flex; align-items:center; gap:7px; padding:0 12px; z-index:5; }
+  .navbar{ position:absolute; left:0; right:0; bottom:0; height:40px; background:#0e1b2b;
+           border-top:1px solid rgba(255,255,255,.08); display:flex; align-items:center; padding:0 6px; z-index:5; }
+  .nbtn{ flex:1; display:flex; flex-direction:column; align-items:center; gap:1px; color:#8aa0b5; font-size:8.5px; }
+  .nbtn .ic{ font-size:13px; }
+  .nbtn.act{ color:#34c6c6; }
+  .tc{ position:absolute; inset:0; background:rgba(8,13,20,.42); display:flex; flex-direction:column; align-items:center;
+       justify-content:center; gap:8px; opacity:1; transition:opacity .4s; z-index:12; }
+  .tc.hide{ opacity:0; pointer-events:none; }
+  .tc div{ text-shadow:0 1px 4px rgba(0,0,0,.7); }
+
+  .controls{ position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:8px; align-items:center; z-index:13; }
+  .seg{ display:flex; border:1px solid var(--border); border-radius:8px; overflow:hidden; background:rgba(8,14,20,.6); }
+  .seg button{ border:none; background:transparent; color:#cdd8e1; padding:5px 14px; font-size:12px; cursor:pointer; }
+  .seg button.on{ background:var(--yellow); color:#1a2332; font-weight:500; }
+  .iconbtn{ width:30px; height:30px; border-radius:50%; border:1px solid var(--border); background:rgba(8,14,20,.6);
+            color:#cdd8e1; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; }
+
+  @keyframes tpulse{ from{ box-shadow:0 6px 22px rgba(255,107,107,.25); } to{ box-shadow:0 6px 26px rgba(255,107,107,.7); } }
+  @keyframes ringPulse{ 0%,100%{ box-shadow:inset 0 0 0 2px rgba(255,209,102,.7); } 50%{ box-shadow:inset 0 0 0 2px rgba(255,209,102,.25); } }
+  @keyframes pushBlink{ 0%,100%{ background:rgba(255,209,102,.06); box-shadow:inset 0 0 0 0 rgba(255,209,102,0); }
+                        50%{ background:rgba(255,209,102,.24); box-shadow:inset 0 0 0 2px rgba(255,209,102,.95); } }
+</style>
+</head>
+<body>
+  <div class="tw-phone">
+    <div class="tw-status"><span>14:23</span><span>5G ▮▮▮ 84%</span></div>
+    <div class="appbar">
+      <div style="display:flex;align-items:center;gap:6px">
+        <div style="background:#fff;border-radius:6px;padding:2px 5px;font-size:13px">🚢</div>
+        <div style="line-height:1"><div style="color:#e0a93b;font-size:7px;letter-spacing:.5px">RYFYLKE</div><div style="color:#5fd3c8;font-weight:500;font-size:13px">Sjøsyn</div></div>
+      </div>
+      <div style="display:flex;gap:1px">
+        <div class="tbtn"><span class="ic">🌗</span>Tema</div>
+        <div class="tbtn"><span class="ic">🗺</span>Sjøkart</div>
+        <div class="tbtn act"><span class="ic">🎯</span>Vakt</div>
+        <div class="tbtn"><span class="ic">🏠</span>Hjem</div>
+        <div class="tbtn"><span class="ic">📍</span>Meg</div>
+      </div>
+    </div>
+    <div class="tw-stage" id="stage">
+      <div id="map"></div>
+      <svg id="ov" viewBox="0 0 290 372" preserveAspectRatio="xMidYMid slice">
+        <g stroke-width="0.8">
+          <g transform="translate(96,250) rotate(200)"><polygon points="0,-7 5,5 0,3.5 -5,5" fill="#ffd166" stroke="rgba(0,0,0,.4)"/></g>
+          <g transform="translate(238,238) rotate(300)"><polygon points="0,-7 5,5 0,3.5 -5,5" fill="#6d6875" stroke="rgba(0,0,0,.4)"/></g>
+        </g>
+        <g id="corrGroup" style="display:none">
+          <polyline id="corrLeft" points="" fill="none" stroke="#ffd166" stroke-width="1.5" opacity="0.5"/>
+          <polyline id="corrRight" points="" fill="none" stroke="#ffd166" stroke-width="1.5" opacity="0.5"/>
+          <polyline id="corrCenter" points="" fill="none" stroke="#ffd166" stroke-width="3" stroke-dasharray="6 6" stroke-linecap="round" opacity="0.9"/>
+          <circle id="cn1" cx="60" cy="200" r="5" fill="#ffd166" fill-opacity="0.7" stroke="#ffd166" stroke-width="2" opacity="0"/>
+          <circle id="cn2" cx="150" cy="158" r="5" fill="#ffd166" fill-opacity="0.7" stroke="#ffd166" stroke-width="2" opacity="0"/>
+          <circle id="cn3" cx="238" cy="200" r="5" fill="#ffd166" fill-opacity="0.7" stroke="#ffd166" stroke-width="2" opacity="0"/>
+        </g>
+        <g id="lineGroup">
+          <line id="twline" x1="58" y1="200" x2="58" y2="200" stroke="#ffd166" stroke-width="3" stroke-dasharray="6 6" stroke-linecap="round" opacity="0"/>
+          <circle id="node1" cx="58" cy="200" r="6" fill="#ffd166" fill-opacity="0.7" stroke="#ffd166" stroke-width="2" opacity="0"/>
+          <circle id="node2" cx="232" cy="150" r="6" fill="#1a2332" fill-opacity="0.9" stroke="#ffd166" stroke-width="2" opacity="0"/>
+        </g>
+        <g id="boat">
+          <circle r="14" fill="#457b9d" fill-opacity="0.22" stroke="#457b9d" stroke-width="1.5"/>
+          <polygon points="0,-11 7.86,7.86 0,5.5 -7.86,7.86" fill="#457b9d" stroke="#ffffff" stroke-width="1.5"/>
+        </g>
+      </svg>
+
+      <div class="tripwire-banner" id="banner">
+        <div style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0"><strong id="bTitle" style="font-weight:500;font-size:12.5px;color:#fff"></strong><span id="bBody" style="color:#c7d1de;font-size:11px"></span></div>
+        <div style="display:flex;align-items:center;gap:6px"><span class="banner-btn">Vis</span><span class="banner-btn banner-btn--danger">Fjern</span><span style="color:#c7d1de;font-size:14px">✕</span></div>
+      </div>
+
+      <div class="draw-control" id="drawLine">
+        <div id="drawLineText">🎯 Trykk på kartet: punkt 1 av 2 (linje)</div>
+        <div style="display:flex;justify-content:center"><span class="draw-btn draw-btn--cancel">Avbryt</span></div>
+      </div>
+
+      <div class="draw-control" id="drawCorr">
+        <div id="drawCorrText">🧭 Trykk for å legge til rute-punkter (0 satt). Minst 2.</div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <span id="corrWlabel" style="font-size:10.5px;color:#c7d1de">Bredde: <strong style="color:#fff">1000 m</strong></span>
+          <div id="corrTrack" style="position:relative;height:4px;background:rgba(255,255,255,.2);border-radius:2px"><div id="corrThumb" style="position:absolute;top:50%;width:13px;height:13px;border-radius:50%;background:#ffd166;transform:translate(-50%,-50%);left:20%"></div></div>
+        </div>
+        <div style="display:flex;gap:5px"><span class="chip on" id="chip1000">1000</span><span class="chip" id="chip2000">2000</span><span class="chip" id="chip3000">3000</span><span class="chip" id="chip4000">4000</span></div>
+        <div style="display:flex;justify-content:center;gap:6px">
+          <span class="draw-btn" id="corrAngre" style="opacity:0">Angre</span>
+          <span class="draw-btn draw-btn--primary" id="corrFerdig" style="opacity:.4">Ferdig</span>
+          <span class="draw-btn draw-btn--cancel">Avbryt</span>
+        </div>
+      </div>
+
+      <div class="tw-menu-backdrop" id="backdrop"></div>
+      <div class="tw-menu" id="menu">
+        <div class="tw-menu-title">🎯 Vakt</div>
+        <div class="tw-menu-item" id="menuLinje"><strong>Ny vakt – linje</strong><span>Varsel når RYGERFJELL krysser en strek</span></div>
+        <div class="tw-menu-item" id="menuRute"><strong>Ny vakt – rute</strong><span>Varsel når RYGERFJELL forlater en korridor</span></div>
+        <div class="tw-menu-item"><strong>Mine vakter</strong><span>0 aktive</span></div>
+        <div class="tw-menu-item" id="menuPush"><strong>📡 Aktiver bakgrunnsvarsling</strong><span>Få varsel selv når appen er lukket</span></div>
+      </div>
+
+      <div class="caption" id="caption"></div>
+      <div class="vesselbar">
+        <span style="width:7px;height:7px;border-radius:50%;background:#457b9d"></span>
+        <strong style="color:#fff;font-size:11px;font-weight:500">RYGERFJELL</strong>
+        <span style="color:#8aa0b5;font-size:8.5px;border:1px solid #2a3a4d;border-radius:4px;padding:1px 5px">PASSASJERSKIP</span>
+        <span style="color:#9fb0c0;font-size:10px">0.0 kn</span>
+        <span style="margin-left:auto;color:#8aa0b5;font-size:12px">▲</span><span style="color:#8aa0b5;font-size:12px">✕</span>
+      </div>
+      <div class="navbar">
+        <div class="nbtn act"><span class="ic">🗺</span>Kart</div><div class="nbtn"><span class="ic">🔍</span>Søk</div><div class="nbtn"><span class="ic">🚢</span>Flåte</div><div class="nbtn"><span class="ic">⚙</span>Innstillinger</div>
+      </div>
+
+      <div class="ripple" id="ripple"></div>
+      <div class="tc" id="tc"><div style="color:#ffd166;font-size:18px;font-weight:500">🎯 Vakt</div><div id="tcTitle" style="color:#fff;font-size:13px">Slik lager du en vakt</div></div>
+
+      <div class="controls">
+        <div class="seg"><button id="tabLine" class="on">Linje</button><button id="tabCorr">Rute</button></div>
+        <button class="iconbtn" id="replay" aria-label="Spill av på nytt">↺</button>
+      </div>
+    </div>
+  </div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  var E=function(id){return document.getElementById(id);};
+  var clamp=function(v,a,b){return Math.max(a,Math.min(b,v));};
+  var lerp=function(a,b,p){return a+(b-a)*p;};
+  var ease=function(p){return p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;};
+
+  if (window.L) {
+    // Boknafjorden hovedbasseng — åpent vann i hele midtbåndet (skip + vakt på sjø, ikke land).
+    var map = L.map('map', { zoomControl:false, attributionControl:false, dragging:false, scrollWheelZoom:false,
+      doubleClickZoom:false, touchZoom:false, boxZoom:false, keyboard:false, tap:false }).setView([59.04, 5.89], 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19 }).addTo(map);
+    setTimeout(function(){ try{ map.invalidateSize(); }catch(e){} }, 200);
+  }
+
+  var A={x:58,y:200},B={x:232,y:150};
+  var Pa={x:60,y:200},Pb={x:150,y:158},Pc={x:238,y:200};
+  var corrBoatPath=[{x:62,y:198},{x:150,y:158},{x:222,y:96}];
+  var lineCaps=[[0,''],[2200,'1 · Velg «Ny vakt – linje»'],[4200,'2 · Trykk på kartet — punkt 1 av 2'],[6200,'3 · Trykk på kartet — punkt 2 av 2'],[8000,'Linja er satt — vakt aktiv'],[9800,'4 · Fartøyet krysser linja → varsel'],[15800,'5 · Slå på bakgrunnsvarsling — i menyen']];
+  var lineTaps=[{at:3500,x:140,y:60},{at:4900,x:58,y:200},{at:7400,x:232,y:150}];
+  var corrCaps=[[0,''],[2200,'1 · Velg «Ny vakt – rute»'],[4200,'2 · Legg til rute-punkter (minst 2)'],[8200,'3 · Juster bredden på korridoren'],[10800,'4 · Trykk «Ferdig» — ruta er satt'],[11800,'5 · Fartøyet følger ruta …'],[13600,'6 · … forlater ruta mot nordøst → varsel'],[18200,'7 · Slå på bakgrunnsvarsling — i menyen']];
+  var corrTaps=[{at:3500,x:140,y:92},{at:4900,x:60,y:200},{at:6400,x:150,y:158},{at:7900,x:238,y:200}];
+  var clip='line',t=0,playing=true,last=null;
+  var totals={line:20500,corridor:22500};
+
+  function cap(arr){var c=arr[0][1];for(var i=0;i<arr.length;i++){if(t>=arr[i][0])c=arr[i][1];}return c;}
+  function setShow(el,on){if(on)el.classList.add('show');else el.classList.remove('show');}
+  function setHot(el,on){if(on)el.classList.add('hot');else el.classList.remove('hot');}
+  function ripple(taps){var rp=E('ripple'),act=null;for(var k=0;k<taps.length;k++){var d=t-taps[k].at;if(d>=0&&d<650){act=taps[k];var f=d/650;rp.style.left=act.x/290*100+'%';rp.style.top=act.y/372*100+'%';rp.style.transform='translate(-50%,-50%) scale('+(0.3+f*3).toFixed(2)+')';rp.style.opacity=(1-f).toFixed(2);}}if(!act)rp.style.opacity=0;}
+  function norm(dx,dy){var l=Math.hypot(dx,dy)||1;return {x:-dy/l,y:dx/l};}
+  function corrEdges(pts,half){var L2=[],R=[];for(var i=0;i<pts.length;i++){var nx=0,ny=0;if(i>0){var a=norm(pts[i].x-pts[i-1].x,pts[i].y-pts[i-1].y);nx+=a.x;ny+=a.y;}if(i<pts.length-1){var b=norm(pts[i+1].x-pts[i].x,pts[i+1].y-pts[i].y);nx+=b.x;ny+=b.y;}var l=Math.hypot(nx,ny)||1;nx/=l;ny/=l;L2.push({x:pts[i].x+nx*half,y:pts[i].y+ny*half});R.push({x:pts[i].x-nx*half,y:pts[i].y-ny*half});}return {L:L2,R:R};}
+  function pstr(a){return a.map(function(p){return p.x.toFixed(1)+','+p.y.toFixed(1);}).join(' ');}
+  function pathLen(pts){var s=0;for(var i=0;i<pts.length-1;i++)s+=Math.hypot(pts[i+1].x-pts[i].x,pts[i+1].y-pts[i].y);return s;}
+  function walk(pts,d){var acc=0;for(var i=0;i<pts.length-1;i++){var a=pts[i],b=pts[i+1],sl=Math.hypot(b.x-a.x,b.y-a.y)||1;if(d<=acc+sl||i===pts.length-2){var f=clamp((d-acc)/sl,0,1);return {x:lerp(a.x,b.x,f),y:lerp(a.y,b.y,f),dx:b.x-a.x,dy:b.y-a.y};}acc+=sl;}}
+  function ptSeg(p,a,b){var dx=b.x-a.x,dy=b.y-a.y,l2=dx*dx+dy*dy||1;var u=clamp(((p.x-a.x)*dx+(p.y-a.y)*dy)/l2,0,1);return Math.hypot(p.x-(a.x+u*dx),p.y-(a.y+u*dy));}
+  function distToPath(p,pts){var m=1e9;for(var i=0;i<pts.length-1;i++)m=Math.min(m,ptSeg(p,pts[i],pts[i+1]));return m;}
+  function heading(dx,dy){return Math.atan2(dy,dx)*180/Math.PI+90;}
+
+  function renderLine(){
+    E('lineGroup').style.display='';E('corrGroup').style.display='none';
+    E('tcTitle').textContent='Slik lager du en vakt';E('tc').classList.toggle('hide',t>1900);
+    E('caption').textContent=cap(lineCaps);
+    var menuIntro=t>=2100&&t<4000, menuOutro=t>=15800&&t<19500;
+    setShow(E('backdrop'),menuIntro||menuOutro);setShow(E('menu'),menuIntro||menuOutro);
+    setHot(E('menuLinje'),t>=3100&&t<3700);E('menuRute').classList.remove('hot');
+    E('menuPush').classList.toggle('pushblink',menuOutro);
+    E('drawCorr').classList.remove('show');
+    setShow(E('drawLine'),t>=4100&&t<8000);
+    E('drawLineText').textContent=t<6200?'🎯 Trykk på kartet: punkt 1 av 2 (linje)':'🎯 Trykk på kartet: punkt 2 av 2 (linje)';
+    var armedL=t>=7400;
+    var n1=E('node1');n1.setAttribute('opacity',t>=5050?1:0);n1.setAttribute('fill',armedL?'#1a2332':'#ffd166');n1.setAttribute('fill-opacity',armedL?0.9:0.7);
+    E('node2').setAttribute('opacity',armedL?1:0);
+    var ln=E('twline');
+    if(armedL){var dp=ease(clamp((t-7400)/600,0,1));ln.setAttribute('x2',lerp(A.x,B.x,dp));ln.setAttribute('y2',lerp(A.y,B.y,dp));ln.setAttribute('opacity',0.95);}else{ln.setAttribute('x2',A.x);ln.setAttribute('y2',A.y);ln.setAttribute('opacity',0);}
+    var alarm=t>=12300&&t<13300;ln.setAttribute('stroke',alarm?'#ff6b6b':'#ffd166');ln.setAttribute('stroke-width',alarm?4:3);
+    var bp=clamp((t-9800)/4000,0,1),be=ease(bp);var by=lerp(255,110,be);if(t<9800)by=255+Math.sin(t/600)*2;
+    E('boat').setAttribute('transform','translate(185,'+by+') rotate(0)');
+    var bn=E('banner');bn.classList.remove('tripwire-banner--alarm');E('bTitle').textContent='⚠ RYGERFJELL krysset linja';E('bBody').textContent='Passerte RYGERFJELL kl. 14:23';setShow(bn,t>=12300&&t<15600);
+    ripple(lineTaps);
+  }
+
+  function renderCorr(){
+    E('lineGroup').style.display='none';E('corrGroup').style.display='';
+    E('tcTitle').textContent='Slik lager du en rute-vakt';E('tc').classList.toggle('hide',t>1900);
+    E('caption').textContent=cap(corrCaps);
+    var menuIntro=t>=2100&&t<4000, menuOutro=t>=18200&&t<21800;
+    setShow(E('backdrop'),menuIntro||menuOutro);setShow(E('menu'),menuIntro||menuOutro);
+    setHot(E('menuRute'),t>=3100&&t<3700);E('menuLinje').classList.remove('hot');
+    E('menuPush').classList.toggle('pushblink',menuOutro);
+    E('drawLine').classList.remove('show');
+    setShow(E('drawCorr'),t>=4100&&t<10800);
+    var count=(t>=4900?1:0)+(t>=6400?1:0)+(t>=7900?1:0);
+    E('drawCorrText').textContent='🧭 Trykk for å legge til rute-punkter ('+count+' satt). Minst 2.';
+    var w=t<8200?1000:(t<9800?1000+(t-8200)/1600*1000:2000);w=Math.round(w/50)*50;var half=14+(w-1000)/1000*7;
+    E('corrWlabel').innerHTML='Bredde: <strong style="color:#fff">'+w+' m</strong>';
+    E('corrThumb').style.left=clamp((w-250)/(4000-250),0,1)*100+'%';
+    E('chip1000').classList.toggle('on',w<1500);E('chip2000').classList.toggle('on',w>=1500&&w<2500);E('chip3000').classList.toggle('on',w>=2500&&w<3500);E('chip4000').classList.toggle('on',w>=3500);
+    E('corrAngre').style.opacity=count>=1?1:0;E('corrFerdig').style.opacity=count>=2?1:0.4;
+    var armed=t>=10800;var nr=armed?4:5,nfill=armed?'#1a2332':'#ffd166',nfo=armed?0.9:0.7;
+    var nodes=[E('cn1'),E('cn2'),E('cn3')];for(var i=0;i<3;i++){nodes[i].setAttribute('opacity',count>=i+1?1:0);nodes[i].setAttribute('r',nr);nodes[i].setAttribute('fill',nfill);nodes[i].setAttribute('fill-opacity',nfo);}
+    var pts=[Pa,Pb,Pc].slice(0,count);
+    E('corrCenter').setAttribute('points',count>=1?pstr(pts):'');
+    if(count>=2){var e=corrEdges(pts,half);E('corrLeft').setAttribute('points',pstr(e.L));E('corrRight').setAttribute('points',pstr(e.R));}else{E('corrLeft').setAttribute('points','');E('corrRight').setAttribute('points','');}
+    var total=pathLen(corrBoatPath);var bp=clamp((t-11400)/4000,0,1),be=ease(bp);var w0=walk(corrBoatPath,(t<11400?0:be*total));
+    if(t<11400)w0.y+=Math.sin(t/600)*1.5;
+    E('boat').setAttribute('transform','translate('+w0.x.toFixed(1)+','+w0.y.toFixed(1)+') rotate('+heading(w0.dx,w0.dy).toFixed(1)+')');
+    var dpath=distToPath({x:w0.x,y:w0.y},[Pa,Pb,Pc]);var outside=armed&&dpath>half;var al=outside&&dpath<half+40;
+    var ccol=al?'#ff6b6b':'#ffd166';E('corrCenter').setAttribute('stroke',ccol);E('corrLeft').setAttribute('stroke',ccol);E('corrRight').setAttribute('stroke',ccol);
+    E('corrCenter').setAttribute('opacity',armed?0.95:0.9);E('corrLeft').setAttribute('opacity',armed?0.55:0.5);E('corrRight').setAttribute('opacity',armed?0.55:0.5);
+    var bn=E('banner');bn.classList.toggle('tripwire-banner--alarm',al);E('bTitle').textContent='⚠ RYGERFJELL forlot ruta';E('bBody').textContent='Forlot korridoren kl. 14:23';setShow(bn,outside&&t<17800);
+    ripple(corrTaps);
+  }
+
+  function render(){ if(clip==='line')renderLine(); else renderCorr(); }
+  function loop(now){ if(last==null)last=now; var dt=now-last; last=now; if(playing){ t+=dt; if(t>=totals[clip])t-=totals[clip]; } render(); requestAnimationFrame(loop); }
+  function setClip(c){ clip=c; t=0; last=null; E('tabLine').classList.toggle('on',c==='line'); E('tabCorr').classList.toggle('on',c==='corridor'); render(); }
+  E('tabLine').addEventListener('click',function(){setClip('line');});
+  E('tabCorr').addEventListener('click',function(){setClip('corridor');});
+  E('replay').addEventListener('click',function(){t=0;last=null;});
+
+  var qp=new URLSearchParams(location.search).get('clip');
+  setClip(qp==='corridor'?'corridor':'line');
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

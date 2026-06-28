@@ -1,0 +1,2907 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* Remove grey tap flash on Android/iOS */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hover styles only on devices that actually have a pointer (mouse/trackpad).
+   On touch screens :hover gets "stuck" after a tap — this prevents that. */
+@media (hover: none) {
+  .icon-btn:hover,
+  .nav-btn:hover,
+  .track-btn:hover,
+  .close-btn:hover,
+  .vessel-list-item:hover,
+  .track-btn:hover:not(.active) {
+    background: revert;
+    color: revert;
+    border-color: revert;
+  }
+}
+
+:root {
+  --bg: #0f1923;
+  --bg2: #162030;
+  --bg3: #1e2d40;
+  --border: #243447;
+  --text: #e2e8f0;
+  --text-muted: #7a9bb5;
+  --accent: #00b4d8;
+  --accent2: #0077b6;
+  --danger: #e63946;
+  --success: #2a9d8f;
+  --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── App shell ─── */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  position: relative;
+  background: var(--bg);
+  box-shadow: 0 0 60px rgba(0,0,0,0.6);
+}
+
+/* ─── Top bar ─── */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 10px 6px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+/* Brand block yields first so the toolbar buttons (incl. 🏠 Hjem when set)
+   never get clipped off the right edge on narrow phones. */
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.app-logo { font-size: 1.2rem; }
+.app-logo-img {
+  height: 24px;
+  width: auto;
+  max-width: 80px;
+  border-radius: 8px;
+  display: block;
+  flex-shrink: 0;
+}
+.app-logo-img--clickable {
+  cursor: pointer;
+  transition: transform 0.12s ease-out;
+}
+.app-logo-img--clickable:active { transform: scale(0.93); }
+.app-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.app-brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+/* Ryfylke-tag: lite, gul, klemt inn i hjørnet mellom J og ø i 'Sjøsyn' */
+.app-sub {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffd166;
+  text-transform: uppercase;
+  /* R rett inntil J horisontalt + dyp vertikal overlapp inn mot ø-toppen */
+  margin: 0 0 -5px 14px;
+}
+
+.top-bar-right {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1rem;
+  /* 44px minimum tap target */
+  min-width: 44px;
+  min-height: 44px;
+  padding: 4px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  transition: background 0.12s, border-color 0.12s, box-shadow 0.12s, color 0.12s, transform 0.08s;
+}
+.icon-glyph { font-size: 1rem; line-height: 1; }
+.icon-label { font-size: 0.52rem; font-weight: 600; line-height: 1; letter-spacing: 0.3px; }
+/* Hover (off state): subtle border nudge only */
+.icon-btn:hover {
+  border-color: var(--accent);
+}
+/* On state: «trykket inn» — nedsenket flate (inset-skygge) + accent-farge,
+   i stedet for et lyst fyll som leste som hvitt på telefon. */
+.icon-btn.active {
+  background: var(--bg);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.55);
+  transform: translateY(1px);
+}
+/* Press (touch/click): samme nedsenkede følelse, ingen hvit blink. */
+.icon-btn:active {
+  background: var(--bg);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  transform: translateY(1px);
+}
+.icon-btn.active:active {
+  background: var(--bg);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  transform: translateY(1px);
+}
+
+/* ─── Stats bar ─── */
+.stats-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.stats-item {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.65rem;
+  white-space: nowrap;
+}
+
+.stats-num { font-weight: 700; color: var(--accent); font-size: 0.72rem; }
+.stats-label { color: var(--text-muted); }
+
+.stats-divider {
+  width: 1px;
+  height: 12px;
+  background: var(--border);
+}
+
+.conn-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.conn-dot.connected { background: var(--success); box-shadow: 0 0 4px var(--success); }
+.conn-dot.disconnected { background: var(--danger); }
+
+.settings-conn { display: flex; align-items: center; gap: 6px; }
+.wave-timeline-label.is-error { color: var(--danger); }
+
+/* ─── Error banner ─── */
+.error-banner {
+  background: #7f1d1d;
+  color: #fca5a5;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ─── Map area ─── */
+.map-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #0d1b2a;
+}
+
+/* Leaflet-kontroll-hjørnene har default z-index 1000 → krediteringen la seg
+   OVER modaler/overlays. Senk hjørne-laget så det bare ligger over kartet, men
+   under alle paneler/modaler (fartøy-panel 600, modaler 950+). */
+.leaflet-top, .leaflet-bottom { z-index: 590 !important; }
+
+/* Leaflet dark attribution — sammenleggbar: viser bare en «ⓘ Kilder»-chip,
+   utvides til full kreditering ved trykk (CollapsibleAttribution toggler
+   .attr-open). Attribusjonen er alltid ett trykk unna (lovkrav oppfylt). */
+.leaflet-control-attribution {
+  background: rgba(15,25,35,0.85) !important;
+  color: #8aa3ba !important;
+  z-index: 590 !important;   /* under fartøy-panelet (600) — dekkes av utvidet panel */
+  cursor: pointer;
+  border-radius: 6px 0 0 0;
+  -webkit-user-select: none; user-select: none;
+}
+.leaflet-control-attribution a { color: #6aa6cf !important; }
+/* Kollapset: skjul tekst/lenker (font-size 0), vis kun label via ::before. */
+.leaflet-control-attribution:not(.attr-open) { font-size: 0 !important; padding: 4px 9px !important; }
+.leaflet-control-attribution:not(.attr-open)::before { content: 'ⓘ Kilder'; font-size: 11px; font-weight: 600; }
+.leaflet-control-attribution.attr-open { font-size: 9px !important; max-width: 86vw; }
+/* Når et fartøy er valgt skal «Kilder» hvile på fartøy-panelets skulder, rett
+   over den synlige header-kanten. Følg --vessel-peek (settes live av VesselPanel,
+   også under drag) i stedet for en fast høyde, så chippen ligger inntil panelet
+   uansett om det er kollapset eller utvidet. z 590 < 600 → dekkes når panelet
+   utvides over den. */
+.app-shell--panel .leaflet-control-attribution {
+  bottom: calc(var(--vessel-peek, 80px) + 2px) !important;
+  transition: bottom 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* ─── Demo badge ─── */
+.demo-badge {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(230, 57, 70, 0.9);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  z-index: 500;
+  pointer-events: none;
+}
+
+/* ─── Spor-scrub readout (dato/tid øverst mens hjulet vris) ─── */
+.scrub-readout {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 620;
+  background: rgba(15, 25, 35, 0.92);
+  color: #ffd166;
+  border: 1px solid rgba(255, 209, 102, 0.45);
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+/* ─── Hjemmehavn pin + pick-modus ─── */
+.home-pin {
+  font-size: 13px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.55));
+  text-align: center;
+}
+.home-pick-hint {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(15, 25, 35, 0.92);
+  color: #e6f3ff;
+  padding: 8px 12px 8px 16px;
+  border-radius: 22px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  z-index: 800;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(125, 211, 252, 0.35);
+}
+.home-pick-cancel {
+  background: transparent;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+  border-radius: 16px;
+  padding: 3px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.home-pick-cancel:active { background: rgba(255, 255, 255, 0.08); }
+.home-pick-hint--confirm { flex-direction: column; align-items: stretch; gap: 8px; max-width: min(92%, 340px); text-align: center; font-weight: 500; line-height: 1.35; }
+.home-pick-actions { display: flex; gap: 8px; justify-content: center; }
+.home-pick-ok { background: #1d6fb8; border: 1px solid transparent; color: #fff; border-radius: 16px; padding: 4px 18px; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+.home-pick-ok:active { background: #165a96; }
+.home-pick-center { position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none; z-index: 790; }
+.home-pick-center::before { content: '🏠'; position: absolute; left: 50%; bottom: 3px; transform: translateX(-50%); font-size: 26px; line-height: 1; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6)); }
+.home-pick-center::after { content: ''; position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: #7dd3fc; box-shadow: 0 0 0 2px rgba(15, 25, 35, 0.85); }
+
+/* ─── Vessel panel ─── */
+.vessel-panel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg2);
+  border-top: 2px solid var(--accent);
+  border-radius: 16px 16px 0 0;
+  z-index: 600;
+  box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
+  animation: slideUpToPeek 0.25s ease-out;
+  max-height: 65%;
+  display: flex;
+  flex-direction: column;
+  /* Myk snap til åpen/lukket. Under aktiv drag slås transition av (følger finger). */
+  transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+  will-change: transform;
+}
+/* Kollapset: skyv panelet ned slik at hele header (≈68px) er synlig over
+   bunnmenyen. (Drag/snap styres med inline transform+transition fra VesselPanel.)
+   NB: må matche PEEK i VesselPanel.jsx, ellers hopper panelet etter snap. */
+.vessel-panel--collapsed {
+  transform: translateY(calc(100% - 80px));
+}
+/* Grab handle — signals the header can be dragged down to collapse */
+.vessel-panel::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+/* Vessel-panel-inngang: panelet mountes ALLTID kollapset (select/geo/draw setter
+   panelCollapsed=true), så animasjonen må lande på peek (matche
+   .vessel-panel--collapsed). Lander den på translateY(0), glir den til full høyde
+   og snapper så ned til peek = «sprett». Egen keyframe så den ikke deles med
+   andre slideUp-brukere (f.eks. .wave-timeline som skal til translateY(0)). */
+@keyframes slideUpToPeek {
+  from { transform: translateY(100%);              opacity: 0; }
+  to   { transform: translateY(calc(100% - 80px)); opacity: 1; }
+}
+
+.vessel-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 16px 10px;
+  border-bottom: 1px solid var(--border);
+  cursor: ns-resize;
+  touch-action: none;       /* drag the bar without the page scrolling/selecting */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Compact header used in tracking mode */
+.vessel-panel-header--compact {
+  padding: 13px 12px 7px;
+}
+
+/* Collapsed: only the name/type bar shows — drop the divider line */
+.vessel-panel--collapsed .vessel-panel-header {
+  border-bottom: none;
+}
+
+/* Right-side header controls (collapse chevron + close) */
+.vessel-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.collapse-btn {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  position: relative;
+}
+/* Invisible 44×44 tap zone so the small circle is easy to hit */
+.collapse-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+}
+.collapse-btn:hover { color: var(--text); border-color: var(--accent); }
+.collapse-chevron { display: block; transform: translateY(-1px); }
+
+.vessel-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vessel-type-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.vessel-type-dot--sm {
+  width: 8px;
+  height: 8px;
+}
+
+.vessel-panel-title h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 2px;
+}
+
+.vessel-type-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* Tittelblokk: rad 1 = navn + type, rad 2 = hurtigfakta */
+.vessel-title-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.vessel-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.vessel-title-row h2 { margin: 0; }
+.vessel-title-row .vessel-type-label { margin: 0; }
+
+/* Hurtigfakta under fartøynavnet — fart + lengde, alltid synlig */
+.vessel-quick-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.vessel-quick-facts--compact { gap: 8px; }
+.vessel-quick-fact {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+.vessel-quick-facts--compact .vessel-quick-fact {
+  font-size: 0.66rem;
+}
+.vessel-quick-icon {
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
+
+/* Inline compact title used in tracking mode */
+.vessel-title-inline {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.vessel-name-sm {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.vessel-type-badge {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.close-btn {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+  position: relative;
+}
+/* Invisible 44×44 tap zone so the small circle is easy to hit */
+.close-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+}
+.close-btn:hover { background: var(--danger); color: white; border-color: var(--danger); }
+
+/* ─── Track controls ─── */
+.track-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+.track-bar--compact {
+  padding: 5px 12px;
+}
+
+.track-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.track-opts {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+}
+.track-opts::-webkit-scrollbar { display: none; }
+
+.track-btn {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 600;
+  /* Bigger tap target */
+  min-height: 36px;
+  padding: 6px 10px;
+  transition: all 0.15s;
+  position: relative;
+}
+/* Usynlig trykksone opp til 44px i høyden (knappene står tett i rad — bare vertikal vekst) */
+.track-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  transform: translateY(-50%);
+  height: 44px;
+}
+.track-btn.active {
+  background: var(--accent2);
+  border-color: var(--accent);
+  color: white;
+}
+.track-btn:hover:not(.active) { background: var(--border); color: var(--text); }
+
+.track-loading {
+  font-size: 0.8rem;
+  color: var(--accent);
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.track-pts {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+/* Ikke-blokkerende feil-rad når spor-hentingen feiler — «Prøv igjen» */
+.track-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px 8px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.track-error-msg {
+  font-size: 0.7rem;
+  color: var(--danger);
+  flex: 1;
+  min-width: 0;
+}
+.track-error-retry {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 600;
+  /* Komfortabelt trykkmål — 44px (står alene til høyre i raden, så et synlig løft er trygt) */
+  min-height: 44px;
+  padding: 6px 12px;
+  flex-shrink: 0;
+}
+.track-error-retry:hover { background: var(--border); }
+
+.track-legend {
+  display: flex;
+  gap: 8px;
+  padding: 4px 16px 6px;
+  font-size: 0.6rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── PIN Gate ──────────────────────────────────────────── */
+.pin-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  z-index: 9999;
+  /* Safe area for notch/camera cutout */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+           env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+.pin-logo {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.pin-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.05em;
+  margin-top: -16px;
+}
+
+/* Dot row */
+.pin-dots {
+  display: flex;
+  gap: 20px;
+}
+
+.pin-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: transparent;
+  transition: background 0.15s;
+}
+
+.pin-dot.filled {
+  background: var(--accent);
+}
+
+/* Shake animation on wrong PIN */
+@keyframes pin-shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-10px); }
+  40%       { transform: translateX(10px); }
+  60%       { transform: translateX(-8px); }
+  80%       { transform: translateX(8px); }
+}
+
+.pin-shake {
+  animation: pin-shake 0.5s ease;
+}
+
+/* Number pad */
+.pin-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  width: min(320px, 85vw);
+}
+
+.pin-key {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 500;
+  /* Large circular tap targets */
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: background 0.1s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pin-key:active {
+  background: var(--accent2);
+  transform: scale(0.93);
+}
+
+.pin-key--back {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}
+
+.vessel-panel-body {
+  padding: 12px 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+.stat-card.stat-wide { grid-column: span 2; }
+.stat-card.stat-highlight { border-color: var(--accent2); }
+
+.stat-icon { font-size: 1rem; flex-shrink: 0; }
+.stat-label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-value { font-size: 0.8rem; font-weight: 600; color: var(--text); }
+
+.vessel-panel-footer {
+  padding: 10px 16px 14px;
+  border-top: 1px solid var(--border);
+}
+.vessel-panel-footer--compact {
+  padding: 6px 12px 10px;
+}
+
+.speed-bar-wrap {}
+.speed-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.speed-bar-track {
+  background: var(--bg3);
+  border-radius: 4px;
+  height: 6px;
+  overflow: hidden;
+}
+.speed-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* ─── Search panel ─── */
+.search-panel {
+  position: absolute;
+  inset: 0;
+  background: var(--bg2);
+  z-index: 700;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.search-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.search-input-wrap {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 0.85rem;
+  padding: 8px 32px 8px 34px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.search-input:focus { border-color: var(--accent); }
+.search-input::placeholder { color: var(--text-muted); }
+
+.search-clear {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 2px 4px;
+}
+
+.filter-chips {
+  display: flex;
+  gap: 6px;
+  padding: 10px 14px;
+  overflow-x: auto;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+  scrollbar-width: none;
+}
+.filter-chips::-webkit-scrollbar { display: none; }
+
+.filter-chip {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  white-space: nowrap;
+  transition: all 0.15s;
+  position: relative;
+}
+/* Usynlig trykksone opp til 44px i høyden (chips står tett i en rad — bare vertikal vekst) */
+.filter-chip::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  transform: translateY(-50%);
+  height: 44px;
+}
+.filter-chip.active {
+  background: var(--accent2);
+  border-color: var(--accent);
+  color: white;
+}
+
+.search-results-header {
+  padding: 8px 14px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.search-results {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* ─── Vessel list items (shared) ─── */
+.vessel-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  padding: 14px;
+  min-height: 56px;
+  text-align: left;
+  transition: background 0.1s;
+}
+.vessel-list-item:hover { background: var(--bg3); }
+
+.vessel-list-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.vessel-list-info { flex: 1; min-width: 0; }
+.vessel-list-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vessel-list-meta {
+  font-size: 0.67rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+.vessel-list-mmsi {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.empty-state {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ─── Bottom nav ─── */
+.bottom-nav {
+  display: flex;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.6rem;
+  padding: 8px 4px;
+  transition: color 0.15s, background 0.12s, box-shadow 0.12s;
+}
+/* Valgt fane: «trykket inn» — nedsenket flate (inset-skygge) + accent-farge,
+   ingen lyst/hvitt fyll. */
+.nav-btn.active {
+  color: var(--accent);
+  background: rgba(0, 0, 0, 0.22);
+  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.4);
+}
+.nav-btn:hover { color: var(--text); }
+.nav-btn:active {
+  color: var(--text-muted);
+  background: rgba(0, 0, 0, 0.22);
+  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.4);
+}
+.nav-btn.active:active {
+  color: var(--accent);
+  background: rgba(0, 0, 0, 0.28);
+  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.45);
+}
+.nav-icon { font-size: 1.15rem; }
+
+/* ─── Fleet overlay ─── */
+.fleet-overlay {
+  position: absolute;
+  /* Nav-raden (bottom-nav, ~56 px) skal være synlig under panelet —
+     samme oppførsel som de andre tabbene. */
+  inset: 0 0 var(--bottom-nav-h, 56px) 0;
+  background: var(--bg2);
+  z-index: 600;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.fleet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.fleet-header h2 {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.fleet-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* ─── Modal ─── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0a1628 0%, #0d2137 50%, #0a1628 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9000;
+  padding: 20px;
+}
+
+.modal {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+}
+
+.modal-icon { font-size: 2.5rem; margin-bottom: 8px; }
+.modal-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+.modal-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.modal-section { margin-bottom: 16px; }
+.modal-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.modal-desc strong { color: var(--text); }
+
+.modal-input {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 0.82rem;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.modal-input:focus { border-color: var(--accent); }
+.modal-input::placeholder { color: var(--text-muted); }
+
+.btn-primary {
+  width: 100%;
+  background: var(--accent2);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 11px;
+  transition: background 0.15s, opacity 0.15s;
+}
+.btn-primary:hover:not(:disabled) { background: var(--accent); }
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.modal-divider {
+  position: relative;
+  text-align: center;
+  margin: 16px 0;
+}
+.modal-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border);
+}
+.modal-divider span {
+  position: relative;
+  background: var(--bg2);
+  padding: 0 12px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.btn-secondary {
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.88rem;
+  padding: 10px;
+  margin-bottom: 14px;
+  transition: background 0.15s;
+}
+.btn-secondary:hover { background: var(--border); }
+
+.modal-label {
+  display: block;
+  text-align: left;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  margin-top: 10px;
+}
+
+.modal-hint {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.modal-link {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ─── Timeline slider ─── */
+.timeline-wrap {
+  padding: 8px 14px 10px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(0,0,0,0.15);
+}
+
+.timeline-ends {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  gap: 4px;
+}
+
+.timeline-ends span:first-child { text-align: left; }
+.timeline-ends span:nth-child(2) { text-align: center; flex: 1; }
+.timeline-ends span:last-child { text-align: right; }
+
+.timeline-live {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+
+.timeline-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  /* Prevent vertical page scroll while dragging the slider */
+  touch-action: pan-x;
+  outline: none;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0%,
+    var(--accent) var(--pct, 100%),
+    var(--bg3) var(--pct, 100%),
+    var(--bg3) 100%
+  );
+}
+
+.timeline-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--accent);
+  cursor: grab;
+  box-shadow: 0 0 6px rgba(0,180,216,0.5);
+  transition: transform 0.1s;
+}
+.timeline-slider:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+  cursor: grabbing;
+}
+
+.timeline-slider::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--accent);
+  cursor: grab;
+  box-shadow: 0 0 6px rgba(0,180,216,0.5);
+}
+
+.timeline-playhead-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 0.65rem;
+  min-height: 1rem;
+}
+
+.timeline-speed {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.timeline-ts {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* ─── Long track: day-picker timeline ─── */
+.timeline-long {
+  border-bottom: 1px solid var(--border);
+  background: rgba(0,0,0,0.15);
+}
+
+/* Scrollable chip row */
+.day-row {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 8px 14px 6px;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--border);
+}
+.day-row::-webkit-scrollbar { display: none; }
+
+.day-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  scroll-snap-align: center;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  min-width: 44px;
+  padding: 5px 8px;
+  position: relative;
+  transition: background 0.15s, border-color 0.15s;
+}
+.day-chip.active {
+  background: var(--accent2);
+  border-color: var(--accent);
+  color: #fff;
+}
+.day-chip:not(.active):hover { background: var(--border); }
+
+.day-chip-wd  { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.75; }
+.day-chip-num { font-size: 1rem;   font-weight: 700; line-height: 1; }
+.day-chip-mo  { font-size: 0.55rem; opacity: 0.6; }
+
+/* Pulsing live dot on the most-recent day chip */
+.day-chip-live {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 4px var(--accent);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.7); }
+}
+
+/* Day-scoped slider section */
+.day-slider-wrap {
+  padding: 8px 14px 10px;
+}
+
+.day-slider-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  min-height: 18px;
+}
+
+.day-slider-date {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.day-slider-live-pill {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(0,180,216,0.12);
+  border: 1px solid rgba(0,180,216,0.3);
+  border-radius: 10px;
+  padding: 1px 7px;
+  letter-spacing: 0.02em;
+}
+
+/* Relative container so tick marks can be absolutely placed */
+.day-slider-track-wrap {
+  position: relative;
+  padding-bottom: 16px; /* room for tick labels */
+}
+
+.day-ticks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.day-tick {
+  position: absolute;
+  top: 4px;           /* just below the slider thumb centre */
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.day-tick-line {
+  width: 1px;
+  height: 6px;
+  background: var(--border);
+}
+
+.day-tick-label {
+  font-size: 0.52rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ─── Playback button ─── */
+.timeline-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.timeline-row .day-slider-track-wrap,
+.timeline-row .timeline-slider,
+.timeline-row .track-dial {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Knop + tid OVER hjulet */
+.timeline-readout {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 2px 2px 6px;
+}
+.timeline-row--wheel { margin-top: 2px; }
+
+/* ── Vri-hjul (jog-barrel): farget rull under en fast senter-peker ──
+   --dial = fartøyets type-farge (settes inline). Pille-/tønneform, lav høyde. */
+.track-dial {
+  --dial: #00b4d8;
+  position: relative;
+  width: 100%;
+  height: 30px;
+  border-radius: 15px;           /* full pille = tydelig "rull" */
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  background: #0c151e;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--dial) 40%, transparent),
+              inset 0 5px 8px rgba(0, 0, 0, 0.55),
+              inset 0 -5px 8px rgba(0, 0, 0, 0.55);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+.track-dial:active { cursor: grabbing; }
+/* rullende fargede ribber — backgroundPositionX settes i JS */
+.track-dial-ribs {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--dial) 75%, white) 0 1.5px,
+    color-mix(in srgb, var(--dial) 30%, transparent) 1.5px 5px,
+    rgba(0, 0, 0, 0.45) 5px 9px,
+    color-mix(in srgb, var(--dial) 14%, transparent) 9px 13px
+  );
+}
+/* glanset tønne-sheen: lys stripe på midten, mørk topp/bunn = 3D */
+.track-dial-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(255, 255, 255, 0.18) 46%,
+    rgba(255, 255, 255, 0.05) 54%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+}
+/* fast senter-peker: liten "knott"-dott + glødende strek i dial-farge */
+.track-dial-center {
+  position: absolute;
+  left: 50%; top: 3px; bottom: 3px;
+  width: 2px;
+  transform: translateX(-50%);
+  background: #fff;
+  box-shadow: 0 0 8px 2px color-mix(in srgb, var(--dial) 90%, white);
+  pointer-events: none;
+}
+.track-dial-center::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 12px; height: 12px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--dial);
+  border: 2px solid #fff;
+  box-shadow: 0 0 6px 1px color-mix(in srgb, var(--dial) 80%, transparent);
+}
+
+.play-btn {
+  background: var(--bg3);
+  border: 1px solid var(--accent2);
+  border-radius: 50%;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.7rem;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.1s;
+  position: relative;
+}
+/* Usynlig 44×44 trykksone rundt den 34px knappen */
+.play-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+}
+.play-btn:active { transform: scale(0.92); }
+.play-btn.playing {
+  background: var(--accent2);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ─── Vessel name labels on map ─── */
+.vessel-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.vessel-label {
+  position: absolute;
+  font-family: var(--font);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  /* 4-way dark outline — readable on dark, voyager, and light tiles */
+  text-shadow:
+    -1px -1px 0 rgba(10,20,30,0.9),
+     1px -1px 0 rgba(10,20,30,0.9),
+    -1px  1px 0 rgba(10,20,30,0.9),
+     1px  1px 0 rgba(10,20,30,0.9),
+     0 0 4px rgba(0,0,0,0.5);
+  white-space: nowrap;
+  pointer-events: none;
+  text-transform: capitalize;
+  max-width: 72px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Side placement — swapped via className on zoom (no divIcon rebuild). Offsets
+   match the former inline labelPosStyle exactly. */
+.vessel-label.vl-top    { bottom: calc(100% - 3px); left: 50%;  transform: translateX(-50%); }
+.vessel-label.vl-bottom { top: calc(100% - 3px);    left: 50%;  transform: translateX(-50%); }
+.vessel-label.vl-left   { right: calc(100% - 2px);  top: 50%;   transform: translateY(-50%); }
+.vessel-label.vl-right  { left: calc(100% - 2px);   top: 50%;   transform: translateY(-50%); }
+/* Density-driven size buckets (was inline font-size). */
+.vessel-label.vl-sm { font-size: 0.42rem; }
+.vessel-label.vl-md { font-size: 0.50rem; }
+.vessel-label.vl-lg { font-size: 0.58rem; }
+
+/* Canvas-mode standalone labels: the element's left/top is set to the vessel's
+   screen point (JS); the side class transforms the text onto the chosen side
+   with a ~9px gap for the triangle. Distinct .vlf-* classes so they don't collide
+   with the icon-relative .vl-{top,bottom,left,right} rules above. */
+.vessel-label--free { will-change: transform; }
+.vlf-top    { transform: translate(-50%, calc(-100% - 9px)); }
+.vlf-bottom { transform: translate(-50%, 9px); }
+.vlf-left   { transform: translate(calc(-100% - 9px), -50%); }
+.vlf-right  { transform: translate(9px, -50%); }
+/* Stale dim for canvas free labels — matches .vessel-wrap--stale .vessel-label. */
+.vessel-label--free.vessel-label--stale { opacity: 0.65; }
+
+/* 5′/10′/15′ minute labels on the selected vessel's heading vector */
+.vector-minute {
+  font-family: var(--font);
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-align: center;
+  text-shadow:
+    -1px -1px 0 rgba(10,20,30,0.85),
+     1px -1px 0 rgba(10,20,30,0.85),
+    -1px  1px 0 rgba(10,20,30,0.85),
+     1px  1px 0 rgba(10,20,30,0.85);
+  pointer-events: none;
+}
+
+/* ─── Error banner retry ─── */
+.retry-btn {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  color: #fca5a5;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  margin-left: 10px;
+}
+.retry-btn:active { background: rgba(255,255,255,0.25); }
+
+/* ─── Remember-credentials checkbox ─── */
+.remember-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 12px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  text-align: left;
+}
+.remember-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+.remember-row small {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* Forget saved API key */
+.modal-forget {
+  background: none;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 0.72rem;
+  margin-bottom: 14px;
+  opacity: 0.85;
+  padding: 6px;
+}
+.modal-forget:hover { opacity: 1; text-decoration: underline; }
+
+/* ─── Gruppemarkør — sirkel med antall fartøy ─── */
+.cluster-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: radial-gradient(circle at 35% 30%, #3f87b8, #23618c 78%);
+  border: 2px solid #eaf6ff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.55);
+}
+.cluster-count {
+  font-family: var(--font);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 2px rgba(5, 20, 35, 0.8);
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Tonet ned fartøy med gammel siste posisjon — vises på sist rapporterte
+   sted uten dead-reckoning. Faktisk posisjon er usikker. */
+.vessel-wrap--stale { opacity: 0.4; }
+.vessel-wrap--stale .vessel-label { opacity: 0.65; }
+
+/* ─── Push setup modal (bakgrunnsvarsling) ─── */
+.push-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 950;
+  background: rgba(8, 14, 20, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.push-modal {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 14px;
+  max-width: 400px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+.push-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.push-modal-header h2 { margin: 0; font-size: 1rem; color: var(--accent); }
+.push-modal-body { padding: 14px 16px; color: var(--text); font-size: 0.82rem; line-height: 1.5; }
+.push-modal-step { margin-bottom: 16px; }
+.push-modal-step h3 { font-size: 0.88rem; margin: 0 0 6px; color: var(--accent); }
+.push-modal-step ol { padding-left: 18px; margin: 6px 0; }
+.push-modal-step li { margin-bottom: 4px; }
+.push-modal-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 6px; }
+.push-modal-warn { color: #ffd166; background: rgba(255, 209, 102, 0.1); padding: 10px; border-radius: 8px; }
+.push-modal-err  { color: #ff6b6b; margin-top: 8px; font-size: 0.78rem; }
+.push-modal-btn {
+  width: 100%;
+  background: var(--accent);
+  color: #0a1622;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.push-modal-btn:active { transform: scale(0.98); }
+.push-modal-btn--off { background: #ff6b6b; color: #fff; }
+.tripwire-btn--push { padding: 5px 8px; }
+.push-consent {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 0.74rem;
+  color: var(--text);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+.push-consent input { margin-top: 3px; accent-color: var(--accent); flex-shrink: 0; }
+.push-consent a { color: var(--accent); }
+
+/* ─── Alarm-bar (synlig når kontinuerlig alarm spiller) ─── */
+/* Synlig feil-chip når bakgrunnsvarsling-sync feiler (ikke stille svelg) */
+.sync-error-chip {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 950;
+  max-width: 90vw;
+  background: #e63946;
+  color: #fff;
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(230, 57, 70, 0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sync-error-retry {
+  background: #fff;
+  color: #e63946;
+  border: none;
+  border-radius: 7px;
+  padding: 4px 10px;
+  font-weight: 700;
+  font-size: 0.78rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+/* Dekningsadvarsel — armerte tripwires uten bakgrunnsvarsling */
+.coverage-warn-chip {
+  position: absolute;
+  top: 77px;                 /* rett under toppbanneret (65px) */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 949;
+  width: min(92vw, 360px);
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  background: #b8860b;
+  color: #fff;
+  padding: 9px 10px 9px 14px;
+  border-radius: 10px;
+  border: none;
+  font-family: var(--font);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+.coverage-warn-main {
+  flex: 1;
+  min-width: 0;              /* la teksten brytes så «OK» aldri presses ut */
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+}
+.coverage-warn-ok {
+  flex-shrink: 0;
+  align-self: center;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  position: relative;
+}
+/* Usynlig 44×44 trykksone — «OK» er ~32px høy */
+.coverage-warn-ok::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+}
+.coverage-warn-ok:active { background: rgba(255, 255, 255, 0.3); }
+
+/* In-app banner når SW så at app er fokusert + et tripwire-push kom */
+.tripwire-banner {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 960;
+  background: #1a2332;
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ffd166;
+  font-family: var(--font);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  max-width: 90vw;
+}
+.tripwire-banner--alarm {
+  border-color: #ff6b6b;
+  box-shadow: 0 6px 22px rgba(255, 107, 107, 0.5);
+  animation: tripwire-pulse 0.7s ease-in-out infinite alternate;
+}
+.tripwire-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.tripwire-banner-text strong { font-weight: 700; }
+.tripwire-banner-text span {
+  font-weight: 400;
+  color: #c7d1de;
+  font-size: 0.8rem;
+}
+.tripwire-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tripwire-banner-btn {
+  padding: 5px 12px;
+  background: #ffd166;
+  color: #0b1018;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.tripwire-banner-btn:hover { background: #ffe18a; }
+.tripwire-banner-btn--danger { background: transparent; color: #ff8b8b; border: 1px solid #d94545; }
+.tripwire-banner-btn--danger:hover { background: rgba(217, 69, 69, 0.15); }
+.tripwire-banner-close {
+  background: transparent;
+  color: #c7d1de;
+  border: none;
+  font-size: 1rem;
+  padding: 0 4px;
+  cursor: pointer;
+}
+/* Alarm-mode radio (Settings → Varsling) */
+.alarm-mode-options { display: flex; gap: 8px; }
+.alarm-mode-opt {
+  display: flex; align-items: center; gap: 4px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.74rem;
+  cursor: pointer;
+  color: var(--text);
+}
+.alarm-mode-opt input { accent-color: var(--accent); }
+.alarm-mode-opt--active { border-color: var(--accent); color: var(--accent); }
+
+/* Tone-velger med preview */
+.tone-list-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin: 10px 4px 4px;
+  font-weight: 600;
+}
+.tone-list { display: flex; flex-direction: column; gap: 4px; }
+.tone-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.tone-row--active { border-color: var(--accent); }
+.tone-row-pick {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  color: var(--text);
+  min-width: 0;
+}
+.tone-row-pick input { accent-color: var(--accent); flex-shrink: 0; }
+.tone-row-label { font-weight: 600; }
+.tone-row-hint {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-left: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tone-preview-btn {
+  background: var(--accent);
+  color: #0a1622;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2px;   /* visual centering of ▶ glyph */
+  position: relative;
+}
+/* Usynlig 44×44 trykksone rundt den 32px sirkelen */
+.tone-preview-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+}
+.tone-preview-btn:active { transform: scale(0.92); }
+
+/* ─── Tripwire (varsling-linje for valgt fartøy) ─── */
+/* GPS-pulse — vises 4 s etter at brukeren trykker 📍 */
+@keyframes gps-pulse-grow {
+  0%   { stroke-opacity: 0.7; transform-origin: center; }
+  100% { stroke-opacity: 0;   stroke-width: 1; }
+}
+.leaflet-overlay-pane path.gps-pulse {
+  animation: gps-pulse-grow 1.4s ease-out infinite;
+  transform-box: fill-box;
+}
+.leaflet-overlay-pane path.gps-dot {
+  filter: drop-shadow(0 0 6px rgba(0, 180, 216, 0.8));
+}
+
+/* Legg til / Fjern fra flåten — over tripwire-rad i vessel-panel */
+.fleet-add-row {
+  padding: 6px 10px 0;
+}
+.fleet-add-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-family: var(--font);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.fleet-add-btn--active {
+  background: rgba(255, 209, 102, 0.12);
+  border-color: #ffd166;
+  color: #ffd166;
+  border-style: solid;
+}
+
+/* Fleet-tab — tom-tilstand */
+.fleet-empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+}
+.fleet-empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+.fleet-empty-title {
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.fleet-empty-sub {
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Lagret fartøy uten live AIS — grey */
+.vessel-list-item--offline {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.tripwire-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 0;
+  font-family: var(--font);
+  font-size: 0.74rem;
+}
+.tripwire-msg {
+  flex: 1;
+  color: var(--text);
+}
+.tripwire-msg--armed {
+  color: #ffd166;
+  font-weight: 600;
+}
+.tripwire-btn {
+  background: rgba(255, 209, 102, 0.12);
+  border: 1px solid #ffd166;
+  color: #ffd166;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tripwire-btn:active { background: rgba(255, 209, 102, 0.25); }
+.tripwire-btn--cancel { border-color: var(--text-muted); color: var(--text-muted); background: transparent; }
+.leaflet-container.tripwire-draw-mode { cursor: crosshair !important; }
+.leaflet-container.home-pick-mode { cursor: crosshair !important; }
+.tripwire-line--blink {
+  animation: tripwire-pulse 0.7s ease-in-out infinite alternate;
+}
+@keyframes tripwire-pulse {
+  from { stroke-opacity: 0.6; }
+  to   { stroke-opacity: 1; }
+}
+
+/* ─── Tripwire popup ─── */
+.tw-popup {
+  font-size: 0.85rem;
+  min-width: 180px;
+  color: #0b1018;
+}
+.tw-popup-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(11, 16, 24, 0.15);
+}
+.tw-popup-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 3px 0;
+}
+.tw-popup-row span {
+  color: #5a6470;
+}
+.tw-popup-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+.tw-popup-btn {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #c6cdd5;
+  border-radius: 6px;
+  background: #f4f6f8;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tw-popup-btn:hover { background: #e8ecf0; }
+.tw-popup-btn--danger {
+  border-color: #d94545;
+  color: #d94545;
+}
+.tw-popup-btn--danger:hover {
+  background: #fde8e8;
+}
+/* Bredde-velger inne i kart-popup (lys bakgrunn) */
+.tw-popup-width {
+  margin: 8px 0 4px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(11, 16, 24, 0.12);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.tw-popup-width label { font-size: 0.8rem; color: #5a6470; }
+.tw-popup-width label strong { color: #0b1018; }
+.tw-popup-width input[type="range"] { width: 100%; accent-color: #d9a400; }
+.tw-popup-presets { display: flex; gap: 5px; }
+.tw-popup-presets .corridor-preset {
+  flex: 1; padding: 4px 0; border-radius: 6px; font-size: 0.75rem;
+  border: 1px solid #c6cdd5; background: #f4f6f8; color: #0b1018; cursor: pointer;
+}
+.tw-popup-presets .corridor-preset--active { border-color: #d9a400; color: #946f00; font-weight: 700; }
+
+/* ─── Tripwire-meny (fra toolbar) + Mine tripwires-liste ─── */
+.tw-menu-backdrop {
+  position: absolute; inset: 0; z-index: 980;
+  background: rgba(8, 14, 20, 0.45);
+  display: flex; align-items: flex-start; justify-content: center;
+  /* Toppbanneret er 65px — start menyen tydelig under det. */
+  padding-top: 77px;
+}
+.tw-menu, .tw-list {
+  width: min(92vw, 360px);
+  background: var(--bg2, #16212e);
+  border: 1px solid var(--border, #2a3a4d);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  font-family: var(--font);
+}
+.tw-menu-title {
+  padding: 12px 16px; font-weight: 700; color: #fff;
+  border-bottom: 1px solid var(--border, #2a3a4d);
+}
+.tw-menu-item {
+  display: flex; flex-direction: column; gap: 2px;
+  width: 100%; text-align: left;
+  padding: 12px 16px; background: transparent; border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer; color: #fff;
+}
+.tw-menu-item:hover { background: rgba(255, 209, 102, 0.1); }
+.tw-menu-item strong { font-size: 0.9rem; }
+.tw-menu-item span { font-size: 0.78rem; color: var(--text-muted, #9fb0c0); }
+.tw-menu-hint { padding: 14px 16px; font-size: 0.82rem; color: var(--text-muted, #9fb0c0); }
+.tw-list-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; font-weight: 700; color: #fff;
+  border-bottom: 1px solid var(--border, #2a3a4d);
+}
+.tw-list-items { list-style: none; margin: 0; padding: 0; max-height: 60vh; overflow-y: auto; }
+.tw-list-item {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; padding: 10px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.tw-list-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.tw-list-text strong { font-size: 0.88rem; color: #fff; }
+.tw-list-text span { font-size: 0.76rem; color: var(--text-muted, #9fb0c0); }
+.tw-list-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.tw-list-btn {
+  padding: 5px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;
+  border: 1px solid var(--border, #2a3a4d); background: var(--bg3, #1c2a3a);
+  color: #fff; cursor: pointer;
+}
+.tw-list-btn--danger { border-color: #d94545; color: #ff8b8b; }
+.tw-list-item--paused .tw-list-text strong { opacity: 0.55; }
+.tw-list-item--paused .tw-list-text span { color: #d9a400; }
+
+/* ─── Flytende draw-kontroll ─── */
+/* Plassert øvre venstre, under header/logo. Kompakt høyde. */
+.draw-control {
+  /* Sentrert øverst, rett under toppbanneret (65px). */
+  position: absolute; top: 77px; left: 50%; transform: translateX(-50%);
+  z-index: 970; width: min(92vw, 340px);
+  background: #1a2332; color: #fff; border: 1px solid #ffd166;
+  border-radius: 10px; padding: 8px 12px;
+  display: flex; flex-direction: column; gap: 6px;
+  font-family: var(--font); font-size: 0.78rem; line-height: 1.25;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+.draw-control-actions { justify-content: center; }
+.draw-control-actions { display: flex; gap: 6px; }
+.draw-width { display: flex; flex-direction: column; gap: 3px; width: 100%; }
+.draw-width label { font-size: 0.74rem; color: #c7d1de; }
+.draw-width label strong { color: #fff; }
+.draw-width input[type="range"] { width: 100%; accent-color: #ffd166; margin: 0; }
+.draw-width-presets { display: flex; gap: 5px; }
+.draw-btn {
+  padding: 5px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;
+  border: 1px solid #ffd166; background: transparent; color: #ffd166; cursor: pointer;
+  position: relative;
+}
+/* Usynlig trykksone: bare i høyden opp til 44px (knappene står tett i rad,
+   så vi vokser ikke sidelengs — da ville naboknappen stjele trykk) */
+.draw-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  transform: translateY(-50%);
+  height: 44px;
+}
+.draw-btn--primary { background: #ffd166; color: #0b1018; }
+.draw-btn--primary:disabled { opacity: 0.45; cursor: not-allowed; }
+.draw-btn--cancel { border-color: var(--text-muted, #9fb0c0); color: var(--text-muted, #9fb0c0); }
+
+/* ─── Korridor-bredde-velger (i fartøy-panel) ─── */
+.corridor-width { padding: 8px 4px 4px; display: flex; flex-direction: column; gap: 6px; }
+.corridor-width label { font-size: 0.8rem; color: var(--text-muted, #9fb0c0); }
+.corridor-width label strong { color: #fff; }
+.corridor-width input[type="range"] { width: 100%; accent-color: #ffd166; }
+.corridor-width-presets { display: flex; gap: 6px; }
+.corridor-preset {
+  flex: 1; padding: 5px 0; border-radius: 6px; font-size: 0.78rem;
+  border: 1px solid var(--border, #2a3a4d); background: var(--bg3, #1c2a3a);
+  color: #fff; cursor: pointer;
+  position: relative;
+}
+/* Usynlig trykksone opp til 44px i høyden (presetene står tett i rad — bare vertikal vekst) */
+.corridor-preset::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  transform: translateY(-50%);
+  height: 44px;
+}
+.corridor-preset--active { border-color: #ffd166; color: #ffd166; }
+
+/* ─── Bølge-popup (tap-on-badge) ─── */
+.wave-popup-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 900;
+  background: rgba(8, 14, 20, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.wave-popup {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  max-width: 320px;
+  width: 100%;
+}
+.wave-popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.wave-popup-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
+.wave-popup-body { padding: 14px; text-align: center; }
+.wave-popup-when { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 2px; text-transform: capitalize; }
+.wave-popup-hs   { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+.wave-popup-meta {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.wave-popup-footer {
+  padding: 8px 14px 12px;
+  font-size: 0.66rem;
+  color: var(--text-muted);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── Bølgevarsel — høydemerker på sjøen ─── */
+.wave-badge {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1px;
+  min-width: 25px;
+  padding: 0.9px 3.6px;   /* 10% tighter text→border than 1px 4px */
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  font-family: var(--font);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(5, 20, 35, 0.75);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+  opacity: 0.92;
+  cursor: pointer;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.wave-unit {
+  font-size: 0.5rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+/* Tynn retningspil på enden av merket — roteres inline mot bølgeretningen.
+   Linje-pil med skaft, bevisst ulik de fylte fartøytrekantene. */
+.wave-dir {
+  display: inline-block;
+  align-self: center;
+  line-height: 0;
+  margin-left: 2px;
+  opacity: 0.95;
+}
+.wave-dir svg { display: block; }
+
+/* ─── Vind-merker — bevisst ulik bølge: skarpere hjørner, fylt pil ─── */
+.wind-badge {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1px;
+  min-width: 27px;
+  padding: 0.9px 3.6px;   /* 10% tighter text→border than 1px 4px */
+  border-radius: 4px;                                  /* skarpere enn bølge (8px) */
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  font-family: var(--font);
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(5, 20, 35, 0.75);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+  opacity: 0.94;
+  cursor: pointer;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.wind-unit {
+  font-size: 0.5rem;
+  font-weight: 600;
+  opacity: 0.8;
+  margin-left: 1px;
+}
+.wind-dir {
+  display: inline-block;
+  align-self: center;
+  line-height: 0;
+  margin-left: 2px;
+  opacity: 0.95;
+}
+.wind-dir svg { display: block; }
+
+/* ─── Ansvarsfraskrivelse ved første oppstart ─── */
+.disclaimer-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 950;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 14, 20, 0.78);
+  padding: 24px;
+}
+.disclaimer-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  max-width: 340px;
+  padding: 20px 18px 16px;
+}
+.disclaimer-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.disclaimer-card p {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.disclaimer-sub {
+  font-size: 0.68rem !important;
+  color: var(--text-muted) !important;
+}
+.disclaimer-sub a { color: var(--accent); }
+.disclaimer-btn {
+  width: 100%;
+  background: var(--accent2);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  min-height: 44px;
+  margin-top: 4px;
+}
+.disclaimer-btn:active { background: var(--accent); }
+
+/* Om-seksjonen i innstillinger */
+.settings-about {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.settings-about strong { color: var(--text); }
+.settings-attrib a { color: var(--accent); }
+
+/* ─── Kartlag-panel (top-left) — compact, replaces the old wave/wind chips.
+   Tight for small phone map views; row text keeps the layers' chip colours. ─── */
+.layer-panel {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 600;
+  min-width: 104px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  font-family: var(--font);
+}
+.layer-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  padding: 4px 7px;
+  background: var(--bg3, #1b2836);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+}
+.layer-menu-icon { font-size: 0.72rem; color: var(--text-muted); }
+.layer-panel-title { flex: 1; text-align: left; font-size: 0.62rem; font-weight: 500; color: var(--text); }
+.layer-collapse-chevron { font-size: 0.64rem; color: var(--text-muted); }
+.layer-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 7px;
+  border-bottom: 1px solid var(--border);
+}
+.layer-row:last-child { border-bottom: none; }
+.layer-icon { font-size: 0.72rem; }
+.layer-icon--off { opacity: 0.45; }
+.layer-name {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 0.64rem;          /* colour set inline per layer (chip colours) */
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.layer-info { font-size: 0.62rem; font-weight: 600; color: var(--text-muted); }
+.layer-err { color: var(--danger); font-size: 0.58rem; }
+.layer-switch {
+  flex-shrink: 0;
+  width: 24px;
+  height: 14px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: #44505e;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.layer-switch--on { background: var(--accent); }
+/* Usynlig 44×44 trykksone — bryteren er bare 24×14, vanskelig med hansker */
+.layer-switch::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+}
+.layer-switch-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.15s;
+}
+.layer-switch--on .layer-switch-knob { left: 12px; }
+.layer-panel--collapsed {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  width: auto;
+  padding: 5px 8px;
+}
+.layer-active-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 13px;
+  height: 13px;
+  padding: 0 3px;
+  border-radius: 7px;
+  background: var(--accent);
+  color: #042c3a;
+  font-size: 0.54rem;
+  font-weight: 500;
+}
+
+/* Horisont-velger i Innstillinger → Værdata */
+.settings-select {
+  flex-shrink: 0;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+/* m/s ↔ knop segmentert bryter i vindtidslinja */
+.wind-unit-toggle {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.wind-unit-btn {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.66rem;
+  font-weight: 700;
+  min-height: 34px;
+  padding: 6px 8px;
+  position: relative;
+}
+/* Usynlig trykksone opp til 44px i høyden (m/s og knop står tett — bare vertikal vekst) */
+.wind-unit-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  transform: translateY(-50%);
+  height: 44px;
+}
+.wind-unit-btn.active { background: #3aa15a; border-color: #3aa15a; color: #fff; }
+/* Vindtidslinje deler layout med bølge, men grønn topp-kant */
+.wind-timeline { border-top-color: #3aa15a; }
+
+/* Tetthets-rad: «Færre merker»-slider (tynner tetteste områder først) */
+.density-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+.density-label {
+  flex-shrink: 0;
+  font-size: 0.66rem;
+  color: var(--text-muted);
+}
+.density-slider { flex: 1; }
+
+/* ─── Bølgetidslinje — bunnpanel med vinduer + time-for-time-slider ─── */
+.wave-timeline {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  /* Sitt over fartøy-panelets synlige del når et skip er valgt (--vessel-peek
+     settes av VesselPanel), ellers nederst. Følger panelet om det dras. */
+  bottom: calc(var(--vessel-peek, 0px) + 8px);
+  transition: bottom 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+  z-index: 650;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.45);
+  padding: 10px 12px 8px;
+  animation: slideUp 0.2s ease-out;
+}
+.wave-timeline-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.wave-timeline .timeline-slider { width: 100%; }
+
+.wave-timeline-label {
+  font-size: 0.66rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 4px;
+  min-height: 1em;
+}
+
+/* Tidshorisont-velger i innstillingene */
+.horizon-opts {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.horizon-btn {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 600;
+  min-height: 34px;
+  padding: 6px 9px;
+  transition: all 0.15s;
+  position: relative;
+}
+/* Usynlig trykksone opp til 44px i høyden (knappene står tett i rad —
+   vokser ikke sidelengs så naboen ikke stjeler trykk) */
+.horizon-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  transform: translateY(-50%);
+  height: 44px;
+}
+.horizon-btn.active {
+  background: var(--accent2);
+  border-color: var(--accent);
+  color: white;
+}
+
+.wave-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text-muted);   /* lesbar tekst — bare ■-symbolene er farget */
+  padding: 2px 4px 0;
+}
+.settings-attrib {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  padding: 6px 4px 0;
+}
+
+/* Popup-liste over fartøyene i gruppa */
+.cluster-popup .leaflet-popup-content-wrapper {
+  background: rgba(15, 25, 35, 0.96);
+  color: var(--text);
+  border: 1px solid rgba(125, 211, 252, 0.25);
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+}
+.cluster-popup .leaflet-popup-tip {
+  background: rgba(15, 25, 35, 0.96);
+  border: 1px solid rgba(125, 211, 252, 0.25);
+}
+.cluster-popup .leaflet-popup-content {
+  margin: 10px 12px;
+  font-family: var(--font);
+}
+.cluster-popup .leaflet-popup-close-button {
+  color: var(--text-muted);
+}
+
+.cluster-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 220px;
+  overflow-y: auto;
+  min-width: 180px;
+}
+.cluster-list-header {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #7dd3fc;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+.cluster-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.78rem;
+  padding: 6px 6px;
+  text-align: left;
+}
+.cluster-item:hover, .cluster-item:active { background: var(--bg3); }
+.cluster-item-name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  text-transform: capitalize;
+}
+.cluster-item-type {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* ─── Innstillinger ─── */
+.settings-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--bg2);
+  z-index: 600;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.2s ease-out;
+}
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.settings-header h2 {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.settings-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 16px 24px;
+}
+.settings-section { margin-bottom: 22px; }
+.settings-section-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  cursor: pointer;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  text-align: left;
+  font-family: var(--font);
+}
+.settings-row--static { cursor: default; }
+.home-btns { display: flex; gap: 6px; }
+.settings-btn--danger { color: #ff6b6b; border-color: #ff6b6b; }
+.settings-row--disabled { cursor: not-allowed; opacity: 0.55; }
+.settings-row--disabled:active { background: var(--bg3); }
+.settings-row-text { flex: 1; min-width: 0; }
+/* Værlag-rad: tidsvelger + bryter samlet til høyre (én rad i stedet for to). */
+.settings-row-control { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.settings-toggle-btn { background: none; border: 0; padding: 0; cursor: pointer; display: inline-flex; }
+.settings-row-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.settings-row-sub {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  line-height: 1.35;
+}
+.settings-btn {
+  background: var(--bg2);
+  border: 1px solid var(--accent2);
+  border-radius: 8px;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  flex-shrink: 0;
+}
+.settings-btn:active { background: var(--bg); }
+
+/* Bryter */
+.toggle {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  transition: background 0.18s, border-color 0.18s;
+}
+.toggle .toggle-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: transform 0.18s, background 0.18s;
+}
+.toggle.on {
+  background: rgba(0, 180, 216, 0.25);
+  border-color: var(--accent);
+}
+.toggle.on .toggle-knob {
+  transform: translateX(18px);
+  background: var(--accent);
+}
+
+.coverage-warn-info { cursor: default; }
+.layer-collapsed-label { font-size: 0.7rem; font-weight: 500; margin-left: 2px; }
+.tap-hint { position: absolute; left: 50%; transform: translateX(-50%); bottom: calc(var(--bottom-nav-h, 56px) + 12px); display: flex; align-items: center; gap: 8px; background: rgba(8, 14, 20, 0.92); color: #fff; padding: 8px 14px; border-radius: 999px; font-size: 0.8rem; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4); z-index: 500; max-width: 90%; }
+.tap-hint-close { background: none; border: none; color: #fff; opacity: 0.8; font-size: 0.9rem; line-height: 1; padding: 0 2px; cursor: pointer; }

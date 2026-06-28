@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sjøsyn</string>
+    <string name="title_activity_main">Sjøsyn</string>
+    <string name="package_name">no.sjosyn.app</string>
+    <string name="custom_url_scheme">no.sjosyn.app</string>
+</resources>
