@@ -1,9 +1,15 @@
 [build]
   command = "npm run build"
-  publish = "dist"
+  publish = "backend-only"
 
 # This backend serves ONLY the Sjosyn native Android app (separate deploy
 # from the web PWA's Netlify site) — see _cors.cjs for the allow-list.
+# `publish` intentionally points at a blank placeholder, NOT the real app's
+# `dist` build — this site's URL only needs to exist for the /bw-*, /met-*,
+# and /push-* function paths. Nobody should be able to open the actual app
+# UI at this address. `command` still runs the real build so npm install
+# happens (needed for the functions' dependencies) even though dist itself
+# is never published.
 
 # Proxy → Barentswatch token
 [[redirects]]
