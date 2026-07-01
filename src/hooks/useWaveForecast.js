@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { buildWavePlan } from '../utils/waveGrid'
 import { metFetch } from '../utils/metOceanFetch'
 import { makeForecastStore } from '../utils/forecastCache'
+import { API_BASE } from '../utils/apiBase'
 
 // Wave forecasts from MET Norway oceanforecast 2.0 (WAM800, 800 m grid,
 // 206-timestep hourly series ≈ 8.6 d horizon). Auth-free — only a User-Agent
@@ -15,7 +16,7 @@ import { makeForecastStore } from '../utils/forecastCache'
 // with {multi:false}. Land is filtered server-side (MET returns
 // meta.error="no data at the given location" for inland points).
 
-const BASE = '/met-ocean'                              // proxy → MET oceanforecast/2.0/complete
+const BASE = `${API_BASE}/met-ocean`                   // proxy → MET oceanforecast/2.0/complete
 export const HORIZONS = [6, 12, 24, 48, 96, 168, 192] // 6 t … 8 d (MET serves ~8.6 d / 206 timesteg)
 
 // "6 t", "12 t", "2 d", "7 d" — readable label per horizon

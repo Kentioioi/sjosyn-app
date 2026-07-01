@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
+import { API_BASE } from '../utils/apiBase'
 
 // /bw-historic proxies to https://historic.ais.barentswatch.no
 // The open API lives under /open prefix with auth
-const BASE = '/bw-historic/open/v1/historic'
+const BASE = `${API_BASE}/bw-historic/open/v1/historic`
 
 export function useVesselTrack(mmsi, hours, getToken) {
   const [track, setTrack] = useState([])

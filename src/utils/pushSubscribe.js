@@ -3,6 +3,7 @@
 // unsubscribe / slette uten å vente på server-roundtrip.
 
 import { VAPID_PUBLIC_KEY } from './pushConfig'
+import { API_BASE } from './apiBase'
 
 const UNSUB_TOKEN_KEY = 'mw_push_unsub_token'
 
@@ -59,7 +60,7 @@ export async function unsubscribeFromPush() {
   await sub.unsubscribe()
   if (token) {
     try {
-      await fetch('/push-unsubscribe', {
+      await fetch(`${API_BASE}/push-unsubscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ endpoint, unsubToken: token }),
@@ -76,7 +77,7 @@ export async function deleteAllData() {
   const token = loadUnsubToken()
   if (sub && token) {
     try {
-      await fetch('/push-delete-data', {
+      await fetch(`${API_BASE}/push-delete-data`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ endpoint: sub.endpoint, unsubToken: token }),
@@ -103,7 +104,7 @@ export async function syncTripwiresToBackend(tripwires, alarmMode = 'chime') {
       : { mmsi, id: t.id ?? null, name: t.vesselName ?? null, type: 'line', a: t.a, b: t.b }
     )
   const existingToken = loadUnsubToken()
-  const res = await fetch('/push-subscribe', {
+  const res = await fetch(`${API_BASE}/push-subscribe`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

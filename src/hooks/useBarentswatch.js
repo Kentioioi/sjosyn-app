@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { DEMO_VESSELS } from '../utils/vesselTypes'
+import { API_BASE } from '../utils/apiBase'
 
-const TOKEN_URL = '/bw-token'
-const AIS_URL = '/bw-ais/v1/latest/combined'
+const TOKEN_URL = `${API_BASE}/bw-token`
+const AIS_URL = `${API_BASE}/bw-ais/v1/latest/combined`
 
 // Demo mode advances vessels on this cadence
 const DEMO_TICK_MS = 2000

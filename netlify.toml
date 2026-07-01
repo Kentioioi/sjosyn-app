@@ -1,0 +1,45 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# This backend serves ONLY the Sjosyn native Android app (separate deploy
+# from the web PWA's Netlify site) — see _cors.cjs for the allow-list.
+
+# Proxy → Barentswatch token
+[[redirects]]
+  from   = "/bw-token"
+  to     = "/.netlify/functions/bw-token"
+  status = 200
+  force  = true
+
+# Proxy → Barentswatch live AIS
+[[redirects]]
+  from   = "/bw-ais/*"
+  to     = "/.netlify/functions/bw-ais"
+  status = 200
+  force  = true
+
+# Proxy → Barentswatch historic AIS
+[[redirects]]
+  from   = "/bw-historic/*"
+  to     = "/.netlify/functions/bw-historic"
+  status = 200
+  force  = true
+
+# Proxy → MET Norway Ocean Forecast (User-Agent injection per MET TOS)
+[[redirects]]
+  from   = "/met-ocean"
+  to     = "/.netlify/functions/met-ocean"
+  status = 200
+  force  = true
+
+# Proxy → MET Norway Location Forecast (vind/vær — User-Agent per MET TOS)
+[[redirects]]
+  from   = "/met-weather"
+  to     = "/.netlify/functions/met-weather"
+  status = 200
+  force  = true
+
+# Web Push + cron + heartbeat: v2-funksjoner med config.path mounter seg
+# selv på sine paths (/push-subscribe, /push-unsubscribe, /push-delete-data,
+# /bg-poll-trigger, /heartbeat-status, /push-test).

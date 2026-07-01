@@ -3,6 +3,7 @@ import { buildWavePlan } from '../utils/waveGrid'
 import { metFetch } from '../utils/metOceanFetch'
 import { HORIZONS } from './useWaveForecast'
 import { makeForecastStore } from '../utils/forecastCache'
+import { API_BASE } from '../utils/apiBase'
 
 // Vind-varsel fra MET Norway locationforecast 2.0 (luft). Auth-fritt — kun
 // User-Agent kreves (injiseres av /met-weather-proxyen). Speiler useWaveForecast:
@@ -12,7 +13,7 @@ import { makeForecastStore } from '../utils/forecastCache'
 // MERK: locationforecast dekker BÅDE sjø og land (i motsetning til
 // oceanforecast), så vind-merker vises også over land — ønsket for et vær-lag.
 
-const BASE = '/met-weather'
+const BASE = `${API_BASE}/met-weather`
 const TTL = 30 * 60_000
 const SETTLE_MS = 350
 const REFRESH_MS = 30 * 60_000

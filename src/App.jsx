@@ -27,6 +27,7 @@ import { useWaveForecast, HORIZONS as WAVE_HORIZONS, horizonLabel as waveHorizon
 // flippe denne til true (samt re-aktivere Værdata-seksjonen i SettingsPanel).
 const WAVE_LAYER_ACTIVE = true
 import { saveCredentials, loadCredentials, clearCredentials, hasStoredCredentials } from './utils/secureStore'
+import { API_BASE } from './utils/apiBase'
 
 // Korteste tillatte vakt-linje. Kortere = degenerert (a≈b) → kan aldri krysses.
 const MIN_LINE_M = 25
@@ -516,7 +517,7 @@ export default function App({ pin }) {
       }).catch(() => {})
       // Backend-helse: hvis siste poll er stale, varsle (bakgrunnsvarsling er dark).
       if (pushSubActiveRef.current) {
-        fetch('/heartbeat-status')
+        fetch(`${API_BASE}/heartbeat-status`)
           .then(r => r.json())
           .then(h => setBackendDown(!(h && h.ok)))
           .catch(() => { /* nett nede — la onOnline ta det */ })
