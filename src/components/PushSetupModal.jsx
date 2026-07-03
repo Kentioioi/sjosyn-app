@@ -1,23 +1,10 @@
-// Modal som forklarer hvordan bakgrunnsvarsling settes opp + utfører
-// abonnementet. Detekterer iOS Safari vs standalone PWA og viser riktig
-// install-instruks før push kan aktiveres.
+// Modal som forklarer bakgrunnsvarsling + utfører FCM-abonnementet.
 
 import { useEffect, useState } from 'react'
 import { isPushSupported, getExistingSubscription, subscribeToPush, unsubscribeFromPush } from '../utils/pushSubscribe'
 
-function isStandalone() {
-  return window.matchMedia?.('(display-mode: standalone)').matches
-    || window.navigator.standalone === true
-}
-
-function isIOS() {
-  return /iP(hone|ad|od)/.test(navigator.userAgent)
-}
-
 export default function PushSetupModal({ onClose, onSubscribed }) {
   const [supported] = useState(isPushSupported())
-  const [standalone] = useState(isStandalone())
-  const [ios] = useState(isIOS())
   const [existing, setExisting] = useState(null)
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState(null)
@@ -31,9 +18,9 @@ export default function PushSetupModal({ onClose, onSubscribed }) {
     if (!consented) { setErr('Du må krysse av for samtykke nedenfor først.'); return }
     setBusy(true); setErr(null)
     try {
-      const sub = await subscribeToPush()
-      setExisting(sub)
-      onSubscribed?.(sub)
+      const token = await subscribeToPush()
+      setExisting(token)
+      onSubscribed?.(token)
       onClose()
     } catch (e) {
       setErr(e.message)
@@ -65,36 +52,12 @@ export default function PushSetupModal({ onClose, onSubscribed }) {
 
         <div className="push-modal-body">
           {!supported && (
-            <p className="push-modal-warn">⚠ Web Push støttes ikke av denne nettleseren.</p>
-          )}
-
-          {supported && ios && !standalone && (
-            <div className="push-modal-step">
-              <h3>1. Installer som app først</h3>
-              <p>iPhone krever at Sjøsyn er installert til hjem-skjermen før varsler kan leveres når appen er minimert.</p>
-              <ol>
-                <li>Trykk <strong>Del-ikonet</strong> ⬆️ nederst i Safari</li>
-                <li>Bla ned og velg <strong>«Legg til på Hjem-skjerm»</strong></li>
-                <li>Åpne Sjøsyn fra hjem-skjermen og kom tilbake hit</li>
-              </ol>
-            </div>
-          )}
-
-          {supported && !ios && !standalone && (
-            <div className="push-modal-step">
-              <h3>1. Installer som app (anbefalt)</h3>
-              <p>Med Sjøsyn installert til hjem-skjermen får du varslene som vanlige push-notifikasjoner — også når appen er drept eller telefonen ligger i lomma.</p>
-              <ol>
-                <li>I Chrome: trykk de tre prikkene ⋮ øverst til høyre</li>
-                <li>Velg <strong>«Installer app»</strong> eller <strong>«Legg til på Hjem-skjerm»</strong></li>
-              </ol>
-              <p className="push-modal-sub">Du kan også aktivere uten å installere, men da kan Android Chrome dempe varselene etter en stund.</p>
-            </div>
+            <p className="push-modal-warn">⚠ Push støttes ikke på denne enheten.</p>
           )}
 
           {supported && (
             <div className="push-modal-step">
-              <h3>{standalone ? '1.' : '2.'} Aktiver varsling</h3>
+              <h3>Aktiver varsling</h3>
               <p>Sjøsyn-serveren overvåker dine armerte vakter hvert minutt. Når et fartøy krysser linja, sender vi varsel rett til telefonen din — selv om appen er lukket.</p>
               <p className="push-modal-sub">Ingen konto, ingen e-post, ingen lagring av posisjonsdata utenfor dette varslingsbehovet.</p>
               {!existing && (

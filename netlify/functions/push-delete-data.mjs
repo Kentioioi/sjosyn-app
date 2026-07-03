@@ -10,12 +10,11 @@ export default async (req) => {
   try { body = await req.json() }
   catch { return new Response('Bad JSON', { status: 400, headers: cors }) }
 
-  const endpoint = body.endpoint || body.subscription?.endpoint
-  const token = body.unsubToken
-  if (!endpoint || !token) return new Response('Missing endpoint or unsubToken', { status: 400, headers: cors })
+  const { fcmToken, unsubToken: token } = body
+  if (!fcmToken || !token) return new Response('Missing fcmToken or unsubToken', { status: 400, headers: cors })
 
   const subs = getStore('tripwire-subs')
-  const key = encodeURIComponent(endpoint)
+  const key = encodeURIComponent(fcmToken)
 
   const rec = await subs.get(key, { type: 'json' })
   if (rec && rec.unsubToken !== token) return new Response('Invalid token', { status: 403, headers: cors })

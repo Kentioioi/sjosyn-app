@@ -1,29 +1,23 @@
-// Klient-side helper for Web Push abonnement, sync, unsubscribe og
+// Klient-side helper for FCM push-abonnement, sync, unsubscribe og
 // GDPR-sletting. unsubToken lagres i localStorage så vi alltid kan
 // unsubscribe / slette uten å vente på server-roundtrip.
 
-import { VAPID_PUBLIC_KEY } from './pushConfig'
 import { API_BASE } from './apiBase'
+import { isNative, registerNativePush } from './pushNative'
 
 const UNSUB_TOKEN_KEY = 'mw_push_unsub_token'
-
-function urlBase64ToUint8Array(base64String) {
-  const padding = '='.repeat((4 - base64String.length % 4) % 4)
-  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/')
-  const raw = atob(base64)
-  const out = new Uint8Array(raw.length)
-  for (let i = 0; i < raw.length; ++i) out[i] = raw.charCodeAt(i)
-  return out
-}
+const FCM_TOKEN_KEY = 'mw_fcm_token'
+const PUSH_ENABLED_KEY = 'mw_push_enabled'
 
 export function isPushSupported() {
-  return 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window
+  return isNative()
 }
 
+// Returns the cached FCM token if the user has push enabled, else null.
 export async function getExistingSubscription() {
   if (!isPushSupported()) return null
-  const reg = await navigator.serviceWorker.ready
-  return reg.pushManager.getSubscription()
+  if (localStorage.getItem(PUSH_ENABLED_KEY) !== '1') return null
+  return localStorage.getItem(FCM_TOKEN_KEY)
 }
 
 function loadUnsubToken() {
@@ -37,33 +31,25 @@ function clearUnsubToken() {
 }
 
 export async function subscribeToPush() {
-  if (!isPushSupported()) throw new Error('Web Push støttes ikke av denne enheten')
-  const perm = await Notification.requestPermission()
-  if (perm !== 'granted') throw new Error('Varslingstilgang ble ikke gitt')
-  const reg = await navigator.serviceWorker.ready
-  let sub = await reg.pushManager.getSubscription()
-  if (!sub) {
-    sub = await reg.pushManager.subscribe({
-      userVisibleOnly: true,
-      applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY),
-    })
-  }
-  return sub
+  if (!isPushSupported()) throw new Error('Push støttes ikke på denne enheten')
+  const token = await registerNativePush()
+  if (!token) throw new Error('Varslingstilgang ble ikke gitt')
+  localStorage.setItem(FCM_TOKEN_KEY, token)
+  localStorage.setItem(PUSH_ENABLED_KEY, '1')
+  return token
 }
 
-// Stopper abonnement på telefonen + sender best-effort unsubscribe til backenden
+// Stopper abonnement (backend-side) + best-effort unsubscribe til backenden
 export async function unsubscribeFromPush() {
-  const sub = await getExistingSubscription()
-  if (!sub) { clearUnsubToken(); return false }
-  const endpoint = sub.endpoint
-  const token = loadUnsubToken()
-  await sub.unsubscribe()
-  if (token) {
+  const token = await getExistingSubscription()
+  localStorage.removeItem(PUSH_ENABLED_KEY)
+  const unsubToken = loadUnsubToken()
+  if (token && unsubToken) {
     try {
       await fetch(`${API_BASE}/push-unsubscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ endpoint, unsubToken: token }),
+        body: JSON.stringify({ fcmToken: token, unsubToken }),
       })
     } catch { /* best-effort */ }
   }
@@ -73,18 +59,18 @@ export async function unsubscribeFromPush() {
 
 // GDPR Art 17 — slett ALT vi har lagret om brukeren
 export async function deleteAllData() {
-  const sub = await getExistingSubscription()
-  const token = loadUnsubToken()
-  if (sub && token) {
+  const token = await getExistingSubscription()
+  const unsubToken = loadUnsubToken()
+  if (token && unsubToken) {
     try {
       await fetch(`${API_BASE}/push-delete-data`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ endpoint: sub.endpoint, unsubToken: token }),
+        body: JSON.stringify({ fcmToken: token, unsubToken }),
       })
     } catch { /* fortsett uansett */ }
   }
-  if (sub) try { await sub.unsubscribe() } catch { /* ignore */ }
+  localStorage.removeItem(PUSH_ENABLED_KEY)
   clearUnsubToken()
 }
 
@@ -92,8 +78,8 @@ export async function deleteAllData() {
 // alarmMode: 'chime' (engangs, mild vibrasjon) | 'alarm' (sterk vibrasjon +
 // bekreft-knapp i notifikasjonen).
 export async function syncTripwiresToBackend(tripwires, alarmMode = 'chime') {
-  const sub = await getExistingSubscription()
-  if (!sub) return false
+  const token = await getExistingSubscription()
+  if (!token) return false
   const list = Object.entries(tripwires || {})
     .filter(([, t]) => t?.armed && (
       (Array.isArray(t.a) && Array.isArray(t.b)) ||
@@ -108,7 +94,7 @@ export async function syncTripwiresToBackend(tripwires, alarmMode = 'chime') {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      subscription: sub.toJSON(),
+      fcmToken: token,
       tripwires: list,
       alarmMode,
       unsubToken: existingToken,

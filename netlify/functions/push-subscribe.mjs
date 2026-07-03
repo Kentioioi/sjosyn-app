@@ -34,9 +34,9 @@ export default async (req) => {
   try { body = JSON.parse(text || '{}') }
   catch { return new Response('Bad JSON', { status: 400, headers: cors }) }
 
-  const { subscription, tripwires, alarmMode, unsubToken: existingToken } = body
-  if (!subscription?.endpoint || !subscription?.keys?.auth || !subscription?.keys?.p256dh) {
-    return new Response('Missing/invalid subscription', { status: 400, headers: cors })
+  const { fcmToken, tripwires, alarmMode, unsubToken: existingToken } = body
+  if (!fcmToken || typeof fcmToken !== 'string') {
+    return new Response('Missing/invalid fcmToken', { status: 400, headers: cors })
   }
   if (!Array.isArray(tripwires)) return new Response('tripwires must be array', { status: 400, headers: cors })
   if (tripwires.length > MAX_TRIPWIRES_PER_SUB) {
@@ -45,7 +45,7 @@ export default async (req) => {
   const mode = alarmMode === 'alarm' ? 'alarm' : 'chime'
 
   const subs = getStore('tripwire-subs')
-  const key = encodeURIComponent(subscription.endpoint)
+  const key = encodeURIComponent(fcmToken)
   const existing = await subs.get(key, { type: 'json' })
 
   if (!existing) {
@@ -69,7 +69,7 @@ export default async (req) => {
     cleanTripwires.push({ ...t, mmsi })
   }
   const record = {
-    subscription,
+    fcmToken,
     tripwires: cleanTripwires,
     alarmMode: mode,
     unsubToken,

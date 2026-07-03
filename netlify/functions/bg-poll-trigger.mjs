@@ -2,9 +2,10 @@
 // V2-syntax (default export) for Netlify Blobs auto-config.
 
 import { getStore } from '@netlify/blobs'
-import webpush from 'web-push'
 import corsModule from './_cors.cjs'
+import fcmModule from './_fcm.cjs'
 const { corsHeaders } = corsModule
+const { sendFcmMessage } = fcmModule
 
 const TOKEN_URL = 'https://id.barentswatch.no/connect/token'
 const AIS_URL   = 'https://live.ais.barentswatch.no/v1/latest/combined'
@@ -12,13 +13,6 @@ const RETENTION_MS = 90 * 24 * 60 * 60_000
 // Tripwiren blir værende armert etter fyring (ikke engangs). Deteksjon er
 // overgangs-basert, men en cooldown guard'er mot jitter rett på linja/kanten.
 const COOLDOWN_MS = 60_000
-// Alarm-modus: 3 pushes med 5 s mellomrom. Web Push lar ikke PWA velge
-// varsel-lyd selv → vi simulerer "alarm" ved å trigge OS-lyd + vibrasjon
-// flere ganger på rad. Tap "Bekreft" stopper visuelt på telefonen (kan
-// ikke avbryte allerede-køet pushes).
-const ALARM_BURST_COUNT = 3
-const ALARM_BURST_GAP_MS = 5_000
-const sleep = (ms) => new Promise(r => setTimeout(r, ms))
 
 let cachedToken = null
 let cachedTokenExpiry = 0
@@ -107,15 +101,9 @@ export default async (req) => {
   if (!process.env.CRON_SECRET || auth !== `Bearer ${process.env.CRON_SECRET}`) {
     return new Response('Unauthorized', { status: 401, headers: cors })
   }
-  if (!process.env.VAPID_PRIVATE_KEY || !process.env.BW_BG_CLIENT_ID) {
+  if (!process.env.BW_BG_CLIENT_ID) {
     return new Response('Missing env vars', { status: 500, headers: cors })
   }
-
-  webpush.setVapidDetails(
-    process.env.VAPID_SUBJECT || 'mailto:kenneth222.kn@gmail.com',
-    process.env.VAPID_PUBLIC_KEY,
-    process.env.VAPID_PRIVATE_KEY,
-  )
 
   const subs  = getStore('tripwire-subs')
   const stateStore = getStore({ name: 'tripwire-state', consistency: 'strong' })
@@ -176,7 +164,7 @@ export default async (req) => {
 
   // ── Fase 1: deteksjon. Avanser baseline + bestem hvem som skal fyre. INGEN
   // nettverkskall her, så fasen er rask og kan ikke time-oute halvveis. ──
-  const toSend = []   // { key, rec, mmsi, payload, burst }
+  const toSend = []   // { key, rec, mmsi, title, body, data }
   for (const { key, rec } of records) {
     let st = stateAll[key] || { lastPositions: {}, lastFired: {} }
     if (!st.lastFired) st.lastFired = {}
@@ -187,9 +175,11 @@ export default async (req) => {
       const cur = [v.lat, v.lon]
       const prev = st.lastPositions[mmsi]
       st.lastPositions[mmsi] = cur
+      // !prev = første gang vi ser fartøyet (nettopp armert): ingen baseline.
       if (!prev) continue
       if (prev[0] === cur[0] && prev[1] === cur[1]) continue
 
+      // Korridor: fyr på inne→ute. Linje: fyr på krysning av a-b.
       const isCorridor = tw.type === 'corridor' && Array.isArray(tw.path) && tw.path.length >= 2
       let triggered
       if (isCorridor) {
@@ -205,49 +195,45 @@ export default async (req) => {
       const what = isCorridor
         ? `Forlot korridoren ${tw.name ? `(${tw.name}) ` : ''}`
         : `Passerte ${tw.name || `MMSI ${mmsi}`} `
-      const payload = JSON.stringify({
-        title,
-        body: `${what}kl. ${new Date(now).toLocaleTimeString('nb-NO', { hour:'2-digit', minute:'2-digit', timeZone: 'Europe/Oslo' })}`,
-        tag: `tripwire-${mmsi}`,
-        mode: rec.alarmMode === 'alarm' ? 'alarm' : 'chime',
-        data: { mmsi, id: tw.id ?? null, lat: v.lat, lon: v.lon, ts: now },
+      const body = `${what}kl. ${new Date(now).toLocaleTimeString('nb-NO', { hour:'2-digit', minute:'2-digit', timeZone: 'Europe/Oslo' })}`
+      toSend.push({
+        key, rec, mmsi, title, body,
+        data: { mmsi, id: tw.id ?? null, lat: v.lat, lon: v.lon, ts: now, mode: rec.alarmMode === 'alarm' ? 'alarm' : 'chime' },
       })
-      toSend.push({ key, rec, mmsi, payload, burst: rec.alarmMode === 'alarm' ? ALARM_BURST_COUNT : 1 })
     }
     stateAll[key] = st
   }
 
+  // Rydd foreldreløse entries + PERSISTER STATE FØR sending. Slik kan en
+  // timeout under (treg) push-sending aldri tape baseline/cooldown-stempler.
   const liveKeys = new Set(subList.map(b => b.key))
   for (const k of Object.keys(stateAll)) if (!liveKeys.has(k)) delete stateAll[k]
   await stateStore.setJSON('all', stateAll)
 
   // ── Fase 2: sending. Hver fyring er uavhengig — en forbigående feil på én
-  // sub stopper IKKE de andre. ──
+  // sub stopper IKKE de andre. Ett FCM-datavarsel per fyring — ingen
+  // burst-repetisjon lenger (den var en Web Push-workaround; native
+  // alarm-loop-plugin (M4) eier repetisjon/alarm-atferd basert på
+  // data.mode). ──
   const results = []
   const goneKeys = new Set()
   for (const s of toSend) {
-    if (goneKeys.has(s.key)) continue
-    let sent = 0
-    for (let i = 0; i < s.burst; i++) {
-      if (i > 0) await sleep(ALARM_BURST_GAP_MS)
-      try {
-        await webpush.sendNotification(s.rec.subscription, s.payload)
-        sent++
-      } catch (err) {
-        if (err.statusCode === 404 || err.statusCode === 410) {
-          await subs.delete(s.key)
-          delete stateAll[s.key]
-          goneKeys.add(s.key)
-          results.push({ key: s.key, mmsi: s.mmsi, gone: true, sent })
-        } else {
-          results.push({ key: s.key, mmsi: s.mmsi, error: err.message, sent })
-        }
-        break
+    if (goneKeys.has(s.key)) continue   // sub alt slettet (gone) denne ticken
+    try {
+      await sendFcmMessage(s.rec.fcmToken, { title: s.title, body: s.body, data: s.data })
+      results.push({ key: s.key, mmsi: s.mmsi, sent: true })
+    } catch (err) {
+      if (err.status === 404) {
+        await subs.delete(s.key)
+        delete stateAll[s.key]
+        goneKeys.add(s.key)
+        results.push({ key: s.key, mmsi: s.mmsi, gone: true })
+      } else {
+        results.push({ key: s.key, mmsi: s.mmsi, error: err.message })
       }
     }
-    if (sent > 0) results.push({ key: s.key, mmsi: s.mmsi, sent })
   }
-  if (goneKeys.size) await stateStore.setJSON('all', stateAll)
+  if (goneKeys.size) await stateStore.setJSON('all', stateAll)   // persister slettinger
 
   return new Response(JSON.stringify({ ok: true, subs: records.length, mmsis: mmsis.length, fires: toSend.length, results }), { headers: { 'Content-Type': 'application/json', ...cors } })
 }
