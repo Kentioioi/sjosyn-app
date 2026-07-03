@@ -1,4 +1,5 @@
 const { corsHeaders } = require('./_cors.cjs')
+const { getBwToken } = require('./_bwToken.cjs')
 
 exports.handler = async (event) => {
   const cors = corsHeaders(event.headers['origin'] || event.headers['Origin'])
@@ -8,8 +9,14 @@ exports.handler = async (event) => {
   const subpath = url.pathname.replace(/^\/bw-historic/, '')
   const upstreamUrl = `https://historic.ais.barentswatch.no${subpath}${url.search}`
 
+  let token
+  try { token = await getBwToken() }
+  catch (err) {
+    return { statusCode: 502, headers: { 'Content-Type': 'application/json', ...cors }, body: JSON.stringify({ error: 'bw_token_failed', message: String(err.message || err) }) }
+  }
+
   const upstream = await fetch(upstreamUrl, {
-    headers: { Authorization: event.headers['authorization'] || event.headers['Authorization'] || '' },
+    headers: { Authorization: `Bearer ${token}` },
   })
 
   const text = await upstream.text()

@@ -61,7 +61,7 @@ function WeatherLayerRow({ label, sub, enrolled, onEnroll, horizon, onHorizon })
 export default function SettingsPanel({
   prefs, onPrefs, onEnroll,
   showVectors, onShowVectors,
-  isDemoMode, onManageApi,
+  isDemoMode, onToggleDemo,
   connected, connError,
   onSetHome,
   onClose,
@@ -200,7 +200,7 @@ export default function SettingsPanel({
           <div className="settings-section-title">Tilkobling</div>
           <div className="settings-row settings-row--static">
             <div className="settings-row-text">
-              <div className="settings-row-label">API-nøkkel</div>
+              <div className="settings-row-label">Datakilde</div>
               <div className="settings-row-sub settings-conn">
                 {!isDemoMode && <span className={'conn-dot ' + (connected ? 'connected' : 'disconnected')} />}
                 {isDemoMode
@@ -212,7 +212,9 @@ export default function SettingsPanel({
                       : 'Ikke tilkoblet'}
               </div>
             </div>
-            <button className="settings-btn" onClick={onManageApi}>Endre…</button>
+            <button className="settings-btn" onClick={onToggleDemo}>
+              {isDemoMode ? 'Bruk ekte data' : 'Bruk demomodus'}
+            </button>
           </div>
         </div>
 

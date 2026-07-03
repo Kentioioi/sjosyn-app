@@ -11,13 +11,6 @@
 # happens (needed for the functions' dependencies) even though dist itself
 # is never published.
 
-# Proxy → Barentswatch token
-[[redirects]]
-  from   = "/bw-token"
-  to     = "/.netlify/functions/bw-token"
-  status = 200
-  force  = true
-
 # Proxy → Barentswatch live AIS
 [[redirects]]
   from   = "/bw-ais/*"

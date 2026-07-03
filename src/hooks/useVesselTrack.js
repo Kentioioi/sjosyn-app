@@ -5,7 +5,7 @@ import { API_BASE } from '../utils/apiBase'
 // The open API lives under /open prefix with auth
 const BASE = `${API_BASE}/bw-historic/open/v1/historic`
 
-export function useVesselTrack(mmsi, hours, getToken) {
+export function useVesselTrack(mmsi, hours) {
   const [track, setTrack] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -15,7 +15,7 @@ export function useVesselTrack(mmsi, hours, getToken) {
   const abortRef = useRef(null)
 
   useEffect(() => {
-    if (!mmsi || !getToken || hours === 0) {
+    if (!mmsi || hours === 0) {
       setTrack([])
       setError(null)
       return
@@ -29,8 +29,6 @@ export function useVesselTrack(mmsi, hours, getToken) {
       setLoading(true)
       setError(null)
       try {
-        const token = await getToken()
-
         let url
         if (hours === 24) {
           // Dedicated last-24h endpoint
@@ -42,10 +40,7 @@ export function useVesselTrack(mmsi, hours, getToken) {
           url = `${BASE}/tracks/${mmsi}/${fromDate}/${toDate}`
         }
 
-        const res = await fetch(url, {
-          headers: { Authorization: `Bearer ${token}` },
-          signal: abortRef.current.signal,
-        })
+        const res = await fetch(url, { signal: abortRef.current.signal })
 
         if (!res.ok) throw new Error(`Track ${res.status}`)
 
@@ -81,7 +76,7 @@ export function useVesselTrack(mmsi, hours, getToken) {
       cancelled = true
       abortRef.current?.abort()
     }
-  }, [mmsi, hours, getToken, retryNonce])
+  }, [mmsi, hours, retryNonce])
 
   // Tving en ny henting for samme fartøy + timer (brukes av «Prøv igjen»).
   const retry = () => setRetryNonce(n => n + 1)

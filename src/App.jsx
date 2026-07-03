@@ -8,7 +8,6 @@ import { migrateLayerPrefs, normalizeLayer } from './utils/layersPrefs'
 import { distanceMeters } from './utils/geom'
 import WindPointPopup from './components/WindPointPopup'
 import SearchPanel from './components/SearchPanel'
-import ApiKeyModal from './components/ApiKeyModal'
 import SettingsPanel from './components/SettingsPanel'
 import WavePointPopup from './components/WavePointPopup'
 import { useTripwireAlerts } from './hooks/useTripwireAlerts'
@@ -21,36 +20,20 @@ import { useBarentswatch, zoomToPollInterval } from './hooks/useBarentswatch'
 import { useVesselTrack } from './hooks/useVesselTrack'
 import { useWindForecast } from './hooks/useWindForecast'
 import { useWaveForecast, HORIZONS as WAVE_HORIZONS, horizonLabel as waveHorizonLabel } from './hooks/useWaveForecast'
+import { API_BASE } from './utils/apiBase'
 
 // Open-Meteo bølgelaget er ghosted mens vi går over til BarentsWatch
 // waveforecast — koden lar vi ligge slik at den enkelt kan reaktiveres ved å
 // flippe denne til true (samt re-aktivere Værdata-seksjonen i SettingsPanel).
 const WAVE_LAYER_ACTIVE = true
-import { saveCredentials, loadCredentials, clearCredentials, hasStoredCredentials } from './utils/secureStore'
-import { API_BASE } from './utils/apiBase'
 
 // Korteste tillatte vakt-linje. Kortere = degenerert (a≈b) → kan aldri krysses.
 const MIN_LINE_M = 25
 
-export default function App({ pin }) {
-  // undefined = still checking stored credentials, null = need the modal
-  const [apiKey, setApiKey] = useState(undefined)
-  const [hasStored, setHasStored] = useState(hasStoredCredentials())
-  const prevCredsRef = useRef(null)   // lets "← Back" cancel out of settings
-
-  // Try decrypting saved credentials with the PIN on launch. Hvis ingen ekte
-  // credentials er lagret, men brukeren tidligere valgte demomodus (mw_demo),
-  // går vi rett inn i demo uten å vise API-modalen igjen.
-  useEffect(() => {
-    let alive = true
-    loadCredentials(pin).then(creds => {
-      if (!alive) return
-      if (creds) setApiKey(creds)
-      else if (localStorage.getItem('mw_demo')) setApiKey({ clientId: 'DEMO', clientSecret: 'DEMO' })
-      else setApiKey(null)
-    })
-    return () => { alive = false }
-  }, [pin])
+export default function App() {
+  // AIS auth lives server-side now (app-owned BarentsWatch client) — no
+  // per-user credentials, no PIN. Demo mode is just a local toggle.
+  const [demoMode, setDemoMode] = useState(() => localStorage.getItem('mw_demo') === '1')
   const [selectedVessel, setSelectedVessel] = useState(null)
   const [showSearch, setShowSearch] = useState(false)
   const [showNautical, setShowNautical] = useState(false)
@@ -62,7 +45,6 @@ export default function App({ pin }) {
   const [userPos, setUserPos] = useState(null)   // [lat, lon] — vises som pulse 4 s etter geolocate
   const mapRef = useRef(null)
   const userPosTimeoutRef = useRef(null)
-  const canShowBannerRef = useRef(false)   // true når hoved-UI er montert (forbi PIN/API-gate)
 
   // Hjemmehavn velges ved å sette en pin på kartet: lukk overlays, gå i
   // pick-modus, og neste kart-trykk lagrer posisjonen.
@@ -156,8 +138,8 @@ export default function App({ pin }) {
   // bbox rundt disse når tab er bakgrunnet. Komputeres senere etter at
   // tripwires og vessels er definert.
   const armedPositionsRef = useRef([])
-  const { vessels: vesselsRaw, connected, error, msgCount, isDemoMode, getToken, retry } = useBarentswatch(
-    apiKey, bounds, zoomToPollInterval(zoom), armedPositionsRef.current,
+  const { vessels: vesselsRaw, connected, error, msgCount, isDemoMode, retry } = useBarentswatch(
+    demoMode, bounds, zoomToPollInterval(zoom), armedPositionsRef.current,
   )
 
   // Fersk/gammel/død AIS-håndtering — fjern fartøy hvis siste rapport er
@@ -254,10 +236,6 @@ export default function App({ pin }) {
     const onMessage = (event) => {
       if (event.data?.type === 'tripwire-focus') focusTripwire(event.data)
       else if (event.data?.type === 'tripwire-event') {
-        // Bare ack «vist» (og dermed undertrykk OS-notif) HVIS hoved-UI faktisk
-        // er montert. Bak PIN-gate/API-modal rendres ikke banneret — da lar vi
-        // SW time-oute og falle tilbake til OS-notif (ellers stille tap).
-        if (!canShowBannerRef.current) return
         setInAppTripwire({
           title: event.data.title,
           body: event.data.body,
@@ -597,7 +575,7 @@ export default function App({ pin }) {
 
   // BarentsWatch waveforecast — offisielle Kystverket-punkter via GeoServer
   // WFS (auth-fri, CORS åpen). Virker også i demo-modus siden ingen
-  // credentials trengs. apiKey-arg er beholdt for prop-kompatibilitet.
+  // credentials trengs.
 
   // Bølgetidslinje: chip åpner panelet; scrub = timer fra ankeret (null = vindusmodus).
   // Ankeret fryses (inneværende hele time) når panelet åpnes, så markørene
@@ -725,7 +703,6 @@ export default function App({ pin }) {
   const { track, loading: trackLoading, error: trackError, retry: retryTrack } = useVesselTrack(
     selectedVessel?.mmsi,
     isDemoMode ? 0 : trackHours,
-    getToken
   )
 
   // Reset playhead to "live" end whenever the track data changes
@@ -765,47 +742,6 @@ export default function App({ pin }) {
     setTrackHours(0)
     setPlayheadIndex(-1)
   }, [])
-
-  // Banneret kan kun vises når hoved-UI rendres (apiKey er en ekte verdi).
-  // SW-ack-en leser denne så vi ikke undertrykker OS-notif bak PIN/API-gate.
-  canShowBannerRef.current = apiKey != null
-
-  // Still decrypting stored credentials — render nothing for a moment
-  if (apiKey === undefined) return null
-
-  if (apiKey === null) {
-    return (
-      <ApiKeyModal
-        onSave={(creds, remember) => {
-          if (remember) {
-            saveCredentials(creds, pin)
-            setHasStored(true)
-          } else {
-            clearCredentials()
-            setHasStored(false)
-          }
-          // Ekte credentials vinner — fjern demo-flagget så det ikke overstyrer
-          // på neste oppstart.
-          localStorage.removeItem('mw_demo')
-          prevCredsRef.current = null
-          setApiKey(creds)
-        }}
-        onDemo={() => {
-          // Husk demomodus så API-modalen ikke spør på nytt ved hver oppstart.
-          localStorage.setItem('mw_demo', '1')
-          setApiKey({ clientId: 'DEMO', clientSecret: 'DEMO' })
-        }}
-        onCancel={prevCredsRef.current ? () => {
-          setApiKey(prevCredsRef.current)
-          prevCredsRef.current = null
-        } : undefined}
-        onForget={hasStored ? () => {
-          clearCredentials()
-          setHasStored(false)
-        } : undefined}
-      />
-    )
-  }
 
   return (
     <div className={`app-shell${selectedVessel && activeTab === 'map' ? ' app-shell--panel' : ''}`}>
@@ -1040,10 +976,11 @@ export default function App({ pin }) {
             connected={connected}
             connError={error}
             onSetHome={handleStartSetHome}
-            onManageApi={() => {
-              setShowSettings(false)
-              prevCredsRef.current = apiKey   // «← Tilbake» kan angre
-              setApiKey(null)
+            onToggleDemo={() => {
+              const next = !demoMode
+              if (next) localStorage.setItem('mw_demo', '1')
+              else localStorage.removeItem('mw_demo')
+              setDemoMode(next)
               setSelectedVessel(null)
             }}
             onClose={() => setShowSettings(false)}

@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { DEMO_VESSELS } from '../utils/vesselTypes'
 import { API_BASE } from '../utils/apiBase'
 
-const TOKEN_URL = `${API_BASE}/bw-token`
 const AIS_URL = `${API_BASE}/bw-ais/v1/latest/combined`
 
 // Demo mode advances vessels on this cadence
@@ -53,13 +52,13 @@ function parseVessel(v) {
 const ARMED_PADDING_DEG = 0.05
 const BG_POLL_INTERVAL  = 30_000
 
-export function useBarentswatch(credentials, bounds, pollInterval = 30_000, armedVesselsPositions = []) {
+// AIS auth is handled server-side (the backend holds its own app-owned
+// BarentsWatch client) — the app just calls the proxy, no token round-trip.
+export function useBarentswatch(demoMode, bounds, pollInterval = 30_000, armedVesselsPositions = []) {
   const [vessels, setVessels] = useState({})
   const [connected, setConnected] = useState(false)
   const [error, setError] = useState(null)
   const [msgCount, setMsgCount] = useState(0)
-  const tokenRef = useRef(null)
-  const tokenExpiryRef = useRef(0)
   const demoTimer = useRef(null)
   const abortRef = useRef(null)
 
@@ -76,11 +75,9 @@ export function useBarentswatch(credentials, bounds, pollInterval = 30_000, arme
   useEffect(() => { pollIntervalRef.current = pollInterval }, [pollInterval])
   useEffect(() => { armedPosRef.current = armedVesselsPositions }, [armedVesselsPositions])
 
-  const isDemoMode = !credentials || credentials.clientId === 'DEMO'
-
   // ── Demo mode ──────────────────────────────────────────────
   useEffect(() => {
-    if (!isDemoMode) return
+    if (!demoMode) return
 
     const initial = {}
     DEMO_VESSELS.forEach(v => { initial[v.mmsi] = { ...v } })
@@ -114,50 +111,13 @@ export function useBarentswatch(credentials, bounds, pollInterval = 30_000, arme
       clearInterval(demoTimer.current)
       setConnected(false)
     }
-  }, [isDemoMode])
-
-  // ── Token fetch ────────────────────────────────────────────
-  const getToken = useCallback(async () => {
-    if (tokenRef.current && Date.now() < tokenExpiryRef.current - 60000) {
-      return tokenRef.current
-    }
-
-    const body = new URLSearchParams({
-      grant_type: 'client_credentials',
-      client_id: credentials.clientId,
-      client_secret: credentials.clientSecret,
-      scope: 'ais',
-    })
-
-    // Timeout: etter lang bakgrunn kan socketen være død og fetch henge evig.
-    const ctrl = new AbortController()
-    const to = setTimeout(() => ctrl.abort(), 12_000)
-    let res
-    try {
-      res = await fetch(TOKEN_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body,
-        signal: ctrl.signal,
-      })
-    } finally { clearTimeout(to) }
-
-    if (!res.ok) {
-      const text = await res.text()
-      throw new Error(`Innlogging feilet (${res.status}): ${text}`)
-    }
-
-    const data = await res.json()
-    tokenRef.current = data.access_token
-    tokenExpiryRef.current = Date.now() + (data.expires_in ?? 3600) * 1000
-    return data.access_token
-  }, [credentials])
+  }, [demoMode])
 
   // ── AIS poll — reads bounds from ref, not from closure ────
   // Keeping bounds out of the dep array means this function is stable;
   // it never causes the poll loop to restart just because the map moved.
   const poll = useCallback(async () => {
-    if (isDemoMode) return
+    if (demoMode) return
     if (abortRef.current) abortRef.current.abort()
     abortRef.current = new AbortController()
     // Watchdog: abort hele pollen hvis den henger (død socket etter resume) →
@@ -166,8 +126,6 @@ export function useBarentswatch(credentials, bounds, pollInterval = 30_000, arme
     const watchdog = setTimeout(() => ctrl.abort(), 15_000)
 
     try {
-      const token = await getToken()
-
       // Når vi er i bakgrunns-modus med armerte tripwires: lag et tett
       // bbox kun rundt de armerte fartøyene. Det reduserer respons-størrelsen
       // dramatisk (typisk 1-3 fartøy istedet for 30+) og holder mobildata-
@@ -215,13 +173,9 @@ export function useBarentswatch(credentials, bounds, pollInterval = 30_000, arme
         url = `${AIS_URL}?${params}`
       }
 
-      const res = await fetch(url, {
-        headers: { Authorization: `Bearer ${token}` },
-        signal: abortRef.current.signal,
-      })
+      const res = await fetch(url, { signal: abortRef.current.signal })
 
       if (!res.ok) {
-        if (res.status === 401) tokenRef.current = null
         throw new Error(`Kunne ikke hente AIS-data: ${res.status}`)
       }
 
@@ -261,7 +215,7 @@ export function useBarentswatch(credentials, bounds, pollInterval = 30_000, arme
     } finally {
       clearTimeout(watchdog)
     }
-  }, [isDemoMode, getToken])   // ← bounds intentionally omitted
+  }, [demoMode])   // ← bounds intentionally omitted
 
   // Keep the ref current so the scheduler always calls the latest version
   useEffect(() => { pollFnRef.current = poll }, [poll])
@@ -271,10 +225,10 @@ export function useBarentswatch(credentials, bounds, pollInterval = 30_000, arme
   // app switched, tab backgrounded) — saves Netlify function invocations.
   // Resumes and fires an immediate catch-up poll when the tab becomes visible again.
   useEffect(() => {
-    if (isDemoMode || !credentials) return
+    if (demoMode) return
     let cancelled = false
     // The timeout id lives in THIS effect generation. A shared ref here lets
-    // two overlapping generations (remount, credential change, HMR) clobber
+    // two overlapping generations (remount, mode change, HMR) clobber
     // each other's id — the orphaned chain then re-schedules itself forever
     // and polls stack up far past the intended rate.
     let timeoutId = null
@@ -337,7 +291,7 @@ export function useBarentswatch(credentials, bounds, pollInterval = 30_000, arme
       if (abortRef.current) abortRef.current.abort()
       setConnected(false)
     }
-  }, [isDemoMode, credentials])   // ← pollInterval and bounds NOT here
+  }, [demoMode])   // ← pollInterval and bounds NOT here
 
   // Manual retry for the error banner — fires an immediate poll
   const retry = useCallback(() => { pollFnRef.current?.() }, [])
@@ -347,8 +301,7 @@ export function useBarentswatch(credentials, bounds, pollInterval = 30_000, arme
     connected,
     error,
     msgCount,
-    isDemoMode,
-    getToken: isDemoMode ? null : getToken,
+    isDemoMode: demoMode,
     retry,
   }
 }
