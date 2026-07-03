@@ -13,6 +13,7 @@
     "@capacitor/android": "^8.4.1",
     "@capacitor/cli": "^8.4.1",
     "@capacitor/core": "^8.4.1",
+    "@capacitor/push-notifications": "^8.1.1",
     "@netlify/blobs": "^10.7.9",
     "idb-keyval": "^6.2.5",
     "leaflet": "^1.9.4",

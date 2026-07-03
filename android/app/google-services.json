@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "550374134388",
+    "project_id": "sjosyn-d5534",
+    "storage_bucket": "sjosyn-d5534.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550374134388:android:1a574d1fdc1128b5313721",
+        "android_client_info": {
+          "package_name": "no.sjosyn.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBb8uA5ihUz86RWZZyS2zw4AwkVhXGpgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -63,6 +63,7 @@ export default function SettingsPanel({
   showVectors, onShowVectors,
   isDemoMode, onToggleDemo,
   connected, connError,
+  fcmToken,
   onSetHome,
   onClose,
 }) {
@@ -215,6 +216,24 @@ export default function SettingsPanel({
             <button className="settings-btn" onClick={onToggleDemo}>
               {isDemoMode ? 'Bruk ekte data' : 'Bruk demomodus'}
             </button>
+          </div>
+          {/* M3a midlertidig: viser FCM-token for manuell test fra Firebase-
+              konsollen. Erstattes av ekte abonnements-UI i M3b. */}
+          <div className="settings-row settings-row--static">
+            <div className="settings-row-text">
+              <div className="settings-row-label">Push-token (FCM)</div>
+              <div className="settings-row-sub" style={{ wordBreak: 'break-all' }}>
+                {fcmToken ? fcmToken : 'Ikke registrert ennå'}
+              </div>
+            </div>
+            {fcmToken && (
+              <button
+                className="settings-btn"
+                onClick={() => navigator.clipboard?.writeText(fcmToken)}
+              >
+                Kopier
+              </button>
+            )}
           </div>
         </div>
 

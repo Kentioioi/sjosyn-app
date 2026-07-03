@@ -21,6 +21,7 @@ import { useVesselTrack } from './hooks/useVesselTrack'
 import { useWindForecast } from './hooks/useWindForecast'
 import { useWaveForecast, HORIZONS as WAVE_HORIZONS, horizonLabel as waveHorizonLabel } from './hooks/useWaveForecast'
 import { API_BASE } from './utils/apiBase'
+import { registerNativePush } from './utils/pushNative'
 
 // Open-Meteo bølgelaget er ghosted mens vi går over til BarentsWatch
 // waveforecast — koden lar vi ligge slik at den enkelt kan reaktiveres ved å
@@ -34,6 +35,15 @@ export default function App() {
   // AIS auth lives server-side now (app-owned BarentsWatch client) — no
   // per-user credentials, no PIN. Demo mode is just a local toggle.
   const [demoMode, setDemoMode] = useState(() => localStorage.getItem('mw_demo') === '1')
+  // M3a: register for native push once and surface the FCM token in Settings
+  // so we can manually verify delivery from the Firebase console before the
+  // real subscribe-to-backend flow (M3b) replaces this.
+  const [fcmToken, setFcmToken] = useState(null)
+  useEffect(() => {
+    let alive = true
+    registerNativePush().then(token => { if (alive) setFcmToken(token) })
+    return () => { alive = false }
+  }, [])
   const [selectedVessel, setSelectedVessel] = useState(null)
   const [showSearch, setShowSearch] = useState(false)
   const [showNautical, setShowNautical] = useState(false)
@@ -975,6 +985,7 @@ export default function App() {
             isDemoMode={isDemoMode}
             connected={connected}
             connError={error}
+            fcmToken={fcmToken}
             onSetHome={handleStartSetHome}
             onToggleDemo={() => {
               const next = !demoMode
