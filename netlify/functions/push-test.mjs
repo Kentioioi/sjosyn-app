@@ -1,4 +1,6 @@
-// POST /push-test — sender umiddelbar test-notifikasjon til alle registrerte subs.
+// POST /push-test[?mode=alarm|chime] — sender umiddelbar test-melding til alle
+// registrerte subs, via samme datashape som en ekte vakt-krysning (mode=alarm
+// er default — tester den fulle native alarm-koden, ikke bare levering).
 // Bruk: curl -X POST -H "Authorization: Bearer <CRON_SECRET>" .../push-test
 
 import { getStore } from '@netlify/blobs'
@@ -27,6 +29,9 @@ export default async (req) => {
     return new Response('Unauthorized', { status: 401, headers: cors })
   }
 
+  const url = new URL(req.url)
+  const mode = url.searchParams.get('mode') === 'chime' ? 'chime' : 'alarm'
+
   const subs = getStore('tripwire-subs')
   const blobs = await listAll(subs)
   const results = []
@@ -37,7 +42,9 @@ export default async (req) => {
       await sendFcmMessage(rec.fcmToken, {
         title: '✅ Sjøsyn test',
         body: 'Push fungerer. Backend → telefon-kanal er live.',
-        data: { test: true, ts: Date.now() },
+        mode,
+        test: true,
+        ts: Date.now(),
       })
       results.push({ key: blob.key, sent: true })
     } catch (err) {

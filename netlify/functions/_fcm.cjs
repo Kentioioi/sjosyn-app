@@ -54,20 +54,21 @@ async function getFcmAccessToken() {
   return { accessToken: cachedAccessToken, projectId: cachedProjectId }
 }
 
-// Sends one FCM message. `notification` (title/body) is included for now so
-// Android auto-displays something even though the native alarm-loop plugin
-// (M4) doesn't exist yet to intercept the data payload itself — drop the
-// notification block once M4 lands so the plugin fully owns display/alarm
-// behavior instead of the OS auto-showing a plain one-shot notification.
-async function sendFcmMessage(fcmToken, { title, body, data } = {}) {
+// Sends one FCM message. Pure DATA message — no `notification` block — so
+// Android always hands it to SjosynMessagingService.onMessageReceived()
+// regardless of app state (foreground/background/killed). A `notification`
+// block would make Android auto-display it via the system tray WITHOUT ever
+// calling our code when backgrounded/killed, which would silently break the
+// native alarm (M4). title/body travel as plain data fields instead — the
+// native code builds its own notification/alarm UI from them.
+async function sendFcmMessage(fcmToken, data = {}) {
   const { accessToken, projectId } = await getFcmAccessToken()
   const message = {
     token: fcmToken,
     android: { priority: 'high' },
     // FCM v1 requires every data value to be a string.
-    data: Object.fromEntries(Object.entries(data || {}).map(([k, v]) => [k, String(v)])),
+    data: Object.fromEntries(Object.entries(data).map(([k, v]) => [k, String(v)])),
   }
-  if (title || body) message.notification = { title, body }
 
   const res = await fetch(`https://fcm.googleapis.com/v1/projects/${projectId}/messages:send`, {
     method: 'POST',

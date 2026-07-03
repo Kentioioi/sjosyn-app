@@ -197,8 +197,8 @@ export default async (req) => {
         : `Passerte ${tw.name || `MMSI ${mmsi}`} `
       const body = `${what}kl. ${new Date(now).toLocaleTimeString('nb-NO', { hour:'2-digit', minute:'2-digit', timeZone: 'Europe/Oslo' })}`
       toSend.push({
-        key, rec, mmsi, title, body,
-        data: { mmsi, id: tw.id ?? null, lat: v.lat, lon: v.lon, ts: now, mode: rec.alarmMode === 'alarm' ? 'alarm' : 'chime' },
+        key, rec, mmsi,
+        data: { title, body, mmsi, id: tw.id ?? null, lat: v.lat, lon: v.lon, ts: now, mode: rec.alarmMode === 'alarm' ? 'alarm' : 'chime' },
       })
     }
     stateAll[key] = st
@@ -220,7 +220,7 @@ export default async (req) => {
   for (const s of toSend) {
     if (goneKeys.has(s.key)) continue   // sub alt slettet (gone) denne ticken
     try {
-      await sendFcmMessage(s.rec.fcmToken, { title: s.title, body: s.body, data: s.data })
+      await sendFcmMessage(s.rec.fcmToken, s.data)
       results.push({ key: s.key, mmsi: s.mmsi, sent: true })
     } catch (err) {
       if (err.status === 404) {
