@@ -98,6 +98,23 @@ export default async (req) => {
     return new Response('Method not allowed', { status: 405, headers: cors })
   }
   const auth = req.headers.get('authorization') || ''
+  // TEMPORARY diagnostic — captures safe metadata about what actually arrived
+  // (never the real secret) so we can debug a cron-job.org 401 without
+  // guessing. Remove once resolved.
+  try {
+    const expected = `Bearer ${process.env.CRON_SECRET || ''}`
+    await getStore('debug').setJSON('last-auth-attempt', {
+      at: new Date().toISOString(),
+      receivedLength: auth.length,
+      expectedLength: expected.length,
+      receivedFirst6: auth.slice(0, 6),
+      receivedLast6: auth.slice(-6),
+      startsWithBearerSpace: auth.startsWith('Bearer '),
+      exactMatch: auth === expected,
+      trimmedMatch: auth.trim() === expected.trim(),
+      caseInsensitiveMatch: auth.toLowerCase() === expected.toLowerCase(),
+    })
+  } catch { /* diagnostic only, never block the real check on it */ }
   if (!process.env.CRON_SECRET || auth !== `Bearer ${process.env.CRON_SECRET}`) {
     return new Response('Unauthorized', { status: 401, headers: cors })
   }
