@@ -5,7 +5,9 @@ import { createVesselIcon, createPlayheadIcon, createMinuteLabel, createClusterI
 import { getVesselColor, getVesselType } from '../utils/vesselTypes'
 import WaveLayer from './WaveLayer'
 import WindLayer from './WindLayer'
-import { thinBySpacing, deOverlapLayers } from '../utils/thinPoints'
+import { thinForecastGrid } from '../utils/thinPoints'
+import ForecastPointPopup from './ForecastPointPopup'
+import ForecastComboLayer from './ForecastComboLayer'
 import { buildLabelLayout } from '../utils/labelLayout'
 import TripwireOverlay from './TripwireOverlay'
 import CanvasVesselLayer from './CanvasVesselLayer'
@@ -651,9 +653,12 @@ export default function MapView({
   playheadIndex, panelPx,
   trackHours,
   tileUrl, zoom, showVectors, showNames, clusterOn, bgColor,
-  wavePoints = [], waveHorizon = 6, waveScrubT = null, onSelectWavePoint,
-  windPoints = [], windHorizon = 6, windScrubT = null, windUnit = 'ms', onSelectWindPoint,
-  forecastThinPx = 0,
+  wavePoints = [], waveScrubT = null, onSelectWavePoint,
+  selectedWavePoint = null, onCloseWavePopup,
+  windPoints = [], windScrubT = null, windUnit = 'ms', onSelectWindPoint,
+  selectedWindPoint = null, onCloseWindPopup,
+  onSelectComboPair, selectedComboPair = null, onCloseComboPopup,
+  forecastHorizon = 6, forecastThin = 0,
   userPos = null,
   tripwires = {}, tripwireDrawMode = false, tripwireDraftPoint = null,
   tripwireDraftPath = [], tripwireDraftWidth = 1000, tripwireDraftCircle = null,
@@ -679,21 +684,40 @@ export default function MapView({
     return (0.2126 * r + 0.7152 * g + 0.0722 * b) < 110
   })()
 
-  // Tetthets-tynning: brukeren kan dra ned antall varsel-merker på kartet
-  // (tetteste områder forsvinner først). 0 = vis alt.
-  // Thin by the density slider, then nudge remaining overlaps apart across BOTH
-  // layers together (so wave and wind badges never stack either). Badge px size =
-  // divIcon iconSize (wave 28×15, wind 34×16); wind's slot offset (when both
-  // layers are on) is dy = slot×(h+2), matching badgeAnchorY.
-  const [thinWave, thinWind] = useMemo(() => {
-    const waveBase = thinBySpacing(wavePoints, forecastThinPx, zoom)
-    const windBase = thinBySpacing(windPoints, forecastThinPx, zoom)
-    const windSlot = waveBase.length > 0 ? 1 : 0
-    return deOverlapLayers([
-      { points: waveBase, w: 32, h: 17, dy: 0 },
-      { points: windBase, w: 38, h: 17, dy: windSlot * (17 + 2) },
-    ], zoom)
-  }, [wavePoints, windPoints, forecastThinPx, zoom])
+  // Tetthets-tynning: brukeren kan dra ned antall varsel-merker (Innstillinger).
+  // Nøkkelbasert → bølge og vind tynnes identisk, så par overlever sammen.
+  const thinWave = useMemo(
+    () => thinForecastGrid(wavePoints, forecastThin),
+    [wavePoints, forecastThin],
+  )
+  const thinWind = useMemo(
+    () => thinForecastGrid(windPoints, forecastThin),
+    [windPoints, forecastThin],
+  )
+
+  // Slå sammen bølge + vind der BEGGE har data for samme celle (samme nøkkel —
+  // lagene deler rutenett). Kombinert merke plasseres på bølgens sjø-snappede
+  // posisjon — garantert på vann; avstanden til vindens cellesenter er ≤ ~800 m
+  // (usynlig på normale zoomnivåer, og vindfeltet er glatt på den skalaen).
+  // Celler med bare ett datasett beholder enkelt-merket («merge når relevant»).
+  const { comboPairs, soloWave, soloWind } = useMemo(() => {
+    if (!thinWave.length || !thinWind.length) {
+      return { comboPairs: [], soloWave: thinWave, soloWind: thinWind }
+    }
+    const windByKey = new Map(thinWind.map(p => [p.key, p]))
+    const comboPairs = []
+    const soloWave = []
+    for (const w of thinWave) {
+      const g = windByKey.get(w.key)
+      if (g) {
+        comboPairs.push({ key: w.key, wave: w, wind: g, position: w.position })
+        windByKey.delete(w.key)
+      } else {
+        soloWave.push(w)
+      }
+    }
+    return { comboPairs, soloWave, soloWind: [...windByKey.values()] }
+  }, [thinWave, thinWind])
 
   const atLive = !track || track.length === 0 || playheadIndex < 0 || playheadIndex >= track.length - 1
   const playheadPoint = !atLive && playheadIndex >= 0 && playheadIndex < track.length
@@ -819,11 +843,26 @@ export default function MapView({
         />
       )}
 
-      {/* Bølgevarsel — fargekodede høydepunkter på sjøen. Slot 0 = sentrert på
-          cellen; vind får slot 1 (rett under bølge) når begge lag er aktive, så
-          merkene ligger tå-mot-tå uten å dekke hverandre. */}
-      {thinWave.length > 0 && <WaveLayer points={thinWave} horizon={waveHorizon} scrubT={waveScrubT} slot={0} onSelectPoint={onSelectWavePoint} />}
-      {thinWind.length > 0 && <WindLayer points={thinWind} horizon={windHorizon} scrubT={windScrubT} unit={windUnit} slot={thinWave.length > 0 ? 1 : 0} onSelectPoint={onSelectWindPoint} />}
+      {/* Bølge- og vindvarsel — kombinerte merker der begge lag har data,
+          enkelt-merker ellers (f.eks. vind over land) */}
+      {soloWave.length > 0 && <WaveLayer points={soloWave} horizon={forecastHorizon} scrubT={waveScrubT} dark={darkMap} onSelectPoint={onSelectWavePoint} />}
+      {soloWind.length > 0 && <WindLayer points={soloWind} horizon={forecastHorizon} scrubT={windScrubT} unit={windUnit} dark={darkMap} onSelectPoint={onSelectWindPoint} />}
+      {comboPairs.length > 0 && <ForecastComboLayer pairs={comboPairs} horizon={forecastHorizon} scrubT={waveScrubT} unit={windUnit} dark={darkMap} onSelectPair={onSelectComboPair} />}
+
+      {/* Varsel-popup — forankret til merket, kartet forblir synlig */}
+      {selectedWavePoint && (
+        <ForecastPointPopup kind="wave" point={selectedWavePoint} horizon={forecastHorizon}
+          scrubT={waveScrubT} onClose={onCloseWavePopup} />
+      )}
+      {selectedWindPoint && (
+        <ForecastPointPopup kind="wind" point={selectedWindPoint} horizon={forecastHorizon}
+          scrubT={windScrubT} unit={windUnit} onClose={onCloseWindPopup} />
+      )}
+      {selectedComboPair && (
+        <ForecastPointPopup kind="combo" point={selectedComboPair.wave} windPoint={selectedComboPair.wind}
+          position={selectedComboPair.position} horizon={forecastHorizon}
+          scrubT={waveScrubT} unit={windUnit} onClose={onCloseComboPopup} />
+      )}
 
       {/* Hjemmehavn — markør tegnes på lagret posisjon */}
       {home && (

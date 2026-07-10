@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { buildWavePlan } from '../utils/waveGrid'
+import { buildWavePlan, mercator } from '../utils/waveGrid'
 import { metFetch } from '../utils/metOceanFetch'
 import { makeForecastStore } from '../utils/forecastCache'
 import { API_BASE } from '../utils/apiBase'
@@ -11,10 +11,9 @@ import { API_BASE } from '../utils/apiBase'
 // with strong caching, so we use If-Modified-Since on revalidation and get
 // 304 Not Modified for the (frequent) case where nothing changed.
 //
-// One badge per cell. MET's grid is finer than Open-Meteo's EWAM, so the
-// sub-sample trimmed-max workaround isn't needed — buildWavePlan is called
-// with {multi:false}. Land is filtered server-side (MET returns
-// meta.error="no data at the given location" for inland points).
+// One badge per cell, displayed at the cell's exact grid center. Land is
+// filtered server-side (MET returns meta.error="no data at the given
+// location" for inland points).
 
 const BASE = `${API_BASE}/met-ocean`                   // proxy → MET oceanforecast/2.0/complete
 export const HORIZONS = [6, 12, 24, 48, 96, 168, 192] // 6 t … 8 d (MET serves ~8.6 d / 206 timesteg)
@@ -31,15 +30,16 @@ const MAX_CACHE = 600
 const FETCH_TIMEOUT_MS = 20_000
 
 // Module-level cache; values:null marks "no sea data here" (land).
-// Keyed by `met:${gz}/${spacing}/${i}/${j}` to avoid collision with any
-// future second source.
+// Keyed by `${gz}/${spacing}/${i}/${j}` (cellenøkkelen fra buildWavePlan).
 const cache = new Map()
 
 // Persist cells to IndexedDB and hydrate the in-memory cache once on load, so a
 // reload / pan-back restores 30-min-fresh data instantly instead of re-fanning
 // out ~60 GETs. Kicked off at module load to overlap with the SETTLE debounce;
 // run() awaits it before the first emit so cached badges paint immediately.
-const idb = makeForecastStore('wave', TTL)
+// 'wave-v2': nytt navnerom — gamle entries har MET-snappet pos + annen
+// spacing, og rundet spacing kan kollidere med gamle nøkler (f.eks. 293).
+const idb = makeForecastStore('wave-v2', TTL)
 const hydratedOnce = idb.hydrate(cache)
 
 let failCooldownUntil = 0
@@ -104,13 +104,24 @@ export function useWaveForecast(enabled, bounds, zoom) {
       return
     }
     let cancelled = false
-    const plan = buildWavePlan(bounds, zoom, { multi: false })
+    const plan = buildWavePlan(bounds, zoom)
+
+    // Grov zoom (gz ≤ 9): én celle dekker 15–70 km, og kystceller får data fra
+    // fjordarmer/viker som er sub-piksel på skjermen — merket ser ut som det
+    // står på land og undergraver tilliten til dataene. Der dropper vi bølge-
+    // celler som har en eksplisitt LAND-nabo (values:null i cachen); åpne
+    // sjøområder beholdes. Ukjente naboer (utenfor viewport) teller ikke.
+    const coarse = plan.gz <= 9
+    const isLandNeighbor = (i, j) => {
+      const nb = cache.get(`${plan.gz}/${plan.spacing}/${i}/${j}`)
+      return !!nb && !nb.values
+    }
 
     const emit = () => {
       if (cancelled) return
       const prevByKey = new Map(emittedRef.current.map(p => [p.key, p]))
       const pts = []
-      const seenPos = new Set()
+      const seenPos = new Set()   // to naboceller kan snappe til samme MET-celle
       for (const c of plan.cells) {
         const hit = cache.get(c.key)
         if (!hit) continue
@@ -118,6 +129,10 @@ export function useWaveForecast(enabled, bounds, zoom) {
         if (!hit.values) continue
         const pos = hit.pos
         if (!pos) continue
+        if (coarse && (
+          isLandNeighbor(c.i - 1, c.j) || isLandNeighbor(c.i + 1, c.j) ||
+          isLandNeighbor(c.i, c.j - 1) || isLandNeighbor(c.i, c.j + 1)
+        )) continue
         const posKey = pos[0].toFixed(3) + ':' + pos[1].toFixed(3)
         if (seenPos.has(posKey)) continue
         seenPos.add(posKey)
@@ -152,15 +167,25 @@ export function useWaveForecast(enabled, bounds, zoom) {
       const signal = fetchSignal(ctrl)
       setLoading(true)
 
+      // Tegn nye celler etter hvert som svarene lander (throttlet) — ikke i én
+      // batch etter at ALLE er ferdige. Ett tregt svar (verste fall 20 s
+      // timeout) skal ikke holde igjen resten av viewportet.
+      let emitTimer = 0
+      const scheduleEmit = () => {
+        if (emitTimer) return
+        emitTimer = setTimeout(() => { emitTimer = 0; emit() }, 150)
+      }
+
       let anyError = false
       const results = await Promise.allSettled(todo.map(async (c) => {
-        const [lat, lon] = [c.samples[0].lat, c.samples[0].lon]
+        const [lat, lon] = [c.lat, c.lon]
         const url = `${BASE}?lat=${lat.toFixed(4)}&lon=${lon.toFixed(4)}`
         const prev = cache.get(c.key)
         const headers = prev?.lastModified ? { 'If-Modified-Since': prev.lastModified } : {}
         const res = await metFetch(url, { signal, headers })
         if (res.status === 304 && prev) {
           cacheSet(c.key, { ...prev, at: Date.now() })
+          scheduleEmit()
           return
         }
         if (!res.ok) {
@@ -178,6 +203,7 @@ export function useWaveForecast(enabled, bounds, zoom) {
         const ts = data?.properties?.timeseries
         if (err || !Array.isArray(ts) || !ts.length) {
           cacheSet(c.key, { values: null, at: Date.now() })   // land or empty
+          scheduleEmit()
           return
         }
         const t0 = Math.floor(Date.parse(ts[0].time) / 1000)
@@ -189,12 +215,25 @@ export function useWaveForecast(enabled, bounds, zoom) {
           const v = e?.data?.instant?.details?.sea_surface_wave_from_direction
           return Number.isFinite(v) ? v : null
         })
-        // MET returns coords as [lon, lat]; place badge at the model's snapped
-        // coordinate (returned in geometry) rather than the requested point.
+        // Vis merket på MODELLENS sjøcelle-koordinat (geometry) — garantert på
+        // vann, og det er der verdien faktisk gjelder. Uten jitter er avviket
+        // fra rutenett-senteret ≤ ~800 m (WAM800) og usynlig på normal zoom.
+        // Snappet MET mer enn 35 % av cellebredden (senteret godt inne på
+        // land), behandles cella som land: merket ville klistret seg til
+        // nærmeste strand i stedet for å representere sin egen celle — da er
+        // en vind-solo på cellesenteret ærligere.
         const coords = data?.geometry?.coordinates
-        const pos = Array.isArray(coords) && coords.length >= 2
-          ? [coords[1], coords[0]]
-          : [lat, lon]
+        let pos = [lat, lon]
+        if (Array.isArray(coords) && coords.length >= 2) {
+          pos = [coords[1], coords[0]]
+          const [rx, ry] = mercator(lat, lon, plan.gz)
+          const [sx, sy] = mercator(pos[0], pos[1], plan.gz)
+          if (Math.hypot(sx - rx, sy - ry) > plan.spacing * 0.35) {
+            cacheSet(c.key, { values: null, at: Date.now() })   // for langt fra sjø
+            scheduleEmit()
+            return
+          }
+        }
         const { values, dirs } = aggregateHorizons(t0, vh, vd, Date.now())
         cacheSet(c.key, {
           values,
@@ -204,7 +243,9 @@ export function useWaveForecast(enabled, bounds, zoom) {
           lastModified: res.headers.get('Last-Modified') || prev?.lastModified || null,
           at: Date.now(),
         })
+        scheduleEmit()
       }))
+      clearTimeout(emitTimer)
 
       for (const r of results) {
         if (r.status === 'rejected' && r.reason?.name !== 'AbortError') anyError = true

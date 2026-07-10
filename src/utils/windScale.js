@@ -19,7 +19,7 @@ export function windTextColor(ms) {
   return ms >= 8.0 && ms < 13.9 ? '#0a1622' : '#fff'
 }
 
-const MS_TO_KN = 1.943844
+export const MS_TO_KN = 1.943844
 
 // Vis vindverdi i valgt enhet (heltall — vind oppgis konvensjonelt i hele tall).
 export function formatWind(ms, unit) {

@@ -1,34 +1,32 @@
 import { memo, useMemo, useState, useEffect, useCallback } from 'react'
 import { Marker, useMap } from 'react-leaflet'
 import { divIcon } from 'leaflet'
-import { windColor, formatWind, windUnitLabel } from '../utils/windScale'
-import { badgeAnchorY } from '../utils/badgeStack'
-import { layerById } from '../utils/layersRegistry'
+import { formatWind, windUnitLabel } from '../utils/windScale'
+import { windBadgeStyle } from '../utils/badgeColors'
 
-// Badge fill = the Lag-panel «Vind» font colour (single source: registry); the
-// border carries the Beaufort speed ramp so wind strength still reads at a glance.
-const WIND_BADGE_BG = layerById('wind').textColor
-
-// Vind-merker — fargekodet vindstyrke + retningspil. Bevisst ULIK bølge-merkene
-// (annen palett, fylt pil) så lagene skilles. Egen pane (z 442) over bølge (440),
-// under fartøy (600) så et fartøy alltid vinner klikket.
-function windIcon(ms, dirTo, unit, slot) {
+// Vind-sirkler — samme form som bølge, men FYLT pil (bevisst ulik strek-pila
+// på bølge) og grønn basefarge. Egen pane (z 442) over bølge (440), under
+// fartøy (600) så et fartøy alltid vinner klikket.
+function windIcon(ms, dirTo, unit, dark) {
+  const { ring, text, halo } = windBadgeStyle(ms, dark)
   const txt = formatWind(ms, unit)
-  const style = `background:${WIND_BADGE_BG};color:#0b1018;text-shadow:none;border:2px solid ${windColor(ms)}`
   const arrow = dirTo == null
     ? ''
-    : `<span class="wind-dir" style="transform:rotate(${dirTo - 90}deg)">` +
-      '<svg viewBox="0 0 10 10" width="8" height="8" aria-hidden="true">' +
-      '<path d="M1 5 H7 M4.4 2 L8 5 L4.4 8 Z" fill="currentColor" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>' +
-      '</svg></span>'
-  const html = `<div class="wind-badge" style="${style}">${txt}<span class="wind-unit">${windUnitLabel(unit)}</span>${arrow}</div>`
-  // Anker badgen ~11px UNDER cellepunktet: bølge-laget bruker SAMME rutenett, så
-  // uten dette ligger vind-merket oppå bølge-merket. Bølge sitter sentrert,
-  // vind rett under → begge lesbare når begge lag er på.
-  return divIcon({ html, className: '', iconSize: [40, 17], iconAnchor: [20, badgeAnchorY(17, slot)] })
+    : `<g transform="rotate(${dirTo} 24 24)">` +
+      `<path d="M24 9.8 V4.3 M20.8 7.3 L24 2.3 L27.2 7.3 Z" fill="${ring}" stroke="${ring}" stroke-width="1.3" stroke-linejoin="round"/>` +
+      `</g>`
+  const html =
+    `<svg class="fc-badge" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">` +
+    arrow +
+    `<circle cx="24" cy="24" r="13.2" fill="none" stroke="${ring}" stroke-width="2.2"/>` +
+    `<text x="24" y="25.5" text-anchor="middle" class="fc-badge-val" fill="${text}" stroke="${halo}">${txt}</text>` +
+    `<text x="24" y="33" text-anchor="middle" class="fc-badge-unit" fill="${text}" stroke="${halo}">${windUnitLabel(unit)}</text>` +
+    `</svg>`
+  // Hitboks = 30×30 rundt sirkelen (se WaveLayer — hindrer tap-tyveri fra båter)
+  return divIcon({ html, className: 'fc-badge-wrap', iconSize: [30, 30], iconAnchor: [15, 15] })
 }
 
-const WindMarker = memo(function WindMarker({ point, horizon, scrubT, unit, slot, onSelect }) {
+const WindMarker = memo(function WindMarker({ point, horizon, scrubT, unit, dark, onSelect }) {
   let ms, rawDir
   if (scrubT != null && point.series) {
     const idx = Math.round((scrubT - point.series.t0) / 3600)
@@ -41,7 +39,7 @@ const WindMarker = memo(function WindMarker({ point, horizon, scrubT, unit, slot
   }
   // Pila peker dit vinden BLÅSER (meteorologisk fra + 180°).
   const dirTo = rawDir == null ? null : Math.round(((rawDir + 180) % 360) / 10) * 10
-  const icon = useMemo(() => (ms == null ? null : windIcon(ms, dirTo, unit, slot)), [ms, dirTo, unit, slot])
+  const icon = useMemo(() => (ms == null ? null : windIcon(ms, dirTo, unit, dark)), [ms, dirTo, unit, dark])
   const handlers = useMemo(() => ({ click: () => onSelect(point) }), [onSelect, point])
   if (!icon) return null
   return (
@@ -49,7 +47,7 @@ const WindMarker = memo(function WindMarker({ point, horizon, scrubT, unit, slot
   )
 })
 
-export default memo(function WindLayer({ points, horizon, scrubT, unit = 'ms', slot = 0, onSelectPoint }) {
+export default memo(function WindLayer({ points, horizon, scrubT, unit = 'ms', dark = false, onSelectPoint }) {
   const map = useMap()
   const [ready, setReady] = useState(false)
 
@@ -65,6 +63,6 @@ export default memo(function WindLayer({ points, horizon, scrubT, unit = 'ms', s
 
   if (!ready) return null
   return points.map(p => (
-    <WindMarker key={p.key} point={p} horizon={horizon} scrubT={scrubT} unit={unit} slot={slot} onSelect={onSelect} />
+    <WindMarker key={p.key} point={p} horizon={horizon} scrubT={scrubT} unit={unit} dark={dark} onSelect={onSelect} />
   ))
 })

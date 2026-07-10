@@ -21,9 +21,9 @@ function ToggleRow({ label, sub, checked, onChange, disabled = false }) {
   )
 }
 
-// Værlag-rad: slår laget av/på OG velger hvor langt fram varselet rekker, i én
-// rad. Bryter til høyre; tidsvalget dukker opp ved siden av når laget er på.
-function WeatherLayerRow({ label, sub, enrolled, onEnroll, horizon, onHorizon }) {
+// Værlag-rad: slår laget av/på. Tidsrommet er delt for alle varsel-lag og
+// velges i egen rad under.
+function WeatherLayerRow({ label, sub, enrolled, onEnroll }) {
   return (
     <div className="settings-row settings-row--static">
       <div className="settings-row-text">
@@ -31,16 +31,6 @@ function WeatherLayerRow({ label, sub, enrolled, onEnroll, horizon, onHorizon })
         {sub && <div className="settings-row-sub">{sub}</div>}
       </div>
       <div className="settings-row-control">
-        {enrolled && (
-          <select
-            className="settings-select"
-            value={horizon}
-            onChange={e => onHorizon(Number(e.target.value))}
-            aria-label={`${label}: tidsrom for høyeste verdi`}
-          >
-            {WAVE_HORIZONS.map(h => <option key={h} value={h}>{waveHorizonLabel(h)}</option>)}
-          </select>
-        )}
         <button
           type="button"
           className="settings-toggle-btn"
@@ -105,17 +95,47 @@ export default function SettingsPanel({
             sub="Vis på kart: Største bølger ventet innenfor valgt tidsrom."
             enrolled={!!prefs.layers?.wave?.enrolled}
             onEnroll={v => onEnroll('wave', v)}
-            horizon={prefs.waveHorizon}
-            onHorizon={h => onPrefs({ waveHorizon: h })}
           />
           <WeatherLayerRow
             label="Vindvarsel"
             sub="Vis på kart: Sterkeste vind ventet innenfor valgt tidsrom."
             enrolled={!!prefs.layers?.wind?.enrolled}
             onEnroll={v => onEnroll('wind', v)}
-            horizon={prefs.windHorizon}
-            onHorizon={h => onPrefs({ windHorizon: h })}
           />
+          {(prefs.layers?.wave?.enrolled || prefs.layers?.wind?.enrolled) && (
+            <div className="settings-row settings-row--static">
+              <div className="settings-row-text">
+                <div className="settings-row-label">Tidsrom</div>
+                <div className="settings-row-sub">Merkene viser høyeste verdi innenfor dette tidsrommet</div>
+              </div>
+              <div className="settings-row-control">
+                <select
+                  className="settings-select"
+                  value={prefs.forecastHorizon}
+                  onChange={e => onPrefs({ forecastHorizon: Number(e.target.value) })}
+                  aria-label="Tidsrom for varsel"
+                >
+                  {WAVE_HORIZONS.map(h => <option key={h} value={h}>{waveHorizonLabel(h)}</option>)}
+                </select>
+              </div>
+            </div>
+          )}
+          {(prefs.layers?.wave?.enrolled || prefs.layers?.wind?.enrolled) && (
+            <div className="settings-row settings-row--static">
+              <div className="settings-row-text">
+                <div className="settings-row-label">Merketetthet</div>
+                <div className="settings-row-sub">Færre merker gir roligere kart</div>
+              </div>
+              <input
+                type="range" className="timeline-slider settings-density"
+                min={0} max={100} step={5}
+                value={100 - (prefs.forecastThin ?? 0)}
+                style={{ '--pct': `${100 - (prefs.forecastThin ?? 0)}%` }}
+                onChange={e => onPrefs({ forecastThin: 100 - Number(e.target.value) })}
+                aria-label="Merketetthet: færre til flere"
+              />
+            </div>
+          )}
           {prefs.layers?.wind?.enrolled && (
             <div className="settings-row settings-row--static">
               <div className="settings-row-text">

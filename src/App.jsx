@@ -1,15 +1,12 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from 'react'
 import MapView, { MAP_STYLES, STALE_MS, DEAD_MS } from './components/MapView'
 import VesselPanel from './components/VesselPanel'
-import WaveTimeline from './components/WaveTimeline'
-import WindTimeline from './components/WindTimeline'
+import ForecastBar from './components/ForecastBar'
 import LayerPanel from './components/LayerPanel'
 import { migrateLayerPrefs, normalizeLayer } from './utils/layersPrefs'
 import { distanceMeters } from './utils/geom'
-import WindPointPopup from './components/WindPointPopup'
 import SearchPanel from './components/SearchPanel'
 import SettingsPanel from './components/SettingsPanel'
-import WavePointPopup from './components/WavePointPopup'
 import { useTripwireAlerts } from './hooks/useTripwireAlerts'
 import PushSetupModal from './components/PushSetupModal'
 import AlarmSoundModal from './components/AlarmSoundModal'
@@ -114,11 +111,16 @@ export default function App() {
 
   // Brukerpreferanser — lagres på enheten
   const [prefs, setPrefs] = useState(() => {
-    const defaults = { showNames: true, clusterStationary: true, layers: { wave: { enrolled: false, active: false }, wind: { enrolled: false, active: false } }, layerPanelCollapsed: false, waveHorizon: 12, windHorizon: 12, windUnit: 'ms', forecastThin: 0, alarmMode: 'chime', alarmSoundAck: false, corridorWidthM: 1000, driftRadiusM: 200, savedFleet: [], home: null }
+    const defaults = { showNames: true, clusterStationary: true, layers: { wave: { enrolled: false, active: false }, wind: { enrolled: false, active: false } }, layerPanelCollapsed: false, forecastHorizon: 12, windUnit: 'ms', forecastThin: 0, alarmMode: 'chime', alarmSoundAck: false, corridorWidthM: 1000, driftRadiusM: 200, savedFleet: [], home: null }
     try {
-      const merged = { ...defaults, ...JSON.parse(localStorage.getItem('mw_prefs') ?? '{}') }
-      // Migrate old values (3 t was dropped, 'all' was replaced by the longest horizon)
-      if (!WAVE_HORIZONS.includes(merged.waveHorizon)) merged.waveHorizon = 12
+      const stored = JSON.parse(localStorage.getItem('mw_prefs') ?? '{}')
+      const merged = { ...defaults, ...stored }
+      // Migrer separate bølge/vind-horisonter → én delt varsel-horisont.
+      // Sjekk RÅ lagret objekt — merged har alltid default forecastHorizon.
+      if (!('forecastHorizon' in stored) || !WAVE_HORIZONS.includes(merged.forecastHorizon)) {
+        merged.forecastHorizon = WAVE_HORIZONS.includes(stored.waveHorizon) ? stored.waveHorizon : 12
+      }
+      delete merged.waveHorizon; delete merged.windHorizon
       // Migrate gamle alarmMode-verdier
       if (merged.alarmMode === 'continuous') merged.alarmMode = 'alarm'
       if (!['chime', 'alarm'].includes(merged.alarmMode)) merged.alarmMode = 'chime'
@@ -168,9 +170,71 @@ export default function App() {
   const windEnabled = !!layers.wind?.active
   const { points: windPoints, loading: windLoading, error: windError } = useWindForecast(windEnabled, bounds, zoom)
   const [selectedWindPoint, setSelectedWindPoint] = useState(null)
+
+  // Varsel-tidslinje: én linje styrer BÅDE bølge og vind (delt tid). Ankeret
+  // fryses (inneværende hele time) når linja åpnes, så merkene ikke
+  // re-rendres av hvert AIS-poll.
+  const [forecastPanelOpen, setForecastPanelOpen] = useState(false)
+  const [forecastScrub, setForecastScrub] = useState(null)
+  const [forecastAnchor, setForecastAnchor] = useState(0)
+
+  const toggleForecastPanel = useCallback(() => {
+    setForecastPanelOpen(open => {
+      if (open) { setForecastScrub(null); return false }
+      setForecastAnchor(Math.floor(Date.now() / 3_600_000) * 3600)
+      return true
+    })
+  }, [])
+
+  // Åpne (uten toggle) — brukes når et merke trykkes: tidslinja skal dukke
+  // opp som om brukeren trykket Bølge/Vind i Lag-panelet.
+  const panelOpenRef = useRef(false)
+  useEffect(() => { panelOpenRef.current = forecastPanelOpen })
+  const openForecastPanel = useCallback(() => {
+    if (panelOpenRef.current) return
+    setForecastAnchor(Math.floor(Date.now() / 3_600_000) * 3600)
+    setForecastPanelOpen(true)
+  }, [])
+
+  // Leaflet holder bare én popup åpen om gangen — å velge det ene laget lukker
+  // det andre eksplisitt så React-tilstanden følger kartet. Re-klikk på et
+  // åpent merke: ref-speilet leser COMMITTED valg ved klikk, så re-klikk blir
+  // ekte toggle til null (ellers batcher Leaflets preclick + marker-click til
+  // uendret state og popupen kan aldri åpnes igjen).
+  const [selectedComboPair, setSelectedComboPair] = useState(null)
+  const selWaveRef = useRef(null)
+  useEffect(() => { selWaveRef.current = selectedWavePoint })
+  const selWindRef = useRef(null)
+  useEffect(() => { selWindRef.current = selectedWindPoint })
+  const selComboRef = useRef(null)
+  useEffect(() => { selComboRef.current = selectedComboPair })
+  const handleSelectWavePoint = useCallback(p => {
+    setSelectedWindPoint(null)
+    setSelectedComboPair(null)
+    const next = selWaveRef.current === p ? null : p
+    setSelectedWavePoint(next)
+    if (next) openForecastPanel()   // merke-tap åpner tidslinja
+  }, [openForecastPanel])
+  const handleSelectWindPoint = useCallback(p => {
+    setSelectedWavePoint(null)
+    setSelectedComboPair(null)
+    const next = selWindRef.current === p ? null : p
+    setSelectedWindPoint(next)
+    if (next) openForecastPanel()
+  }, [openForecastPanel])
+  const handleSelectComboPair = useCallback(p => {
+    setSelectedWavePoint(null)
+    setSelectedWindPoint(null)
+    const next = selComboRef.current === p ? null : p
+    setSelectedComboPair(next)
+    if (next) openForecastPanel()
+  }, [openForecastPanel])
+  const closeWavePopup = useCallback(() => setSelectedWavePoint(null), [])
+  const closeWindPopup = useCallback(() => setSelectedWindPoint(null), [])
+  const closeComboPopup = useCallback(() => setSelectedComboPair(null), [])
   const windUnit = prefs.windUnit === 'kn' ? 'kn' : 'ms'
-  // Tetthets-slider (0–100) → minste merke-avstand i px (0 = vis alle punkter)
-  const forecastThinPx = (prefs.forecastThin ?? 0) * 1.2
+  // Tetthets-slider (0–100) → strukturell rutenett-tynning (0 = vis alle punkter)
+  const forecastThin = prefs.forecastThin ?? 0
 
   // Tripwire: én linje per valgt fartøy (kun for økten).
   // tripwires[mmsi] = { a:[lat,lon], b:[lat,lon], armed:true, lastCrossed?:number, vesselName?:string }
@@ -670,34 +734,6 @@ export default function App() {
   // WFS (auth-fri, CORS åpen). Virker også i demo-modus siden ingen
   // credentials trengs.
 
-  // Bølgetidslinje: chip åpner panelet; scrub = timer fra ankeret (null = vindusmodus).
-  // Ankeret fryses (inneværende hele time) når panelet åpnes, så markørene
-  // ikke re-rendres av hvert AIS-poll.
-  const [wavePanelOpen, setWavePanelOpen] = useState(false)
-  const [waveScrub, setWaveScrub] = useState(null)
-  const [waveAnchor, setWaveAnchor] = useState(0)
-  const [windPanelOpen, setWindPanelOpen] = useState(false)
-  const [windScrub, setWindScrub] = useState(null)
-  const [windAnchor, setWindAnchor] = useState(0)
-
-  const toggleWavePanel = useCallback(() => {
-    setWavePanelOpen(open => {
-      if (open) { setWaveScrub(null); return false }
-      setWindPanelOpen(false)   // bare én tidslinje åpen om gangen
-      setWaveAnchor(Math.floor(Date.now() / 3_600_000) * 3600)
-      return true
-    })
-  }, [])
-
-  const toggleWindPanel = useCallback(() => {
-    setWindPanelOpen(open => {
-      if (open) { setWindScrub(null); return false }
-      setWavePanelOpen(false)
-      setWindAnchor(Math.floor(Date.now() / 3_600_000) * 3600)
-      return true
-    })
-  }, [])
-
   // ── Kartlag-panel: enroll (Settings) vs active (panel-bryter) ──
   // Enroll på/av i Innstillinger: legger laget til/fjerner det fra panelet.
   const enrollLayer = useCallback((id, on) => {
@@ -705,11 +741,14 @@ export default function App() {
       const ls = migrateLayerPrefs(p)
       return { ...p, layers: { ...ls, [id]: on ? { enrolled: true, active: true } : { enrolled: false, active: false } } }
     })
-    if (!on) {   // av-meldt → lukk tidslinja om åpen
-      if (id === 'wave' && wavePanelOpen) toggleWavePanel()
-      if (id === 'wind' && windPanelOpen) toggleWindPanel()
+    if (!on) {   // av-meldt → lukk tidslinja hvis ingen varsel-lag igjen + lagets popup
+      if (id === 'wave') setSelectedWavePoint(null)
+      else if (id === 'wind') setSelectedWindPoint(null)
+      setSelectedComboPair(null)
+      const other = id === 'wave' ? 'wind' : 'wave'
+      if (forecastPanelOpen && !prefs.layers?.[other]?.active) toggleForecastPanel()
     }
-  }, [wavePanelOpen, windPanelOpen, toggleWavePanel, toggleWindPanel])
+  }, [forecastPanelOpen, toggleForecastPanel, prefs.layers])
 
   // Panel-bryter: vis/skjul lagets merker på kartet nå.
   const toggleLayerActive = useCallback((id) => {
@@ -718,11 +757,14 @@ export default function App() {
       const ls = migrateLayerPrefs(p)
       return { ...p, layers: { ...ls, [id]: normalizeLayer({ ...ls[id], active: !ls[id].active }) } }
     })
-    if (wasActive) {   // slår av → lukk tidslinja om åpen
-      if (id === 'wave' && wavePanelOpen) toggleWavePanel()
-      if (id === 'wind' && windPanelOpen) toggleWindPanel()
+    if (wasActive) {   // slår av → lukk tidslinja hvis ingen varsel-lag igjen + lagets popup
+      if (id === 'wave') setSelectedWavePoint(null)
+      else if (id === 'wind') setSelectedWindPoint(null)
+      setSelectedComboPair(null)
+      const other = id === 'wave' ? 'wind' : 'wave'
+      if (forecastPanelOpen && !prefs.layers?.[other]?.active) toggleForecastPanel()
     }
-  }, [prefs.layers, wavePanelOpen, windPanelOpen, toggleWavePanel, toggleWindPanel])
+  }, [prefs.layers, forecastPanelOpen, toggleForecastPanel])
 
   // Trykk på rad-navn: aktiver laget (om av) og åpne tidslinja.
   const openLayerTimeline = useCallback((id) => {
@@ -731,45 +773,42 @@ export default function App() {
       if (ls[id].active) return p
       return { ...p, layers: { ...ls, [id]: { enrolled: true, active: true } } }
     })
-    if (id === 'wave' && !wavePanelOpen) toggleWavePanel()
-    if (id === 'wind' && !windPanelOpen) toggleWindPanel()
-  }, [wavePanelOpen, windPanelOpen, toggleWavePanel, toggleWindPanel])
+    if (!forecastPanelOpen) toggleForecastPanel()
+  }, [forecastPanelOpen, toggleForecastPanel])
 
-  // Hvor langt frem dataene rekker (timer fra ankeret), på tvers av synlige celler
-  const waveMaxOffsetH = useMemo(() => {
-    const anchor = waveAnchor || Math.floor(Date.now() / 3_600_000) * 3600
+  // Hvor langt frem dataene rekker (timer fra ankeret), på tvers av begge lag
+  const forecastMaxOffsetH = useMemo(() => {
+    const anchor = forecastAnchor || Math.floor(Date.now() / 3_600_000) * 3600
     let max = 0
     for (const p of wavePoints) {
       if (!p.series) continue
       const end = p.series.t0 + (p.series.vh.length - 1) * 3600
       max = Math.max(max, Math.floor((end - anchor) / 3600))
     }
-    return max
-  }, [wavePoints, waveAnchor])
-
-  const waveScrubT = wavePanelOpen && waveScrub != null ? waveAnchor + waveScrub * 3600 : null
-
-  const windMaxOffsetH = useMemo(() => {
-    const anchor = windAnchor || Math.floor(Date.now() / 3_600_000) * 3600
-    let max = 0
     for (const p of windPoints) {
       if (!p.series) continue
       const end = p.series.t0 + (p.series.vs.length - 1) * 3600
       max = Math.max(max, Math.floor((end - anchor) / 3600))
     }
     return max
-  }, [windPoints, windAnchor])
+  }, [wavePoints, windPoints, forecastAnchor])
 
-  const windScrubT = windPanelOpen && windScrub != null ? windAnchor + windScrub * 3600 : null
+  const forecastScrubT = forecastPanelOpen && forecastScrub != null
+    ? forecastAnchor + forecastScrub * 3600
+    : null
 
-  // Kortinfo per lag til Lag-panelet (samme som de gamle chip-ene viste):
-  // valgt horisont ("12 t" / "2 d"), eller scrub-offset ("+6 t" / "+2 d").
-  const waveInfo = waveScrubT != null
-    ? (waveScrub >= 48 ? `+${Math.round(waveScrub / 24)} d` : `+${waveScrub} t`)
-    : waveHorizonLabel(prefs.waveHorizon)
-  const windInfo = windScrubT != null
-    ? (windScrub >= 48 ? `+${Math.round(windScrub / 24)} d` : `+${windScrub} t`)
-    : waveHorizonLabel(prefs.windHorizon)
+  // Valgt horisont klemmes til det dataene faktisk rekker.
+  const effectiveHorizon = useMemo(() => {
+    if (!forecastMaxOffsetH) return prefs.forecastHorizon
+    const fit = WAVE_HORIZONS.filter(h => h <= forecastMaxOffsetH)
+    if (!fit.length) return WAVE_HORIZONS[0]
+    return Math.min(prefs.forecastHorizon, fit[fit.length - 1])
+  }, [prefs.forecastHorizon, forecastMaxOffsetH])
+
+  // Kortinfo til Lag-panelet: valgt horisont ("12 t") eller scrub-offset ("+6 t")
+  const forecastInfo = forecastScrubT != null
+    ? (forecastScrub >= 48 ? `+${Math.round(forecastScrub / 24)} d` : `+${forecastScrub} t`)
+    : waveHorizonLabel(effectiveHorizon)
 
   // The selected vessel object is captured at click time — derive the live
   // version from the latest poll so the panel, marker, and heading vector
@@ -826,8 +865,8 @@ export default function App() {
     setPanelCollapsed(true)
     setShowSearch(false)
     setActiveTab('map')
-    setWavePanelOpen(false)    // vessel panel takes the bottom — close the wave timeline
-    setWaveScrub(null)
+    setForecastPanelOpen(false)    // vessel panel takes the bottom — close the forecast bar
+    setForecastScrub(null)
   }, [])
 
   const handleCloseVessel = useCallback(() => {
@@ -925,15 +964,21 @@ export default function App() {
           clusterOn={prefs.clusterStationary}
           bgColor={mapStyle.bg}
           wavePoints={wavePoints}
-          waveHorizon={prefs.waveHorizon}
-          waveScrubT={waveScrubT}
-          onSelectWavePoint={setSelectedWavePoint}
+          waveScrubT={forecastScrubT}
+          onSelectWavePoint={handleSelectWavePoint}
+          selectedWavePoint={selectedWavePoint}
+          onCloseWavePopup={closeWavePopup}
           windPoints={windPoints}
-          windHorizon={prefs.windHorizon}
-          windScrubT={windScrubT}
+          windScrubT={forecastScrubT}
           windUnit={windUnit}
-          onSelectWindPoint={setSelectedWindPoint}
-          forecastThinPx={forecastThinPx}
+          onSelectWindPoint={handleSelectWindPoint}
+          selectedWindPoint={selectedWindPoint}
+          onCloseWindPopup={closeWindPopup}
+          onSelectComboPair={handleSelectComboPair}
+          selectedComboPair={selectedComboPair}
+          onCloseComboPopup={closeComboPopup}
+          forecastHorizon={effectiveHorizon}
+          forecastThin={forecastThin}
           userPos={userPos}
           tripwires={tripwires}
           tripwireDrawMode={drawMode !== 'idle'}
@@ -990,46 +1035,24 @@ export default function App() {
             onToggleCollapse={() => updatePrefs({ layerPanelCollapsed: !prefs.layerPanelCollapsed })}
             onToggleActive={toggleLayerActive}
             onOpenTimeline={openLayerTimeline}
-            info={{ wave: waveInfo, wind: windInfo }}
+            info={{ wave: forecastInfo, wind: forecastInfo }}
             errors={{ wave: waveError, wind: windError }}
           />
         )}
 
-        {/* Bølgetidslinje — vinduer + dra time for time gjennom hele varselet */}
-        {waveEnabled && wavePanelOpen && !showSettings && !showSearch && activeTab === 'map' && (
-          <WaveTimeline
-            horizon={prefs.waveHorizon}
-            onHorizon={h => updatePrefs({ waveHorizon: h })}
-            scrub={waveScrub}
-            onScrub={setWaveScrub}
-            anchorT={waveAnchor}
-            maxOffsetH={waveMaxOffsetH}
-            thin={prefs.forecastThin ?? 0}
-            onThin={v => updatePrefs({ forecastThin: v })}
-            loading={waveLoading}
-            error={waveError}
-            hasData={wavePoints.length > 0}
-            onClose={toggleWavePanel}
-          />
-        )}
-
-        {/* Vindtidslinje — vinduer + scrub + m/s↔knop-bytte */}
-        {windEnabled && windPanelOpen && !showSettings && !showSearch && activeTab === 'map' && (
-          <WindTimeline
-            horizon={prefs.windHorizon}
-            onHorizon={h => updatePrefs({ windHorizon: h })}
-            scrub={windScrub}
-            onScrub={setWindScrub}
-            anchorT={windAnchor}
-            maxOffsetH={windMaxOffsetH}
-            unit={windUnit}
-            onUnit={u => updatePrefs({ windUnit: u })}
-            thin={prefs.forecastThin ?? 0}
-            onThin={v => updatePrefs({ forecastThin: v })}
-            loading={windLoading}
-            error={windError}
-            hasData={windPoints.length > 0}
-            onClose={toggleWindPanel}
+        {/* Varsel-linje — ett tidsvalg + scrub styrer både bølge og vind */}
+        {(waveEnabled || windEnabled) && forecastPanelOpen && !showSettings && !showSearch && activeTab === 'map' && (
+          <ForecastBar
+            horizon={effectiveHorizon}
+            onHorizon={h => updatePrefs({ forecastHorizon: h })}
+            scrub={forecastScrub}
+            onScrub={setForecastScrub}
+            anchorT={forecastAnchor}
+            maxOffsetH={forecastMaxOffsetH}
+            loading={waveLoading || windLoading}
+            error={waveError || windError}
+            hasData={wavePoints.length > 0 || windPoints.length > 0}
+            onClose={toggleForecastPanel}
           />
         )}
 
@@ -1330,24 +1353,7 @@ export default function App() {
         </div>
       )}
 
-      {selectedWavePoint && (
-        <WavePointPopup
-          point={selectedWavePoint}
-          horizon={prefs.waveHorizon}
-          scrubT={waveScrubT}
-          onClose={() => setSelectedWavePoint(null)}
-        />
-      )}
-
-      {selectedWindPoint && (
-        <WindPointPopup
-          point={selectedWindPoint}
-          horizon={prefs.windHorizon}
-          scrubT={windScrubT}
-          unit={windUnit}
-          onClose={() => setSelectedWindPoint(null)}
-        />
-      )}
+      {/* Varsel-popupene rendres nå forankret inne i MapView (Leaflet Popup) */}
 
       {/* Ansvarsfraskrivelse ved første oppstart — kreves synlig info om
           datakilde (Barentswatch-vilkår) og "ikke for navigasjon" */}
