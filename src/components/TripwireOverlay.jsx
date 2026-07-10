@@ -1,8 +1,8 @@
 import { Fragment, useEffect } from 'react'
-import { Polyline, CircleMarker, Popup, useMapEvents } from 'react-leaflet'
+import { Polyline, CircleMarker, Circle, Popup, useMapEvents } from 'react-leaflet'
 import { corridorEdges } from '../utils/geom'
 
-// Tegne-modus + render av aktive tripwires (linje + rute/korridor).
+// Tegne-modus + render av aktive tripwires (linje + rute/korridor + driftvakt-sirkel).
 // I draftMode lytter komponenten på map-klikk og kaller onAddPoint(latlng).
 // Når draftMode er av rendres geometrien + endepunkter. Klikk på geometrien
 // viser popup med tilhørende fartøy + "Fjern"-knapp.
@@ -28,16 +28,17 @@ function formatWhen(ts) {
 const YELLOW = '#ffd166'
 const NODE_OPTS = { color: YELLOW, weight: 2, fillColor: '#1a2332', fillOpacity: 0.9 }
 
-function TripwirePopup({ mmsi, name, t, liveVessel, onRemoveTripwire, onSelectVessel, onSetCorridorWidth }) {
+function TripwirePopup({ mmsi, name, t, liveVessel, onRemoveTripwire, onSelectVessel, onSetCorridorWidth, onSetCircleRadius, onRecenterCircle }) {
   const isCorridor = t.type === 'corridor'
+  const isCircle = t.type === 'circle'
   return (
-    <Popup minWidth={isCorridor ? 220 : undefined}>
+    <Popup minWidth={isCorridor || isCircle ? 220 : undefined}>
       <div className="tw-popup">
         <div className="tw-popup-title">{name}</div>
         <div className="tw-popup-row"><span>MMSI</span><strong>{mmsi}</strong></div>
         <div className="tw-popup-row">
           <span>Type</span>
-          <strong>{isCorridor ? 'Rute' : 'Linje'}</strong>
+          <strong>{isCircle ? 'Driftvakt' : isCorridor ? 'Rute' : 'Linje'}</strong>
         </div>
         {t.createdAt && (
           <div className="tw-popup-row"><span>Opprettet</span><strong>{formatWhen(t.createdAt)}</strong></div>
@@ -57,9 +58,27 @@ function TripwirePopup({ mmsi, name, t, liveVessel, onRemoveTripwire, onSelectVe
             </div>
           </div>
         )}
+        {isCircle && onSetCircleRadius && (
+          <div className="tw-popup-width">
+            <label>Radius: <strong>{t.radiusM ?? 200} m</strong></label>
+            <input type="range" min="50" max="5000" step="50"
+              value={t.radiusM ?? 200}
+              onChange={e => onSetCircleRadius(mmsi, Number(e.target.value))} />
+            <div className="tw-popup-presets">
+              {[100, 200, 500, 1000].map(r => (
+                <button key={r}
+                  className={`corridor-preset${(t.radiusM ?? 200) === r ? ' corridor-preset--active' : ''}`}
+                  onClick={() => onSetCircleRadius(mmsi, r)}>{r}</button>
+              ))}
+            </div>
+          </div>
+        )}
         <div className="tw-popup-actions">
           {liveVessel && onSelectVessel && (
             <button className="tw-popup-btn" onClick={() => onSelectVessel(liveVessel)}>Vis fartøy</button>
+          )}
+          {isCircle && liveVessel && onRecenterCircle && (
+            <button className="tw-popup-btn" onClick={() => onRecenterCircle(mmsi)}>Sentrer på fartøyet</button>
           )}
           {onRemoveTripwire && (
             <button className="tw-popup-btn tw-popup-btn--danger" onClick={() => onRemoveTripwire(mmsi)}>Fjern</button>
@@ -75,8 +94,8 @@ function TripwirePopup({ mmsi, name, t, liveVessel, onRemoveTripwire, onSelectVe
 const HIT_OPTS = { color: '#000', weight: 26, opacity: 0, lineCap: 'round' }
 
 export default function TripwireOverlay({
-  tripwires, draftMode, draftPoint, draftPath = [], draftWidth = 1000, onAddPoint,
-  vessels = [], onRemoveTripwire, onSelectVessel, onSetCorridorWidth,
+  tripwires, draftMode, draftPoint, draftPath = [], draftWidth = 1000, draftCircle = null, onAddPoint,
+  vessels = [], onRemoveTripwire, onSelectVessel, onSetCorridorWidth, onSetCircleRadius, onRecenterCircle,
 }) {
   const draftEdges = draftPath.length >= 2 ? corridorEdges(draftPath, draftWidth) : null
   useEffect(() => {
@@ -117,6 +136,17 @@ export default function TripwireOverlay({
         </>
       )}
 
+      {/* Driftvakt under tegning: live sirkel (senter flyttes med tapp, radius med slider) */}
+      {draftMode && draftCircle && (
+        <>
+          <Circle center={draftCircle.center} radius={draftCircle.radiusM}
+            pathOptions={{ color: YELLOW, weight: 2, opacity: 0.9, dashArray: '6 6', fillColor: YELLOW, fillOpacity: 0.08 }}
+            interactive={false} />
+          <CircleMarker center={draftCircle.center} radius={6}
+            pathOptions={{ color: YELLOW, weight: 2, fillColor: YELLOW, fillOpacity: 0.7 }} interactive={false} />
+        </>
+      )}
+
       {Object.entries(tripwires).map(([mmsi, t]) => {
         if (!t) return null
         const liveVessel = vessels.find(v => String(v.mmsi) === mmsi)
@@ -125,7 +155,8 @@ export default function TripwireOverlay({
         const popup = !draftMode && (
           <TripwirePopup mmsi={mmsi} name={name} t={t} liveVessel={liveVessel}
             onRemoveTripwire={onRemoveTripwire} onSelectVessel={onSelectVessel}
-            onSetCorridorWidth={onSetCorridorWidth} />
+            onSetCorridorWidth={onSetCorridorWidth}
+            onSetCircleRadius={onSetCircleRadius} onRecenterCircle={onRecenterCircle} />
         )
         const paused = t.armed === false
         const lineOp = paused ? 0.4 : 0.95
@@ -153,6 +184,26 @@ export default function TripwireOverlay({
               {t.path.map((p, i) => (
                 <CircleMarker key={`${mmsi}-n${i}`} center={p} radius={4} pathOptions={NODE_OPTS}>{popup}</CircleMarker>
               ))}
+            </Fragment>
+          )
+        }
+
+        // ── Driftvakt (sirkel) ──
+        if (t.type === 'circle' && Array.isArray(t.center) && t.radiusM > 0) {
+          return (
+            <Fragment key={mmsi}>
+              {/* Synlig disk — IKKE interaktiv: må ikke sluke tapp på fartøy inni
+                  sirkelen (ankervakta sin båt ligger alltid inni). Popup nås via
+                  usynlig fet kant-ring under (samme mønster som HIT_OPTS). */}
+              <Circle center={t.center} radius={t.radiusM} interactive={false}
+                pathOptions={{ color: YELLOW, weight: 2, opacity: lineOp, dashArray: '6 6', fillColor: YELLOW, fillOpacity: paused ? 0.04 : 0.08, className: 'tripwire-line' }} />
+              {/* Fat usynlig trykk-sone langs kanten → popup. fill:false gjør at
+                  interiøret slipper klikk gjennom til fartøyene. */}
+              <Circle center={t.center} radius={t.radiusM}
+                pathOptions={{ ...HIT_OPTS, fill: false }}>
+                {popup}
+              </Circle>
+              <CircleMarker center={t.center} radius={6} pathOptions={NODE_OPTS} interactive={false} />
             </Fragment>
           )
         }
