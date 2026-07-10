@@ -7,6 +7,18 @@ exports.handler = async (event) => {
 
   const url = new URL(event.rawUrl)
   const subpath = url.pathname.replace(/^\/bw-historic/, '')
+
+  // Saniter: ingen traversering, ingen backslash, ingen protokoll-relative
+  // triks — må være et absolutt sti-segment.
+  if (
+    subpath.includes('..') ||
+    subpath.includes('\\') ||
+    subpath.startsWith('//') ||
+    !subpath.startsWith('/')
+  ) {
+    return { statusCode: 400, headers: cors, body: 'Bad request' }
+  }
+
   const upstreamUrl = `https://historic.ais.barentswatch.no${subpath}${url.search}`
 
   let token
@@ -15,9 +27,19 @@ exports.handler = async (event) => {
     return { statusCode: 502, headers: { 'Content-Type': 'application/json', ...cors }, body: JSON.stringify({ error: 'bw_token_failed', message: String(err.message || err) }) }
   }
 
-  const upstream = await fetch(upstreamUrl, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
+  let upstream
+  try {
+    upstream = await fetch(upstreamUrl, {
+      headers: { Authorization: `Bearer ${token}` },
+      signal: AbortSignal.timeout(8000),
+    })
+  } catch {
+    return {
+      statusCode: 502,
+      headers: { 'Content-Type': 'application/json', ...cors },
+      body: JSON.stringify({ error: 'upstream_unavailable' }),
+    }
+  }
 
   const text = await upstream.text()
   return {

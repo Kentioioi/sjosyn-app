@@ -11,7 +11,9 @@ import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.media.RingtoneManager
 import android.os.Build
+import android.os.Handler
 import android.os.IBinder
+import android.os.Looper
 import android.os.PowerManager
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -33,33 +35,67 @@ class AlarmService : Service() {
         const val EXTRA_BODY = "body"
         const val CHANNEL_ID = "sjosyn_alarm"
         const val NOTIFICATION_ID = 4271
-        // Hard safety cap — releases the wake lock even if stop somehow never
-        // fires, so a bug here can never silently drain the battery all day.
+        // Hard safety cap — auto-stops the ENTIRE alarm (sound + vibration +
+        // wake lock) even if the user never acknowledges, so a bug or an
+        // ignored alarm can never drain the battery / ring all day.
         const val MAX_WAKE_LOCK_MS = 10 * 60 * 1000L
     }
 
     private var mediaPlayer: MediaPlayer? = null
     private var vibrator: Vibrator? = null
     private var wakeLock: PowerManager.WakeLock? = null
+    private val autoStopHandler = Handler(Looper.getMainLooper())
+    private val autoStopRunnable = Runnable { stopAlarm() }
 
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (intent?.action == ACTION_STOP) {
+        // Null intent = OS re-delivery etter en kill (START_NOT_STICKY skal
+        // hindre dette, men vær defensiv): IKKE re-arm en fantom-alarm.
+        if (intent == null) {
+            stopSelf()
+            return START_NOT_STICKY
+        }
+        if (intent.action == ACTION_STOP) {
             stopAlarm()
             return START_NOT_STICKY
         }
 
-        val title = intent?.getStringExtra(EXTRA_TITLE) ?: "⚠ Sjøsyn-varsel"
-        val body = intent?.getStringExtra(EXTRA_BODY) ?: "Et fartøy krysset en vakt"
+        val title = intent.getStringExtra(EXTRA_TITLE) ?: "⚠ Sjøsyn-varsel"
+        val body = intent.getStringExtra(EXTRA_BODY) ?: "Et fartøy krysset en vakt"
 
         ensureChannel()
-        startForeground(NOTIFICATION_ID, buildNotification(title, body))
+        try {
+            startForeground(NOTIFICATION_ID, buildNotification(title, body))
+        } catch (e: Exception) {
+            // FGS-start nektet (Android 12+ bakgrunnsbegrensning, eller Doze
+            // nedgraderte FCM-meldingen). IKKE krasj prosessen — vis i det
+            // minste et vanlig varsel så brukeren blir varslet, ring/vibrer
+            // best-effort, og gi opp fint.
+            try {
+                val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                nm.notify(NOTIFICATION_ID, buildNotification(title, body))
+            } catch (_: Exception) { /* ignore */ }
+            startRinging()
+            startVibrating()
+            acquireWakeLock()
+            scheduleAutoStop()
+            return START_NOT_STICKY
+        }
         acquireWakeLock()
         startRinging()
         startVibrating()
+        scheduleAutoStop()
 
-        return START_STICKY
+        // START_NOT_STICKY: en drept alarm-tjeneste skal IKKE auto-restartes av
+        // OS med null-intent (ville re-armet en fantom-alarm). En reell ny
+        // krysning kommer uansett som en ny FCM-melding.
+        return START_NOT_STICKY
+    }
+
+    private fun scheduleAutoStop() {
+        autoStopHandler.removeCallbacks(autoStopRunnable)
+        autoStopHandler.postDelayed(autoStopRunnable, MAX_WAKE_LOCK_MS)
     }
 
     override fun onDestroy() {
@@ -85,15 +121,29 @@ class AlarmService : Service() {
     private fun buildNotification(title: String, body: String): Notification {
         val stopIntent = Intent(this, AlarmService::class.java).apply { action = ACTION_STOP }
         val stopPendingIntent = PendingIntent.getService(
-            this, 0, stopIntent,
+            this, 1, stopIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        val contentIntent = Intent(this, MainActivity::class.java).apply {
+        // Trykk på varsel-kroppen: åpne appen OG stopp alarmen. Dette er den
+        // naturlige gesten for en stresset bruker (som ellers ikke fant den
+        // lille «Stopp»-knappen). MainActivity leser stop_alarm-extra.
+        val openStopIntent = Intent(this, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            putExtra("stop_alarm", true)
+        }
+        val openStopPending = PendingIntent.getActivity(
+            this, 2, openStopIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
+        // Full-screen (låseskjerm): bare vis appen — IKKE stopp. Ellers ville
+        // alarmen stoppet i det full-screen-UI-et vises, før bekreftelse.
+        val fullScreenIntent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
         }
-        val contentPendingIntent = PendingIntent.getActivity(
-            this, 0, contentIntent,
+        val fullScreenPending = PendingIntent.getActivity(
+            this, 3, fullScreenIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
@@ -103,8 +153,8 @@ class AlarmService : Service() {
             .setContentText(body)
             .setPriority(NotificationCompat.PRIORITY_MAX)
             .setCategory(NotificationCompat.CATEGORY_ALARM)
-            .setFullScreenIntent(contentPendingIntent, true)
-            .setContentIntent(contentPendingIntent)
+            .setFullScreenIntent(fullScreenPending, true)
+            .setContentIntent(openStopPending)
             .addAction(0, "Stopp", stopPendingIntent)
             .setOngoing(true)
             .setAutoCancel(false)
@@ -158,6 +208,7 @@ class AlarmService : Service() {
     }
 
     private fun stopAlarm() {
+        autoStopHandler.removeCallbacks(autoStopRunnable)
         mediaPlayer?.let {
             try { if (it.isPlaying) it.stop() } catch (e: Exception) { /* ignore */ }
             it.release()

@@ -42,3 +42,13 @@
 # Web Push + cron + heartbeat: v2-funksjoner med config.path mounter seg
 # selv på sine paths (/push-subscribe, /push-unsubscribe, /push-delete-data,
 # /bg-poll-trigger, /heartbeat-status, /push-test).
+
+# ── Security headers ────────────────────────────────────────────────────────
+# API-only backend (ingen web-UI her) — derfor bare det minimale settet:
+# nosniff hindrer MIME-gjetting på JSON-svar, no-referrer lekker ingen sti.
+# Ingen CSP/frame-headere (ingenting å ramme inn), ingen asset/SPA-redirects.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"

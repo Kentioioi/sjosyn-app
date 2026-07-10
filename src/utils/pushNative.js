@@ -32,6 +32,15 @@ export function registerNativePush() {
   })
 }
 
+// Varig lytter på 'registration'-eventet. Fyrer ved første registrering OG hver
+// gang FCM roterer tokenet (onNewToken → PushNotificationsPlugin.onNewToken →
+// dette eventet). Returnerer en cleanup-funksjon.
+export function onRegistration(cb) {
+  if (!isNative()) return () => {}
+  const subPromise = PushNotifications.addListener('registration', (token) => cb(token.value))
+  return () => subPromise.then(sub => sub.remove())
+}
+
 export function onPushReceived(cb) {
   if (!isNative()) return () => {}
   const subPromise = PushNotifications.addListener('pushNotificationReceived', cb)

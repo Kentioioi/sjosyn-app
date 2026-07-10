@@ -27,7 +27,10 @@ exports.handler = async (event) => {
 
   let upstream
   try {
-    upstream = await fetch(upstreamUrl, { headers: upstreamHeaders })
+    upstream = await fetch(upstreamUrl, {
+      headers: upstreamHeaders,
+      signal: AbortSignal.timeout(8000),
+    })
   } catch (err) {
     return {
       statusCode: 502,

@@ -46,6 +46,7 @@ async function getFcmAccessToken() {
       grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
       assertion: jwt,
     }),
+    signal: AbortSignal.timeout(5_000),
   })
   if (!res.ok) throw new Error(`FCM OAuth (${res.status}): ${(await res.text()).slice(0, 200)}`)
   const data = await res.json()
@@ -74,6 +75,7 @@ async function sendFcmMessage(fcmToken, data = {}) {
     method: 'POST',
     headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ message }),
+    signal: AbortSignal.timeout(5_000),
   })
   if (!res.ok) {
     const text = await res.text()

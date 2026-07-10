@@ -14,7 +14,7 @@ import { useTripwireAlerts } from './hooks/useTripwireAlerts'
 import PushSetupModal from './components/PushSetupModal'
 import AlarmSoundModal from './components/AlarmSoundModal'
 import InstallModal from './components/InstallModal'
-import { syncTripwiresToBackend, getExistingSubscription } from './utils/pushSubscribe'
+import { syncTripwiresToBackend, getExistingSubscription, startNativePushTokenSync } from './utils/pushSubscribe'
 import { formatSpeed } from './utils/vesselTypes'
 import { useBarentswatch, zoomToPollInterval } from './hooks/useBarentswatch'
 import { useVesselTrack } from './hooks/useVesselTrack'
@@ -517,6 +517,18 @@ export default function App() {
       window.removeEventListener('online', onOnline)
     }
   }, [doSync])
+
+  // Native FCM-token-rotasjon: oppdater lagret token + re-sync vaktene når FCM
+  // roterer tokenet. Uten dette pusher backend til et dødt token (→ 404 → sub
+  // slettes) og bakgrunnsdekningen dør stille. Varig lytter; refs gir ferske
+  // vakter. No-op i nettleser (ikke-native).
+  useEffect(() => {
+    const cleanup = startNativePushTokenSync(
+      () => tripwiresRef.current,
+      () => alarmModeRef.current,
+    )
+    return cleanup
+  }, [])
 
   const tripwireUiState = useMemo(() => {
     if (drawMode === 'point0') return 'drawing-0'

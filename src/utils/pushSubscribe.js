@@ -3,7 +3,7 @@
 // unsubscribe / slette uten å vente på server-roundtrip.
 
 import { API_BASE } from './apiBase'
-import { isNative, registerNativePush } from './pushNative'
+import { isNative, registerNativePush, onRegistration } from './pushNative'
 
 const UNSUB_TOKEN_KEY = 'mw_push_unsub_token'
 const FCM_TOKEN_KEY = 'mw_fcm_token'
@@ -37,6 +37,24 @@ export async function subscribeToPush() {
   localStorage.setItem(FCM_TOKEN_KEY, token)
   localStorage.setItem(PUSH_ENABLED_KEY, '1')
   return token
+}
+
+// Installer en VARIG lytter på FCM-token-rotasjon. Når FCM roterer tokenet
+// (onNewToken), oppdater lagret token og re-sync vaktene til backend under det
+// nye tokenet — ellers pusher backend til et dødt token (→ 404 → sub slettes)
+// og bakgrunnsdekningen dør stille til brukeren tilfeldigvis åpner appen igjen.
+// getTripwires/getAlarmMode er gettere (les ferske ref-verdier). Returnerer
+// cleanup. Backend lager ny record under det nye tokenet med samme unsubToken
+// (klienten sender den lagrede), så unsubscribe/slett fortsatt virker.
+export function startNativePushTokenSync(getTripwires, getAlarmMode) {
+  if (!isNative()) return () => {}
+  return onRegistration(async (token) => {
+    if (!token || localStorage.getItem(PUSH_ENABLED_KEY) !== '1') return
+    if (token === localStorage.getItem(FCM_TOKEN_KEY)) return   // uendret
+    localStorage.setItem(FCM_TOKEN_KEY, token)
+    try { await syncTripwiresToBackend(getTripwires(), getAlarmMode()) }
+    catch (err) { console.error('FCM token-rotasjon: re-sync feilet', err) }
+  })
 }
 
 // Stopper abonnement (backend-side) + best-effort unsubscribe til backenden

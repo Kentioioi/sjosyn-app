@@ -1,15 +1,22 @@
 # Web Push bakgrunnsvarsling — Netlify-oppsett
 
+> ⚠️ **LEGACY / SIKKERHET:** Denne native-appen bruker nå **FCM** (ikke Web Push).
+> VAPID-variablene under er utdaterte for denne appen. Viktigere: reelle
+> hemmeligheter (CRON_SECRET + VAPID-privatnøkkel) ble tidligere committet i denne
+> fila og ligger fortsatt i git-historikken. **Begge MÅ roteres** før lansering —
+> nye verdier settes KUN i Netlify env, aldri i git. (Samme hemmeligheter er lekket
+> i web-PWA-repoet også; én rotasjon dekker begge.)
+
 For å aktivere bakgrunnsvarsling på Sjøsyn-deployen, må disse environment-variablene være satt i Netlify-prosjektet (Site settings → Environment variables):
 
 | Variable | Verdi | Hvor fra |
 |---|---|---|
 | `VAPID_PUBLIC_KEY` | `BEKLDL72f6NxSLCU1C86TjRCz9PuLnfboWf7l_UN-Rb_XMHtSy51ul0Mc2Rybzmu72CueXYsckcBwZfacMsrxWQ` | Generert lokalt (samme som i `src/utils/pushConfig.js`) |
-| `VAPID_PRIVATE_KEY` | `1-FQFmHe-eYUKiLkmy1aCzAkFnUKkFzpoMKfOeTFScQ` | Generert lokalt — **hold hemmelig** |
+| `VAPID_PRIVATE_KEY` | `<hemmelig — ligger i Netlify env, aldri i git>` | Generert lokalt — **hold hemmelig** |
 | `VAPID_SUBJECT` | `mailto:kenneth222.kn@gmail.com` | Kontakt-e-post (kreves av push-tjenester) |
 | `BW_BG_CLIENT_ID` | `<din-nye-Sjøsyn-AIS-klient-id>` | Registreres på barentswatch.no/minside (egen klient for backend) |
 | `BW_BG_CLIENT_SECRET` | `<din-nye-Sjøsyn-AIS-klient-secret>` | Samme registrering |
-| `CRON_SECRET` | `c091ddead74791980f68228cf52903501c4eca5fba5c8abeba50a22890cbb625` | Generert lokalt — ekstern cron må sende dette i Authorization-header |
+| `CRON_SECRET` | `<hemmelig — ligger i Netlify env, aldri i git>` | Generert lokalt — ekstern cron må sende dette i Authorization-header |
 
 ## Ekstern cron-oppsett
 
@@ -20,7 +27,7 @@ ekstern cron som ringer `/bg-poll-trigger` hvert minutt.
 1. cron-job.org → Create cronjob
 2. URL: `https://din-domene.netlify.app/bg-poll-trigger`
 3. Method: POST
-4. Headers: `Authorization: Bearer c091ddead74791980f68228cf52903501c4eca5fba5c8abeba50a22890cbb625`
+4. Headers: `Authorization: Bearer <hemmelig — ligger i Netlify env, aldri i git>`
 5. Schedule: hvert minutt (`* * * * *`)
 6. Enable
 

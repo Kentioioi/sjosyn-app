@@ -2,7 +2,10 @@ import { getStore } from '@netlify/blobs'
 import corsModule from './_cors.cjs'
 const { corsHeaders } = corsModule
 
-const STALE_MS = 3 * 60_000
+// Cron (cron-job.org) pinger /bg-poll-trigger hvert 3. min. Stale = 2+ tapte
+// ticks pluss jitter — 8 min. (3 min traff cron-intervallet nøyaktig og
+// flappet 503 på grensen under normal drift.)
+const STALE_MS = 8 * 60_000
 
 export default async (req) => {
   const cors = corsHeaders(req.headers.get('origin'))

@@ -1,6 +1,13 @@
 import { getStore } from '@netlify/blobs'
+import crypto from 'node:crypto'
 import corsModule from './_cors.cjs'
 const { corsHeaders } = corsModule
+
+function safeEqual(a, b) {
+  const ab = Buffer.from(String(a ?? ''))
+  const bb = Buffer.from(String(b ?? ''))
+  return ab.length === bb.length && crypto.timingSafeEqual(ab, bb)
+}
 
 export default async (req) => {
   const cors = corsHeaders(req.headers.get('origin'))
@@ -18,7 +25,7 @@ export default async (req) => {
 
   const rec = await subs.get(key, { type: 'json' })
   if (!rec) return new Response(JSON.stringify({ ok: true, note: 'already gone' }), { headers: { 'Content-Type': 'application/json', ...cors } })
-  if (rec.unsubToken !== token) return new Response('Invalid token', { status: 403, headers: cors })
+  if (!safeEqual(token, rec.unsubToken)) return new Response('Invalid token', { status: 403, headers: cors })
 
   await subs.delete(key)
   return new Response(JSON.stringify({ ok: true }), { headers: { 'Content-Type': 'application/json', ...cors } })

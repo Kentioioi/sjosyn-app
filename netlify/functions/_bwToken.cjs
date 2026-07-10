@@ -14,11 +14,18 @@ async function getBwToken() {
     client_secret: process.env.BW_BG_CLIENT_SECRET,
     scope: 'ais',
   })
-  const r = await fetch(TOKEN_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body,
-  })
+  let r
+  try {
+    r = await fetch(TOKEN_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+      signal: AbortSignal.timeout(8000),
+    })
+  } catch {
+    // Nettverksfeil/timeout mot BW → kall-siden fanger dette og svarer 502.
+    throw new Error('bw_token_upstream_unavailable')
+  }
   if (!r.ok) throw new Error(`BW token (${r.status}): ${(await r.text()).slice(0, 200)}`)
   const data = await r.json()
   cachedToken = data.access_token

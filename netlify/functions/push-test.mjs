@@ -4,10 +4,17 @@
 // Bruk: curl -X POST -H "Authorization: Bearer <CRON_SECRET>" .../push-test
 
 import { getStore } from '@netlify/blobs'
+import crypto from 'node:crypto'
 import corsModule from './_cors.cjs'
 import fcmModule from './_fcm.cjs'
 const { corsHeaders } = corsModule
 const { sendFcmMessage } = fcmModule
+
+function safeEqual(a, b) {
+  const ab = Buffer.from(String(a ?? ''))
+  const bb = Buffer.from(String(b ?? ''))
+  return ab.length === bb.length && crypto.timingSafeEqual(ab, bb)
+}
 
 async function listAll(store) {
   const all = []
@@ -25,7 +32,7 @@ export default async (req) => {
   if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors })
   if (req.method !== 'POST') return new Response('Method not allowed', { status: 405, headers: cors })
   const auth = req.headers.get('authorization') || ''
-  if (!process.env.CRON_SECRET || auth !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!process.env.CRON_SECRET || !safeEqual(auth, `Bearer ${process.env.CRON_SECRET}`)) {
     return new Response('Unauthorized', { status: 401, headers: cors })
   }
 

@@ -52,6 +52,15 @@
             </intent-filter>
         </service>
 
+        <!-- FGS-type: alarmen spiller lyd på ALARM-strømmen, derav mediaPlayback.
+             MERK for Play-review + enhetstest: Android 14+ kan forvente en
+             MediaSession for mediaPlayback. AlarmService bruker en bar
+             MediaPlayer uten MediaSession. Hvis Play avviser typen eller
+             tjenesten nektes å starte på nyere enheter, vurder å bytte til
+             foregroundServiceType="specialUse" (+ FOREGROUND_SERVICE_SPECIAL_USE
+             og en <property> som beskriver sikkerhetsalarmen). startForeground()
+             er nå try/catch-et (AlarmService.kt) så en type-nekt krasjer ikke
+             lenger prosessen — den degraderer til et vanlig varsel. -->
         <service
             android:name=".AlarmService"
             android:exported="false"
