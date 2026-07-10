@@ -22,8 +22,10 @@ const FETCH_TIMEOUT_MS = 20_000
 
 // Egen modul-cache (kollidererer ikke med wave-cachen — separat modul).
 const cache = new Map()
-// Persist + hydrate via IndexedDB (own 'wind' store) — same as useWaveForecast.
-const idb = makeForecastStore('wind', TTL)
+// Persist + hydrate via IndexedDB — 'wind-v3': nøkkelformatet er uendret, men
+// koordinatene bak nøklene flyttet da offset-rutenettet ble fjernet; gamle
+// entries ville vist stale posisjoner.
+const idb = makeForecastStore('wind-v3', TTL)
 const hydratedOnce = idb.hydrate(cache)
 let failCooldownUntil = 0
 
@@ -81,13 +83,14 @@ export function useWindForecast(enabled, bounds, zoom) {
       return
     }
     let cancelled = false
-    const plan = buildWavePlan(bounds, zoom, { multi: false })
+    // Samme rutenett som bølge — celler med begge datasett vises som ett
+    // kombinert merke (ForecastComboLayer), så verdiene gjelder samme punkt.
+    const plan = buildWavePlan(bounds, zoom)
 
     const emit = () => {
       if (cancelled) return
       const prevByKey = new Map(emittedRef.current.map(p => [p.key, p]))
       const pts = []
-      const seenPos = new Set()
       for (const c of plan.cells) {
         const hit = cache.get(c.key)
         if (!hit) continue
@@ -95,9 +98,6 @@ export function useWindForecast(enabled, bounds, zoom) {
         if (!hit.values) continue
         const pos = hit.pos
         if (!pos) continue
-        const posKey = pos[0].toFixed(3) + ':' + pos[1].toFixed(3)
-        if (seenPos.has(posKey)) continue
-        seenPos.add(posKey)
         const old = prevByKey.get(c.key)
         pts.push(old && old.values === hit.values
           ? old
@@ -129,15 +129,24 @@ export function useWindForecast(enabled, bounds, zoom) {
       const signal = fetchSignal(ctrl)
       setLoading(true)
 
+      // Tegn nye celler etter hvert som svarene lander (throttlet) — se
+      // useWaveForecast for begrunnelse.
+      let emitTimer = 0
+      const scheduleEmit = () => {
+        if (emitTimer) return
+        emitTimer = setTimeout(() => { emitTimer = 0; emit() }, 150)
+      }
+
       let anyError = false
       const results = await Promise.allSettled(todo.map(async (c) => {
-        const [lat, lon] = [c.samples[0].lat, c.samples[0].lon]
+        const [lat, lon] = [c.lat, c.lon]
         const url = `${BASE}?lat=${lat.toFixed(4)}&lon=${lon.toFixed(4)}`
         const prev = cache.get(c.key)
         const headers = prev?.lastModified ? { 'If-Modified-Since': prev.lastModified } : {}
         const res = await metFetch(url, { signal, headers })
         if (res.status === 304 && prev) {
           cacheSet(c.key, { ...prev, at: Date.now() })
+          scheduleEmit()
           return
         }
         if (!res.ok) {
@@ -155,21 +164,42 @@ export function useWindForecast(enabled, bounds, zoom) {
         const ts = data?.properties?.timeseries
         if (err || !Array.isArray(ts) || !ts.length) {
           cacheSet(c.key, { values: null, at: Date.now() })
+          scheduleEmit()
           return
         }
+        // locationforecast er timesvis bare de første ~3 døgnene og går så
+        // over til 6-timers steg. Resten av koden indekserer serien som
+        // "timer siden t0" — så vi RESAMPLER til et ekte timesgrid: kjente
+        // punkter plasseres på sin faktiske time, fart interpoleres lineært
+        // i gapene, retning tar nærmeste kjente (sirkulær interpolasjon er
+        // ikke verdt bryet). Uten dette "slutter" vindvarselet på ~3,5 døgn.
         const t0 = Math.floor(Date.parse(ts[0].time) / 1000)
-        const vs = ts.map(e => {
-          const v = e?.data?.instant?.details?.wind_speed
-          return Number.isFinite(v) ? v : null
-        })
-        const vd = ts.map(e => {
-          const v = e?.data?.instant?.details?.wind_from_direction
-          return Number.isFinite(v) ? v : null
-        })
-        const coords = data?.geometry?.coordinates
-        const pos = Array.isArray(coords) && coords.length >= 2
-          ? [coords[1], coords[0]]
-          : [lat, lon]
+        const lastT = Math.floor(Date.parse(ts[ts.length - 1].time) / 1000)
+        const hours = Math.max(0, Math.floor((lastT - t0) / 3600))
+        const vs = new Array(hours + 1).fill(null)
+        const vd = new Array(hours + 1).fill(null)
+        const known = []
+        for (const e of ts) {
+          const h = Math.round((Date.parse(e.time) / 1000 - t0) / 3600)
+          if (h < 0 || h > hours) continue
+          const s = e?.data?.instant?.details?.wind_speed
+          const d = e?.data?.instant?.details?.wind_from_direction
+          vs[h] = Number.isFinite(s) ? s : null
+          vd[h] = Number.isFinite(d) ? d : null
+          known.push(h)
+        }
+        for (let a = 0; a < known.length - 1; a++) {
+          const h0 = known[a], h1 = known[a + 1]
+          if (h1 - h0 <= 1) continue
+          for (let h = h0 + 1; h < h1; h++) {
+            const f = (h - h0) / (h1 - h0)
+            if (vs[h0] != null && vs[h1] != null) vs[h] = vs[h0] + (vs[h1] - vs[h0]) * f
+            vd[h] = f < 0.5 ? vd[h0] : vd[h1]
+          }
+        }
+        // Vis merket på forespurt rutenett-senter (jevnt mønster) — ikke
+        // MET-geometrien.
+        const pos = [lat, lon]
         const { values, dirs } = aggregateHorizons(t0, vs, vd, Date.now())
         cacheSet(c.key, {
           values,
@@ -179,7 +209,9 @@ export function useWindForecast(enabled, bounds, zoom) {
           lastModified: res.headers.get('Last-Modified') || prev?.lastModified || null,
           at: Date.now(),
         })
+        scheduleEmit()
       }))
+      clearTimeout(emitTimer)
 
       for (const r of results) {
         if (r.status === 'rejected' && r.reason?.name !== 'AbortError') anyError = true

@@ -2637,3 +2637,156 @@ html, body, #root {
 .layer-collapsed-label { font-size: 0.7rem; font-weight: 500; margin-left: 2px; }
 .tap-hint { position: absolute; left: 50%; transform: translateX(-50%); bottom: calc(var(--bottom-nav-h, 56px) + 12px); display: flex; align-items: center; gap: 8px; background: rgba(8, 14, 20, 0.92); color: #fff; padding: 8px 14px; border-radius: 999px; font-size: 0.8rem; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4); z-index: 500; max-width: 90%; }
 .tap-hint-close { background: none; border: none; color: #fff; opacity: 0.8; font-size: 0.9rem; line-height: 1; padding: 0 2px; cursor: pointer; }
+
+/* ═══ Varsel-redesign (portert fra PWA): sirkelmerker, combo, glass-linje, popup-graf ═══ */
+/* ─── Varselmerker — åpne sirkler med verdi + pil ut fra kanten ───
+   Wrapper (30×30, Leaflet-hitboks) er klikkflaten; 48×48-SVG-en sentreres
+   med negativ margin og er pointer-events:none så pila kan stikke utenfor
+   uten å stjele tap fra fartøy under. */
+.fc-badge-wrap { background: none; border: none; cursor: pointer; }
+.fc-badge { display: block; margin: -9px 0 0 -9px; pointer-events: none; }
+.fc-badge text {
+  font-family: var(--font);
+  paint-order: stroke;          /* halo BAK glyfene */
+  stroke-width: 2.4px;
+  stroke-linejoin: round;
+}
+.fc-badge-val  { font-size: 9.5px; font-weight: 700; }
+.fc-badge-unit { font-size: 6px;   font-weight: 600; }
+/* Kombinert bølge+vind-merke: 72×72-canvas (to pil-bånd) — sentrer mot
+   34×34-hitboksen (r 16-sirkel, større enn enkelt-merkene for to verdier). */
+.fc-badge--combo { margin: -19px 0 0 -19px; }
+.fc-combo-val {
+  font-size: 8.5px;
+  font-weight: 700;
+  font-family: var(--font);
+  paint-order: stroke;
+  stroke-width: 2.2px;
+  stroke-linejoin: round;
+}
+.fc-combo-unit {
+  font-size: 5.5px;
+  font-weight: 600;
+  font-family: var(--font);
+  paint-order: stroke;
+  stroke-width: 2px;
+  stroke-linejoin: round;
+}
+
+/* ─── Varsel-popup — glasskort forankret til merket ─── */
+.fc-popup .leaflet-popup-content-wrapper {
+  background: rgba(10, 20, 32, 0.82);
+  -webkit-backdrop-filter: blur(10px) saturate(1.15);
+  backdrop-filter: blur(10px) saturate(1.15);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  color: var(--text);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+.fc-popup .leaflet-popup-content { margin: 10px 12px; line-height: 1.35; font-family: var(--font); }
+.fc-popup .leaflet-popup-tip {
+  background: rgba(10, 20, 32, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.fc-popup-header {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  font-size: 0.7rem; font-weight: 600; color: var(--text-muted);
+}
+.fc-popup-close {
+  position: relative;
+  background: none; border: none; color: var(--text-muted);
+  font-size: 0.8rem; cursor: pointer; padding: 2px 4px; margin: -2px -4px 0 0;
+}
+/* Usynlig 44×44-trykksone — ✕ står alene i hjørnet, ingen nabo å stjele fra */
+.fc-popup-close::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+}
+.fc-popup-val { font-size: 1.5rem; font-weight: 700; margin: 2px 0; }
+.fc-popup-meta { font-size: 0.72rem; color: var(--text); display: grid; gap: 1px; }
+/* Kombinert popup: to lag-seksjoner i samme kort */
+.fc-popup-sec + .fc-popup-sec {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.fc-popup-sec-label { font-size: 0.66rem; font-weight: 700; margin-top: 2px; }
+.fc-popup-sec .fc-popup-val { font-size: 1.25rem; }
+.fc-spark { display: block; margin-top: 6px; }
+.fc-spark-lbl { font-size: 6.5px; fill: var(--text-muted); font-family: var(--font); }
+.fc-spark-grid { stroke: rgba(255, 255, 255, 0.1); stroke-width: 1; }
+.fc-spark-grid--base { stroke: rgba(255, 255, 255, 0.18); }
+.fc-popup-foot {
+  margin-top: 6px; font-size: 0.6rem; color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 4px;
+
+/* Merketetthet-slider i Innstillinger (flyttet fra tidslinja) */
+.settings-density { width: 132px; flex-shrink: 0; }
+/* ─── Varsel-linje — samlet glass-tidslinje for bølge + vind ─── */
+.fc-bar {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  /* Sitt over fartøy-panelets synlige del når et skip er valgt (--vessel-peek
+     settes av VesselPanel), ellers nederst. Følger panelet om det dras. */
+  bottom: calc(var(--vessel-peek, 0px) + 10px);
+  transition: bottom 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+  z-index: 650;
+  background: rgba(10, 20, 32, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 8px 10px 6px;
+  animation: slideUp 0.2s ease-out;
+}
+@supports (backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px)) {
+  .fc-bar {
+    background: rgba(10, 20, 32, 0.55);
+    -webkit-backdrop-filter: blur(14px) saturate(1.15);
+    backdrop-filter: blur(14px) saturate(1.15);
+  }
+}
+.fc-bar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+/* Gjennomsiktige knapper inni glasset — mindre "boks i boks" */
+.fc-bar .horizon-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+.fc-bar .horizon-btn.active { background: var(--accent2); border-color: var(--accent); }
+/* Forklaring over chips-raden + egen, adskilt slider-seksjon */
+.fc-bar-hint {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+.fc-bar .horizon-opts { width: 100%; gap: 4px; margin-top: 2px; }
+.fc-bar .horizon-btn { flex: 1; min-width: 0; padding: 6px 2px; font-size: 0.64rem; }
+.fc-slider-sec {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.fc-slider-wrap { position: relative; }
+.fc-slider { width: 100%; }
+/* Solid pille — 55 %-glasset alene gjør tekst uleselig på lyse kartlag */
+.fc-status {
+  display: table;
+  margin: 4px auto 0;
+  background: rgba(10, 20, 32, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 2px 10px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+.fc-status.is-error { color: #ff7b84; }
