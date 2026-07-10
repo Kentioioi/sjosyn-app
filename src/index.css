@@ -217,7 +217,6 @@ html, body, #root {
 .conn-dot.disconnected { background: var(--danger); }
 
 .settings-conn { display: flex; align-items: center; gap: 6px; }
-.wave-timeline-label.is-error { color: var(--danger); }
 
 /* ─── Error banner ─── */
 .error-banner {
@@ -2065,78 +2064,6 @@ html, body, #root {
   border-top: 1px solid var(--border);
 }
 
-/* ─── Bølgevarsel — høydemerker på sjøen ─── */
-.wave-badge {
-  display: inline-flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 1px;
-  min-width: 25px;
-  padding: 0.9px 3.6px;   /* 10% tighter text→border than 1px 4px */
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  font-family: var(--font);
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(5, 20, 35, 0.75);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
-  opacity: 0.92;
-  cursor: pointer;
-  line-height: 1.2;
-  white-space: nowrap;
-}
-.wave-unit {
-  font-size: 0.5rem;
-  font-weight: 600;
-  opacity: 0.85;
-}
-/* Tynn retningspil på enden av merket — roteres inline mot bølgeretningen.
-   Linje-pil med skaft, bevisst ulik de fylte fartøytrekantene. */
-.wave-dir {
-  display: inline-block;
-  align-self: center;
-  line-height: 0;
-  margin-left: 2px;
-  opacity: 0.95;
-}
-.wave-dir svg { display: block; }
-
-/* ─── Vind-merker — bevisst ulik bølge: skarpere hjørner, fylt pil ─── */
-.wind-badge {
-  display: inline-flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 1px;
-  min-width: 27px;
-  padding: 0.9px 3.6px;   /* 10% tighter text→border than 1px 4px */
-  border-radius: 4px;                                  /* skarpere enn bølge (8px) */
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  font-family: var(--font);
-  font-size: 0.62rem;
-  font-weight: 800;
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(5, 20, 35, 0.75);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
-  opacity: 0.94;
-  cursor: pointer;
-  line-height: 1.2;
-  white-space: nowrap;
-}
-.wind-unit {
-  font-size: 0.5rem;
-  font-weight: 600;
-  opacity: 0.8;
-  margin-left: 1px;
-}
-.wind-dir {
-  display: inline-block;
-  align-self: center;
-  line-height: 0;
-  margin-left: 2px;
-  opacity: 0.95;
-}
-.wind-dir svg { display: block; }
 
 /* ─── Ansvarsfraskrivelse ved første oppstart ─── */
 .disclaimer-overlay {
@@ -2352,59 +2279,8 @@ html, body, #root {
   height: 44px;
 }
 .wind-unit-btn.active { background: #3aa15a; border-color: #3aa15a; color: #fff; }
-/* Vindtidslinje deler layout med bølge, men grønn topp-kant */
-.wind-timeline { border-top-color: #3aa15a; }
 
-/* Tetthets-rad: «Færre merker»-slider (tynner tetteste områder først) */
-.density-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 6px;
-}
-.density-label {
-  flex-shrink: 0;
-  font-size: 0.66rem;
-  color: var(--text-muted);
-}
-.density-slider { flex: 1; }
-
-/* ─── Bølgetidslinje — bunnpanel med vinduer + time-for-time-slider ─── */
-.wave-timeline {
-  position: absolute;
-  left: 8px;
-  right: 8px;
-  /* Sitt over fartøy-panelets synlige del når et skip er valgt (--vessel-peek
-     settes av VesselPanel), ellers nederst. Følger panelet om det dras. */
-  bottom: calc(var(--vessel-peek, 0px) + 8px);
-  transition: bottom 0.32s cubic-bezier(0.32, 0.72, 0, 1);
-  z-index: 650;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-top: 2px solid var(--accent);
-  border-radius: 14px;
-  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.45);
-  padding: 10px 12px 8px;
-  animation: slideUp 0.2s ease-out;
-}
-.wave-timeline-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-.wave-timeline .timeline-slider { width: 100%; }
-
-.wave-timeline-label {
-  font-size: 0.66rem;
-  color: var(--text-muted);
-  text-align: center;
-  margin-top: 4px;
-  min-height: 1em;
-}
-
-/* Tidshorisont-velger i innstillingene */
+/* Tidshorisont-velger — brukt av ForecastBar (chips) */
 .horizon-opts {
   display: flex;
   gap: 5px;
