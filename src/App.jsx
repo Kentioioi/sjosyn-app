@@ -114,7 +114,7 @@ export default function App() {
 
   // Brukerpreferanser — lagres på enheten
   const [prefs, setPrefs] = useState(() => {
-    const defaults = { showNames: true, clusterStationary: true, layers: { wave: { enrolled: false, active: false }, wind: { enrolled: false, active: false } }, layerPanelCollapsed: false, waveHorizon: 12, windHorizon: 12, windUnit: 'ms', forecastThin: 0, alarmMode: 'chime', alarmSoundAck: false, corridorWidthM: 1000, savedFleet: [], home: null }
+    const defaults = { showNames: true, clusterStationary: true, layers: { wave: { enrolled: false, active: false }, wind: { enrolled: false, active: false } }, layerPanelCollapsed: false, waveHorizon: 12, windHorizon: 12, windUnit: 'ms', forecastThin: 0, alarmMode: 'chime', alarmSoundAck: false, corridorWidthM: 1000, driftRadiusM: 200, savedFleet: [], home: null }
     try {
       const merged = { ...defaults, ...JSON.parse(localStorage.getItem('mw_prefs') ?? '{}') }
       // Migrate old values (3 t was dropped, 'all' was replaced by the longest horizon)
@@ -258,12 +258,13 @@ export default function App() {
     const t = setTimeout(() => setInAppTripwire(null), 12_000)
     return () => clearTimeout(t)
   }, [inAppTripwire])
-  // drawMode: 'idle' | 'point0'/'point1' (linje) | 'route' (korridor: flere punkter)
+  // drawMode: 'idle' | 'point0'/'point1' (linje) | 'route' (korridor) | 'circle' (driftvakt)
   const [drawMode, setDrawMode] = useState('idle')
   const [draftPoint, setDraftPoint] = useState(null)
   const [draftPath, setDraftPath] = useState([])   // korridor under tegning
   const [draftWidth, setDraftWidth] = useState(1000) // korridor-bredde under tegning
   const [drawWarn, setDrawWarn] = useState(false)
+  const [draftCircle, setDraftCircle] = useState(null)   // driftvakt under tegning: { center:[lat,lon], radiusM }
 
   const promptNotify = () => {
     if (typeof Notification !== 'undefined' && Notification.permission === 'default') {
@@ -301,6 +302,9 @@ export default function App() {
     } else if (drawMode === 'route') {
       // Korridor: legg til punkt i ruta. Avsluttes via «Ferdig».
       setDraftPath(prev => [...prev, latlng])
+    } else if (drawMode === 'circle') {
+      // Driftvakt: tapp i kartet flytter sirkelens senter.
+      setDraftCircle(c => (c ? { ...c, center: latlng } : c))
     }
   }, [drawMode, draftPoint, selectedVessel?.mmsi])
 
@@ -328,6 +332,28 @@ export default function App() {
     promptNotify()
   }, [selectedVessel?.mmsi, selectedVessel?.name, draftPath, draftWidth])
 
+  // Driftvakt: lagre sirkelen som vakt. Deteksjonen er tilstandsbasert (se
+  // useTripwireAlerts / bg-poll) — re-fyrer så lenge fartøyet er utenfor.
+  const handleSaveCircle = useCallback(() => {
+    const mmsi = selectedVessel?.mmsi
+    if (!mmsi || !draftCircle || !(draftCircle.radiusM >= 50)) return
+    setTripwires(prev => ({
+      ...prev,
+      [mmsi]: {
+        id: (crypto?.randomUUID?.() ?? `${mmsi}-${Date.now()}`),
+        type: 'circle',
+        center: draftCircle.center,
+        radiusM: draftCircle.radiusM,
+        armed: true,
+        vesselName: selectedVessel.name || null, createdAt: Date.now(),
+      },
+    }))
+    setPrefs(p => ({ ...p, driftRadiusM: draftCircle.radiusM }))
+    setDrawMode('idle')
+    setDraftCircle(null)
+    promptNotify()
+  }, [selectedVessel?.mmsi, selectedVessel?.name, draftCircle])
+
   // Endre bredde på en aktiv korridor (og husk valget som ny default).
   const handleSetCorridorWidth = useCallback((mmsi, widthM) => {
     setTripwires(prev => {
@@ -338,11 +364,54 @@ export default function App() {
     setPrefs(p => ({ ...p, corridorWidthM: widthM }))
   }, [])
 
-  // Start tegning. type 'line' (to punkter) eller 'corridor' (flere punkter).
+  // Endre radius på en aktiv driftvakt (og husk valget som ny default).
+  const handleSetCircleRadius = useCallback((mmsi, radiusM) => {
+    setTripwires(prev => {
+      const tw = prev[String(mmsi)]
+      if (!tw || tw.type !== 'circle') return prev
+      return { ...prev, [String(mmsi)]: { ...tw, radiusM } }
+    })
+    setPrefs(p => ({ ...p, driftRadiusM: radiusM }))
+  }, [])
+
+  // Flytt driftvakt-senteret til fartøyets nåværende posisjon — nyttig når
+  // båten har svaiet på plass etter ankring.
+  const handleRecenterCircle = useCallback((mmsi) => {
+    const live = vessels.find(v => String(v.mmsi) === String(mmsi))
+    if (!live || !Number.isFinite(live.lat) || !Number.isFinite(live.lon)) return
+    setTripwires(prev => {
+      const tw = prev[String(mmsi)]
+      if (!tw || tw.type !== 'circle') return prev
+      return { ...prev, [String(mmsi)]: { ...tw, center: [live.lat, live.lon] } }
+    })
+  }, [vessels])
+
+  // Start tegning. type 'line' (to punkter), 'corridor' (flere punkter) eller
+  // 'circle' (driftvakt, auto-sentrert på fartøyets siste AIS-posisjon).
   const handleStartDraw = useCallback((type = 'line') => {
     const mmsi = selectedVessel?.mmsi
+    if (type === 'circle') {
+      // Driftvakt: auto-sentrert på fartøyets siste AIS-posisjon.
+      if (!mmsi) return
+      const live = vessels.find(v => String(v.mmsi) === String(mmsi)) ?? selectedVessel
+      if (!Number.isFinite(live?.lat) || !Number.isFinite(live?.lon)) return
+      setDraftPoint(null)
+      setDraftPath([])
+      setDrawWarn(false)
+      setDraftCircle({ center: [live.lat, live.lon], radiusM: prefs.driftRadiusM ?? 200 })
+      // Nullstill forrige tripwire på dette fartøyet så brukeren alltid kan
+      // tegne en ny rett etter en krysning uten å klikke Fjern først.
+      setTripwires(prev => {
+        if (!prev[mmsi]) return prev
+        const next = { ...prev }; delete next[mmsi]; return next
+      })
+      setDrawMode('circle')
+      setPanelCollapsed(true)
+      return
+    }
     setDraftPoint(null)
     setDraftPath([])
+    setDraftCircle(null)
     setDrawWarn(false)
     setDraftWidth(prefs.corridorWidthM ?? 1000)
     // Nullstill forrige tripwire på dette fartøyet så brukeren alltid kan
@@ -355,12 +424,13 @@ export default function App() {
     }
     setDrawMode(type === 'corridor' ? 'route' : 'point0')
     setPanelCollapsed(true)   // dra ned detalj-panelet så kartet er fritt å tegne på
-  }, [selectedVessel?.mmsi, prefs.corridorWidthM])
+  }, [selectedVessel, prefs.corridorWidthM, prefs.driftRadiusM, vessels])
 
   const handleCancelDraw = useCallback(() => {
     setDrawMode('idle')
     setDraftPoint(null)
     setDraftPath([])
+    setDraftCircle(null)
     setDrawWarn(false)
   }, [])
 
@@ -378,8 +448,19 @@ export default function App() {
     const mmsi = String(vessel.mmsi)
     const tw = tripwires[mmsi]
     if (!tw) return
-    const isCorridor = tw.type === 'corridor'
     const klokke = new Date().toLocaleTimeString('nb-NO', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Oslo' })
+    if (tw.type === 'circle') {
+      const distM = Math.round(distanceMeters([vessel.lat, vessel.lon], tw.center))
+      setInAppTripwire({
+        title: `⚠ ${vessel.name || `MMSI ${mmsi}`} driver utenfor området`,
+        body: `${distM} m fra senter (radius ${tw.radiusM} m) kl. ${klokke}`,
+        mode: prefs.alarmMode,
+        data: { mmsi, lat: vessel.lat, lon: vessel.lon, ts: Date.now() },
+        ts: Date.now(),
+      })
+      return
+    }
+    const isCorridor = tw.type === 'corridor'
     setInAppTripwire({
       title: isCorridor
         ? `⚠ ${vessel.name || `MMSI ${mmsi}`} forlot ruta`
@@ -859,9 +940,12 @@ export default function App() {
           tripwireDraftPoint={draftPoint}
           tripwireDraftPath={draftPath}
           tripwireDraftWidth={draftWidth}
+          tripwireDraftCircle={draftCircle}
           onAddTripwirePoint={handleAddTripwirePoint}
           onRemoveTripwire={handleRemoveTripwire}
           onSetCorridorWidth={handleSetCorridorWidth}
+          onSetCircleRadius={handleSetCircleRadius}
+          onRecenterCircle={handleRecenterCircle}
           bounds={bounds}
           aisCredit={!isDemoMode}
           waveCredit={waveEnabled}
@@ -1045,6 +1129,10 @@ export default function App() {
                   <strong>Ny vakt – rute</strong>
                   <span>Varsel når {selectedVessel.name || 'fartøyet'} forlater en korridor</span>
                 </button>
+                <button className="tw-menu-item" onClick={() => { setShowTripwireMenu(false); handleStartDraw('circle') }}>
+                  <strong>Ny vakt – driftvakt</strong>
+                  <span>Alarm når {selectedVessel.name || 'fartøyet'} driver ut av en sirkel</span>
+                </button>
               </>
             ) : (
               <div className="tw-menu-hint">Velg et fartøy på kartet først for å lage en vakt.</div>
@@ -1080,13 +1168,14 @@ export default function App() {
                     <div className="tw-list-text">
                       <strong>{t.vesselName || `MMSI ${mmsi}`}</strong>
                       <span>
-                        {t.type === 'corridor' ? `Rute · ${t.widthM ?? 250} m bred` : 'Linje'}
+                        {t.type === 'circle' ? `Driftvakt · ${t.radiusM ?? 200} m radius`
+                          : t.type === 'corridor' ? `Rute · ${t.widthM ?? 250} m bred` : 'Linje'}
                         {t.armed === false && ' · ⏸ pauset'}
                       </span>
                     </div>
                     <div className="tw-list-actions">
                       <button className="tw-list-btn" onClick={() => {
-                        const anchor = t.type === 'corridor' ? t.path?.[0] : t.a
+                        const anchor = t.type === 'circle' ? t.center : t.type === 'corridor' ? t.path?.[0] : t.a
                         if (anchor && mapRef.current) mapRef.current.flyTo(anchor, 13, { duration: 1.0 })
                         setShowTripwireList(false)
                       }}>Vis</button>
@@ -1115,6 +1204,9 @@ export default function App() {
           {drawMode === 'route' && (
             <span>🧭 Trykk for å legge til rute-punkter ({draftPath.length} satt). Minst 2.</span>
           )}
+          {drawMode === 'circle' && (
+            <span>⚓ Driftvakt: trykk på kartet for å flytte senteret. Juster radius under.</span>
+          )}
           {drawMode === 'route' && (
             <div className="draw-width">
               <label>Bredde: <strong>{draftWidth} m</strong></label>
@@ -1130,12 +1222,30 @@ export default function App() {
               </div>
             </div>
           )}
+          {drawMode === 'circle' && draftCircle && (
+            <div className="draw-width">
+              <label>Radius: <strong>{draftCircle.radiusM} m</strong></label>
+              <input type="range" min="50" max="5000" step="50"
+                value={draftCircle.radiusM}
+                onChange={e => setDraftCircle(c => ({ ...c, radiusM: Number(e.target.value) }))} />
+              <div className="draw-width-presets">
+                {[100, 200, 500, 1000].map(r => (
+                  <button key={r}
+                    className={`corridor-preset${draftCircle.radiusM === r ? ' corridor-preset--active' : ''}`}
+                    onClick={() => setDraftCircle(c => ({ ...c, radiusM: r }))}>{r} m</button>
+                ))}
+              </div>
+            </div>
+          )}
           <div className="draw-control-actions">
             {drawMode === 'route' && draftPath.length > 0 && (
               <button className="draw-btn" onClick={handleUndoRoutePoint}>Angre</button>
             )}
             {drawMode === 'route' && (
               <button className="draw-btn draw-btn--primary" disabled={draftPath.length < 2} onClick={handleFinishRoute}>Ferdig</button>
+            )}
+            {drawMode === 'circle' && (
+              <button className="draw-btn draw-btn--primary" onClick={handleSaveCircle}>Lagre</button>
             )}
             <button className="draw-btn draw-btn--cancel" onClick={handleCancelDraw}>Avbryt</button>
           </div>

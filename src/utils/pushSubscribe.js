@@ -101,12 +101,14 @@ export async function syncTripwiresToBackend(tripwires, alarmMode = 'chime') {
   const list = Object.entries(tripwires || {})
     .filter(([, t]) => t?.armed && (
       (Array.isArray(t.a) && Array.isArray(t.b)) ||
-      (t.type === 'corridor' && Array.isArray(t.path) && t.path.length >= 2)
+      (t.type === 'corridor' && Array.isArray(t.path) && t.path.length >= 2) ||
+      (t.type === 'circle' && Array.isArray(t.center) && Number.isFinite(t.radiusM) && t.radiusM > 0)
     ))
-    .map(([mmsi, t]) => t.type === 'corridor'
-      ? { mmsi, id: t.id ?? null, name: t.vesselName ?? null, type: 'corridor', path: t.path, widthM: t.widthM }
-      : { mmsi, id: t.id ?? null, name: t.vesselName ?? null, type: 'line', a: t.a, b: t.b }
-    )
+    .map(([mmsi, t]) => {
+      if (t.type === 'corridor') return { mmsi, id: t.id ?? null, name: t.vesselName ?? null, type: 'corridor', path: t.path, widthM: t.widthM }
+      if (t.type === 'circle') return { mmsi, id: t.id ?? null, name: t.vesselName ?? null, type: 'circle', center: t.center, radiusM: t.radiusM }
+      return { mmsi, id: t.id ?? null, name: t.vesselName ?? null, type: 'line', a: t.a, b: t.b }
+    })
   const existingToken = loadUnsubToken()
   const res = await fetch(`${API_BASE}/push-subscribe`, {
     method: 'POST',

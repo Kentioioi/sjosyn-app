@@ -656,8 +656,8 @@ export default function MapView({
   forecastThinPx = 0,
   userPos = null,
   tripwires = {}, tripwireDrawMode = false, tripwireDraftPoint = null,
-  tripwireDraftPath = [], tripwireDraftWidth = 1000,
-  onAddTripwirePoint, onRemoveTripwire, onSetCorridorWidth,
+  tripwireDraftPath = [], tripwireDraftWidth = 1000, tripwireDraftCircle = null,
+  onAddTripwirePoint, onRemoveTripwire, onSetCorridorWidth, onSetCircleRadius, onRecenterCircle,
   bounds = null,
   aisCredit = false, waveCredit = false,
   home = null, homePickMode = false, onMoveHome,
@@ -852,11 +852,14 @@ export default function MapView({
         draftPoint={tripwireDraftPoint}
         draftPath={tripwireDraftPath}
         draftWidth={tripwireDraftWidth}
+        draftCircle={tripwireDraftCircle}
         onAddPoint={onAddTripwirePoint}
         vessels={vessels}
         onRemoveTripwire={onRemoveTripwire}
         onSelectVessel={onSelectVessel}
         onSetCorridorWidth={onSetCorridorWidth}
+        onSetCircleRadius={onSetCircleRadius}
+        onRecenterCircle={onRecenterCircle}
       />
 
       {/* Track segments */}

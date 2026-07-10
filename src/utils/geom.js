@@ -70,6 +70,13 @@ export function insideCorridor(p, path, widthM) {
   return distanceToPathMeters(p, path) <= widthM / 2
 }
 
+// Er punktet innenfor driftvakt-sirkelen? Driftvakta er tilstandsbasert:
+// fartøy UTENFOR sirkelen = alarmtilstand (se useTripwireAlerts / bg-poll).
+export function insideCircle(p, center, radiusM) {
+  if (!Array.isArray(center) || !(radiusM > 0)) return false
+  return distanceMeters(p, center) <= radiusM
+}
+
 // Beregner venstre/høyre kant-polyline for å tegne korridoren. Per-vertex
 // normal = snitt av tilstøtende segmenters normaler (enkel miter).
 export function corridorEdges(path, widthM) {
