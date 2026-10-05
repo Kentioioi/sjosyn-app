@@ -6,6 +6,33 @@ const { corsHeaders } = require('./_cors.cjs')
 const UPSTREAM   = 'https://api.met.no/weatherapi/locationforecast/2.0/complete'
 const USER_AGENT = 'Sjosyn-native (kenneth222.kn@gmail.com)'
 
+// Appen bruker bare vind (fart, retning, kast). Svaret slankes fra ~90 KB til
+// ~11 KB per celle — samme JSON-form, så klienten er uendret. Opptil 140 celler
+// per kartutsnitt → mye mindre nedlasting og JSON-parsing på mobil.
+const KEEP = ['wind_speed', 'wind_from_direction', 'wind_speed_of_gust']
+function slim(text) {
+  try {
+    const d = JSON.parse(text)
+    const ts = d?.properties?.timeseries
+    if (!Array.isArray(ts)) return text
+    return JSON.stringify({
+      type: d.type,
+      geometry: d.geometry,
+      properties: {
+        meta: d.properties.meta,
+        timeseries: ts.map(e => {
+          const src = e?.data?.instant?.details || {}
+          const details = {}
+          for (const k of KEEP) if (src[k] != null) details[k] = src[k]
+          return { time: e.time, data: { instant: { details } } }
+        }),
+      },
+    })
+  } catch {
+    return text
+  }
+}
+
 exports.handler = async (event) => {
   const cors = corsHeaders(event.headers['origin'] || event.headers['Origin'])
   if (event.httpMethod === 'OPTIONS') return { statusCode: 204, headers: cors }
@@ -61,5 +88,5 @@ exports.handler = async (event) => {
     return { statusCode: 304, headers, body: '' }
   }
   const text = await upstream.text()
-  return { statusCode: upstream.status, headers, body: text }
+  return { statusCode: upstream.status, headers, body: upstream.status === 200 ? slim(text) : text }
 }
