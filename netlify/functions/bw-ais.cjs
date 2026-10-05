@@ -21,6 +21,8 @@ exports.handler = async (event) => {
   }
 
   const upstreamUrl = `https://live.ais.barentswatch.no${subpath}${url.search}`
+  // POST: BW filtrerer (område/mmsi) kun via JSON-body — videresend den.
+  const isPost = event.httpMethod === 'POST'
 
   let token
   try { token = await getBwToken() }
@@ -31,7 +33,12 @@ exports.handler = async (event) => {
   let upstream
   try {
     upstream = await fetch(upstreamUrl, {
-      headers: { Authorization: `Bearer ${token}` },
+      method: isPost ? 'POST' : 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        ...(isPost && { 'Content-Type': 'application/json' }),
+      },
+      body: isPost ? (event.isBase64Encoded ? Buffer.from(event.body || '', 'base64') : event.body) : undefined,
       signal: AbortSignal.timeout(8000),
     })
   } catch {

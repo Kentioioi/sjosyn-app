@@ -52,9 +52,25 @@ function parseVessel(v) {
 const ARMED_PADDING_DEG = 0.05
 const BG_POLL_INTERVAL  = 30_000
 
+// BW filtrerer kun via JSON-body på POST (geometry/mmsi). GET-parametre som
+// Xmin/Ymin finnes ikke i APIet og ble stille ignorert — hver poll hentet alle
+// ~4000 fartøy i landet (1 MB). Område → GeoJSON-polygon (lon/lat, lukket
+// ring), klemt til gyldige grader: 60 %-marginen går forbi polene ved lav zoom.
+// Over halve kloden: uten filter (hele BW-området er i bildet uansett).
+export function areaFilter(b) {
+  const lat = y => Math.max(-85, Math.min(85, y))
+  const lon = x => Math.max(-180, Math.min(180, x))
+  const w = lon(b.west), e = lon(b.east), s = lat(b.south), n = lat(b.north)
+  if (!(e > w && n > s && e - w < 180)) return {}
+  return { geometry: { type: 'Polygon', coordinates: [[[w, s], [e, s], [e, n], [w, n], [w, s]]] } }
+}
+
+// Punkt {lat, lon} innenfor boks {west, east, south, north}?
+const inBox = (p, b) => !!p && !!b && p.lat >= b.south && p.lat <= b.north && p.lon >= b.west && p.lon <= b.east
+
 // AIS auth is handled server-side (the backend holds its own app-owned
 // BarentsWatch client) — the app just calls the proxy, no token round-trip.
-export function useBarentswatch(demoMode, bounds, pollInterval = 30_000, armedVesselsPositions = []) {
+export function useBarentswatch(demoMode, bounds, pollInterval = 30_000, armedVesselsPositions = [], trackedMmsis = []) {
   const [vessels, setVessels] = useState({})
   const [connected, setConnected] = useState(false)
   const [error, setError] = useState(null)
@@ -70,10 +86,24 @@ export function useBarentswatch(demoMode, bounds, pollInterval = 30_000, armedVe
   const pollFnRef       = useRef(null)   // always points to latest poll()
   const armedPosRef     = useRef(armedVesselsPositions)
   const inBgPollRef     = useRef(false)   // poll() merges (true) vs replaces (false)
+  const trackedRef      = useRef(trackedMmsis)   // valgt + flåte + armerte: hentes uansett område
+  const vesselsRef      = useRef({})             // speiler state, for mmsi-utvalget i poll()
+  const polledRef       = useRef(null)           // området siste forgrunns-poll hentet
 
-  useEffect(() => { boundsRef.current = bounds },       [bounds])
+  useEffect(() => {
+    boundsRef.current = bounds
+    if (!bounds) return
+    // Kartet er utenfor området vi sist hentet (eller første utsnitt): hent nå,
+    // ikke vent opptil et helt poll-intervall med tomme felt i kartet.
+    const p = polledRef.current
+    if (!inBox({ lat: bounds.south, lon: bounds.west }, p) || !inBox({ lat: bounds.north, lon: bounds.east }, p)) {
+      pollFnRef.current?.()
+    }
+  }, [bounds])
   useEffect(() => { pollIntervalRef.current = pollInterval }, [pollInterval])
   useEffect(() => { armedPosRef.current = armedVesselsPositions }, [armedVesselsPositions])
+  useEffect(() => { trackedRef.current = trackedMmsis }, [trackedMmsis])
+  useEffect(() => { vesselsRef.current = vessels }, [vessels])
 
   // ── Demo mode ──────────────────────────────────────────────
   useEffect(() => {
@@ -118,6 +148,9 @@ export function useBarentswatch(demoMode, bounds, pollInterval = 30_000, armedVe
   // it never causes the poll loop to restart just because the map moved.
   const poll = useCallback(async () => {
     if (demoMode) return
+    // Uten kartutsnitt ennå: vent — bounds-effekten poller straks det kommer
+    // (ellers henter oppstarten hele landet).
+    if (!boundsRef.current && !inBgPollRef.current) return
     if (abortRef.current) abortRef.current.abort()
     abortRef.current = new AbortController()
     // Watchdog: abort hele pollen hvis den henger (død socket etter resume) →
@@ -162,25 +195,30 @@ export function useBarentswatch(demoMode, bounds, pollInterval = 30_000, armedVe
           north: north + ARMED_PADDING_DEG,
         }
       }
-      let url = AIS_URL
-      if (b) {
-        const params = new URLSearchParams({
-          Xmin: b.west.toFixed(4),
-          Ymin: b.south.toFixed(4),
-          Xmax: b.east.toFixed(4),
-          Ymax: b.north.toFixed(4),
+      // Valgt fartøy, flåten og armerte vakter holdes oppdatert også utenfor
+      // området: eget lite mmsi-kall, kun for dem som ikke sist lå i området
+      // (vanlig bruk — valgt fartøy i bildet — blir da ett kall).
+      const mmsis = (armed ? [] : trackedRef.current)
+        .filter(m => !inBox(vesselsRef.current[m], b))
+        .map(m => parseInt(m, 10)).filter(Number.isFinite)
+      // Simple = samme felt som GET-standarden (navn, posisjon, fart, type).
+      const fetchAis = async (filter) => {
+        const res = await fetch(AIS_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ modelType: 'Simple', ...filter }),
+          signal: ctrl.signal,
         })
-        url = `${AIS_URL}?${params}`
+        if (!res.ok) throw new Error(`Kunne ikke hente AIS-data: ${res.status}`)
+        const data = await res.json()
+        return Array.isArray(data) ? data : data.vessels ?? []
       }
-
-      const res = await fetch(url, { signal: abortRef.current.signal })
-
-      if (!res.ok) {
-        throw new Error(`Kunne ikke hente AIS-data: ${res.status}`)
-      }
-
-      const data = await res.json()
-      const list = Array.isArray(data) ? data : data.vessels ?? []
+      const [area, extra] = await Promise.all([
+        fetchAis(areaFilter(b)),
+        mmsis.length ? fetchAis({ mmsi: mmsis }) : [],
+      ])
+      const list = area.concat(extra)
+      if (!armed) polledRef.current = b
 
       // I bg-poll: merge inn over forrige state (vi har kun spurt om de
       // armerte fartøyene — andre vessels skal stå urørt). I normal poll:
