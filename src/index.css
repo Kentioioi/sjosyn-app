@@ -1794,10 +1794,9 @@ html, body, #root {
   line-height: 1.5;
 }
 
-/* Lagret fartøy uten live AIS — grey */
+/* Lagret fartøy uten live AIS — grey, men klikkbar (åpner spor fra historikken) */
 .vessel-list-item--offline {
   opacity: 0.55;
-  cursor: not-allowed;
 }
 
 .tripwire-row {

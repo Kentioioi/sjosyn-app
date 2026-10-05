@@ -9,7 +9,7 @@
 export const TICK_MS = 100              // ~10 fps — sub-pixel smooth at all zooms
 export const MAX_PROJECT_MS = 60_000    // never project a report older than this
 export const STALE_MS = 15 * 60_000     // past this: no DR, faded marker
-export const DEAD_MS  = 90 * 60_000     // past this: drop from live map (App filters)
+export const DEAD_MS  = 24 * 60 * 60_000 // past this: drop from live map (App filters) — = BW latest-window
 const EASE_TAU = 900                    // ms to absorb ~63% of a correction
 const KN_TO_MS = 0.514444               // knots → m/s
 const M_PER_DEG = 111_320               // metres per degree latitude

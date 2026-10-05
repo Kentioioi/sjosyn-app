@@ -54,7 +54,7 @@ export default function VesselPanel({
   vessel, onClose,
   collapsed, onToggleCollapse,
   trackHours, onTrackHours,
-  trackLoading, trackError, onRetryTrack, trackPoints,
+  trackLoading, trackError, trackEmpty, onRetryTrack, trackPoints,
   track,
   playheadIndex, onPlayheadChange,
   isInFleet, onToggleFleet,
@@ -359,6 +359,11 @@ export default function VesselPanel({
           </button>
         </div>
       )}
+      {trackEmpty && (
+        <div className="track-error">
+          <span className="track-error-msg">Ingen AIS-posisjoner i perioden</span>
+        </div>
+      )}
 
       {/* ── SHORT TRACK timeline (≤ 24 h) ── knop/tid OVER, vri-hjul UNDER ── */}
       {!isLongTrack && hasTrack && (
@@ -516,13 +521,20 @@ function StatCard({ icon, label, value, highlight, wide }) {
 function QuickFacts({ vessel, compact = false }) {
   const sog = vessel.sog
   const len = vessel.length
-  const speed = isPlausibleSpeed(sog) ? `${sog.toFixed(1)} kn` : null
+  // Uten ferskt AIS-signal er siste fart misvisende — vis når fartøyet sist ble sett.
+  const lastSeen = vessel.stale ? `Sist sett ${timeSince(vessel.timestamp)}` : null
+  const speed = !lastSeen && isPlausibleSpeed(sog) ? `${sog.toFixed(1)} kn` : null
   const lenTxt = len != null && len > 0
     ? `${Math.round(len)} m / ${Math.round(len * 3.281)} ft`
     : null
-  if (!speed && !lenTxt) return null
+  if (!speed && !lastSeen && !lenTxt) return null
   return (
     <div className={`vessel-quick-facts${compact ? ' vessel-quick-facts--compact' : ''}`}>
+      {lastSeen && (
+        <span className="vessel-quick-fact">
+          <span className="vessel-quick-icon">🕐</span>{lastSeen}
+        </span>
+      )}
       {speed && (
         <span className="vessel-quick-fact">
           <span className="vessel-quick-icon">💨</span>{speed}

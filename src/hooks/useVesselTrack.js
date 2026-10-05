@@ -7,6 +7,9 @@ const BASE = `${API_BASE}/bw-historic/open/v1/historic`
 
 export function useVesselTrack(mmsi, hours) {
   const [track, setTrack] = useState([])
+  // MMSI-en `track` faktisk gjelder — mens et nytt fartøy lastes ligger forrige
+  // fartøys spor fortsatt i `track`, og det må ikke leses som det nye.
+  const [trackOf, setTrackOf] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   // Nonce som «Prøv igjen» bumper for å trigge effekten på nytt uten at
@@ -59,7 +62,7 @@ export function useVesselTrack(mmsi, hours) {
             Math.abs(p.lat) <= 90 && Math.abs(p.lon) <= 180)
           .sort((a, b) => new Date(a.time) - new Date(b.time))
 
-        if (!cancelled) setTrack(parsed)
+        if (!cancelled) { setTrack(parsed); setTrackOf(mmsi) }
       } catch (err) {
         if (err.name === 'AbortError') return
         if (!cancelled) {
@@ -81,5 +84,5 @@ export function useVesselTrack(mmsi, hours) {
   // Tving en ny henting for samme fartøy + timer (brukes av «Prøv igjen»).
   const retry = () => setRetryNonce(n => n + 1)
 
-  return { track, loading, error, retry }
+  return { track, trackOf, loading, error, retry }
 }

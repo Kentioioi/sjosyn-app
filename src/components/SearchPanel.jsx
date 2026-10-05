@@ -1,5 +1,5 @@
 import { useState, useMemo, useRef, useEffect } from 'react'
-import { getVesselType, getVesselColor, formatSpeed, isPlausibleSpeed } from '../utils/vesselTypes'
+import { getVesselType, getVesselColor, formatSpeed, isPlausibleSpeed, timeSince } from '../utils/vesselTypes'
 
 // Vindusrendring: bare et lite antall rader mountes uansett hvor mange treff
 // (jf. 3780-rad-lag). DEFAULT_ROW_HEIGHT = .vessel-list-item min-height (56px),
@@ -42,8 +42,9 @@ export default function SearchPanel({ vessels, onSelectVessel, onClose }) {
       if (cat?.types) result = result.filter(v => cat.types.includes(parseInt(v.type)))
     }
     // Ugyldig fart (AIS-sentinel / umulige verdier) sorteres som 0 så den
-    // ikke dytter åpenbart feil tall øverst i søket.
-    const sortSog = v => (isPlausibleSpeed(v.sog) ? v.sog : 0)
+    // ikke dytter åpenbart feil tall øverst i søket. Samme for fartøy uten
+    // ferskt signal — siste fart kan være timer gammel.
+    const sortSog = v => (!v.stale && isPlausibleSpeed(v.sog) ? v.sog : 0)
     return result.sort((a, b) => sortSog(b) - sortSog(a))
   }, [vessels, query, typeFilter])
 
@@ -139,7 +140,7 @@ export default function SearchPanel({ vessels, onSelectVessel, onClose }) {
                   <div className="vessel-list-info">
                     <div className="vessel-list-name">{vessel.name}</div>
                     <div className="vessel-list-meta">
-                      {vType.label} · {formatSpeed(vessel.sog)}
+                      {vType.label} · {speedOrLastSeen(vessel)}
                       {vessel.destination ? ` · ➜ ${vessel.destination}` : ''}
                     </div>
                   </div>
@@ -153,4 +154,10 @@ export default function SearchPanel({ vessels, onSelectVessel, onClose }) {
       </div>
     </div>
   )
+}
+
+// Fartøy uten ferskt AIS-signal (slått av / utenfor dekning) viser «Sist sett»
+// i stedet for en fart som kan være timer gammel.
+function speedOrLastSeen(v) {
+  return v.stale ? `Sist sett ${timeSince(v.timestamp)}` : formatSpeed(v.sog)
 }

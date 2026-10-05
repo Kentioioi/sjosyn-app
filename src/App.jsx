@@ -12,7 +12,7 @@ import PushSetupModal from './components/PushSetupModal'
 import AlarmSoundModal from './components/AlarmSoundModal'
 import InstallModal from './components/InstallModal'
 import { syncTripwiresToBackend, getExistingSubscription, startNativePushTokenSync } from './utils/pushSubscribe'
-import { formatSpeed } from './utils/vesselTypes'
+import { formatSpeed, timeSince } from './utils/vesselTypes'
 import { useBarentswatch, zoomToPollInterval } from './hooks/useBarentswatch'
 import { useVesselTrack } from './hooks/useVesselTrack'
 import { useWindForecast } from './hooks/useWindForecast'
@@ -140,8 +140,11 @@ export default function App() {
   // bbox rundt disse når tab er bakgrunnet. Komputeres senere etter at
   // tripwires og vessels er definert.
   const armedPositionsRef = useRef([])
+  // Valgt fartøy + flåten + vakt-fartøy: hentes med eget mmsi-kall selv når de
+  // er utenfor kartområdet (fylles etter at tripwires er definert, under).
+  const trackedMmsisRef = useRef([])
   const { vessels: vesselsRaw, connected, error, msgCount, isDemoMode, retry } = useBarentswatch(
-    demoMode, bounds, zoomToPollInterval(zoom), armedPositionsRef.current,
+    demoMode, bounds, zoomToPollInterval(zoom), armedPositionsRef.current, trackedMmsisRef.current,
   )
 
   // Fersk/gammel/død AIS-håndtering — fjern fartøy hvis siste rapport er
@@ -596,6 +599,13 @@ export default function App() {
     armedPositionsRef.current = positions
   }, [tripwires, vessels])
 
+  useEffect(() => {
+    trackedMmsisRef.current = [...new Set(
+      [selectedVessel?.mmsi, ...(prefs.savedFleet ?? []).map(s => s.mmsi), ...Object.keys(tripwires)]
+        .filter(Boolean).map(String),
+    )]
+  }, [selectedVessel?.mmsi, prefs.savedFleet, tripwires])
+
   // Bakgrunnsvarsling — abonnement-status + sync av tripwires til backend
   const [pushSyncError, setPushSyncError] = useState(false)
   const [backendDown, setBackendDown] = useState(false)   // heartbeat stale
@@ -810,16 +820,6 @@ export default function App() {
     ? (forecastScrub >= 48 ? `+${Math.round(forecastScrub / 24)} d` : `+${forecastScrub} t`)
     : waveHorizonLabel(effectiveHorizon)
 
-  // The selected vessel object is captured at click time — derive the live
-  // version from the latest poll so the panel, marker, and heading vector
-  // all track current position/speed.
-  const liveSelected = useMemo(
-    () => selectedVessel
-      ? vessels.find(v => v.mmsi === selectedVessel.mmsi) ?? selectedVessel
-      : null,
-    [vessels, selectedVessel]
-  )
-
   const panelPx = selectedVessel ? (panelCollapsed ? 88 : (trackHours > 0 ? 220 : 360)) : 0
 
   // Kart-visning er i fokus (ikke Søk/Flåte/Innstillinger). Topp-verktøyene er
@@ -832,10 +832,32 @@ export default function App() {
   // oppå Innstillinger.
   const focusMap = () => { setShowSettings(false); setShowSearch(false); setActiveTab('map') }
 
-  const { track, loading: trackLoading, error: trackError, retry: retryTrack } = useVesselTrack(
+  const { track, trackOf, loading: trackLoading, error: trackError, retry: retryTrack } = useVesselTrack(
     selectedVessel?.mmsi,
     isDemoMode ? 0 : trackHours,
   )
+  const trackIsSelected = trackOf != null && trackOf === selectedVessel?.mmsi
+  const trackEmpty = trackHours > 0 && !trackLoading && !trackError && trackIsSelected && track.length === 0
+
+  // The selected vessel object is captured at click time — derive the live
+  // version from the latest poll so the panel, marker, and heading vector
+  // all track current position/speed. Ikke i AIS-data nå (åpnet fra Flåte uten
+  // posisjon): siste punkt i sporet fra historikken er sist kjente posisjon.
+  const liveSelected = useMemo(() => {
+    if (!selectedVessel) return null
+    const live = vessels.find(v => v.mmsi === selectedVessel.mmsi)
+    if (live) return live
+    const last = selectedVessel.lat == null && trackIsSelected ? track[track.length - 1] : null
+    if (!last) return selectedVessel
+    // stale: flåte/valgt hentes med mmsi uansett område — mangler den i
+    // AIS-data, har BW ikke hørt den siste døgnet.
+    return {
+      ...selectedVessel,
+      lat: last.lat, lon: last.lon, sog: last.sog, cog: last.cog, hdg: last.cog,
+      timestamp: last.time,
+      stale: true,
+    }
+  }, [vessels, selectedVessel, track, trackIsSelected])
 
   // Reset playhead to "live" end whenever the track data changes
   useEffect(() => {
@@ -856,13 +878,17 @@ export default function App() {
   const handleZoomChange  = useCallback((z) => setZoom(z), [])
 
   const handleSelectVessel = useCallback((vessel) => {
+    // Uten posisjon = Flåte-fartøy som ikke er i AIS-data nå: hent sporet fra
+    // historikken (14 d = BarentsWatch-grensen) med panelet åpent, så lasting
+    // og ev. «ingen posisjoner» synes. Siste sporpunkt blir posisjonen.
+    const noPos = vessel.lat == null
     setSelectedVessel(vessel)
-    setTrackHours(0)
+    setTrackHours(noPos ? 336 : 0)
     setPlayheadIndex(-1)
     // Max kart, detaljer på forespørsel: åpne nye fartøy i sammenslått modus
     // (kun navn + type-stripen). Brukeren utvider med chevron eller dra-opp
     // hvis de vil se mer.
-    setPanelCollapsed(true)
+    setPanelCollapsed(!noPos)
     setShowSearch(false)
     setActiveTab('map')
     setForecastPanelOpen(false)    // vessel panel takes the bottom — close the forecast bar
@@ -1066,6 +1092,7 @@ export default function App() {
             onTrackHours={setTrackHours}
             trackLoading={trackLoading}
             trackError={trackError}
+            trackEmpty={trackEmpty}
             onRetryTrack={retryTrack}
             trackPoints={track.length}
             track={track}
@@ -1439,16 +1466,17 @@ export default function App() {
                 <button
                   key={saved.mmsi}
                   className={`vessel-list-item${live ? '' : ' vessel-list-item--offline'}`}
-                  onClick={() => live && handleSelectVessel(live)}
-                  disabled={!live}
+                  onClick={() => handleSelectVessel(live ?? { mmsi: String(saved.mmsi), name: saved.name, type: saved.type })}
                 >
                   <span className="vessel-list-dot" style={{ background: color }} />
                   <div className="vessel-list-info">
                     <div className="vessel-list-name">{view.name || `MMSI ${saved.mmsi}`}</div>
                     <div className="vessel-list-meta">
                       {live
-                        ? `${formatSpeed(live.sog)}${live.destination ? ` · ➜ ${live.destination}` : ''}`
-                        : 'Utenfor kart-området'}
+                        ? (live.stale
+                          ? `Sist sett ${timeSince(live.timestamp)}`
+                          : `${formatSpeed(live.sog)}${live.destination ? ` · ➜ ${live.destination}` : ''}`)
+                        : 'Ikke i AIS nå · trykk for spor (14 d)'}
                     </div>
                   </div>
                   <span style={{ color: '#888', fontSize: '0.7rem' }}>{saved.mmsi}</span>

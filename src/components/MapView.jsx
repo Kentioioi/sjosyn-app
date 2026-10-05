@@ -174,6 +174,10 @@ function FlyToVessel({ vessel, panelPx }) {
 
   useEffect(() => {
     if (!vessel) { prevMmsi.current = null; return }
+    // Fartøy uten posisjon ennå (åpnet fra Flåte, spor hentes fra historikken):
+    // vent — prevMmsi settes ikke, så vi flyr dit når posisjonen kommer. Uten
+    // denne vakten gir project() NaN og Leaflet kaster «Invalid LatLng».
+    if (!Number.isFinite(vessel.lat) || !Number.isFinite(vessel.lon)) return
 
     const newVessel = vessel.mmsi !== prevMmsi.current
     const panelChanged = panelPx !== prevPanelPx.current
@@ -389,8 +393,10 @@ const TICK_MS = 100              // ~10 fps is sub-pixel-smooth at all zooms
 const MAX_PROJECT_MS = 60_000
 // Pas på: vessels stale past STALE_MS get no dead-reckoning at all and a
 // faded marker; past DEAD_MS they drop off the live map entirely (see App).
+// DEAD_MS = Barentswatch's own latest-window (24 h): a vessel that turns AIS
+// off stays as a faded ghost — selectable, so its track is still reachable.
 export const STALE_MS = 15 * 60_000
-export const DEAD_MS  = 90 * 60_000
+export const DEAD_MS  = 24 * 60 * 60_000
 const EASE_TAU = 900             // ms to absorb ~63 % of a correction
 const KN_TO_MS = 0.514444        // knots → metres/second
 const M_PER_DEG = 111_320        // metres per degree latitude
@@ -744,7 +750,9 @@ export default function MapView({
       // hele poenget med «live» i sporvisningen).
       if (atLive && selectedVessel) {
         const liveSel = vessels.find(v => String(v.mmsi) === String(selectedVessel.mmsi))
-        return liveSel ? [liveSel] : []
+        if (liveSel) return [liveSel]
+        // Ikke i AIS-data nå: vis sist kjente posisjon (siste sporpunkt) som spøkelse.
+        return Number.isFinite(selectedVessel.lat) ? [selectedVessel] : []
       }
       return []
     }

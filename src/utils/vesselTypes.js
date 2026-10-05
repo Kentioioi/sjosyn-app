@@ -104,7 +104,8 @@ export function timeSince(timestamp) {
   const diff = (Date.now() - new Date(timestamp).getTime()) / 1000
   if (diff < 60) return `${Math.round(diff)} s siden`
   if (diff < 3600) return `${Math.round(diff / 60)} min siden`
-  return `${Math.round(diff / 3600)} t siden`
+  if (diff < 48 * 3600) return `${Math.round(diff / 3600)} t siden`
+  return `${Math.round(diff / 86400)} d siden`
 }
 
 // Demo vessels for when no API key is set.
