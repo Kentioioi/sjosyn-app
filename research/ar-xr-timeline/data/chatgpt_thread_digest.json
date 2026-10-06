@@ -1,0 +1,2674 @@
+{
+  "events": [
+    {
+      "date": "2005",
+      "date_precision": "year",
+      "entity": "MinebeaMitsumi",
+      "entity_type": "supplier",
+      "event": "MinebeaMitsumi has mass-produced miniature VCM autofocus actuators since 2005; its documentation establishes low-profile camera-actuator technology (conventional-actuator alternative to TLens).",
+      "category": "capacity",
+      "strength": "confirmed",
+      "message_index": 173,
+      "also_message_indices": [
+        504
+      ],
+      "source": "citeturn345063search13; citeturn573584view0",
+      "notes": "Also referenced at [504]."
+    },
+    {
+      "date": "2006",
+      "date_precision": "year",
+      "entity": "poLight",
+      "entity_type": "patent",
+      "event": "poLight's foundational tunable-lens patents (deformable polymer/gel between transparent surfaces, piezoelectric actuation) have priority dates of 2006-2007.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 221,
+      "also_message_indices": [],
+      "source": "poLight patents (cited via web.run)",
+      "notes": "Used to argue Meta owns system IP while poLight owns component IP."
+    },
+    {
+      "date": "2020-09",
+      "date_precision": "month",
+      "entity": "Meta",
+      "entity_type": "person",
+      "event": "A publicly indexed LinkedIn profile of a former Meta engineer states that between September 2020 and April 2025 they 'Led development of miniature piezoelectric tunable lens AF camera module' at Meta; the module reportedly exceeded design targets, passed AR/VR/MR reliability qualification and showed readiness for production ramp.",
+      "category": "hire",
+      "strength": "confirmed",
+      "message_index": 876,
+      "also_message_indices": [
+        870
+      ],
+      "source": "Publicly indexed LinkedIn profile (citeturn443488search1, citeturn370756search0); user screenshot at [870]",
+      "notes": "Identical wording found in a public search index but the full profile could not be opened; technical results not independently verified. Profile says 'piezoelectric' but not poLight, TLens, PZT, polymer or a part number. April 2025 is the end of the employment period, not a documented qualification or mass-production date."
+    },
+    {
+      "date": "2021-10-18",
+      "date_precision": "day",
+      "entity": "Cambridge Mechatronics (CML)",
+      "entity_type": "supplier",
+      "event": "CML opened a San Francisco office and cited 'multiple commercial engagements with the US technology giants' on compact low-power actuators for future consumer products including smartphones and AR/VR devices.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 865,
+      "also_message_indices": [],
+      "source": "CML announcement (web citation 797166view0)",
+      "notes": "Does not name companies, components or whether projects are ongoing."
+    },
+    {
+      "date": "2022",
+      "date_precision": "year",
+      "entity": "poLight",
+      "entity_type": "patent",
+      "event": "Three poLight technical documents dated/retrieved in 2022 (48 MP 120-degree FOV TLens Add-In reference design; 'New PZT MEMS Tunable Optics Technology Solutions' presentation; Packaged TLens documentation) are listed as prior-art references in Meta's granted wide-FOV autofocus patent US 12,663,619; all predate Meta's Feb 2023 filing.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 203,
+      "also_message_indices": [
+        173,
+        221,
+        359,
+        504,
+        865
+      ],
+      "source": "USPTO patent record of US 12,663,619 (citeturn456808search0; citeturn521020search0; citeturn413607view5)",
+      "notes": "Also at [173], [221], [359], [504], [865]. Assistant: references cannot establish a supplier relationship but are strong circumstantial evidence of technical relevance; it cannot tell whether applicant, examiner or search introduced them ([359]); [221] says applicant-cited."
+    },
+    {
+      "date": "2022",
+      "date_precision": "year",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight technical documentation describes TLens as a soft optical polymer between a flexible glass membrane and a rigid back window with a thin-film PZT actuator deposited on the membrane; TLens Silver consumes <6 mW including driver. poLight's prospectus describes the same piezo-on-thin-glass-membrane construction.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 221,
+      "also_message_indices": [
+        876
+      ],
+      "source": "poLight technical paper (cited via web.run); poLight prospectus (citeturn498969search4)",
+      "notes": "Paper year inferred (2022, approximate). Prospectus cited at [876] to match the 'piezoelectric tunable lens' wording in the LinkedIn profile."
+    },
+    {
+      "date": "2022",
+      "date_precision": "year",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight's 2022 wide-FOV 48 MP / 120-degree / F2.2 TLens Add-In reference design (TLens Silver): 107.9-degree horizontal, 119.9-degree diagonal FOV, F/2.2, TTL 6.8 mm, BFL 0.73 mm, focus 10 cm to infinity. Explicitly a reference design not yet implemented in an actual camera-module build at publication.",
+      "category": "product_release",
+      "strength": "confirmed",
+      "message_index": 221,
+      "also_message_indices": [
+        359
+      ],
+      "source": "poLight reference design document (in Meta patent record); citeturn522005search2 / citeturn487281search1",
+      "notes": "Compared against Meta patent example: F/2.2 exact match; 107 vs 107.9 degrees (but horizontal vs diagonal caveat at [359]); BFL <1 mm; TTL differs 5.0 vs 6.8 mm; min focus 20 cm vs 10 cm."
+    },
+    {
+      "date": "2022-07-26",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "Priority date (July 2022 provisional) of the Meta tunable-lens-in-barrel patent family to which US 12,631,847 and the Sept 2026 continuation US20260276939A1 belong.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 253,
+      "also_message_indices": [
+        359,
+        504
+      ],
+      "source": "USPTO publication US20260276939A1; citeturn838436view0; citeturn777015view0",
+      "notes": "The underlying invention is not from 2026; the continuation pursues additional claims from the older disclosure, so its publication is evidence of continued patent activity, not a newly dated component-selection decision."
+    },
+    {
+      "date": "2023",
+      "date_precision": "year",
+      "entity": "Q Technology",
+      "entity_type": "supplier",
+      "event": "Q Tech's 2023 XR investor deck showed Meta with ~75% of the VR market while discussing Q Tech's strategy to penetrate U.S. XR customers.",
+      "category": "analyst_report",
+      "strength": "confirmed",
+      "message_index": 541,
+      "also_message_indices": [],
+      "source": "Q Tech 2023 XR investor deck (citeturn554250search26)",
+      "notes": "Also referenced at [531]."
+    },
+    {
+      "date": "2023",
+      "date_precision": "year",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "Meta application US20230213729A1 (reduced power consumption in autofocus) contains a CML patent reference.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 844,
+      "also_message_indices": [],
+      "source": "US20230213729A1 (web citation 261700view0)",
+      "notes": "Publication year inferred from number prefix."
+    },
+    {
+      "date": "2023-01",
+      "date_precision": "month",
+      "entity": "Alps Alpine",
+      "entity_type": "supplier",
+      "event": "Alps Alpine had started mass production of actuators based on CML's SMA technology (as of January 2023); Alps Alpine also produces custom compact/low-profile VCMs in mass volume.",
+      "category": "capacity",
+      "strength": "confirmed",
+      "message_index": 173,
+      "also_message_indices": [
+        865
+      ],
+      "source": "citeturn345063search16; web citation 201256view0",
+      "notes": "VCM fact from [173]; SMA-licensee fact from [865]."
+    },
+    {
+      "date": "2023-01",
+      "date_precision": "month",
+      "entity": "Cambridge Mechatronics (CML)",
+      "entity_type": "supplier",
+      "event": "Around an SPIE presentation in January 2023, CML said it was already involved in commercial projects with several industry leaders on focus compensation in cameras and XR displays under temperature changes.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 865,
+      "also_message_indices": [],
+      "source": "CML / SPIE (web citation 797166view1)",
+      "notes": ""
+    },
+    {
+      "date": "2023-02-08",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "Meta filed the wide-FOV tunable-lens autofocus application that became US 12,663,619 (flexible membrane, hard substrate, deformable polymer, thin-film piezo actuators; names PZT). Example implementation: 107-degree FOV, F/2.2, EFL 2.18 mm, TTL 5.0 mm, BFL 0.88 mm, focus ~20 cm to infinity; six conventional lenses plus tunable element.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 221,
+      "also_message_indices": [
+        359
+      ],
+      "source": "USPTO record (cited via web.run); citeturn521020search0",
+      "notes": "Three poLight documents in its reference record predate this filing."
+    },
+    {
+      "date": "2023-03",
+      "date_precision": "month",
+      "entity": "Cambridge Mechatronics (CML)",
+      "entity_type": "supplier",
+      "event": "CML's combined SMA autofocus + OIS actuator has been in mass production since at least March 2023; CML markets low-power focus adjustment for XR and smart glasses and names Alps Alpine and GalaxyCore in its partner network.",
+      "category": "capacity",
+      "strength": "confirmed",
+      "message_index": 173,
+      "also_message_indices": [
+        844,
+        865
+      ],
+      "source": "CML (citeturn368029search3/search15/search16/search5); CML website (web citations 399331search6, 803328view2, 917439view2, 727966view2)",
+      "notes": "Current-state statements at [173] and [844]; dated March 2023 at [865]."
+    },
+    {
+      "date": "2023-09-07",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "Meta application US20230280637A1 published, describing a camera with two actuators (one moving the lens, e.g. VCM; one moving the image sensor, e.g. MEMS or SMA); its reference list includes several CML patents on cameras and SMA actuator control, marked as examiner-added.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 844,
+      "also_message_indices": [
+        865
+      ],
+      "source": "US20230280637A1 (web citation 917439view1)",
+      "notes": "[865]: illustrations and much of the description concern smartwatch cameras; headsets mentioned but not identified as the new glasses camera."
+    },
+    {
+      "date": "2024",
+      "date_precision": "year",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "Meta published application US20240264430A1, 'Wide field of view optical lens assembly with tunable optical lens' (thin-film piezoelectric actuation, deformable transparent polymer, wide-angle imaging, reduced camera thickness without moving a lens barrel, for wearables). Its original Claim 1 was broad (membrane + substrate + deformable material + piezo actuator); the application received a final rejection before later being allowed with narrower claims (>100-degree FOV, >F/2, >2 mm EFL, 5 mm TTL, <1 mm BFL).",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 134,
+      "also_message_indices": [
+        221
+      ],
+      "source": "USPTO publication (citeturn120530view1); USPTO prosecution history (cited via web.run)",
+      "notes": "Year inferred from publication number. Assistant declined to claim poLight prior art specifically caused the narrowing amendments without full USPTO correspondence ([221])."
+    },
+    {
+      "date": "2024",
+      "date_precision": "year",
+      "entity": "Apple",
+      "entity_type": "oem",
+      "event": "Apple Vision Pro sold roughly 390k units in 2024 at USD 3,499.",
+      "category": "other",
+      "strength": "strong",
+      "message_index": 772,
+      "also_message_indices": [],
+      "source": "citation redacted",
+      "notes": "User later asked to exclude AVP from comparables ([783])."
+    },
+    {
+      "date": "2024",
+      "date_precision": "year",
+      "entity": "Meta",
+      "entity_type": "oem",
+      "event": "VR market was 6.9m units in 2024; Meta held ~77% share (Quest family).",
+      "category": "analyst_report",
+      "strength": "strong",
+      "message_index": 818,
+      "also_message_indices": [],
+      "source": "citation redacted",
+      "notes": ""
+    },
+    {
+      "date": "2024-02",
+      "date_precision": "month",
+      "entity": "Cambridge Mechatronics (CML)",
+      "entity_type": "supplier",
+      "event": "CML raised over $40 million from investors including Atlantic Bridge, Intel Capital and Sony Innovation Fund; the announcement does not tie the financing to Meta.",
+      "category": "financing",
+      "strength": "confirmed",
+      "message_index": 865,
+      "also_message_indices": [],
+      "source": "web citation 439678view0",
+      "notes": ""
+    },
+    {
+      "date": "2024-03",
+      "date_precision": "month",
+      "entity": "Q Technology",
+      "entity_type": "supplier",
+      "event": "Q Tech stated under its VR/AR Optical Product business: 'Acquired vendor code of major US customer.'",
+      "category": "design_in",
+      "strength": "confirmed",
+      "message_index": 541,
+      "also_message_indices": [],
+      "source": "Q Tech March 2024 presentation (citeturn554250search25)",
+      "notes": "Predates the Q Tech-poLight partnership."
+    },
+    {
+      "date": "2024-08",
+      "date_precision": "month",
+      "entity": "Q Technology",
+      "entity_type": "supplier",
+      "event": "Q Tech's August 2024 XR investor presentation states under XR Optical Products: 'Obtained US M brand Vendor code. Multiple projects are under discussion.'",
+      "category": "design_in",
+      "strength": "confirmed",
+      "message_index": 517,
+      "also_message_indices": [
+        541,
+        738,
+        860
+      ],
+      "source": "Q Tech August 2024 XR presentation (citeturn996666search26 / citeturn422646search24 / citeturn995732search29)",
+      "notes": "First flagged (unverified) at [517], verified at [541]. 'M = Meta' is inference (Microsoft judged poor fit). User at [626] and assistant at [642] note Q Tech and poLight were not partners in 2024, so this shows only an independent Q Tech-M-brand XR relationship, not TLens involvement. Also cited at [738], [860]."
+    },
+    {
+      "date": "2024-12",
+      "date_precision": "month",
+      "entity": "Microsoft",
+      "entity_type": "oem",
+      "event": "Microsoft confirmed HoloLens hardware stopped being manufactured in December 2024; HoloLens 2 is in support/servicing mode.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 541,
+      "also_message_indices": [],
+      "source": "Microsoft (citeturn524431search4, citeturn524431search6)",
+      "notes": "Used to argue Microsoft is a poor fit for the 'US M brand' interpretation."
+    },
+    {
+      "date": "2025",
+      "date_precision": "year",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "Meta application US20250076634A1 (controlling a piezoelectric optical actuator) lists poLight inventions among cited prior art, marked as examiner-added citations.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 134,
+      "also_message_indices": [],
+      "source": "USPTO record (citeturn194576view4 / citeturn120530view2)",
+      "notes": "Year inferred from publication number. Examiner-added citations do not establish a supplier/licensing relationship."
+    },
+    {
+      "date": "2025",
+      "date_precision": "year",
+      "entity": "TDK",
+      "entity_type": "supplier",
+      "event": "TDK announced in 2025 an agreement to transfer its camera-module actuator business to Q Technology Investment, later described as transferred via Actutek to the Q Tech group ('2025/26').",
+      "category": "partnership",
+      "strength": "confirmed",
+      "message_index": 173,
+      "also_message_indices": [
+        844
+      ],
+      "source": "citeturn368029search0 / citeturn368029search4; TDK announcement (web citations 294479view0, 587509search0)",
+      "notes": "Shows Q Tech's actuator push is not only about poLight; Q Tech as module supplier does not imply TLens."
+    },
+    {
+      "date": "2025",
+      "date_precision": "year",
+      "entity": "Xreal",
+      "entity_type": "oem",
+      "event": "Xreal One series sold 111,355 units in 2025; Xreal sold 133,731 AR glasses in total in 2025 (82-87 g display glasses at $499-649), per Xreal's Hong Kong filing.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 818,
+      "also_message_indices": [],
+      "source": "Xreal HK filing (citation redacted)",
+      "notes": ""
+    },
+    {
+      "date": "2025",
+      "date_precision": "year",
+      "entity": "Meta",
+      "entity_type": "oem",
+      "event": "Meta Ray-Ban Display shipped ~84k units in 2025 after a late-year launch (Omdia, supply constrained); component/supply orders were initially ~80k units, raised toward 150k after demand proved itself, with a 500k two-year shipment goal (TrendForce).",
+      "category": "capacity",
+      "strength": "strong",
+      "message_index": 818,
+      "also_message_indices": [],
+      "source": "Omdia; TrendForce (citations redacted)",
+      "notes": "Used as evidence of how cautiously Meta ramps a new glasses category."
+    },
+    {
+      "date": "2025",
+      "date_precision": "year",
+      "entity": "Omdia",
+      "entity_type": "analyst",
+      "event": "Meta shipped 7.4m AI glasses during 2025 according to Omdia.",
+      "category": "analyst_report",
+      "strength": "strong",
+      "message_index": 839,
+      "also_message_indices": [],
+      "source": "Omdia (web citation)",
+      "notes": ""
+    },
+    {
+      "date": "2025-01-21",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "Google Patents records a notice of allowance for Meta application US20230280637A1 (camera with two actuator stages), previously used by the assistant as a CML-Meta indicator.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 869,
+      "also_message_indices": [],
+      "source": "Google Patents event log (citeturn605364view3)",
+      "notes": "CML references in this document are examiner-added prior-art citations, not evidence of collaboration."
+    },
+    {
+      "date": "2025-04",
+      "date_precision": "month",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight management said the top-tier U.S. OEM behind the Q Tech investment had already worked with poLight for many years qualifying the technology, regarded TLens as 'best fit', demanded a dual-source/manufacturing-risk solution before proceeding (told poLight in early 2025 that supply-chain risk had to be solved), wanted one of its strategic partners involved, and Q Tech turned out to be one of that OEM's strategic partners; the customer started programs immediately after the arrangement was secured.",
+      "category": "qualification",
+      "strength": "confirmed",
+      "message_index": 499,
+      "also_message_indices": [
+        642
+      ],
+      "source": "citeturn665738search6, citeturn655978view1, citeturn881557search8; poLight management commentary (citeturn758993search45, citeturn758993search10)",
+      "notes": "Dated 'after the partnership was created in April 2025'; exact statement date not given. The ~NOK 171m is an equity investment relevant to 'several applications', not a purchase order ([504])."
+    },
+    {
+      "date": "2025-04",
+      "date_precision": "month",
+      "entity": "Meta",
+      "entity_type": "other",
+      "event": "Forum interpretation (reproduced in the user's screenshot) claims the piezoelectric tunable-lens AF module entered mass production at Meta in April 2025, coinciding with the 15 April 2025 Q Tech-poLight announcement.",
+      "category": "rumor",
+      "strength": "disputed",
+      "message_index": 876,
+      "also_message_indices": [],
+      "source": "forum post in user screenshot",
+      "notes": "Assistant: April 2025 is only the end of the LinkedIn profile holder's Meta tenure; 'readiness for production ramp' means ready to ramp, not that mass production was underway; the coincidence should not count as separate evidence."
+    },
+    {
+      "date": "2025-04-15",
+      "date_precision": "day",
+      "entity": "Q Technology",
+      "entity_type": "supplier",
+      "event": "Q Technology / poLight strategic agreement announced, explicitly 'with backing from a top tier U.S. consumer electronics customer': Q Tech invests ~NOK 171m for roughly a one-third stake in poLight and begins establishing a dedicated TLens assembly and test line; Q Tech says the investment is intended to give it TLens and piezoelectric MEMS technology for XR and other emerging markets.",
+      "category": "partnership",
+      "strength": "confirmed",
+      "message_index": 376,
+      "also_message_indices": [
+        173,
+        403,
+        541,
+        616,
+        642,
+        687,
+        843,
+        844,
+        876
+      ],
+      "source": "citeturn931255search0; citeturn577659search0 / citeturn754181search0; poLight announcement April 2025 (citeturn357384search3, citeturn775343search2, citeturn596210search1); citeturn370756view1; Q Tech statement (citeturn554250search23)",
+      "notes": "Also at [173] (Q Tech building TLens production capability; ramp depends on the backing OEM), [403], [541], [616], [625], [642], [687], [843], [844], [876]. poLight has said volume ramp depends partly on the OEM backing the investment."
+    },
+    {
+      "date": "2025-05",
+      "date_precision": "month",
+      "entity": "Cambridge Mechatronics (CML)",
+      "entity_type": "supplier",
+      "event": "CML technical article (May 2025) describes optional 'Zero Hold Power' construction that holds an actuator in position without continuous current; mentions autofocus and AR/VR; the illustrated >99% saving concerns an aperture changing position five times over three minutes of camera use.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 865,
+      "also_message_indices": [
+        869
+      ],
+      "source": "CML technical article (web citation 439678view2); citeturn605364view2",
+      "notes": "Assistant: not a measurement of continuous AF in stereo passthrough; zero hold power is not zero energy during focusing; no comparable measurement shows a current CML solution is too slow for Meta's requirements."
+    },
+    {
+      "date": "2025-05-08",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "Meta application US20230280637A1 was abandoned because the issue fee was not paid.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 869,
+      "also_message_indices": [],
+      "source": "Google Patents event log (citeturn605364view3)",
+      "notes": "It was not technically rejected (it had been allowed); non-payment does not reveal why Meta let it lapse; full USPTO file wrapper not read. Not documentation that Meta rejected CML or SMA."
+    },
+    {
+      "date": "2025-06",
+      "date_precision": "month",
+      "entity": "Q Technology",
+      "entity_type": "supplier",
+      "event": "Q Tech completed its investment and became poLight's largest shareholder.",
+      "category": "financing",
+      "strength": "confirmed",
+      "message_index": 541,
+      "also_message_indices": [],
+      "source": "",
+      "notes": ""
+    },
+    {
+      "date": "2025-08-06",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "The Q Tech-backed top-tier U.S. OEM placed the first TLens + driver qualification PO (~NOK 1.7m at announcement; later tallied as NOK 1.8m total) for qualification of a potential consumer product; only 50% initially committed, remainder contingent on program continuation; roughly NOK 0.8m was delivered/committed in 2025. poLight explicitly confirmed the PO is from the same customer referred to in the Q Tech investment agreement.",
+      "category": "order",
+      "strength": "confirmed",
+      "message_index": 420,
+      "also_message_indices": [
+        403,
+        499,
+        541,
+        616,
+        687,
+        721
+      ],
+      "source": "citeturn784428search6 / citeturn754181search5; poLight August 2025 (citeturn833366search7, citeturn775343search3, citeturn596210search4); poLight filings (citations redacted)",
+      "notes": "'Program A' in the assistant's labelling. Also at [403], [499], [541], [616], [687], [721]."
+    },
+    {
+      "date": "2025-10",
+      "date_precision": "month",
+      "entity": "Cambridge Mechatronics (CML)",
+      "entity_type": "supplier",
+      "event": "CML stated in October 2025 that its technology had been used in over 100 million consumer devices.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 173,
+      "also_message_indices": [
+        865
+      ],
+      "source": "web citation 439678view1; CML (citeturn368029search15)",
+      "notes": "Not 100m XR devices and not necessarily autofocus."
+    },
+    {
+      "date": "2025-10-13",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight announced a ~NOK 5 million project/purchase order with an unnamed 'top tier U.S. consumer electronics OEM' to design and build TLens Add-In-based cameras for several AR head-worn devices; camera samples due Q1 2026.",
+      "category": "order",
+      "strength": "confirmed",
+      "message_index": 117,
+      "also_message_indices": [
+        134,
+        253,
+        280,
+        359,
+        420,
+        457,
+        687
+      ],
+      "source": "poLight announcement, October 2025 (web.run citation 889651search7; citeturn142879view0; citeturn372735search5 / citeturn254547search0)",
+      "notes": "'Program B'. Meta fits the description but so could Apple, Google and others. Customer identity, production selection and which devices might use the cameras unknown. Also at [134], [253], [280], [359], [420], [457], [687]."
+    },
+    {
+      "date": "2025-12",
+      "date_precision": "month",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "Meta was granted US12493197B2 in December 2025 (reduced autofocus power via lens-sensor distance at near focus), with both CML and poLight among the cited patent references; it does not identify a supplier for the 2027 glasses.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 865,
+      "also_message_indices": [
+        869
+      ],
+      "source": "US12493197B2 (web citation 727966view1); Google Patents (citeturn605364view1)",
+      "notes": "Shows one abandoned application does not end the Meta patent picture referencing CML/poLight."
+    },
+    {
+      "date": "2026",
+      "date_precision": "year",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight's Q2 2026 report/Q&A describes the consumer AR/MR design-in case as relating to a product that might be released in 2026; the assistant concludes this design-in is almost certainly not the Meta VR Glasses (spring 2027).",
+      "category": "roadmap",
+      "strength": "confirmed",
+      "message_index": 134,
+      "also_message_indices": [
+        499
+      ],
+      "source": "poLight Q2 2026 report (citeturn194576view2); citeturn415684view3, citeturn670516search9",
+      "notes": "Assistant uses this to argue the timeline does not uniquely match Meta's spring-2027 launch."
+    },
+    {
+      "date": "2026",
+      "date_precision": "year",
+      "entity": "Google",
+      "entity_type": "oem",
+      "event": "Google announced both audio and display-equipped Android XR glasses in 2026, working with Samsung, Warby Parker and Gentle Monster, and has publicly demonstrated prototype XR glasses.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 541,
+      "also_message_indices": [],
+      "source": "citeturn833366search0, citeturn833366search4, citeturn833366search19",
+      "notes": ""
+    },
+    {
+      "date": "2026",
+      "date_precision": "year",
+      "entity": "Q Technology",
+      "entity_type": "supplier",
+      "event": "A 2026 analyst supply-chain breakdown attributes no meaningful Apple exposure to Q Tech, versus very high Apple exposure for Cowell (Apple module suppliers named: LG Innotek, Sharp, Cowell, Sunny Optical).",
+      "category": "analyst_report",
+      "strength": "circumstantial",
+      "message_index": 541,
+      "also_message_indices": [],
+      "source": "citeturn357384search50",
+      "notes": "Used to weaken Apple as the alternative OEM; contrast with [499] which says Q Tech has Apple supply-chain exposure."
+    },
+    {
+      "date": "2026",
+      "date_precision": "year",
+      "entity": "Meta",
+      "entity_type": "oem",
+      "event": "Meta says that by the end of 2026 it will offer 100+ AI-glasses options across Ray-Ban, Oakley and Meta Glasses, alongside Ray-Ban Display and the new VR Glasses.",
+      "category": "roadmap",
+      "strength": "confirmed",
+      "message_index": 839,
+      "also_message_indices": [],
+      "source": "Meta statement (web citation)",
+      "notes": "The 100+ are mostly styles/frames, not distinct electronic designs."
+    },
+    {
+      "date": "2026-Q1",
+      "date_precision": "quarter",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight invoiced Q Technology USD 313,141 in Q1 2026 for 2025 NRE work establishing the TLens production line.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 721,
+      "also_message_indices": [],
+      "source": "poLight quarterly report (citation redacted)",
+      "notes": "Separate from OEM qualification POs."
+    },
+    {
+      "date": "2026-H1",
+      "date_precision": "half",
+      "entity": "Omdia",
+      "entity_type": "analyst",
+      "event": "Global AI-glasses shipments reached 4.2m units in H1 2026 (+127% YoY), of which Meta shipped 3.4m; Counterpoint put Meta at roughly 94% of AI-glasses shipments and said the category grew 263% YoY.",
+      "category": "analyst_report",
+      "strength": "strong",
+      "message_index": 839,
+      "also_message_indices": [],
+      "source": "Omdia; Counterpoint (web citations)",
+      "notes": "Market-size backdrop for the 2027 inflection-year argument."
+    },
+    {
+      "date": "2026-02",
+      "date_precision": "month",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "In the February 2026 investor Q&A poLight said it uses labels such as 'top-tier' consistently for the same OEM across releases.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 445,
+      "also_message_indices": [],
+      "source": "citeturn462800search5 / citeturn857963search7",
+      "notes": "Assistant: this does not imply the Q Tech customer and the Oct-2025 camera OEM are the same company."
+    },
+    {
+      "date": "2026-02-11",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "The Q Tech-backed top-tier OEM exercised the remaining 50% (~NOK 1.0m) of the Aug-2025 qualification PO (the final call-off of the NOK 1.8m PO, not additional); poLight called it continuation of the qualification program of the same unnamed OEM behind the Q Tech strategic agreement, and still described the program as ongoing qualification with several milestones remaining.",
+      "category": "order",
+      "strength": "confirmed",
+      "message_index": 420,
+      "also_message_indices": [
+        499,
+        642,
+        687,
+        721,
+        738,
+        876
+      ],
+      "source": "citeturn784428search1 / citeturn396270view0; poLight Feb 2026 release (citeturn758993search3, citeturn596210search0); poLight (citeturn498969view1)",
+      "notes": "Interpreted as passing a continuation gate rather than cancellation. Also at [499], [625], [642], [687], [709], [721], [738], [876]."
+    },
+    {
+      "date": "2026-04",
+      "date_precision": "month",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "First of three mass-production POs (NOK 2.4m) from a separate consumer AR/MR customer (not the Q Tech qualification customer); start of the repeated orders (April-July 2026) that poLight later classified as its first consumer AR/MR design-in. poLight said units ordered/shipped could potentially go into the customer's commercial product to be launched.",
+      "category": "order",
+      "strength": "confirmed",
+      "message_index": 85,
+      "also_message_indices": [
+        134,
+        457,
+        687
+      ],
+      "source": "poLight disclosures (web.run citations 503907search0/search4, 838371search3; citeturn633265view2; citeturn373143search0; citation redacted at [687])",
+      "notes": "'Program C'. poLight explicitly confirmed this is a different end customer from the Q Tech-backed OEM ([721])."
+    },
+    {
+      "date": "2026-Q2",
+      "date_precision": "quarter",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "Toward the end of Q2 2026 the first TLens Add-In camera modules from the ~NOK 5m top-tier U.S. OEM AR head-worn project were tested and shipped to the customer for validation; in August 2026 poLight still described it as a reference/platform assessment with the customer testing the camera and visibility perhaps coming toward year-end 2026.",
+      "category": "qualification",
+      "strength": "confirmed",
+      "message_index": 117,
+      "also_message_indices": [
+        134,
+        253,
+        280,
+        359,
+        420,
+        457,
+        499,
+        687
+      ],
+      "source": "poLight update (web.run citation 838371search8); poLight Q2 2026 report (citeturn194576view2 / view3); citeturn254547search1 / citeturn696686search4; poLight Aug 2026 Q&A (citeturn415684view1, view2)",
+      "notes": "Also at [134], [253], [280], [359], [420], [457], [499], [687]."
+    },
+    {
+      "date": "2026-Q2",
+      "date_precision": "quarter",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight's Q2 2026 presentation acknowledged AR/MR glasses often use fixed-focus cameras, said changing camera specs and AI apps could increase autofocus adoption, and that manufacturers will use different autofocus technologies depending on requirements and cost.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 134,
+      "also_message_indices": [],
+      "source": "poLight Q2 presentation (citeturn120530view5 / citeturn194576view3)",
+      "notes": ""
+    },
+    {
+      "date": "2026-Q2",
+      "date_precision": "quarter",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "Q2 2026 report: no new MEMS wafers were ordered, manufactured or delivered in H1/Q2 2026 because existing inventory was sufficient for current needs.",
+      "category": "capacity",
+      "strength": "confirmed",
+      "message_index": 504,
+      "also_message_indices": [
+        664
+      ],
+      "source": "poLight Q2 2026 report (citeturn209951view3); citeturn977136search2, citeturn721866view5",
+      "notes": "Used to argue a large customer does not require a visible upstream wafer order months in advance; also does not prove a ramp is imminent."
+    },
+    {
+      "date": "2026-Q2",
+      "date_precision": "quarter",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight invoiced Q Technology a further USD 178,662 in Q2 2026; additional TLens components were also supplied to Q Tech commercially.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 721,
+      "also_message_indices": [],
+      "source": "poLight quarterly report (citation redacted)",
+      "notes": ""
+    },
+    {
+      "date": "2026-04-30",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "Meta filed continuation application US20260276939A1 'Lens barrel with via for adjusting tunable lens' (tunable lens inside camera lens barrel, electrical connection through barrel wall, piezoelectric actuator, deformable glass membrane + deformable polymer; wearable/headset, depth sensing, stereo imaging, RGB, AR/MR).",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 253,
+      "also_message_indices": [
+        359
+      ],
+      "source": "USPTO publication US20260276939A1; citeturn838436view0",
+      "notes": "Continues Meta's earlier tunable-lens patent family (priority 2022-07-26)."
+    },
+    {
+      "date": "2026-04-30",
+      "date_precision": "day",
+      "entity": "Cambridge Mechatronics (CML)",
+      "entity_type": "supplier",
+      "event": "CML patent application WO2026087900A1 published, describing SMA-based actuators that can deform a liquid lens and change focal length (fixed glass surface + deformable membrane), mentioning use in glasses and VR/AR headsets.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 869,
+      "also_message_indices": [],
+      "source": "citeturn226991view1 / citeturn605364view5",
+      "notes": "Prevents a categorical 'CML cannot do deformable optics' exclusion, but establishes no Meta customer, no production, and no camera module meeting the relevant requirements."
+    },
+    {
+      "date": "2026-05",
+      "date_precision": "month",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "Second mass-production PO (NOK 0.8m) from the consumer AR/MR design-in customer.",
+      "category": "order",
+      "strength": "confirmed",
+      "message_index": 457,
+      "also_message_indices": [
+        687
+      ],
+      "source": "poLight Q2 2026 release (citeturn373143search0); citation redacted at [687]",
+      "notes": ""
+    },
+    {
+      "date": "2026-05-19",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "US 12,631,847 'Lens barrel with an integrated tunable lens' granted to Meta, protecting integration of a tunable lens into the lens barrel and its electrical connection to the PCB. Meta holds further patents on tunable lenses integrated into lens barrels and wafer-level camera modules for wearable form factors.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 173,
+      "also_message_indices": [
+        253
+      ],
+      "source": "USPTO (cited via web.run); citeturn717305search9 / citeturn717305search10",
+      "notes": "Additional-patents fact from [173] (no numbers given); grant date from [253]."
+    },
+    {
+      "date": "2026-06-18",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight received a NOK 0.7m follow-on PO from the same unnamed Q Tech-backed top-tier U.S. OEM for the ongoing qualification programme, described as showing customer 'progress' and 'commitment', covering continued qualification work and scheduled deliveries; poLight's Q2 report still calls it an 'ongoing qualification programme for a potential consumer product'. Brings directly attributable qualification POs for this program to NOK 1.8m + 0.7m = NOK 2.5m.",
+      "category": "order",
+      "strength": "confirmed",
+      "message_index": 134,
+      "also_message_indices": [
+        420,
+        457,
+        499,
+        664,
+        687,
+        721
+      ],
+      "source": "poLight disclosure (citeturn142879view2); citeturn696686search0; poLight Q2 2026 report (citeturn916123search2, citeturn977136search0); citeturn670516search8",
+      "notes": "Also at [403], [420], [457], [499], [657], [664], [687], [721]."
+    },
+    {
+      "date": "2026-06-23",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "US 12,663,619 (wide-FOV PZT tunable-autofocus camera patent, filed 2023-02-08) granted to Meta; independent claim: >100-degree diagonal FOV, F-number >2, EFL >2 mm, TTL = 5 mm, BFL <1 mm, flexible membrane, hard substrate, deformable optical material, at least two thin-film piezo (PZT) actuators; examples 0/20/40 V drive, F/2.2, 107-degree FOV, BFL 0.88 mm, ~20 cm to infinity, IR-blocking coating on the tunable-lens substrate, MR passthrough RGB camera application. Reference list contains three poLight documents.",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 173,
+      "also_message_indices": [
+        203,
+        221,
+        253,
+        359,
+        504,
+        843,
+        865,
+        869
+      ],
+      "source": "USPTO (citeturn717305search0 / citeturn717305search1; citeturn521020search0 / citeturn646539view2; citeturn413607view5; citeturn226991view2; web citation 940778view0)",
+      "notes": "Assistant calls Meta itself potentially poLight's biggest competitor on this basis, but a patent claim is not a confirmed component list for the production glasses. Grant date 23 June per [253] and reasoning trace [843]. Also at [203], [221], [359], [504], [865], [869]."
+    },
+    {
+      "date": "2026-06-25",
+      "date_precision": "day",
+      "entity": "Sheba Microsystems",
+      "entity_type": "supplier",
+      "event": "Sheba press release named Teledyne MEMS as production partner in a project for temperature-compensated actuators for ADAS (driver-assistance) cameras - not Meta glasses.",
+      "category": "partnership",
+      "strength": "confirmed",
+      "message_index": 844,
+      "also_message_indices": [],
+      "source": "Sheba press release (web citation 986524search6)",
+      "notes": "Illustrates that a new fab partnership plus fitting timing is not enough to link to Meta."
+    },
+    {
+      "date": "2026-06-30",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight had NOK 243.7m cash at end of June 2026; LTM revenue only about NOK 34m.",
+      "category": "financing",
+      "strength": "confirmed",
+      "message_index": 772,
+      "also_message_indices": [
+        839
+      ],
+      "source": "poLight Q2 2026 report (citation redacted); web citations 513031search2/3",
+      "notes": ""
+    },
+    {
+      "date": "2026-07",
+      "date_precision": "month",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "Third mass-production PO (NOK 0.8m; cumulative NOK 4.0m) from the consumer AR/MR customer; on the strength of three POs poLight classified the case as 'design-in' in July 2026, saying the units may actually be used in the commercial product to be launched (conditional wording).",
+      "category": "design_in",
+      "strength": "confirmed",
+      "message_index": 117,
+      "also_message_indices": [
+        134,
+        376,
+        457,
+        687
+      ],
+      "source": "poLight disclosure (web.run citation 838371search3; citeturn633265view2; citeturn938200search4 / search7; citeturn373143search0; citation redacted at [687])",
+      "notes": "Customer not publicly identified as Meta; assistant flags linking it to Meta as speculation ([85]). Third of the three projects discussed in the Aug 2026 Q&A. Also at [134], [376], [457], [687]."
+    },
+    {
+      "date": "2026-H2",
+      "date_precision": "half",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "Deliveries under the 18 Jun 2026 NOK 0.7m follow-on PO (Q Tech-backed OEM qualification programme) are scheduled for H2 2026.",
+      "category": "order",
+      "strength": "confirmed",
+      "message_index": 420,
+      "also_message_indices": [],
+      "source": "citeturn696686search0",
+      "notes": ""
+    },
+    {
+      "date": "2026-H2",
+      "date_precision": "half",
+      "entity": "Q Technology",
+      "entity_type": "supplier",
+      "event": "Newer Q Tech presentations show mass deliveries of TLens to smart glasses and volume ramp-up at overseas key customers from H2 2026 or 2027.",
+      "category": "roadmap",
+      "strength": "circumstantial",
+      "message_index": 568,
+      "also_message_indices": [],
+      "source": "Q Tech newer presentations (not cited precisely; from assistant reasoning)",
+      "notes": "The assistant said the documents do not confirm the customers are identical."
+    },
+    {
+      "date": "2026-08",
+      "date_precision": "month",
+      "entity": "Q Technology",
+      "entity_type": "supplier",
+      "event": "Q Tech published its H1 2026 results (just before DBS's 26 August 2026 report).",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 616,
+      "also_message_indices": [],
+      "source": "",
+      "notes": "Date inferred from 'just after Q Tech's H1 results'."
+    },
+    {
+      "date": "2026-08-06",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "Q2 2026 call (6 Aug 2026): CEO Oyvind Isaksen said the three mass-production POs (April/May/July 2026) led poLight to classify the consumer AR/MR case as a design-in; he would be 'very surprised if this go away'; poLight will only call it a design win when sure the product will be released.",
+      "category": "design_in",
+      "strength": "confirmed",
+      "message_index": 457,
+      "also_message_indices": [
+        504
+      ],
+      "source": "poLight Q2 2026 presentation/call (citeturn373143search1, search3)",
+      "notes": ""
+    },
+    {
+      "date": "2026-08-06",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "Q2 2026 call/Q&A: the Q Tech-backed top-tier U.S. OEM qualification program is a separate customer from the design-in; it is a very thorough, slow-moving qualification involving both camera-module supplier and OEM; Isaksen called it 'very advanced glasses', 'high-end glasses', 'big OEM'; the customer is acquiring advanced optical test equipment; qualification is going well and the product could ultimately 'ramp in huge volumes'; lenses from Q Tech's line have been tested and qualified although some production processes are still being tuned; production ramp timing depends partly on when the OEM needs particular volumes and remains uncertain.",
+      "category": "qualification",
+      "strength": "confirmed",
+      "message_index": 457,
+      "also_message_indices": [
+        499,
+        504,
+        839
+      ],
+      "source": "poLight Q2 2026 presentation (citeturn373143search3, search5); citeturn475881view1, citeturn415684view0; citeturn413607view1, view2, view3; web citation 908386view4",
+      "notes": "Also at [499], [504], [839]."
+    },
+    {
+      "date": "2026-08-06",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "Q&A: Q Tech's initial TLens line was built primarily to prove manufacturing capability and is not sized for the eventual customer volume; capacity needed by that OEM would be 'much higher'; poLight expects the additional Q Tech line to roughly double assembly capability and is adding final-test capacity (one final-test machine handles ~400k-500k TLenses/month; machines at both manufacturing locations plus another being added).",
+      "category": "capacity",
+      "strength": "confirmed",
+      "message_index": 499,
+      "also_message_indices": [
+        664,
+        676,
+        839
+      ],
+      "source": "citeturn415684view4; citeturn721866view1, citeturn721866view4; citeturn294690search0; web citation 908386view2",
+      "notes": "At two TLenses per headset, ~200k-250k headsets/month per tester. Also at [657], [664], [676], [839]."
+    },
+    {
+      "date": "2026-08-06",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "Q&A: poLight said the NOK 5m project's resulting camera design could potentially become a platform other customers can use; Isaksen was reluctant to explain the ecosystem arrangement because it might reveal the parties involved.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 499,
+      "also_message_indices": [],
+      "source": "citeturn475881view0",
+      "notes": "Assistant infers possibly an Android-XR-type ecosystem/platform company rather than Meta's bespoke flagship; inference only."
+    },
+    {
+      "date": "2026-08-06",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight management: consumer mass-production TLens pricing is currently around $2+ per lens; consumer customers deliberately minimize inventory and prefer smaller, repeated POs (the existing consumer design-in already follows that pattern); order size reflects inventory negotiations.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 664,
+      "also_message_indices": [
+        676,
+        772,
+        818,
+        839
+      ],
+      "source": "citeturn721866view3, citeturn372924search1; web citation 908386view1; citeturn903458view2",
+      "notes": "Statement date not given precisely (Aug 2026 Q&A); used as ASP assumption for revenue scenarios. Also at [676], [772], [818], [839]."
+    },
+    {
+      "date": "2026-08-06",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight management: an OEM investing engineering time to introduce TLens does not want to do it for one product and wants the platform to survive across several generations; management expects autofocus adoption in consumer AR glasses to become considerably more common over the next 2-3 years, with VCM and other tunable technologies coexisting.",
+      "category": "roadmap",
+      "strength": "confirmed",
+      "message_index": 839,
+      "also_message_indices": [],
+      "source": "poLight management Q&A (web citations 908386view0/1, 178887search3)",
+      "notes": "General principle about consumer design-ins, not Meta-specific."
+    },
+    {
+      "date": "2026-08-19",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "Post-Q2 investor Q&A (19 Aug 2026): asked whether the consumer AR/MR design-in, the Q Tech-backed qualification program and the Oct-2025 ~NOK 5m AR camera program are different end customers, CEO Oyvind Isaksen answered 'Those three are different.' The design-in customer is already discussing additional opportunities and several other PoCs are described as increasingly mature; the three design-in orders were intended for commercial products.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 445,
+      "also_message_indices": [
+        457,
+        504,
+        664
+      ],
+      "source": "citeturn935180view1; citeturn373143search8; citeturn903458view2, view8; citeturn977136search8",
+      "notes": "First reported at [438] as 'August 2026 investor update'. Directly contradicts the user's claim ([421]) that poLight said the programs share a customer. Also at [457], [504], [664]."
+    },
+    {
+      "date": "2026-08-26",
+      "date_precision": "day",
+      "entity": "DBS",
+      "entity_type": "analyst",
+      "event": "DBS Bank institutional research report on Q Technology states Q Tech products are already shipped to Meta and Samsung and that 'A Meta project combining Q Tech's module capabilities with poLight's low-power tunable-lens technology is expected to enter mass production in 1H27.' DBS's disclaimer says the report is based on sources it believes reliable but that it has not performed due diligence or verified the information.",
+      "category": "analyst_report",
+      "strength": "strong",
+      "message_index": 616,
+      "also_message_indices": [
+        738,
+        843,
+        844,
+        860
+      ],
+      "source": "DBS Research, 26 Aug 2026 (citeturn751346view0, citeturn596210search2; web citation 917439view0 / 899399view1)",
+      "notes": "DBS is not Meta/Q Tech/poLight; it gives no source; the sentence does not name 'VR Glasses' specifically. Assistant later ([860]) downgraded its weight to +5-10 pp. Also at [625], [738], [843], [844], [860]."
+    },
+    {
+      "date": "2026-09",
+      "date_precision": "month",
+      "entity": "Optotune",
+      "entity_type": "supplier",
+      "event": "Optotune publicly launched the EL-3.1-10.8 tunable lens the week of 21-25 Sept 2026: 1.7 mm thick, 0.3 g, 3.1 mm aperture, ~1 ms rise, ~4 ms settling, up to 18 dioptres, electromagnetic actuator deforming a liquid lens, designed for high-volume OEM integration with AR/VR headsets among target applications. Dev-kit documentation from earlier in 2026 already referenced the lens (up to ~0.1 W over full tuning range).",
+      "category": "product_release",
+      "strength": "confirmed",
+      "message_index": 173,
+      "also_message_indices": [
+        504,
+        844,
+        865
+      ],
+      "source": "Optotune (citeturn609703search0; citeturn609703search12); EL-3.1 datasheet (citeturn413607view6; web citation 917439view3)",
+      "notes": "Compare poLight <6 mW for TLens plus driver; comparison not apples-to-apples. Also at [504], [844], [865]."
+    },
+    {
+      "date": "2026-09-17",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "Continuation US20260276939A1 published by USPTO, six days before Meta's VR Glasses announcement. Claims concentrate on physically integrating an electrically tunable lens inside a small camera barrel with passive lenses in optical series, a conductive via through the barrel wall, and a 'relatively high voltage' controller on the sensor PCB; paragraph [0044] says the tunable lens can use electrowetting, electromechanical techniques such as piezoelectric membrane deformation, or acousto-optical techniques; paragraph [0052] embodiment describes window, deformable polymer, deformable glass membrane and piezoelectric actuator (TLens-like).",
+      "category": "patent",
+      "strength": "confirmed",
+      "message_index": 245,
+      "also_message_indices": [
+        253,
+        280,
+        336,
+        359,
+        504
+      ],
+      "source": "USPTO publication US20260276939A1; citeturn838436view0 / citeturn522005search0; citeturn752183view2, view3, citeturn413607view4",
+      "notes": "Assistant stresses the invention is not new for the 2027 glasses (2022 priority) and downgraded its supplier-identification value: compatible with more than one tunable-lens technology ([504]). Also at [253], [280], [336], [359]."
+    },
+    {
+      "date": "2026-09-18",
+      "date_precision": "day",
+      "entity": "Optotune",
+      "entity_type": "supplier",
+      "event": "Optotune EL-3.1-10.8 datasheet updated 18 September 2026: 1.72 mm thickness, 0.3 g, 10.8 mm outer diameter, 3.1 mm clear aperture, 1 ms response / 4-7 ms settling, 20 mW at 10 dioptres and 85 mW at 16 dioptres.",
+      "category": "product_release",
+      "strength": "confirmed",
+      "message_index": 865,
+      "also_message_indices": [],
+      "source": "Optotune datasheet (web citations 201256view5, 439678view3/4)",
+      "notes": "Fresh datasheet does not prove development started recently; no public Meta qualification found."
+    },
+    {
+      "date": "2026-09-21",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight announced an order for TWedge technical samples for a display application (not a TLens autofocus production order).",
+      "category": "order",
+      "strength": "confirmed",
+      "message_index": 134,
+      "also_message_indices": [],
+      "source": "poLight announcement (citeturn142879view1)",
+      "notes": "Should not be read as confirmation of camera-lens supply to Meta despite timing proximity."
+    },
+    {
+      "date": "2026-09-23",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "oem",
+      "event": "Meta rates the VR Glasses' puck battery at up to ~3 hours of continuous high-resolution media playback; camera wattage and battery capacity not published.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 69,
+      "also_message_indices": [],
+      "source": "Meta Connect 2026 materials (web.run citations 584131search3/search0)",
+      "notes": "Assistant estimates ~37-42%/hour with continuous passthrough -> ~2.4-2.7 h."
+    },
+    {
+      "date": "2026-09-23",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "oem",
+      "event": "Meta announced its ~100 g flagship 'Meta VR Glasses' at Connect 2026 (23 Sept 2026): 'most advanced device yet', $1,300 flagship, spring-2027 launch, tethered compute/battery puck (Snapdragon Reality Elite, storage, battery), micro-OLED displays, custom pancake display optics, eye and hand tracking, depth sensing and full-color stereo passthrough cameras with 'high-quality passthrough'. The announcement does not identify an autofocus mechanism or camera-lens supplier.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 117,
+      "also_message_indices": [
+        58,
+        69,
+        134,
+        245,
+        499,
+        616,
+        738
+      ],
+      "source": "Meta Connect 2026 announcement (web.run citations 509705search1/search3, 584131search0/search3; citeturn120530view0 / citeturn256440view0; citeturn949653search2, citeturn949653search0)",
+      "notes": "Also referenced at [58], [69], [134], [245], [499], [616], [738]. Assistant initially confused it with Ray-Ban Meta Display at [50] before correcting at [58]. Date derived at [245] as 'six days after' the 17 Sept patent publication and stated explicitly at [499]."
+    },
+    {
+      "date": "2026-09-23",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "oem",
+      "event": "Meta says the VR Glasses' display optics are custom pancake lenses (not poLight TLens); passthrough is intended to let users see nearby objects such as desk and phone.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 117,
+      "also_message_indices": [],
+      "source": "Meta Connect 2026 materials (web.run citations 509705view1, 509705search0/view3)",
+      "notes": "If TLens is in the device it would be in world-facing/passthrough camera modules, not display optics."
+    },
+    {
+      "date": "2026-09-23",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "oem",
+      "event": "Meta states the VR Glasses are five times lighter than Quest 3 and attributes this to the two-part (glasses + puck) architecture; the glasses retain displays, optics and sensors/cameras on the head.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 129,
+      "also_message_indices": [],
+      "source": "Meta Connect 2026 materials (web.run citation 319550search0/search11)",
+      "notes": ""
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "Xreal",
+      "entity_type": "oem",
+      "event": "Xreal One / One Pro with Xreal Eye camera: 12 MP, up to 1080p at 30/60 fps, no own battery (powered from phone/Beam Pro); Xreal quotes ~4-6 hours use from a fully charged phone.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 35,
+      "also_message_indices": [],
+      "source": "Xreal product pages (web.run citations 958837search0/5/6)",
+      "notes": "Undated product spec; date is message date."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "oem",
+      "event": "Meta Ray-Ban Display glasses are rated up to ~6-7 hours of normal use, with a 12 MP camera and 600x600 display; camera feed can stream to a phone via Meta's Wearables toolkit.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 50,
+      "also_message_indices": [],
+      "source": "Meta product pages (web.run citations 532302search1/11, 871967search0/2)",
+      "notes": "Not the spring-2027 device; assistant corrected itself at [58]."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight's published comparison for a typical 32 MP, 1/2.8-inch autofocus camera module: TLens module footprint <8 x 8 mm and AF power <6 mW (including driver ASIC; some implementations <1 mW) versus conventional VCM >10 x 10 mm and >180 mW; response 1 ms vs 8-10 ms; constant field of view during focusing; TLens element 3.2 x 3.2 x 0.4 mm, packaged ~4.4 x 4.9 x 0.55 mm; the Add-In supports different lens architectures, sensor formats and fields of view.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 129,
+      "also_message_indices": [
+        134,
+        137,
+        173,
+        504
+      ],
+      "source": "poLight marketing materials (web.run citations 319550search3, 336285search23/search5, 503907search1/search6; citeturn120530view3 / citeturn956770view1; citeturn752183view6, citeturn190771view1, view5, citeturn573584view2)",
+      "notes": "Undated manufacturer figures for a reference case, not Meta measurements. Also at [134], [137], [173], [504]."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "patent",
+      "event": "The deep-research tool's reasoning trace mentions finding a Meta patent application for a camera with an adjustable/tunable lens and references Aria Gen 2 technical material and Meta Connect content, to be verified as evidence of Meta R&D into tunable-lens cameras.",
+      "category": "patent",
+      "strength": "speculative",
+      "message_index": 133,
+      "also_message_indices": [],
+      "source": "",
+      "notes": "Only a reasoning trace; no patent number, filing date or title given."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "GPT-6 Pro assistant",
+      "entity_type": "analyst",
+      "event": "Assistant retracted its earlier 30-50% probability estimate and strong ratings of the size/timing arguments as 'too confident' and not supported by product-specific evidence.",
+      "category": "analyst_report",
+      "strength": "confirmed",
+      "message_index": 134,
+      "also_message_indices": [],
+      "source": "Conversation",
+      "notes": ""
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "Meta",
+      "entity_type": "oem",
+      "event": "Meta developer specifications for Meta VR Glasses state: 'Color stereoscopic (26 PPD) passthrough with autofocus and depth sensing' - confirming the passthrough cameras use autofocus; the spec names neither actuator technology nor supplier.",
+      "category": "announcement",
+      "strength": "confirmed",
+      "message_index": 137,
+      "also_message_indices": [
+        221,
+        280,
+        738,
+        869
+      ],
+      "source": "Meta developer specifications (citeturn126743view0; citeturn226991view3)",
+      "notes": "Date is when the assistant found it (message timestamp 2026-09-25 18:30), not the spec publication date. User asserted 'They do use autofocus. Confirmed' at [135]. Also at [221], [280], [738], [869]."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "GPT-6 Pro assistant",
+      "entity_type": "analyst",
+      "event": "Assistant ranked competitors for the Meta socket: Meta/custom piezo tunable lens (very high), poLight TLens (very high), Optotune (high), VCM makers Q Tech/Actutek, Mitsumi, Alps (medium-high), CML SMA (medium), Corning Varioptic (low-medium), Sheba MEMS (low).",
+      "category": "analyst_report",
+      "strength": "circumstantial",
+      "message_index": 173,
+      "also_message_indices": [],
+      "source": "Conversation",
+      "notes": ""
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "GPT-6 Pro assistant",
+      "entity_type": "analyst",
+      "event": "Assistant's claim-level comparison: Meta's patent stack (piezo actuator -> flexible membrane -> deformable optical material) overlaps closely with TLens; F/2.2 and field of view overlap, but dimensions, focus range, TTL (5.0 mm vs poLight's 6.8 mm reference) and BFL differ from published TLens figures; the TTL mismatch is not a demonstrated incompatibility since they are different complete-camera designs.",
+      "category": "analyst_report",
+      "strength": "circumstantial",
+      "message_index": 218,
+      "also_message_indices": [
+        504
+      ],
+      "source": "Assistant analysis of patent vs poLight data; citeturn752183view5",
+      "notes": "From reasoning notes at [187], [214], [218]; TTL point at [504]. Conclusion: possible system improvement over known technology, not proof of common ownership, licensing or patent dependency."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "GPT-6 Pro assistant",
+      "entity_type": "analyst",
+      "event": "Assistant issued subjective probability table: ~62% poLight TLens in Meta VR Glasses; ~18% PZT/membrane tunable lens not from poLight; ~10% VCM/SMA; ~7% Optotune/other; ~3% other; ~70% that poLight's unnamed top-tier U.S. OEM is Meta.",
+      "category": "analyst_report",
+      "strength": "speculative",
+      "message_index": 280,
+      "also_message_indices": [],
+      "source": "",
+      "notes": ""
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "GPT-6 Pro assistant",
+      "entity_type": "analyst",
+      "event": "Assistant began a component-by-component comparison of the Sept 17 2026 continuation figures (3A-C, 5), claims, electrodes, PCB connection and piezo examples against TLens Add-In drawings; notes conclude the strongest match is the PZT/membrane package, placement in the lens stack and voltage level, while the via-through-barrel appears to be a Meta-specific construction; probability raised 'moderately, not dramatically' (to ~68% at [359]).",
+      "category": "analyst_report",
+      "strength": "speculative",
+      "message_index": 336,
+      "also_message_indices": [
+        359
+      ],
+      "source": "",
+      "notes": "Thought-trace only (Norwegian); final answer at [359]."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "User",
+      "entity_type": "other",
+      "event": "User created a daily 'Meta-poLight Evidence Watch' condition-watch scheduled task to be alerted only on meaningful new Meta-poLight/TLens evidence.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 363,
+      "also_message_indices": [],
+      "source": "",
+      "notes": "Conversation metadata, not market evidence."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "GPT-6 Pro assistant",
+      "entity_type": "analyst",
+      "event": "Assistant searched poLight's order history and found no public poLight announcement naming Meta as a buyer; all relevant orders refer to an unnamed top-tier U.S. consumer-electronics OEM.",
+      "category": "analyst_report",
+      "strength": "confirmed",
+      "message_index": 403,
+      "also_message_indices": [],
+      "source": "",
+      "notes": "User had asserted Meta 'recently ordered some' ([377])."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "GPT-6 Pro assistant",
+      "entity_type": "analyst",
+      "event": "Assistant investigated whether the Q Tech qualification program being relabelled 'design-in' means qualification is complete (user question [446]); the design-in case and the Q Tech qualification are separate customers/processes, so the label does not imply the Q Tech qualification is finished.",
+      "category": "analyst_report",
+      "strength": "confirmed",
+      "message_index": 454,
+      "also_message_indices": [
+        457
+      ],
+      "source": "",
+      "notes": "Answered at [457] with poLight Q2 2026 material."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "GPT-6 Pro assistant",
+      "entity_type": "analyst",
+      "event": "Assistant's watch signal: by late Q4 2026 / early Q1 2027 expects a substantially larger TLens PO (first production PO ~NOK 5-15m, follow-ons NOK 5-20m), qualification completion, explicit capacity ramp, or wording changing from 'qualification' to 'production'; if still NOK 0.5-1m qualification batches into early 2027, Meta probability would be cut materially.",
+      "category": "analyst_report",
+      "strength": "speculative",
+      "message_index": 664,
+      "also_message_indices": [
+        676
+      ],
+      "source": "",
+      "notes": "Assistant projection. Table at [676]: 100k headsets ~ NOK 4m+, 1m headsets ~ NOK 40m+ at ~$2+/lens, 2 lenses/headset, ~NOK 10/$."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "poLight confirmed the Q Tech-backed OEM is also engaged with TWedge, but no disclosure links specific TWedge POs to that customer.",
+      "category": "other",
+      "strength": "circumstantial",
+      "message_index": 721,
+      "also_message_indices": [],
+      "source": "poLight disclosure (citation redacted)",
+      "notes": "Underlying disclosure date not given. Assistant declined to add TWedge POs to the NOK 2.5m."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "PLT share price ~NOK 13.64 intraday (214,948,546 shares, market cap ~NOK 2.93bn), closing around NOK 14.90 (market cap ~NOK 3.2bn) on 25 Sept 2026.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 772,
+      "also_message_indices": [
+        818,
+        839
+      ],
+      "source": "market data (citations redacted; web citations 513031search2/3)",
+      "notes": "Python calculation at [762] used shares=214_948_546, price=13.64."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "GPT-6 Pro assistant",
+      "entity_type": "analyst",
+      "event": "Assistant's base-case model: Meta VR Glasses ~400k units in first 12 months (bear 150-250k, base 300-500k, bull 600-900k), ~800k TLenses, ~NOK 16-20m+ direct TLens revenue, ~NOK 15-25m cumulative production PO flow, initial production build NOK 4-8m followed by NOK 3-8m follow-ons; valuation on a confirmed Meta win NOK 17-19 (small program), NOK 20-24 (initial fundamental range), NOK 25-30 (platform component), NOK 30+ (additional major design wins).",
+      "category": "analyst_report",
+      "strength": "speculative",
+      "message_index": 772,
+      "also_message_indices": [
+        818
+      ],
+      "source": "",
+      "notes": "Revised down from earlier 0.5-1.0m units / NOK 20-50m and central NOK 22-24 at [772]. Market caps: NOK 22 ~ 4.7bn, NOK 25 ~ 5.4bn, NOK 30 ~ 6.45bn."
+    },
+    {
+      "date": "2026-09-25",
+      "date_precision": "day",
+      "entity": "Bigscreen",
+      "entity_type": "oem",
+      "event": "Bigscreen Beyond/Beyond 2 have shipped 20k+ headsets lifetime despite a similar ~107 g premium VR form factor.",
+      "category": "other",
+      "strength": "circumstantial",
+      "message_index": 818,
+      "also_message_indices": [],
+      "source": "citation redacted",
+      "notes": "Lifetime figure as of message date."
+    },
+    {
+      "date": "2026-09-26",
+      "date_precision": "day",
+      "entity": "Sheba Microsystems",
+      "entity_type": "supplier",
+      "event": "Sheba has launched MEMS autofocus for compact AR/VR cameras using a solution that moves the image sensor rather than the lens; judged interesting but not yet at consumer-volume maturity comparable to other candidates.",
+      "category": "product_release",
+      "strength": "confirmed",
+      "message_index": 173,
+      "also_message_indices": [
+        844
+      ],
+      "source": "web citations 617116search13, 724522view0; assistant assessment",
+      "notes": "Launch date not stated."
+    },
+    {
+      "date": "2026-09-26",
+      "date_precision": "day",
+      "entity": "Corning Varioptic",
+      "entity_type": "supplier",
+      "event": "Corning Varioptic electrowetting liquid lenses offer autofocus with no moving barrel, low power, fast focus and small elements, but current positioning is industrial vision, scientific, barcode/inspection and medical rather than consumer AR; no public Meta link found. poLight itself names Optotune and Corning as its tunable-optics competitors and says VCM remains the dominant incumbent.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 173,
+      "also_message_indices": [
+        844
+      ],
+      "source": "Corning (citeturn722539search0 / search1 / search5; web citation 228347search1); poLight (citeturn342756search22)",
+      "notes": ""
+    },
+    {
+      "date": "2026-09-26",
+      "date_precision": "day",
+      "entity": "MinebeaMitsumi",
+      "entity_type": "supplier",
+      "event": "Meta patent filings describe VCM-based camera solutions and Mitsumi appears among the patent references; no identified competing supply to the Meta glasses.",
+      "category": "patent",
+      "strength": "circumstantial",
+      "message_index": 844,
+      "also_message_indices": [],
+      "source": "web citation 917439view1",
+      "notes": ""
+    },
+    {
+      "date": "2026-09-26",
+      "date_precision": "day",
+      "entity": "Cambridge Mechatronics (CML)",
+      "entity_type": "supplier",
+      "event": "CML describes a partner network with capacity for millions of actuators, cameras and driver chips per month; its business model is licensing, royalties, own driver ICs and development services, so actuators can be made by licensees without a public trail of component orders.",
+      "category": "capacity",
+      "strength": "confirmed",
+      "message_index": 865,
+      "also_message_indices": [],
+      "source": "web citations 719366view2, 439678view1",
+      "notes": ""
+    },
+    {
+      "date": "2026-09-26",
+      "date_precision": "day",
+      "entity": "Cambridge Mechatronics (CML)",
+      "entity_type": "supplier",
+      "event": "CML has described using SMA to move the display or display optics for user focus - a different function from world-facing camera autofocus, so CML could be in the same glasses without replacing TLens.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 865,
+      "also_message_indices": [],
+      "source": "web citation 685529view0",
+      "notes": ""
+    },
+    {
+      "date": "2026-09-26",
+      "date_precision": "day",
+      "entity": "GPT-6 Pro assistant",
+      "entity_type": "analyst",
+      "event": "Assistant could not retrieve CML's latest financial accounts PDF and so did not check it for contract disclosures.",
+      "category": "analyst_report",
+      "strength": "confirmed",
+      "message_index": 865,
+      "also_message_indices": [],
+      "source": "",
+      "notes": "Flagged as a knowledge gap."
+    },
+    {
+      "date": "2026-09-26",
+      "date_precision": "day",
+      "entity": "Cambridge Mechatronics (CML)",
+      "entity_type": "supplier",
+      "event": "CML's PCB/design guide for SMA cameras requires at least 5 mm separation between the temperature sensor and the driver chip and prescribes routing/shielding of pulsed SMA current lines.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 869,
+      "also_message_indices": [],
+      "source": "citeturn415994view4 / citeturn304811view6",
+      "notes": "Do not conflate this 5 mm board spacing with the 5 mm optical length in the Meta patent; no proven size barrier for Meta's glasses."
+    },
+    {
+      "date": "2026-09-26",
+      "date_precision": "day",
+      "entity": "Cambridge Mechatronics (CML)",
+      "entity_type": "supplier",
+      "event": "CML's publicly described combined AF+OIS solution uses SMA wires moved via controlled heating/cooling, i.e. not piezoelectric actuation - the main technical distinction from the piezo membrane in Meta's US 12,663,619 and the LinkedIn 'piezoelectric tunable lens' module.",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 869,
+      "also_message_indices": [
+        876
+      ],
+      "source": "citeturn605364view0 / citeturn370756view3",
+      "notes": ""
+    },
+    {
+      "date": "2026-09-27",
+      "date_precision": "day",
+      "entity": "User",
+      "entity_type": "person",
+      "event": "User uploaded a screenshot (apparently a forum post reproducing a LinkedIn profile of a former Meta engineer).",
+      "category": "other",
+      "strength": "confirmed",
+      "message_index": 870,
+      "also_message_indices": [],
+      "source": "image upload sediment://file_0000000078808210bd46ee6ef587bcc2",
+      "notes": "Image not viewable in transcript; content inferred from assistant's reply at [876]."
+    },
+    {
+      "date": "2026-Q4",
+      "date_precision": "quarter",
+      "entity": "poLight",
+      "entity_type": "supplier",
+      "event": "Another TLens delivery to the consumer AR/MR design-in customer is scheduled for Q4 2026.",
+      "category": "order",
+      "strength": "confirmed",
+      "message_index": 117,
+      "also_message_indices": [],
+      "source": "poLight disclosure (web.run citation 838371search3)",
+      "notes": "Assistant initially called the Q4 2026 deliveries -> spring 2027 Meta launch alignment a 'particularly interesting coincidence', later concluded this customer is almost certainly not Meta VR Glasses."
+    },
+    {
+      "date": "2026-Q4",
+      "date_precision": "quarter",
+      "entity": "Snap",
+      "entity_type": "oem",
+      "event": "Snap's SPECS standalone see-through AR glasses ship in fall 2026 at $2,195; Snap has a multi-generation strategic agreement with Qualcomm; Reuters describes the product as also pushing into enterprise.",
+      "category": "product_release",
+      "strength": "confirmed",
+      "message_index": 541,
+      "also_message_indices": [],
+      "source": "citeturn946829search1, citeturn833366search6, citeturn946829news47, citeturn946829search3",
+      "notes": "'Fall 2026' could be late Q3."
+    },
+    {
+      "date": "2027",
+      "date_precision": "year",
+      "entity": "GPT-6 Pro assistant",
+      "entity_type": "analyst",
+      "event": "Assistant models annual TLens revenue scenarios for 2027-2029 at ~$2/TLens: ~NOK 12-25m (one premium VR model, 0.6-1m units), NOK 25-80m (one extra AI/display platform), or NOK 100-200m (broad reuse across Meta glasses families); fundamental valuation by scenario NOK 18-22 / 23-28 / 30-40 / 40-55 per share.",
+      "category": "analyst_report",
+      "strength": "speculative",
+      "message_index": 836,
+      "also_message_indices": [
+        839
+      ],
+      "source": "",
+      "notes": "Interim at [836]; completed at [839]. Large volumes could pressure ASP; AI glasses likely need one TLens per device."
+    },
+    {
+      "date": "2027",
+      "date_precision": "year",
+      "entity": "Omdia",
+      "entity_type": "analyst",
+      "event": "Omdia states the XR market begins shifting from headsets toward glasses from 2027 onward; Counterpoint forecasts a 69% CAGR through 2027 for AR smart glasses; TrendForce expects increasingly advanced full-color glasses in 2027-28, including a likely next-generation Meta AR product.",
+      "category": "analyst_report",
+      "strength": "confirmed",
+      "message_index": 839,
+      "also_message_indices": [],
+      "source": "Omdia; Counterpoint; TrendForce (web citations)",
+      "notes": "TrendForce item is circumstantial (2027-28 range)."
+    },
+    {
+      "date": "2027-H1",
+      "date_precision": "half",
+      "entity": "DBS",
+      "entity_type": "analyst",
+      "event": "Expected mass production of the Meta + Q Tech + poLight tunable-lens project in H1 2027, per DBS Research.",
+      "category": "roadmap",
+      "strength": "circumstantial",
+      "message_index": 616,
+      "also_message_indices": [
+        738,
+        844
+      ],
+      "source": "DBS Research 26 Aug 2026 (citeturn751346view0; web citation 917439view0 / 899399view1)",
+      "notes": "Analyst estimate, not supplier/OEM confirmation; DBS does not say 'VR Glasses'."
+    },
+    {
+      "date": "2027-Q2",
+      "date_precision": "quarter",
+      "entity": "Meta",
+      "entity_type": "oem",
+      "event": "Commercial launch of Meta VR Glasses scheduled for spring 2027 at USD 1,299.99, weighing about 100 g, with stereoscopic 26-PPD autofocus passthrough and depth sensing, inheriting the Quest ecosystem.",
+      "category": "roadmap",
+      "strength": "confirmed",
+      "message_index": 58,
+      "also_message_indices": [
+        69,
+        117,
+        129,
+        134,
+        221,
+        280,
+        376,
+        499,
+        541,
+        616,
+        772,
+        818
+      ],
+      "source": "Meta Connect 2026 announcement / Meta official statement (citeturn938200search0; citeturn949653search2; citeturn562582search0; citations redacted)",
+      "notes": "'Spring 2027' mapped to 2027-Q2 (H1 2027). Repeated at [69], [117], [129], [134], [221], [280], [376], [499], [541], [616], [772], [818]."
+    },
+    {
+      "date": "2027-H2",
+      "date_precision": "half",
+      "entity": "Apple",
+      "entity_type": "oem",
+      "event": "Current reporting puts Apple's first (lighter) smart-glasses launch in late 2027, reportedly more Meta-Ray-Ban-like than Meta VR Glasses; Apple's display-equipped AR/XR glasses are further out.",
+      "category": "rumor",
+      "strength": "circumstantial",
+      "message_index": 499,
+      "also_message_indices": [
+        541
+      ],
+      "source": "citeturn722121search3, citeturn949653search5, citeturn949653search15; citeturn833366search10",
+      "notes": ""
+    },
+    {
+      "date": "unknown",
+      "date_precision": "unknown",
+      "entity": "Vuzix",
+      "entity_type": "oem",
+      "event": "Vuzix Shield uses two outward-facing stereo autofocus cameras incorporating TLens; Vuzix's CEO cited fast focusing, low power, constant field of view and compactness for the selection.",
+      "category": "design_in",
+      "strength": "confirmed",
+      "message_index": 134,
+      "also_message_indices": [],
+      "source": "citeturn576290search0",
+      "notes": "Establishes a real smart-glasses use case for TLens, not a Meta relationship."
+    },
+    {
+      "date": "unknown",
+      "date_precision": "unknown",
+      "entity": "Q Technology",
+      "entity_type": "supplier",
+      "event": "Q Tech advertises an extremely compact 50 MP front AF module of approximately 7.7 x 7.5 x 3.55 mm.",
+      "category": "product_release",
+      "strength": "confirmed",
+      "message_index": 173,
+      "also_message_indices": [],
+      "source": "Q Tech (citeturn342756search5)",
+      "notes": ""
+    }
+  ],
+  "entities": [
+    {
+      "name": "poLight",
+      "aliases": [
+        "poLight ASA",
+        "PLT"
+      ],
+      "type": "company",
+      "role": "Norwegian supplier of TLens piezo-MEMS tunable-lens autofocus (TLens Silver, TLens Add-In, PD50 driver) and TWedge; the subject of the thesis; user is a shareholder. Three separate consumer programs: A (Q Tech-backed top-tier U.S. OEM qualification), B (Oct-2025 ~NOK 5m AR head-worn camera project), C (2026 consumer AR/MR design-in)."
+    },
+    {
+      "name": "Meta",
+      "aliases": [
+        "Meta (Reality Labs)"
+      ],
+      "type": "company",
+      "role": "OEM; announced ~100 g Meta VR Glasses at Connect 2026 (23 Sept 2026), spring-2027 launch, $1,299.99, autofocus stereo passthrough; hypothesized poLight customer; holder of tunable-lens patents US20240264430A1, US20250076634A1, US 12,663,619, US 12,631,847, US20260276939A1, US12493197B2 and the abandoned US20230280637A1; potential in-house/custom competitor."
+    },
+    {
+      "name": "Meta VR Glasses",
+      "type": "product",
+      "role": "Target device: two-part architecture (glasses + compute/battery puck with Snapdragon Reality Elite), micro-OLED, custom pancake optics, color stereoscopic 26-PPD passthrough with autofocus and depth sensing, ~3 h media playback, 5x lighter than Quest 3."
+    },
+    {
+      "name": "Meta Ray-Ban Display",
+      "type": "product",
+      "role": "Existing Meta glasses (6-7 h, 12 MP camera, 600x600 display; ~84k shipped 2025; orders 80k->150k, 500k two-year goal); comparison baseline, initially confused with the 2027 device."
+    },
+    {
+      "name": "Meta Quest 3",
+      "type": "product",
+      "role": "Comparison baseline (VR Glasses are 5x lighter); Quest family ~77% of 6.9m-unit 2024 VR market."
+    },
+    {
+      "name": "Meta Aria Gen 2",
+      "type": "product",
+      "role": "Meta research glasses referenced in the research tool's trace."
+    },
+    {
+      "name": "Q Technology",
+      "aliases": [
+        "Q Tech",
+        "Q Technology (Q Tech)",
+        "Q Technology Investment"
+      ],
+      "type": "company",
+      "role": "Camera-module maker; strategic investor in poLight (~NOK 171m, ~one-third stake, largest shareholder since June 2025) backed by a top-tier U.S. consumer-electronics customer; building dedicated TLens assembly/test line; holds 'US M brand' XR vendor code since 2024; received TDK actuator business via Actutek; DBS says it ships to Meta and Samsung."
+    },
+    {
+      "name": "Actutek",
+      "type": "company",
+      "role": "VCM actuator vehicle through which TDK's camera actuator business moved into the Q Tech group."
+    },
+    {
+      "name": "Oyvind Isaksen",
+      "type": "person",
+      "role": "poLight CEO; quoted in Q2 2026 call (6 Aug) and 19 Aug 2026 investor Q&A ('Those three are different')."
+    },
+    {
+      "name": "Unnamed Q Tech-backed top-tier U.S. consumer-electronics OEM (Program A)",
+      "type": "company (undisclosed)",
+      "role": "Multi-year qualification customer for 'very advanced, high-end glasses'; TLens + driver qualification POs Aug 2025 (NOK 1.8m incl. Feb 2026 call-off), Jun 2026 (NOK 0.7m); also engaged with TWedge; leading Meta candidate."
+    },
+    {
+      "name": "Unnamed top-tier U.S. consumer-electronics OEM (Program B, Oct-2025 AR camera project)",
+      "type": "company (undisclosed)",
+      "role": "~NOK 5m project for TLens Add-In cameras for several AR head-worn devices; modules shipped for validation end-Q2 2026; possibly a platform/ecosystem player; candidates Meta, Apple, Google."
+    },
+    {
+      "name": "Unnamed consumer AR/MR design-in customer (Program C)",
+      "type": "company (undisclosed)",
+      "role": "Mass-production POs Apr/May/Jul 2026 (NOK 2.4m + 0.8m + 0.8m = NOK 4.0m), design-in since July 2026, Q4 2026 delivery, product expected in 2026; judged ~2% likely to be Meta VR Glasses."
+    },
+    {
+      "name": "'US M brand'",
+      "type": "company (undisclosed)",
+      "role": "Q Tech's 2024 XR vendor-code customer, presumed Meta (Microsoft judged poor fit)."
+    },
+    {
+      "name": "Unnamed former Meta engineer (LinkedIn profile)",
+      "type": "person",
+      "role": "Source of 'Led development of miniature piezoelectric tunable lens AF camera module' claim; Meta tenure Sept 2020-Apr 2025."
+    },
+    {
+      "name": "User",
+      "aliases": [
+        "User (poLight shareholder)",
+        "ChatGPT scheduled task"
+      ],
+      "type": "person",
+      "role": "poLight shareholder driving the investigation; supplied screenshot evidence; created daily 'Meta-poLight Evidence Watch' task."
+    },
+    {
+      "name": "GPT-6 Pro assistant",
+      "aliases": [
+        "ChatGPT (GPT-6 Pro)"
+      ],
+      "type": "analyst",
+      "role": "Assistant producing the probability estimates, patent comparisons, competitor ranking and valuation scenarios in the thread."
+    },
+    {
+      "name": "TLens / TLens Silver / TLens Add-In",
+      "type": "product",
+      "role": "poLight tunable-lens autofocus: piezo (PZT) thin film on flexible glass membrane over soft polymer; <6 mW incl. driver, 1 ms response, constant FOV, 3.2x3.2x0.4 mm element; Add-In embeds TLens inside the fixed-focus lens stack; ~$2+/lens consumer pricing."
+    },
+    {
+      "name": "TWedge",
+      "type": "product",
+      "role": "poLight display-application product; Sept 2026 technical-sample order; Q Tech-backed OEM also engaged with it."
+    },
+    {
+      "name": "Voice Coil Motor (VCM) / SMA autofocus",
+      "type": "technology",
+      "role": "Incumbent conventional autofocus alternatives (>10x10 mm, >180 mW per poLight comparison); ~10% bucket in assistant estimates."
+    },
+    {
+      "name": "Optotune",
+      "type": "company",
+      "role": "Competitor; EL-3.1-10.8 electromagnetic liquid tunable lens (1.7 mm, 0.3 g, 1 ms, 20-85 mW) launched Sept 2026 for AR/VR; ~6-7% bucket."
+    },
+    {
+      "name": "Cambridge Mechatronics (CML)",
+      "aliases": [
+        "CML",
+        "Cambridge Mechatronics"
+      ],
+      "type": "company",
+      "role": "Top competitor candidate; SMA AF+OIS actuators (in mass production since 2023), licensing/royalty model, Zero Hold Power, WO2026087900A1 deformable liquid lens; CML patents referenced in Meta filings; 'US technology giant' engagements; investors Atlantic Bridge, Intel Capital, Sony Innovation Fund."
+    },
+    {
+      "name": "Corning Varioptic",
+      "aliases": [
+        "Corning (Varioptic)",
+        "Corning"
+      ],
+      "type": "company",
+      "role": "Competitor; electrowetting liquid lens with industrial product profile; no public Meta link."
+    },
+    {
+      "name": "Sheba Microsystems",
+      "aliases": [
+        "Sheba"
+      ],
+      "type": "company",
+      "role": "Competitor; MEMS sensor-shift autofocus for AR/VR; Teledyne MEMS partnership for ADAS cameras (June 2026); low consumer-volume maturity."
+    },
+    {
+      "name": "MinebeaMitsumi",
+      "aliases": [
+        "Mitsumi"
+      ],
+      "type": "company",
+      "role": "Incumbent VCM autofocus actuator supplier (since 2005); appears in Meta patent references."
+    },
+    {
+      "name": "Alps Alpine",
+      "type": "company",
+      "role": "Incumbent VCM supplier; CML licensee mass-producing SMA actuators since Jan 2023."
+    },
+    {
+      "name": "TDK",
+      "type": "company",
+      "role": "Transferred camera-module actuator business to Q Technology Investment / Actutek in 2025."
+    },
+    {
+      "name": "GalaxyCore",
+      "type": "company",
+      "role": "Named CML partner."
+    },
+    {
+      "name": "Teledyne MEMS",
+      "type": "company",
+      "role": "Sheba production partner (ADAS project, June 2026)."
+    },
+    {
+      "name": "Vuzix",
+      "type": "company",
+      "role": "Existing TLens customer (Vuzix Shield stereo autofocus cameras)."
+    },
+    {
+      "name": "Xreal",
+      "aliases": [
+        "XREAL",
+        "XREAL One / One Pro / XREAL Eye",
+        "XREAL Beam Pro"
+      ],
+      "type": "company",
+      "role": "Competing OEM AR glasses platform; power comparison; 111,355 One-series units in 2025, 133,731 total."
+    },
+    {
+      "name": "Bigscreen",
+      "aliases": [
+        "Bigscreen (Beyond/Beyond 2)"
+      ],
+      "type": "company",
+      "role": "OEM comparable (~107 g premium VR, 20k+ lifetime)."
+    },
+    {
+      "name": "Apple",
+      "aliases": [
+        "Apple (Vision Pro)"
+      ],
+      "type": "company",
+      "role": "Strongest alternative OEM if not Meta; smart glasses reportedly late 2027; Vision Pro ~390k units 2024 (excluded from comparables by user); Apple module suppliers LG Innotek, Sharp, Cowell, Sunny Optical."
+    },
+    {
+      "name": "Google",
+      "aliases": [
+        "Google / Android XR"
+      ],
+      "type": "company",
+      "role": "Alternative OEM / ecosystem candidate (Android XR glasses with Samsung, Warby Parker, Gentle Monster)."
+    },
+    {
+      "name": "Samsung",
+      "type": "company",
+      "role": "OEM; DBS says Q Tech already ships to Samsung; Google Android XR partner."
+    },
+    {
+      "name": "Snap",
+      "type": "company",
+      "role": "Alternative OEM candidate (SPECS AR glasses, fall 2026, $2,195; Qualcomm partner)."
+    },
+    {
+      "name": "Amazon",
+      "type": "company",
+      "role": "Low-probability alternative OEM candidate (Echo Frames)."
+    },
+    {
+      "name": "Microsoft",
+      "type": "company",
+      "role": "Alternative 'M brand' candidate; judged poor fit (HoloLens manufacturing ended Dec 2024)."
+    },
+    {
+      "name": "Qualcomm",
+      "aliases": [
+        "Qualcomm Snapdragon Reality Elite"
+      ],
+      "type": "company",
+      "role": "SoC in the Meta VR Glasses puck; Snap SPECS multi-generation partner."
+    },
+    {
+      "name": "Warby Parker",
+      "type": "company",
+      "role": "Google Android XR eyewear partner."
+    },
+    {
+      "name": "Gentle Monster",
+      "type": "company",
+      "role": "Google Android XR eyewear partner."
+    },
+    {
+      "name": "Cowell / LG Innotek / Sharp / Sunny Optical",
+      "type": "company",
+      "role": "Apple camera-module suppliers contrasted with Q Tech (no meaningful Apple exposure)."
+    },
+    {
+      "name": "DBS",
+      "aliases": [
+        "DBS Bank",
+        "DBS Research"
+      ],
+      "type": "analyst",
+      "role": "Institutional analyst whose 26 Aug 2026 report on Q Tech names a Meta + Q Tech + poLight tunable-lens project with 1H27 mass production; disclaimer says unverified."
+    },
+    {
+      "name": "Omdia",
+      "type": "analyst",
+      "role": "Market data: Ray-Ban Display 84k (2025), Meta 7.4m AI glasses 2025, 4.2m AI glasses H1 2026, headset-to-glasses shift from 2027."
+    },
+    {
+      "name": "Counterpoint",
+      "type": "analyst",
+      "role": "Market data: Meta ~94% of AI-glasses shipments H1 2026; 69% CAGR to 2027."
+    },
+    {
+      "name": "TrendForce",
+      "type": "analyst",
+      "role": "Ray-Ban Display orders 80k->150k, 500k two-year goal; full-color glasses 2027-28 incl. next-gen Meta AR."
+    },
+    {
+      "name": "Reuters",
+      "type": "media",
+      "role": "Source describing Snap SPECS pushing into enterprise."
+    },
+    {
+      "name": "USPTO / Google Patents",
+      "type": "institution",
+      "role": "Sources of patent prosecution records and event logs (allowance, abandonment, grants)."
+    },
+    {
+      "name": "US 12,663,619",
+      "type": "patent",
+      "role": "Meta wide-FOV PZT tunable-autofocus camera patent, filed 2023-02-08, granted 2026-06-23; cites three 2022 poLight documents."
+    },
+    {
+      "name": "US 12,631,847",
+      "type": "patent",
+      "role": "Meta 'Lens barrel with an integrated tunable lens', granted 2026-05-19."
+    },
+    {
+      "name": "US20260276939A1",
+      "type": "patent",
+      "role": "Meta continuation 'Lens barrel with via for adjusting tunable lens', filed 2026-04-30, published 2026-09-17, priority 2022-07-26; para [0044] lists electrowetting/piezo/acousto-optic; para [0052] TLens-like embodiment."
+    },
+    {
+      "name": "US20240264430A1",
+      "type": "patent",
+      "role": "Meta application: wide-FOV lens assembly with tunable optical lens (2024 publication of the 12,663,619 family)."
+    },
+    {
+      "name": "US20250076634A1",
+      "type": "patent",
+      "role": "Meta application: controlling piezoelectric optical actuator; cites poLight (examiner-added)."
+    },
+    {
+      "name": "US20230280637A1",
+      "type": "patent",
+      "role": "Meta two-actuator camera application (pub. 2023-09-07), examiner-added CML references, mostly smartwatch illustrations; allowed Jan 2025, abandoned May 2025."
+    },
+    {
+      "name": "US20230213729A1",
+      "type": "patent",
+      "role": "Meta reduced-power autofocus application with CML reference."
+    },
+    {
+      "name": "US12493197B2",
+      "type": "patent",
+      "role": "Meta patent granted Dec 2025 on AF power reduction; cites CML and poLight."
+    },
+    {
+      "name": "WO2026087900A1",
+      "type": "patent",
+      "role": "CML application (pub. 2026-04-30): SMA actuators deforming a liquid lens for glasses/VR/AR."
+    },
+    {
+      "name": "Optotune EL-3.1-10.8",
+      "type": "product",
+      "role": "Competing tunable lens launched Sept 2026 (datasheet updated 18 Sept 2026)."
+    },
+    {
+      "name": "FIFISH",
+      "type": "product",
+      "role": "User's underwater drone (context for continuous FPV camera use)."
+    },
+    {
+      "name": "RayNeo, Virtue",
+      "type": "company",
+      "role": "Other AR glasses brands mentioned as comparison options."
+    }
+  ],
+  "probability_estimates": [
+    {
+      "message_index": 21,
+      "value": "VCM/AF alone <1% (0.1-0.5%); whole camera 2-8% per active camera; multiple cameras 5-15%",
+      "context": "Estimated share of total VR-glasses power consumption attributable to VCM autofocus vs. camera."
+    },
+    {
+      "message_index": 69,
+      "value": "Full passthrough pipeline ~10-20% of total power; ~37-42% battery/hour with continuous passthrough -> ~2.4-2.7 h",
+      "context": "Engineering estimate for the spring-2027 Meta VR Glasses (no official numbers published)."
+    },
+    {
+      "message_index": 85,
+      "value": "fraction of a percent to a few percent",
+      "context": "Estimated whole-headset battery saving from replacing VCM with TLens (vs. 'substantial' at camera-module level)."
+    },
+    {
+      "message_index": 117,
+      "value": "30-50%",
+      "context": "Subjective probability that one of poLight's programs (AR/MR design-in or top-tier U.S. OEM project) is related to Meta, 'rather than something like 5%'; not enough evidence to push above 50%; assistant would 'not call it confirmed or even clearly >50% likely' that TLens is in Meta's new VR Glasses."
+    },
+    {
+      "message_index": 129,
+      "value": "Battery saving 2/5 stars; AF speed/constant FOV 4/5; no gravity/magnetic issues 3/5; size/camera thickness 5/5; Meta's ~100 g obsession 5/5",
+      "context": "Star-rated weighting of circumstantial clues for TLens in Meta glasses (evidence weighting, not a probability)."
+    },
+    {
+      "message_index": 134,
+      "value": "30-50% retracted; no replacement number",
+      "context": "Assistant corrected its earlier 30-50% estimate as 'too confident' and not supported by product-specific evidence. Conclusion: 'plausible' involvement, inclusion 'remains unproven', stops short of 'likely'."
+    },
+    {
+      "message_index": 270,
+      "value": "~55% / 25% / 20%",
+      "context": "Internal thought: ~55% direct poLight use in Meta glasses, 25% another tunable-lens supplier, 20% traditional autofocus (preliminary)."
+    },
+    {
+      "message_index": 277,
+      "value": "~70% / ~55% / 60%",
+      "context": "Internal thought: ~70% Meta uses tunable-lens autofocus; ~55% the supplier is poLight; 60% the unnamed U.S. top-tier customer is Meta."
+    },
+    {
+      "message_index": 280,
+      "value": "60-65% (~62%)",
+      "context": "poLight TLens is in the spring-2027 Meta VR Glasses. Breakdown: ~18% PZT/membrane tunable lens not from poLight; ~10% conventional VCM/SMA; ~7% Optotune/other tunable; ~3% something else."
+    },
+    {
+      "message_index": 280,
+      "value": "~70%",
+      "context": "The unnamed 'top-tier U.S. consumer-electronics OEM' poLight is working with is Meta (somewhere in its AR/VR program); ~35-40% chance the dots belong to another customer/product or another autofocus supplier."
+    },
+    {
+      "message_index": 359,
+      "value": "~68% (up from ~62%)",
+      "context": "Central estimate that poLight TLens is in Meta's spring-2027 glasses after component-level comparison of the Sept 17 continuation and June 2026 Meta patent with TLens/Add-In. Breakdown: 68% poLight TLens / 14% similar custom PZT-polymer membrane lens not from poLight / 10% VCM or SMA / 6% Optotune-Corning-other / 2% other."
+    },
+    {
+      "message_index": 359,
+      "value": "~82%",
+      "context": "Probability Meta uses the PZT/polymer/membrane architecture represented by its patents (regardless of supplier)."
+    },
+    {
+      "message_index": 359,
+      "value": "~75% (up from ~70%)",
+      "context": "Probability that poLight's unnamed top-tier U.S. AR OEM is Meta."
+    },
+    {
+      "message_index": 376,
+      "value": "80-85%",
+      "context": "Conditional: if a large-volume TLens production order for the unnamed U.S. OEM with Q4 2026-Q1/Q2 2027 deliveries appeared."
+    },
+    {
+      "message_index": 376,
+      "value": "88-93%",
+      "context": "Conditional: if poLight announced completed qualification and mass production for a head-worn AR/VR product launching spring/H1 2027."
+    },
+    {
+      "message_index": 376,
+      "value": "~90% immediately",
+      "context": "Conditional: if Q Tech were credibly identified as supplier of the passthrough-camera module for Meta VR glasses."
+    },
+    {
+      "message_index": 376,
+      "value": "85-90%",
+      "context": "Conditional: if Meta published production camera specs matching the TLens fingerprint (PZT membrane, ~1 ms response, constant FOV, single-digit mW, short TTL, tens-of-volts drive)."
+    },
+    {
+      "message_index": 376,
+      "value": "75-80%",
+      "context": "Conditional: if a further Meta patent/prosecution document maps onto a specific TLens product or discusses adapting poLight prior art (without production evidence)."
+    },
+    {
+      "message_index": 376,
+      "value": "~80-85%",
+      "context": "Conditional: if poLight disclosed that two or more of its anonymous programs concern the same U.S. top-tier customer."
+    },
+    {
+      "message_index": 376,
+      "value": "~90-95%",
+      "context": "Conditional combination: Q Tech confirmed as Meta camera-module supplier + poLight announces completed TLens qualification/volume ramp for the unnamed top-tier U.S. OEM."
+    },
+    {
+      "message_index": 376,
+      "value": "~90%+",
+      "context": "Conditional combination: poLight announces mass-production TLens shipments for a U.S. top-tier AR/VR device launching H1 2027 + Meta publishes production-camera specs showing PZT membrane autofocus."
+    },
+    {
+      "message_index": 420,
+      "value": "~75% (up from ~68%)",
+      "context": "Updated estimate that TLens is in Meta's spring-2027 glasses after taking the qualification order progression more seriously."
+    },
+    {
+      "message_index": 420,
+      "value": "~80% / ~80% / ~65-75%",
+      "context": "Q Tech-backed top-tier U.S. customer is Meta / Oct-2025 AR-camera U.S. OEM is also Meta / both disclosed programs concern the same customer (later contradicted by Aug 2026 Q&A)."
+    },
+    {
+      "message_index": 420,
+      "value": "~75% -> ~85%; 90-95%",
+      "context": "Conditional: if poLight revealed the Q Tech qualification customer equals the Oct-2025 AR head-worn customer; and 90-95% if in addition one production-oriented clue appeared (qualification completed or volume deliveries around Q1 2027)."
+    },
+    {
+      "message_index": 442,
+      "value": "~68-70% (down from 75%)",
+      "context": "Internal reasoning after finding the Aug 2026 Q&A saying the three projects are different customers."
+    },
+    {
+      "message_index": 445,
+      "value": "~65-70%, central ~68%",
+      "context": "Revised central estimate that poLight TLens is in the spring-2027 Meta glasses after dropping the 'same customer' convergence assumption."
+    },
+    {
+      "message_index": 499,
+      "value": "~72% / ~13% / ~2% / ~5% / ~8%",
+      "context": "Which poLight program is connected to Meta VR Glasses: Q Tech-backed U.S. top-tier OEM program / NOK 5m U.S. AR camera program / 2026 consumer design-in / another undisclosed poLight project / Meta is not a poLight customer."
+    },
+    {
+      "message_index": 499,
+      "value": "~78% (range 75-80%), up from 68%",
+      "context": "Updated probability TLens is actually in Meta VR Glasses after comparing the three programs."
+    },
+    {
+      "message_index": 504,
+      "value": "~65% (+/-15 pp judgement uncertainty), down from 78%",
+      "context": "Revised probability that the announced Meta VR Glasses contain genuine poLight TLens at launch, after self-critique of double-counted correlated clues; illustrative 80% (serious Meta TLens program) x 80% (conditional it lands in this model) = 64%."
+    },
+    {
+      "message_index": 541,
+      "value": "~93-96% (conditional)",
+      "context": "Meta is the OEM, conditional on Q Tech's 'US M brand' being the same customer as the OEM behind the poLight/Q Tech qualification (Microsoft ~2-4%, other 'M' ~1-3%); prior for Meta before the 'US M brand' discovery was ~65%; would go 'well above 90%' if a Q Tech document ties the 2025 OEM-backed investment to the 2024 M-brand customer."
+    },
+    {
+      "message_index": 541,
+      "value": "Apple 45-50%; Google 15-20%; Snap 10-15%; Amazon 5-10%; Microsoft <5%",
+      "context": "Alternative OEM shares, conditional on Meta being excluded."
+    },
+    {
+      "message_index": 616,
+      "value": "~95% / ~90% / ~90-95%",
+      "context": "After DBS evidence: Q Tech's 'US M brand' is Meta / Meta is the U.S. top-tier OEM behind the Q Tech-poLight qualification / there is genuinely a Meta product using Q Tech + poLight TLens (DBS is the main source, hence not ~99%)."
+    },
+    {
+      "message_index": 616,
+      "value": "~85-90% (central ~88%)",
+      "context": "That product is specifically the spring-2027 Meta VR Glasses; remaining 10-15% is product-identity risk. Previously ~65% after stress-testing."
+    },
+    {
+      "message_index": 664,
+      "value": "~65% (closer to 65% than 90%)",
+      "context": "Assistant pulls back after user objects that poLight's order book is low volume; keeps estimate near 65% until a production-scale volume signal appears."
+    },
+    {
+      "message_index": 728,
+      "value": "65-70% (best single 68%)",
+      "context": "Interim (thought) estimate that TLens is in Meta's spring-2027 glasses; Q Tech trail, poLight activity and patents pull up, lack of direct confirmation and possible alternative supplier keep it under 80%."
+    },
+    {
+      "message_index": 735,
+      "value": "70-75% (72%) -> 85% / 93%",
+      "context": "Interim (thought) revision, then final: 85% TLens is in Meta spring-2027 glasses; 93% for a Meta project with poLight in general."
+    },
+    {
+      "message_index": 738,
+      "value": "~85% / ~93% / ~15%",
+      "context": "Settled: ~85% Meta's spring-2027 VR Glasses use poLight TLens; ~93% Meta genuinely has a Q Tech + poLight TLens project (anchored on DBS H1 2027); ~15% DBS is wrong, project changes before production, or the project is a different Meta glasses product."
+    },
+    {
+      "message_index": 738,
+      "value": "~93-97% (conditional)",
+      "context": "Where the assistant would move if a Q Tech/top-tier OEM announcement said qualification completed / production ramp / mass-production PO for H1 2027, even with Meta unnamed."
+    },
+    {
+      "message_index": 839,
+      "value": "~25-35% / ~65-75% / ~40-50% / ~30-40%",
+      "context": "Conditional on TLens confirmed in Meta VR Glasses: stays in that one model only / used in at least one additional Meta model or generation / migrates into a higher-volume Meta AI/display-glasses platform / eventually used across several Meta glasses families."
+    },
+    {
+      "message_index": 839,
+      "value": "NOK 18-22 / 23-28 / 30-40 / 40-55 per share",
+      "context": "Rough fundamental valuation by Meta outcome scenario (one niche VR model / reuse expected / platform component / multiple Meta products + another top-tier OEM); immediate Meta-confirmation base revised from ~NOK 20-24 to ~NOK 24-28."
+    },
+    {
+      "message_index": 857,
+      "value": "+5-10 percentage points",
+      "context": "Thought trace: DBS should lift probability only moderately, not be the main basis for 85%."
+    },
+    {
+      "message_index": 860,
+      "value": "~60-65% excluding DBS; ~68-73% including DBS; ~70% overall",
+      "context": "Assistant says ~70% is more defensible than the ~85% given after finding the DBS report, which was too high (DBS gives no source and disclaims verification; +5-10 pp, not +20-25)."
+    },
+    {
+      "message_index": 869,
+      "value": "not 90-95%",
+      "context": "Assistant would NOT raise the poLight probability to 90-95% by striking CML, because that would require treating a Meta patent as a confirmed production design - the link still missing."
+    },
+    {
+      "message_index": 876,
+      "value": "no explicit number; 'strengthens poLight hypothesis relative to CML SMA autofocus'",
+      "context": "LinkedIn 'piezoelectric tunable lens AF module' evidence treated as a meaningful new technical indication, not supplier confirmation; no extra probability points for the alleged April 2025 linkage."
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Meta's new VR Glasses are better suited than Xreal + Eye for a continuously running camera feeding AI vision, because compute, battery and sensors are integrated and the platform is built around always-on tracking/MR.",
+      "strength": "circumstantial",
+      "message_index": 69,
+      "counterargument": "AI inference would become a bigger power draw than the camera itself."
+    },
+    {
+      "claim": "TLens can solve the continuous-autofocus power/heat problem at the camera-module level but cannot materially extend whole-headset battery life (displays, SoC, ISP, tracking dominate); power/battery life is therefore weak evidence for poLight (VCM <1% of system power).",
+      "strength": "strong",
+      "message_index": 85,
+      "also": [
+        117,
+        134
+      ],
+      "counterargument": ""
+    },
+    {
+      "claim": "Multiple tiny always-on cameras in future AI/AR glasses make per-module AF power/heat/size savings matter much more, which is poLight's target use case (continuous video focus, close-range AI/object recognition, constant FOV).",
+      "strength": "circumstantial",
+      "message_index": 85,
+      "counterargument": ""
+    },
+    {
+      "claim": "poLight TLens is a credible but unconfirmed candidate for the passthrough/world-facing camera autofocus in Meta's spring-2027 VR Glasses; Meta's display optics are custom pancake lenses, so any poLight content would be in camera modules.",
+      "strength": "circumstantial",
+      "message_index": 117,
+      "counterargument": "No public evidence ties Meta to poLight; the design-in customer is unnamed and 'top tier U.S. consumer electronics OEM' could be Apple, Google or others."
+    },
+    {
+      "claim": "The timing of poLight's programs fits Meta's launch 'unusually well' (July 2026 design-in, Q4 2026 deliveries, spring 2027 launch).",
+      "strength": "disputed",
+      "message_index": 117,
+      "also": [
+        134,
+        499
+      ],
+      "counterargument": "Retracted: the design-in product was described as possibly releasing in 2026 vs Meta's spring 2027; invoking a delay to fit dates is speculation; the 21 Sept 2026 TWedge order is for a display application, not camera autofocus; by [499] the design-in is judged ~2% likely to be Meta VR Glasses."
+    },
+    {
+      "claim": "The size/thickness constraint (Meta's ~100 g target, two-part architecture) is a strong technical argument for TLens over VCM, because VCM needs mechanical clearance to translate the lens barrel while TLens can sit inside the lens stack.",
+      "strength": "disputed",
+      "message_index": 129,
+      "also": [
+        134
+      ],
+      "counterargument": "Meta attributes weight reduction to the two-part puck architecture; a milliwatt-scale component cannot be inferred from advertised runtime; footprint figures do not give module height/mass; retracted as 'too confident' at [134]."
+    },
+    {
+      "claim": "poLight has real funded consumer-OEM programs (Oct 2025 NOK 5m AR head-worn project; Apr-Jul 2026 AR/MR design-in; Aug 2025-Jun 2026 Q Tech-backed qualification) indicating genuine OEM interest.",
+      "strength": "confirmed",
+      "message_index": 134,
+      "counterargument": "The disclosures cannot be combined into one supposed Meta project; CEO confirmed on 19 Aug 2026 that the three are different end customers."
+    },
+    {
+      "claim": "Vuzix Shield's use of TLens stereo autofocus cameras proves a real smart-glasses use case.",
+      "strength": "confirmed",
+      "message_index": 134,
+      "counterargument": "Establishes a use case, not a Meta relationship."
+    },
+    {
+      "claim": "Meta's spring-2027 VR glasses passthrough cameras use autofocus ('Color stereoscopic (26 PPD) passthrough with autofocus and depth sensing').",
+      "strength": "confirmed",
+      "message_index": 137,
+      "counterargument": "The spec names neither the actuator technology nor the supplier; it narrows the question to supplier identity only."
+    },
+    {
+      "claim": "Fast focus (~1 ms lens response), constant field of view (no focus breathing), compact packaging and low heat make TLens technically attractive for stereo passthrough.",
+      "strength": "circumstantial",
+      "message_index": 137,
+      "counterargument": "Manufacturer comparison figures; lens response is not full AF-system speed; Meta's spec does not confirm constant FOV; competing solutions may meet Meta's specifications; poLight itself says cost and specs lead manufacturers to choose other AF technologies."
+    },
+    {
+      "claim": "Meta's tunable-lens patents (US20240264430A1, US20250076634A1, granted US 12,663,619) show Meta explored the same piezo/deformable-polymer technology class as TLens, and the granted patent cites three 2022 poLight documents; the patent architecture (flexible membrane, hard substrate, deformable polymer, thin-film PZT actuators, inside the passive lens stack, 0/20/40 V, F/2.2, sub-1 mm BFL, >100-degree FOV) matches poLight's TLens Add-In extremely closely.",
+      "strength": "strong",
+      "message_index": 173,
+      "also": [
+        221,
+        253,
+        359
+      ],
+      "counterargument": "Patent citations (some examiner-added) cannot establish a supplier, licensing or collaboration relationship; TTL (5.0 vs 6.8 mm), focus range and BFL differ from published TLens figures; the apparent 107 vs 107.9-degree FOV match is horizontal vs diagonal; poLight's 120-degree design was only a reference design never built; the same architecture could be a custom Meta/other-supplier PZT-polymer lens (14%)."
+    },
+    {
+      "claim": "Meta's own custom piezo tunable lens could be poLight's biggest competitor for this socket.",
+      "strength": "circumstantial",
+      "message_index": 173,
+      "counterargument": "Meta owning camera-system patents does not mean Meta manufactures the tunable element itself; 'Meta architecture' and 'poLight component inside it' are not mutually exclusive; poLight holds component IP with 2006-2007 priority ([221])."
+    },
+    {
+      "claim": "Optotune's EL-3.1-10.8 is the clearest identifiable direct technological competitor to TLens for Meta.",
+      "strength": "circumstantial",
+      "message_index": 173,
+      "counterargument": "Optotune power (~0.1 W full range per dev-kit docs; 20-85 mW per datasheet) is substantially higher than poLight's <6 mW claim; comparison not perfectly apples-to-apples."
+    },
+    {
+      "claim": "Conventional VCM (Q Tech/Actutek, MinebeaMitsumi, Alps Alpine) and CML SMA remain serious mass-production alternatives; Corning Varioptic and Sheba are less likely.",
+      "strength": "circumstantial",
+      "message_index": 173,
+      "counterargument": "Meta's patent problem statement (wide FOV, very short optical stack, low power, avoiding mechanical movement) erodes VCM's advantage; SMA still moves an optical element; a custom Corning design for Meta cannot be excluded."
+    },
+    {
+      "claim": "Q Tech is not simply a VCM competitor: it could supply Meta with VCM, another actuator, or a TLens-based camera module, since it is building TLens production capability; Q Tech supplying Meta does not by itself identify the autofocus component (it also acquired TDK's actuator business).",
+      "strength": "circumstantial",
+      "message_index": 173,
+      "also": [
+        844
+      ],
+      "counterargument": "poLight says volume ramp depends on the OEM backing Q Tech's investment, whose identity is undisclosed; the DBS statement combining Q Tech + poLight is what makes the poLight track specific, and DBS is secondary and unverified."
+    },
+    {
+      "claim": "Meta's patents are 'connected to poLight' as prior-art/technology context, not as evidence of a disclosed commercial relationship.",
+      "strength": "strong",
+      "message_index": 221,
+      "counterargument": "The explicit citation of three poLight documents and near-identical PZT/polymer/membrane architecture make the link more than generic technical fit."
+    },
+    {
+      "claim": "The 2026 patent timeline (Apr 30 continuation filing, May 19 grant, late-Q2 poLight module shipment, Jun 23 grant, Sep 17 publication) aligns suggestively with poLight's U.S. OEM project.",
+      "strength": "circumstantial",
+      "message_index": 253,
+      "counterargument": "The continuation's priority is 26 July 2022; the underlying invention is not from 2026, so Meta did not 'suddenly invent this after working with poLight in 2025'."
+    },
+    {
+      "claim": "There is strong public evidence that Meta is using an autofocus architecture of the same general type as TLens.",
+      "strength": "strong",
+      "message_index": 253,
+      "counterargument": "No public component identification exists; patents prove R&D direction, not the production BOM."
+    },
+    {
+      "claim": "Meta fits almost every observable attribute of poLight's unnamed top-tier U.S. OEM (~70%); the actual tunable component being manufactured by poLight is plausible and increasingly interesting but unconfirmed (~62%).",
+      "strength": "speculative",
+      "message_index": 280,
+      "counterargument": "Nobody has publicly said Meta is the customer; development programs can target future devices or fail qualification; even if the customer is Meta, TLens may not have made the final BOM for this specific model."
+    },
+    {
+      "claim": "In the Sept 17 continuation, the via-through-lens-barrel electrical feed looks like a Meta-specific construction rather than a direct copy of the TLens package; the strongest overlap is the PZT/membrane package, placement in the lens stack and drive voltage level.",
+      "strength": "circumstantial",
+      "message_index": 336,
+      "also": [
+        359,
+        504
+      ],
+      "counterargument": "Technical similarity in an embodiment does not equal claim coverage or product use; the barrel-via routing does not match poLight's published packaged TLens (metal contacts, wire bonding/FPC) and could accommodate another supplier's lens; para [0044] allows electrowetting, piezo membrane or acousto-optic."
+    },
+    {
+      "claim": "No public poLight announcement names Meta as a buyer; the user's belief that Meta 'recently ordered' refers to the unnamed top-tier U.S. OEM orders.",
+      "strength": "confirmed",
+      "message_index": 403,
+      "counterargument": ""
+    },
+    {
+      "claim": "The Q Tech-backed top-tier U.S. OEM qualification orders (Aug 2025 NOK 1.7-1.8m, Feb 2026 NOK 1m remainder, Jun 2026 NOK 0.7m) plus Q Tech's ~NOK 171m investment and dedicated TLens line are already very strong evidence that a top-tier customer is seriously progressing TLens.",
+      "strength": "strong",
+      "message_index": 420,
+      "counterargument": "Two gaps remain: identity (poLight never names Meta; could be Apple, Google or another) and product identity (releases call it a 'potential consumer product', not the spring-2027 Meta headset)."
+    },
+    {
+      "claim": "The Q Tech qualification customer and the October-2025 ~NOK 5m AR head-worn camera customer are the same OEM (user's assertion from Q&A).",
+      "strength": "disputed",
+      "message_index": 421,
+      "counterargument": "In the 19 Aug 2026 post-Q2 Q&A, CEO Oyvind Isaksen said the three projects (design-in, Q Tech qualification, Oct-2025 camera program) are different end customers; the 'consistent labels' remark from the Feb Q&A only means the same OEM is labelled consistently across releases."
+    },
+    {
+      "claim": "poLight has three separate advanced consumer AR/MR customers rather than one customer generating all headlines, which is not entirely negative for the company; but the recent design-in announcement does not mean Meta qualification is complete because the design-in and the Q Tech-backed program are different customers/processes.",
+      "strength": "confirmed",
+      "message_index": 445,
+      "also": [
+        454,
+        457
+      ],
+      "counterargument": "It weakens the convergence argument for Meta specifically, so the Meta probability falls back to ~68%; which of program A or B is Meta is unresolved."
+    },
+    {
+      "claim": "The Q Tech-backed qualification program is the strongest Meta candidate: U.S. top-tier OEM, very advanced/high-end glasses, years-long relationship, TLens as best fit, demanded supply redundancy, dedicated Q Tech line, huge future volumes, timeline (Aug 2025 PO -> Feb 2026 -> Jun 2026 -> Aug 2026 -> spring 2027) fits.",
+      "strength": "circumstantial",
+      "message_index": 499,
+      "counterargument": "Apple also fits 'U.S. top-tier OEM + huge volumes + demanding qualification + high-end glasses'; Q Tech has some Apple exposure; the funded program could concern another OEM or a different Meta generation/model."
+    },
+    {
+      "claim": "The NOK 5m Oct-2025 project is less likely to be the Meta spring-2027 product because first modules only shipped end-Q2 2026 and it was still a reference/platform assessment in Aug 2026; its potential as a platform for other customers suggests an ecosystem company (e.g. Android XR).",
+      "strength": "speculative",
+      "message_index": 499,
+      "counterargument": "Not impossible; it is explicitly a top-tier U.S. OEM developing TLens cameras for several AR head-worn devices."
+    },
+    {
+      "claim": "The existing consumer design-in is almost certainly not Meta VR Glasses because its product is expected to launch in 2026 while Meta launches spring 2027.",
+      "strength": "strong",
+      "message_index": 499,
+      "counterargument": "Only if Meta's schedule changed dramatically could it fit."
+    },
+    {
+      "claim": "Earlier probability double-counted correlated clues (piezo, membrane, polymer, electrical focusing, compact integration are one design; investment, line and POs are one program); the Q Tech program fits Meta but does not identify this particular Meta product; NOK 171m was an equity investment relevant to 'several applications', not a Meta PO.",
+      "strength": "strong",
+      "message_index": 504,
+      "counterargument": "There remain genuinely different evidence categories (Meta's product spec, Meta's patent record citing poLight, poLight's commercial disclosures) that reinforce one another; OEM-backed investment plus dedicated manufacturing is far more substantial than sample evaluation."
+    },
+    {
+      "claim": "Qualification is progressing but the production link remains unresolved; ramp timing depends on when the OEM needs volumes.",
+      "strength": "confirmed",
+      "message_index": 504,
+      "counterargument": "Lenses from Q Tech's line have been tested and qualified (some processes still being tuned); a long evaluation is not evidence of a fatal problem."
+    },
+    {
+      "claim": "TLens size/power advantages do not eliminate competitors (Optotune EL-3.1, MinebeaMitsumi VCM); poLight's <6 mW / <8x8 mm vs >180 mW / >10x10 mm comparison is based on a 32MP 1/2.8-inch module, not Meta's camera.",
+      "strength": "strong",
+      "message_index": 504,
+      "counterargument": "No product-specific comparison shows Optotune or a VCM beats TLens for this device; TLens combination of low power, fast response and stable FOV remains attractive."
+    },
+    {
+      "claim": "Objections rejected as unsound: 'POs are too small to be meaningful' (order size reflects inventory negotiations; design-in orders were for commercial products); 'no new MEMS wafer orders in Q2 means ramp stalled' (inventory was sufficient); 'Meta's 5.0 mm TTL cannot use TLens because poLight's reference is 6.8 mm' (different complete-camera designs; Add-In supports multiple architectures); 'Meta's electrical connection looks different so cannot be poLight' (barrel connection and tunable element are different parts); 'Meta owns the patents so Meta makes its own lens' (a Meta-designed camera using a poLight component is compatible with the patents).",
+      "strength": "strong",
+      "message_index": 504,
+      "counterargument": "None of these rebuttals proves a large ramp is imminent or that the component is poLight's."
+    },
+    {
+      "claim": "Q Tech's 2024 'US M brand' XR vendor code refers to Meta, since Microsoft stopped HoloLens manufacturing in Dec 2024 and Q Tech's own deck showed Meta at ~75% of VR.",
+      "strength": "strong",
+      "message_index": 517,
+      "also": [
+        541
+      ],
+      "counterargument": "No Q Tech or poLight filing literally says the M-brand customer is Meta; 'M' could theoretically be another company; and it has not been proven the 2024 M-brand customer is the same as poLight's 2025 'top-tier U.S. consumer electronics OEM'; the 2024 clue predates the Q Tech-poLight partnership so cannot show Meta was evaluating TLens through Q Tech in 2024 (user's correction accepted at [642])."
+    },
+    {
+      "claim": "If not Meta, Apple is the strongest alternative OEM (U.S., top-tier, multiple glasses programs, demanding on supply redundancy).",
+      "strength": "circumstantial",
+      "message_index": 541,
+      "counterargument": "Q Tech has no meaningful Apple exposure per a 2026 supply-chain breakdown, and Apple does not explain Q Tech's XR-specific 'US M brand' clue."
+    },
+    {
+      "claim": "DBS Research's 26 Aug 2026 report is the strongest external evidence yet: it names a Meta project combining Q Tech modules with poLight tunable-lens technology, expected to enter mass production in 1H27, matching the spring-2027 Meta VR Glasses timeline.",
+      "strength": "strong",
+      "message_index": 616,
+      "also": [
+        738
+      ],
+      "counterargument": "DBS is an analyst, not Meta/Q Tech/poLight; its disclaimer says it has not verified the information; it gives no source; the sentence does not name 'VR Glasses', so another Meta glasses product remains possible; later judged to warrant only +5-10 pp ([860])."
+    },
+    {
+      "claim": "poLight's current order book (NOK 1.8m qualification PO + NOK 0.7m follow-on = NOK 2.5m attributable) is far too small for a Meta-scale ramp and is neutral-to-slightly-negative for the Meta hypothesis today (user's objection).",
+      "strength": "confirmed as to magnitude",
+      "message_index": 664,
+      "also": [
+        721,
+        738
+      ],
+      "counterargument": "The program is still explicitly a qualification programme, not production; poLight holds enough MEMS wafer inventory; management is preparing capacity 'much higher' than the Q Tech line; consumer customers prefer small repeated POs; by [738] the small volume is treated as neutral until a production ramp appears."
+    },
+    {
+      "claim": "A Meta spring-2027 launch should show up as a first production PO of ~NOK 5-15m (not a single NOK 40m order), with follow-ons of NOK 5-20m, by around Q1 2027; a next order of NOK 5-7m described as 'production' would be entirely consistent with Meta.",
+      "strength": "speculative",
+      "message_index": 676,
+      "also": [
+        818
+      ],
+      "counterargument": "User notes at [677] that the assistant is picking one order while there have been several orders in 2026; cumulative 2026 flow must be totalled."
+    },
+    {
+      "claim": "The NOK 2.4m + 0.8m + 0.8m = NOK 4.0m 2026 orders belong to a separate consumer AR/MR design-in customer, not the Q Tech qualification customer.",
+      "strength": "confirmed",
+      "message_index": 721,
+      "counterargument": ""
+    },
+    {
+      "claim": "~85% that Meta's spring-2027 VR Glasses use TLens, built on: Meta product confirmed autofocus stereo passthrough; Q Tech's 2024 'US M brand' XR relationship; repeated qualification orders from the Q Tech-backed OEM; DBS naming Meta/Q Tech/poLight with H1 2027 mass production; close match between Meta autofocus patents and TLens architecture.",
+      "strength": "circumstantial",
+      "message_index": 738,
+      "counterargument": "DBS does not explicitly say the project is 'Meta VR Glasses'; poLight has not announced that the Q Tech case became design-in or entered mass production; revised down to ~70% at [860]."
+    },
+    {
+      "claim": "Real-world comparables (Xreal 111k, Ray-Ban Display 84k/150k/500k target, Bigscreen 20k+) imply ~400k first-year Meta VR Glasses units (base 300-500k), ~800k TLenses, ~NOK 16-20m+ direct TLens revenue, cumulative production POs ~NOK 15-25m arriving as repeated NOK 3-8m orders; initial fundamental valuation on confirmation ~NOK 20-24/share.",
+      "strength": "speculative",
+      "message_index": 772,
+      "also": [
+        818
+      ],
+      "counterargument": "Meta could be far more aggressive because it owns the Quest ecosystem; PLT could trade well above fundamental value (NOK 25-30+) on sentiment; earlier [772] estimate was 0.5-1.0m units / NOK 20-50m."
+    },
+    {
+      "claim": "Meta does not need to sell millions of glasses for the design win to be transformational; the value is validation of TLens as an autofocus architecture that can propagate to future Meta models and other OEMs, not first-year revenue.",
+      "strength": "circumstantial",
+      "message_index": 818,
+      "counterargument": "At a ~NOK 3.2bn market cap and ~NOK 34m LTM revenue, direct one-model Meta revenue of NOK 15-25m cannot justify the valuation on its own."
+    },
+    {
+      "claim": "The Q Tech qualification case and the multi-device AR order should not be conflated as evidence that Meta plans multiple TLens models; on a first design win, one additional product is more likely than several.",
+      "strength": "circumstantial",
+      "message_index": 833,
+      "counterargument": ""
+    },
+    {
+      "claim": "2027 is an inflection year for glasses and the real poLight opportunity is platform reuse across Meta glasses families (millions of units), not the single VR Glasses SKU (NOK 12-20m/yr); revenue scenarios at ~$2/TLens: VR only NOK 12-20m; VR + another model NOK 25-45m; mainstream AI glasses NOK 20-200m.",
+      "strength": "speculative",
+      "message_index": 839,
+      "counterargument": "Meta's 100+ options are mostly frames, not electronics; poLight's reuse statement was a general principle, not Meta-specific; Meta patents show it has explored several AF architectures (VCM, SMA, MEMS) so a win in one model does not imply all families; large volumes could pressure ASP; AI glasses likely need only one TLens."
+    },
+    {
+      "claim": "No competitor has a public Meta track as concrete as DBS's Meta-Q Tech-poLight description; CML has the clearest competing patent trail, Optotune the clearest technical alternative; Sheba's Teledyne partnership concerns ADAS, not Meta.",
+      "strength": "circumstantial",
+      "message_index": 844,
+      "counterargument": "'Not found' only means not found in sources examined; a confidential engagement is not excluded; a supplier name in Meta patent references is not unique to poLight (CML, Mitsumi also appear)."
+    },
+    {
+      "claim": "DBS was overweighted: it is the only source naming Meta + Q Tech + poLight + H1 2027, but gives no source and disclaims verification; it should shift probability +5-10 pp, giving ~70% rather than ~85%.",
+      "strength": "circumstantial",
+      "message_index": 860,
+      "counterargument": "The Meta hypothesis remains fairly strong even without DBS: Q Tech-backed US top-tier customer, long TLens qualification, high-end glasses, expected very high volumes, TLens-like Meta PZT/membrane patents, Q Tech's US XR 'M brand' customer."
+    },
+    {
+      "claim": "CML shares several of poLight's early indicators (anonymous US tech-giant engagements 2021, commercial XR projects 2023, mass production via Alps Alpine, $40m+ financing 2024, 100m+ devices 2025) and its licensing model means absence of CML component orders is not strong evidence against CML; CML could also sit on the display side (SMA moving display optics) without replacing TLens.",
+      "strength": "circumstantial",
+      "message_index": 865,
+      "counterargument": "CML's statements name no customers or components; the work may concern display optics rather than camera AF; CML's latest accounts PDF was not checked."
+    },
+    {
+      "claim": "What still distinguishes poLight is the explicit public chain: one anonymous US customer -> Q Tech strategic investment/TLens line -> qualification orders tied to the same customer; CML has no equivalent documented chain; and Meta patent US12663619 (piezo membrane citing poLight) is a more specific technical match to TLens than CML's SMA mechanism.",
+      "strength": "circumstantial",
+      "message_index": 865,
+      "also": [
+        869
+      ],
+      "counterargument": "Neither chain officially identifies the AF supplier to Meta's 2027 glasses; whether the production camera uses the patent-described construction is unknown."
+    },
+    {
+      "claim": "CML's Zero Hold Power (May 2025) undermines the 'Meta needs low power therefore must choose TLens' argument; power and speed do not justify striking CML.",
+      "strength": "circumstantial",
+      "message_index": 865,
+      "also": [
+        869
+      ],
+      "counterargument": "The >99% figure is for aperture adjustment with 5 transitions over 3 minutes, not continuous AF in stereo passthrough; zero hold power is not zero energy during focusing, so it also cannot prove CML beats TLens in Meta's use pattern."
+    },
+    {
+      "claim": "The abandonment of Meta application US20230280637A1 (allowed 21 Jan 2025, abandoned 8 May 2025 for non-payment) weakens the earlier use of this application as an active CML-Meta trail; its CML references were examiner-added prior art.",
+      "strength": "confirmed",
+      "message_index": 869,
+      "counterargument": "The application was not technically rejected; non-payment does not explain Meta's motive; Meta was separately granted US12493197B2 in Dec 2025 citing both CML and poLight."
+    },
+    {
+      "claim": "CML cannot be excluded merely because Meta describes a deformable membrane lens (CML's WO2026087900A1 describes SMA deforming a liquid lens), nor by its 5 mm sensor-to-driver spacing requirement; none of the examined grounds excludes CML from the actual Meta glasses, so the poLight probability should not be raised to 90-95% by eliminating CML. The real distinction remains piezo vs SMA actuation.",
+      "strength": "circumstantial",
+      "message_index": 869,
+      "counterargument": "WO2026087900A1 establishes no Meta customer, no production, no sufficiently small camera module; if the production camera uses the piezo membrane of US12663619, CML's standard SMA solution is not performing the focusing."
+    },
+    {
+      "claim": "The LinkedIn statement 'Led development of miniature piezoelectric tunable lens AF camera module' at Meta (passed AR/VR/MR reliability qualification, ready for production ramp) is a more concrete indication against CML's SMA solution than patents alone and strengthens the poLight hypothesis.",
+      "strength": "circumstantial",
+      "message_index": 876,
+      "counterargument": "It is a CV statement, not a test report or supplier confirmation; says 'piezoelectric' but not poLight/TLens/PZT/part number; unknown whether this module was selected for the specific upcoming glasses, whether Meta evaluated alternatives in parallel, or whether CML supplies another function."
+    },
+    {
+      "claim": "April 2025 is not a documented Meta production start: 'September 2020-April 2025' is the employment period and 'readiness for production ramp' does not mean mass production was underway; the coincidence with the 15 April 2025 Q Tech announcement should not count as separate evidence; the LinkedIn module's passed reliability qualification does not show the Q Tech program was fully qualified (poLight still described it as ongoing in Feb 2026).",
+      "strength": "confirmed",
+      "message_index": 876,
+      "counterargument": "Forum interpretation asserts mass production in April 2025 (disputed); discrepancy could be different levels/revisions or different projects."
+    }
+  ],
+  "open_questions": [
+    "Which autofocus technology and supplier did Meta select for the spring-2027 VR Glasses' stereo passthrough cameras? Meta's specs confirm autofocus and depth sensing but name neither actuator nor supplier; no teardown, supplier disclosure or poLight design-win/mass-production announcement tied to a U.S. top-tier OEM has appeared.",
+    "Which, if any, of poLight's three separate consumer programs is Meta: A (Q Tech-backed top-tier U.S. OEM qualification), B (Oct-2025 ~NOK 5m AR head-worn camera project), or C (2026 consumer AR/MR design-in whose product is expected in 2026)? Could the Q Tech-backed OEM be Meta but for a different generation/model?",
+    "Is the Q Tech-backed top-tier U.S. OEM Meta, Apple, Google, Snap, Amazon or another company? poLight has never named Meta.",
+    "Who is the customer behind the Oct-2025 NOK 5m AR camera project, did the modules shipped end-Q2 2026 pass validation, and is it a platform/ecosystem company (e.g. Android XR/Google)? Isaksen declined to explain the ecosystem arrangement.",
+    "Who is the 2026 consumer AR/MR design-in customer whose product launches in 2026, and was that product delayed?",
+    "Is Q Tech's 2024 'US M brand' XR vendor-code customer the same top-tier U.S. OEM that backed the 2025 Q Tech-poLight investment? No primary-source sentence found saying yes; can a Q Tech report, transcript or Q&A be found that links them?",
+    "Is Q Technology a camera-module supplier to Meta's Reality Labs/Quest hardware (even historically), and is it the passthrough-camera module supplier for the 2027 VR Glasses?",
+    "Does the DBS-described Meta + Q Tech + poLight H1 2027 mass-production project correspond specifically to the spring-2027 Meta VR Glasses or to a different Meta glasses product, and what is DBS's underlying source?",
+    "When will the Q Tech-backed OEM's production ramp begin, what volumes does it need (Q Tech's initial line is not sized for eventual volume), and has product-level (camera/headset) qualification been completed as distinct from component-level qualification of Q Tech-made lenses?",
+    "Will the next Q Tech/top-tier OEM order jump from NOK 0.7-1m qualification batches to several million NOK (assistant expects a first production PO of ~NOK 5-15m by late Q4 2026 / Q1 2027) with wording shifting from 'qualification' to 'production/ramp'? Has poLight upgraded the Q Tech case to design-in or mass production?",
+    "What is the cumulative 2026 order flow from the Q Tech-backed OEM, and which (if any) TWedge POs belong to that OEM and would raise the attributable total above NOK 2.5m?",
+    "Does Meta's granted patent US 12,663,619 (citing 2022 poLight documents) reflect in-house development, licensing of poLight technology, or a supply relationship? Who introduced the poLight references (applicant, examiner or search), did poLight's prior art cause the narrowing amendments, and would use of the underlying technology require a poLight license?",
+    "Does Meta's production passthrough camera actually use the PZT/polymer/membrane construction claimed in US12663619 (constant FOV during focusing), or a VCM/SMA/MEMS architecture from Meta's other filings? The patent-to-production link is missing.",
+    "Do the Meta patent specifications (5.0 mm TTL, ~20 cm minimum focus, <1 mm BFL) differ from poLight's public 6.8 mm TTL / 10 cm reference design because of a different design, a customized/in-house tunable element, or a further-developed poLight part?",
+    "Is the 'via' electrical feed-through in US20260276939A1 a Meta-specific novelty compatible with a bare poLight TLens, or does it indicate a different (in-house or third-party) PZT-polymer lens supplier?",
+    "Who supplied the piezoelectric tunable lens in the Meta 'miniature piezoelectric tunable lens AF camera module' described on the LinkedIn profile (poLight/TLens vs another piezo supplier)? Was that module selected for the spring-2027 glasses, or did Meta evaluate alternatives in parallel? What does the full profile say and who is the individual?",
+    "Are the LinkedIn module's reliability tests and poLight's still-ongoing Q Tech qualification (Feb 2026) different levels/revisions or different projects?",
+    "Does anything publicly exclude CML as the autofocus supplier for Meta's 2027 glasses? Are CML's 2021 'US technology giants' engagements and 2023 XR commercial projects the same customers, still ongoing, and about camera AF or display optics? Does CML's latest financial accounts PDF (not retrieved) contain relevant contract disclosures?",
+    "Could CML supply a different function in the glasses (display-optics focus, OIS) even if not the piezo AF? Would CML's Zero Hold Power actually beat TLens on energy in continuous stereo-passthrough AF, and are there measurements of whether a current CML SMA actuator meets Meta's speed/power requirements?",
+    "What is Meta's actual mechanical/electrical layout, needed to show whether CML's 5 mm sensor-to-driver spacing requirement conflicts with the module?",
+    "Why did Meta let US20230280637A1 lapse after allowance (full USPTO file wrapper not read)?",
+    "Was Optotune's EL-3.1-10.8 (launched Sept 2026, referenced in 2026 dev kits, datasheet updated 18 Sept 2026) available early enough to be designed into a spring-2027 device, and does Optotune have any undisclosed OEM program with Meta? Is there any product-specific comparison showing Optotune or a VCM competing for Meta's actual stereo-passthrough camera?",
+    "Is there a second (alternative) autofocus supplier in the Meta program, the factor cited for keeping interim estimates below 80%?",
+    "Will Meta publish production camera specifications (PZT membrane AF, ~1 ms response, constant FOV, single-digit mW, tens-of-volts drive) that would confirm the TLens fingerprint, or will a teardown identify the component?",
+    "What are the actual battery capacity and camera power figures for the Meta VR Glasses, and how much battery life would TLens realistically add versus VCM (assistant offered to estimate but did not)?",
+    "How many TLenses per Meta headset (assistant assumed two for stereo autofocus passthrough)?",
+    "What are Meta's actual first-year VR Glasses volumes (assistant range 150k-900k, central 400k) and does Meta order components ahead of sell-through?",
+    "If TLens is confirmed in Meta VR Glasses, how many future camera-equipped Meta glasses would reuse it (platform vs single SKU), and what volumes/valuation would adoption across several Meta glasses programs in a 2027 'year of AI/AR glasses' imply?",
+    "Which Meta patent application(s) did the deep-research tool find at [133], and what did the deep-research answer (triggered at [130]) conclude about the biggest factors for/against poLight? (Answer not contained in the extracted chunks.)",
+    "Could any supplier linkage, teardown or Aria Gen 2 technical documentation provide direct evidence of a tunable lens in Meta devices?",
+    "Exact dates not stated in the thread: Meta's developer-spec publication date; exact date of the equity-investment completion (June 2025); exact date of poLight management's 'many years' commentary."
+  ],
+  "summary": "The thread tests one thesis: that poLight's TLens piezo-MEMS tunable lens is the autofocus element in the stereo passthrough cameras of Meta's ~100 g 'Meta VR Glasses', announced at Connect on 23 September 2026 for a spring-2027 launch at USD 1,299.99. Meta's developer specifications confirm 'color stereoscopic (26 PPD) passthrough with autofocus and depth sensing' but name no actuator or supplier, so the question is purely supplier identity.\n\nStrongest evidence for poLight: Meta's granted patent US 12,663,619 (granted 23 June 2026) claims a flexible membrane, hard substrate, deformable polymer and thin-film PZT actuators - essentially TLens's architecture - and cites three 2022 poLight documents; a documented chain in which an anonymous top-tier U.S. OEM that had qualified TLens for years backed Q Technology's ~NOK 171m investment and dedicated TLens line (April 2025), followed by qualification POs (Aug 2025, Feb 2026, Jun 2026) for 'very advanced, high-end glasses' that could 'ramp in huge volumes'; Q Tech's 2024 'US M brand' XR vendor code; DBS Research (26 Aug 2026) stating a Meta project combining Q Tech modules with poLight's tunable lens enters mass production in 1H27; and a former Meta engineer's LinkedIn profile citing a 'miniature piezoelectric tunable lens AF camera module' that passed AR/VR/MR reliability qualification.\n\nStrongest counter-evidence: poLight has never named Meta; its CEO confirmed on 19 Aug 2026 that the three headline programs are different end customers, so clues cannot be stacked; the 2026 design-in targets a 2026 product; the Q Tech program is still 'qualification' with only ~NOK 2.5m of attributable orders; DBS gives no source and disclaims verification; Meta's patents could describe an in-house or third-party PZT lens; CML, Optotune and VCM makers cannot be excluded.\n\nFinal probability: estimates oscillated 30-50% -> 62% -> 68% -> 78% -> 65% -> 88% -> 85% before settling at ~70% (60-65% without DBS) that TLens is in the spring-2027 Meta VR Glasses, with ~90% that Meta is the Q Tech-backed OEM. Not covered: teardowns or any direct Meta/poLight/Q Tech confirmation, full USPTO file wrappers, CML's latest accounts, Q Tech primary filings linking the 2024 M-brand customer to the 2025 investment, poLight's cumulative 2026 order total, actual Meta volumes or camera power figures, and the LinkedIn individual's identity."
+}
