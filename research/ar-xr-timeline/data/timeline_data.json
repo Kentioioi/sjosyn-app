@@ -9063,6 +9063,21 @@
    "key": false
   },
   {
+   "id": "meta-dc-3",
+   "lane": "meta",
+   "date": "2026-09",
+   "precision": "month",
+   "cat": "ip",
+   "type": "hire",
+   "title": "Meta Reality Labs software engineer on Meta VR Glasses: 'I led the autofocus work' — 'Autofocus: Yes' on the spec sheet 'took years of effort across the whole stack'",
+   "detail": "Public LinkedIn post (late Sept / early Oct 2026, reposting Meta VR product VP Angela Chang's 'A New Era for VR'), seen via a forum screenshot of LinkedIn's Norwegian auto-translation. Paraphrase: has worked on Meta VR Glasses since the project began, presenting early prototypes, building proofs of concept and experience demos; led the autofocus work; 'Autofocus: Yes' is one line on the spec sheet but getting it to work took years of effort across the whole stack; showed an early prototype to Mark Zuckerberg the day after final hardware arrived. Confirms autofocus is a long-developed, system-level feature of the product. Names no lens technology, actuator or supplier.",
+   "url": "https://www.linkedin.com/posts/saeid-sai-bagheri-04686782_introducing-meta-quest-3s-activity-7249877915222319105-8ELQ",
+   "src": "forum",
+   "conf": "strong",
+   "key": true,
+   "label": "Meta AF lead post"
+  },
+  {
    "id": "rayneo-2-99",
    "lane": "rayneo",
    "date": "2026-09-03",
@@ -9879,21 +9894,6 @@
    "src": "press",
    "conf": "strong",
    "key": false
-  },
-  {
-   "id": "meta-dc-3",
-   "lane": "meta",
-   "date": "2026-10-05",
-   "precision": "day",
-   "cat": "ip",
-   "type": "hire",
-   "title": "Forum-quoted LinkedIn post by a Meta Reality Labs camera engineer on Meta VR Glasses: 'I led the autofocus work…'",
-   "detail": "Quoted on the investor Discord (post by OddvarDraw, relayed 2026-10-05). The person's public profile and an October 2024 Quest 3S post confirm a Meta camera hardware/software role; the VR Glasses post itself could not be retrieved, so the technology named (if any) is unknown here. If the post names a tunable lens or supplier it becomes a primary signal; if it names VCM it is negative.",
-   "url": "https://www.linkedin.com/posts/saeid-sai-bagheri-04686782_introducing-meta-quest-3s-activity-7249877915222319105-8ELQ",
-   "src": "forum",
-   "conf": "circumstantial",
-   "key": true,
-   "label": "Meta AF lead post"
   },
   {
    "id": "metaip-dc-1",
