@@ -15170,17 +15170,6 @@
    "conf": "circumstantial"
   },
   {
-   "id": "w-r3-polight-0-3",
-   "lane": "polight",
-   "start": "2026-07-01",
-   "end": "2027-12-31",
-   "cat": "ip",
-   "title": "poLight DK202500085A1 PCT publication expected ~2026-08 but not found",
-   "detail": "[Register check: not supported — PCT does exist: Espacenet family 094538404 lists WO2026162805A1 'Low-power driver circuit for piezoelectric actuator', Polight ASA, PCT EP2026052622W filed 2026-02-02, published 2026-08-06, priority DKPA202500085A 2025-02-03 (DK202500085A1 published 2025-02-14). Window should become an event dated 2026-08-06. | DK202500085A1 confirmed: Polight ASA, filed/priority 2025-02-03, published 2025-02-14, family shows DK only. 18-month PCT publication would fall ~2026-08-06; Google Patents poLight listing (as of 2026-10-06) shows no such WO. Window end 2027-12-31 is ungrounded; any priority-claiming publication is due ~2026-08.] Priority 2025-02-03; none found, so either not pursued abroad or indexing lag. [Full text: DK text: 'The same circuit principle can be used for the Tlens to hold at a fixed optical power as shown in figure 9' and 'For a camera application... the Tlens has a higher capacitance than the wobulator'; WO abstract names 'optical wobulators or tunable lens] [Relevance: general_camera]",
-   "url": "https://patents.google.com/patent/DK202500085A1/en",
-   "conf": "rumor"
-  },
-  {
    "id": "w-r3-polight-0-4",
    "lane": "polight",
    "start": "2027-01-01",
