@@ -141,6 +141,13 @@ svg.tl .ev.hollow.ev-ip .dot { stroke: var(--cat-ip); } svg.tl .ev.hollow.ev-pre
 .wl th { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
 .wl td.dt { font-family: var(--font-data); white-space: nowrap; }
 .wl-wrap { overflow-x: auto; }
+@media (max-width: 640px) {
+  .wl thead { display: none; }
+  .wl tr { display: block; border-top: 1px solid var(--border); padding: 8px 0; }
+  .wl td { display: block; border: 0; padding: 2px 4px; }
+  .wl td::before { content: attr(data-l); display: block; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-top: 4px; }
+  .wl td.dt { white-space: normal; }
+}
 .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; min-width: 0; }
 .detail .d { font-family: var(--font-data); color: var(--fg-2); font-size: 12px; }
 .detail .t { font-size: 16px; font-weight: 700; margin-top: 2px; }
@@ -344,7 +351,7 @@ tr.future td { background: var(--future); }
   if (DATA.cmd_questions && DATA.cmd_questions.length) { $('#cmd').hidden = false;
     $('#cmd-list').innerHTML = DATA.cmd_questions.map(q => `<li><strong>${esc(q.question)}</strong><span class="why">${esc(q.why || '')}${q.if_yes ? ' If yes: ' + esc(q.if_yes) : ''}${q.if_no ? ' If no: ' + esc(q.if_no) : ''}</span></li>`).join(''); }
   if (DATA.watchlist && DATA.watchlist.length) { $('#watch').hidden = false;
-    $('#watch-body').innerHTML = DATA.watchlist.map(w => `<tr><td class="dt">${esc(w.date_from || '')}${w.date_to && w.date_to !== w.date_from ? ' → ' + esc(w.date_to) : ''}</td><td>${esc(w.what || '')}</td><td>${esc(w.where || '')}</td><td>${esc(w.if_positive || '')}</td><td>${esc(w.if_negative || '')}</td></tr>`).join(''); }
+    $('#watch-body').innerHTML = DATA.watchlist.map(w => `<tr><td class="dt" data-l="When">${esc(w.date_from || '')}${w.date_to && w.date_to !== w.date_from ? ' → ' + esc(w.date_to) : ''}</td><td data-l="What to check">${esc(w.what || '')}</td><td data-l="Where">${esc(w.where || '')}</td><td data-l="If positive">${esc(w.if_positive || '')}</td><td data-l="If negative">${esc(w.if_negative || '')}</td></tr>`).join(''); }
   (function kpis() {
     const future = DATA.windows.filter(w => isFuture(parseDate(w.end || w.start))).length + DATA.events.filter(e => isFuture(parseDate(e.date))).length;
     const confirmed = DATA.events.filter(e => e.conf === 'confirmed').length;
