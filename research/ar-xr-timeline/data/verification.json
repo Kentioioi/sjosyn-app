@@ -1,5 +1,5 @@
 {
- "summary": "270 load-bearing items re-checked against their cited sources by eight independent fact-checking agents: confirmed 196, partially_supported 65, date_wrong 4, not_found 2, source_unreachable 2, claim_wrong 1. Round 2: 128 load-bearing items checked by two independent Sonnet fact-checkers each (dates lens + claims lens; the more skeptical verdict wins): confirmed 67, partially_supported 49, date_wrong 10, source_unreachable 2. Round 3 (patent sweep): 69 rows and windows checked on the patent registers by 24 independent checkers (dates lens + claims lens per batch; the more skeptical verdict wins): confirmed 51, partially_supported 12, claim_wrong 6.",
+ "summary": "270 load-bearing items re-checked against their cited sources by eight independent fact-checking agents: confirmed 196, partially_supported 65, date_wrong 4, not_found 2, source_unreachable 2, claim_wrong 1. Round 2: 128 load-bearing items checked by two independent Sonnet fact-checkers each (dates lens + claims lens; the more skeptical verdict wins): confirmed 67, partially_supported 49, date_wrong 10, source_unreachable 2. Round 3 (patent sweep): 69 rows and windows checked on the patent registers by 24 independent checkers (dates lens + claims lens per batch; the more skeptical verdict wins): confirmed 51, partially_supported 12, claim_wrong 6. Round 4: 116 load-bearing rows and windows checked against their sources by 30 independent checkers (dates lens + claims lens per batch; the more skeptical verdict wins): confirmed 73, partially_supported 33, date_wrong 5, source_unreachable 4, not_found 1. Four CEO quotes the checkers could not find on ir.polight.com/qa were confirmed against the saved Investorweb Q&A index and the post-Q2 Q&A PDF.",
  "rows": [
   {
    "id": "polight-8-4",
@@ -3269,6 +3269,818 @@
    "date": "2026-08-27",
    "verdict": "confirmed",
    "note": "Espacenet and patentguru: US20260255058A1 (Lemon Inc / Beijing Zitiao, US18/877,241, filed 2024-08-30) published 2026-08-27; priorities CN202311223779A 2023-09-20 and PCT/CN2024/116148 2024-08-30. Google Patents returned 404. | Patentguru register (Google Patents 404): US20260255058A1, app US18/877,241 filed 2024-08-30, published 2026-08-27, assignees Lemon Inc. and Beijing Zitiao Network Technolo"
+  },
+  {
+   "id": "r4-analysts-0-0",
+   "title": "DBS (Jim Au) Q Tech BUY, TP HKD12.50: poLight piezo tunable lenses in AI-glasses sampling",
+   "date": "2025-07-11",
+   "verdict": "confirmed",
+   "note": "DBS note byline \"Jim Au 11 Jul 2025\". It says \"Maintain BUY\" and gives \"a higher TP of HKD12.5 (from HKD10.0)\", plus \"piezo-driven tunable lenses (co-developed with poLight) are now in customer sampling for AI glasses and service robots\". | DBS note by Jim Au dated 11 Jul 2025: \"We maintain BUY on Q Tech\", \"higher TP of HKD12.5 (from HKD10.0)\". Quote matches: depth cameras and piezo-driven tunable"
+  },
+  {
+   "id": "r4-metaip-1-18",
+   "title": "Meta posts Strategic Sourcing Manager - Camera, Depth & Optics (Smartglasses/AR), Sunnyvale",
+   "date": "2026-09-02",
+   "verdict": "date_wrong",
+   "note": "Public LinkedIn page JSON-LD gives \"datePosted\":\"2026-09-24T15:32:04Z\" (validThrough 2026-10-24); the page shows \"1 week ago\" and \"63 applicants\". No 2026-09-02 seen. Glassdoor listed it as \"30d+\", so this may be a repost. | Public page (no login needed) matches title, Sunnyvale, $199k-$272k, and the scope quotes (list also includes \"structured light components\"); no tunable/piezo/supplier names; "
+  },
+  {
+   "id": "r4-polight-3-26",
+   "title": "Q2 2026 report: assembly partners busy, no new MEMS wafers, NRE USD 178,662 invoiced to Q Tech",
+   "date": "2026-06-30",
+   "verdict": "date_wrong",
+   "note": "The report covers \"Six months ended 30 June 2026\" and is signed \"Tønsberg, 5 August 2026\". The quotes on assembly partners, MEMS wafers and NRE (USD 178,662 in Q2, USD 313,141 in Q1) are verified. 2026-06-30 is the period end, not the report date. | poLight interim report, six months to 30 June 2026. Both quotes appear verbatim (the MEMS line continues \"as inventory levels are deemed to be suffici"
+  },
+  {
+   "id": "r4-qtech-5-9",
+   "title": "Prospectus: Q Tech 24-month lock-up on placement shares from 4 June 2025",
+   "date": "2025-06-17",
+   "verdict": "confirmed",
+   "note": "Newsweb message published 2025-06-17T11:05Z: \"Approval and publication of Prospectus\". Q Tech \"will not... sell, offer to sell, lend or transfer any Private Placement Shares for a 24-month period... i.e. from 4 June 2025\". The body has a typo reading \"17 June 2024\". | Oslo Bors release, poLight ASA, 17.06.2025: \"Approval and publication of Prospectus\". \"Q Tech undertakes that it will not, directly"
+  },
+  {
+   "id": "r4-modules-6-5",
+   "title": "Foxconn AR/VR camera-module RD head profile links Varjo HMD mass production to TLens driver work",
+   "date": "2024",
+   "verdict": "not_found",
+   "note": "No URL was given. An extended search found no public copy of the Foxconn profile with the \"Varjo客戶HMD產品順利量產\" / Tlens driver lines, so the Jan–Jun 2024 role dates could not be verified. LinkedIn was not opened. | No URL was given. An extended search found no public, indexed copy of the Foxconn profile with \"Varjo客戶HMD產品順利量產\" or \"Tlens快速對焦相機模組驅動程式開發\". The only confirmed link is that Foxconn invested"
+  },
+  {
+   "id": "r4-analysts-6-36",
+   "title": "DBS on Q Tech: AR optical engines \"already being shipped to Meta and Samsung\"",
+   "date": "2026-08-26",
+   "verdict": "confirmed",
+   "note": "DBS 1478_HK PDF dated \"26 Aug 2026\": \"colour optical engines are in small-batch delivery, and products are already being shipped to Meta and Samsung\". | DBS PDF dated 26 Aug 2026, analyst Jim Hin Kwong Au: \"Monochrome AR optical engines have entered volume production... products are already being shipped to Meta and Samsung.\" Also says a Meta/poLight tunable-lens project is \"expected to enter mass"
+  },
+  {
+   "id": "w-r4-otheroem-2-10",
+   "title": "Pico Space Pro FCC exhibits public",
+   "date": "2027-02-28→2027-02-28",
+   "verdict": "partially_supported",
+   "note": "UploadVR, 5 Sep 2026: \"Short-term confidentiality for documents in the FCC filings is set to expire on February 28, 2027.\" Date confirmed. The article does not say exhibits \"become public\" (that is an inference) and does not mention vr.org. Not the FCC record itself. | UploadVR (5 Sep 2026): \"Short-term confidentiality for documents in the FCC filings is set to expire on February 28, 2027.\" The ar"
+  },
+  {
+   "id": "w-r4-polight-5-6",
+   "title": "AGM 2027 (by 2027-06-30): all board seats up; authorities expire",
+   "date": "2027-01-01→2027-06-30",
+   "verdict": "confirmed",
+   "note": "Minutes of the 2026-05-20 AGM: board and nomination committee are \"elected for a term until the annual general meeting in 2027\". The authorisations are \"valid until the annual general meeting in 2027, but no longer than 30 June 2027\". The 2027-01-01 start is an inferred bound. | Minutes of the 20 May 2026 AGM, attached to message 674027. Board and nomination committee are \"elected for a term until"
+  },
+  {
+   "id": "r4-analysts-0-5",
+   "title": "DBS Q Tech: \"Meta project\" with poLight tunable lens to enter mass production 1H27",
+   "date": "2026-08-26",
+   "verdict": "confirmed",
+   "note": "12-page DBS PDF dated 26 Aug 2026, analyst Jim Au, an update note: \"We maintain BUY and lower our TP to HKD12.6 (prev. HKD15.0), on 13x FY27F PE\". The Meta/poLight 1H27 sentence is verbatim. Page 4 not checked. This is a broker's claim, so 'strong', not 'confirmed'. | Primary DBS PDF (12 pp) is dated \"26 Aug 2026\". It says: \"A Meta project combining Q Tech's module capabilities with poLight's low-"
+  },
+  {
+   "id": "r4-metaip-1-21",
+   "title": "Meta Camera Architect job (approx. 2026-10-03): focus strategy fixed-focus vs AF, AF/OIS actuator systems",
+   "date": "2026-10-03",
+   "verdict": "date_wrong",
+   "note": "The metacareers page renders no content without JS. The LinkedIn \"5 days ago\" date could not be seen publicly. A freehire mirror of the Meta Sunnyvale listing says \"Posted: August 19, 2026 (last updated August 31, 2026)\", so the 10-03 date is probably a repost. Search snippets confirm the $173k-245k range and the focus-strategy text. | Meta's careers page shows Camera Architect, Sunnyvale, \"$173,0"
+  },
+  {
+   "id": "r4-polight-3-27",
+   "title": "Q2 2026 call: lenses from Q Tech line \"good and qualified\", some process tuning needed",
+   "date": "2026-08-06",
+   "verdict": "confirmed",
+   "note": "The transcript has the CEO saying: \"what has been delivered as good lenses out of Q Tech line are good and qualified. There are some tuning to be done in some of the processes\". The Newsweb invitation (msg 678800) dates the presentation to 6 August 2026 at 09:00 CET. | The transcript header reads \"Q2 2026 - 6 Aug, 2026\". At 49m the CEO says: \"what has been delivered as good lenses out of Q Tech li"
+  },
+  {
+   "id": "r4-polight-5-15",
+   "title": "Program A qualification purchase order",
+   "date": "2025-08-06",
+   "verdict": "confirmed",
+   "note": "Newsweb inside-information release dated 6 Aug 2025: \"TLens® Purchase Order Supporting a Top Tier Consumer OEM Qualification Program\", worth about NOK 1,700,000, 50% non-cancellable, first deliveries in Q4-2025. The 'Program A' label is the researcher's, not poLight's. | Read through the Newsweb API. Message 652183 was published 2025-08-06 07:24 UTC: \"TØNSBERG, Norway -- August 6, 2025\". It is a T"
+  },
+  {
+   "id": "r4-otheroem-6-9",
+   "title": "Varjo refreshed XR-4 series with \"optimized autofocus passthrough cameras\"",
+   "date": "2025-10-08",
+   "verdict": "partially_supported",
+   "note": "Varjo's release and Auganix, both 8 Oct 2025, list the refreshed XR-4 Series with \"Optimized autofocus passthrough cameras\". Neither mentions a 'Focal Edition'. Varjo names only an XR-4 Secure Edition. | The Auganix article and the Varjo announcement are both dated October 8, 2025. The XR-4 Series refinements include \"Optimized autofocus passthrough cameras\"."
+  },
+  {
+   "id": "r4-modules-6-39",
+   "title": "Luxshare CIOE release lists a \"T-LENS Camera\" among its AR-glasses optics",
+   "date": "2026-09-11",
+   "verdict": "confirmed",
+   "note": "Luxshare's own CIOE 2026 release, dated 2026-09-11, lists core optical products: \"X-cube Micro LED全彩光机、PVG全彩波导、2D HOE波导及T-LENS Camera\", covering optical engines, waveguides and imaging modules, in the context of its AR glasses. | The Luxshare release \"立讯精密亮相第27届中国国际光电博览会（CIOE 2026）\" is dated September 11, 2026. It lists \"X-cube Micro LED全彩光机、PVG全彩波导、2D HOE波导及T-LENS Camera等核心光学产品\"."
+  },
+  {
+   "id": "w-r4-polight-3-0",
+   "title": "poLight Q3 2026 report",
+   "date": "2026-10-29→2026-10-29",
+   "verdict": "confirmed",
+   "note": "The cited /qa page shows no date. poLight's IR calendar lists \"29 Oct – Q3 Report 2026\". The 6 Aug 2026 Newsweb CMD invitation puts the CMD on \"Friday 30 October 2026\", \"the day following poLight's Q3 2026 quarterly presentation\". The IR event list wrongly shows webcast 28 Oct and CMD 29 Oct. | The cited ir.polight.com/qa page shows no report date. The official Newsweb financial calendar (msg 6589"
+  },
+  {
+   "id": "w-r4-qtech-5-7",
+   "title": "Q Tech 24-month lock-up on 63,743,112 placement shares ends (~2027-06-04)",
+   "date": "2027-06-04→2027-06-04",
+   "verdict": "confirmed",
+   "note": "poLight announcement of 17 Jun 2025: under the Investment Agreement, Q Tech will not sell the 63,743,112 Private Placement Shares \"for a 24-month period following the completion of the Private Placement, i.e. from 4 June 2025\". The lock-up comes from the Investment Agreement, not the prospectus. | The 17 June 2025 announcement says Q Tech \"will not... sell... any Private Placement Shares for a 24-"
+  },
+  {
+   "id": "r4-analysts-0-6",
+   "title": "DBS Q Tech: AR optical engines already shipped to Meta and Samsung",
+   "date": "2026-08-26",
+   "verdict": "confirmed",
+   "note": "DBS PDF is dated \"26 Aug 2026\" and contains the quote word for word: \"products are already being shipped to Meta and Samsung.\" I did not check the page number. | DBS Q Technology (1478 HK) report dated 26 Aug 2026, \"Handset share gains intact; auto and AI vision drive the next leg\", contains the exact sentence: \"Monochrome AR optical engines have entered volume production... already being shipped "
+  },
+  {
+   "id": "r4-metaip-1-22",
+   "title": "Bay Area module lead profile: 'NTI dToF/Tlens camera module process developments with dual Active Alignments'",
+   "date": "2026-10",
+   "verdict": "source_unreachable",
+   "note": "LinkedIn returned HTTP 999 (blocked or behind login). An extended search found no indexed snippet for \"NTI dToF\" or Tlens on a Sang Kim profile. I could not check the profile date or the bullet's years. | The public profile is login-gated (\"Join to view full profile\"). What renders: \"Sang Kim - Meta\", San Francisco Bay Area, \"25+ years of leadership on module integration process developments in th"
+  },
+  {
+   "id": "r4-polight-3-28",
+   "title": "Post-quarter Q&A: two lines of similar capacity (a doubling) plus new final-test machine doubling Tongxing test capacity",
+   "date": "2026-08-19",
+   "verdict": "confirmed",
+   "note": "Transcript header reads \"Post Quarter Q/A - 19 Aug, 2026\". At 29m11s the CEO says \"we will have two lines, including the Q Tech... That's a doubling... new final test machine, which will double the test capacity at Tongxing.\" | Transcript headed \"Post Quarter Q/A - 19 Aug, 2026\". CEO at 29m11s: \"we will have two lines, including the Q Tech, which will have a similar capacity. That's a doubling... "
+  },
+  {
+   "id": "r4-polight-5-17",
+   "title": "Program C purchase order of about NOK 5m",
+   "date": "2025-10-13",
+   "verdict": "confirmed",
+   "note": "NewsWeb msg 657104, \"October 13, 2025\", filed \"2025-10-13 17:23 CEST\". The PO is \"valued at approximately NOK 5m\" from a \"top tier U.S. consumer electronics OEM\" for a TLens AR camera. \"Program C\" is a research label; the release does not use it. | Oslo Børs NewsWeb msg 657104, 13.10.2025, Inside Information: PO from a \"top tier U.S. consumer electronics OEM\" to design a TLens-based camera \"for AR"
+  },
+  {
+   "id": "r4-polight-6-10",
+   "title": "poLight repeat design-win for high-end MR HMD, PO ~NOK 0.4m (one day after Varjo refresh)",
+   "date": "2025-10-09",
+   "verdict": "confirmed",
+   "note": "MFN release dated 2025-10-09 08:30 CEST: \"poLight Receives Repeat Design-win for High End Mixed Reality Head-Mounted Device\". The initial mass-production PO is about NOK 0.4m, for an enterprise MR HMD. The customer is not named. | Release published 2025-10-09 08:30 CEST, titled \"poLight Receives Repeat Design-win for High End Mixed Reality Head-Mounted Device\". It covers a recently announced enter"
+  },
+  {
+   "id": "r4-polight-6-41",
+   "title": "poLight TWedge technical-samples PO ~NOK 1.2m from a \"leading consumer OEM\" (AR|MR display)",
+   "date": "2026-09-21",
+   "verdict": "confirmed",
+   "note": "Release dateline \"Tønsberg, Norway 21 September 2026\", filed 2026-09-21 10:22 CEST. It is a follow-on TWedge technical-samples PO of approximately NOK 1.2 million from a leading consumer OEM, for an AR|MR display application. It is the newest item in the news archive. | Release dated 21 Sep 2026: \"Follow-on Purchase Order for TWedge® Wobulation Technology Technical Samples for AR|MR Use from a Lea"
+  },
+  {
+   "id": "w-r4-polight-3-2",
+   "title": "By end-2026: two assembly lines of similar capacity (a doubling) plus second final-test machine",
+   "date": "2026-10-08→2026-12-31",
+   "verdict": "partially_supported",
+   "note": "The CEO says \"two lines, including the Q Tech... similar capacity. That's a doubling\" and a new final-test machine to \"double the test capacity at Tongxing\". He says this in reply to a question about end-Q3/end-Q4 2026. The other line is never named as the Philippines. The 200k assembly and 400-500k test figures come from the CFO's question, which cites the Q3 2025 deck. | The question asked for c"
+  },
+  {
+   "id": "w-r4-alibaba-6-0",
+   "title": "Qwen N1 / N1 Pro in-stock sale in China",
+   "date": "2026-10-13→2026-10-13",
+   "verdict": "confirmed",
+   "note": "IT Home article dated 2026-09-22 says N1/N1 Pro \"将于 10 月 13 日现货发售\" (in-stock sale on Oct 13), with online reservations already open. That supports a single-day window of 2026-10-13. It gives no prices. | IT之家 article of 2026-09-22 on the Yunqi conference: N1, N1 Pro and the earclip are open for pre-order \"并将于 10 月 13 日现货发售\". It includes a JD pre-order link marked 待发布. This is press reporting of Al"
+  },
+  {
+   "id": "r4-polight-0-7",
+   "title": "poLight TWedge follow-on PO ~NOK 1.2m from leading consumer OEM for AR|MR display",
+   "date": "2026-09-21",
+   "verdict": "confirmed",
+   "note": "Release header reads 2026-09-21 10:22 CEST. It describes a follow-on PO \"approximately NOK 1.2 million\" from \"a leading consumer OEM\" for AR|MR, with delivery \"expected to be completed in September/October 2026\". | poLight release dated 21 Sep 2026 10:22 CEST: \"approximately NOK 1.2 million\" PO from \"a leading consumer OEM, for an AR|MR display application\". Technical sample delivery \"September/Oc"
+  },
+  {
+   "id": "r4-google-1-23",
+   "title": "Google camera engineer profile lists 'Tlens (autofocus module) integration and characterization'",
+   "date": "2026-10",
+   "verdict": "source_unreachable",
+   "note": "LinkedIn returns HTTP 999 without login. A search snippet shows only \"Arno Konings - Google\" in Mountain View; the Tlens bullet and the role dates could not be seen publicly. The 2026-10 'profile live' date is unverifiable. | LinkedIn returns HTTP 999 without login. A search snippet shows only \"Arno Konings - Google\", Mountain View and Lehigh coursework. The 'Tlens (autofocus module) integration' "
+  },
+  {
+   "id": "r4-qtech-3-29",
+   "title": "Q Tech interim deck: poLight TLens + AR Mono Engine for overseas key customers, ramp in 2H26 / 2027",
+   "date": "2026-08-24",
+   "verdict": "partially_supported",
+   "note": "Q Tech 24 Aug 2026 deck is company-authored. The 'Manufacturing bases...' quote and footprint entries (\"*poLight | TLens & Piezo Motor\", Actutek, QT Vietnam/India) are seen. The slide reads \"TLens + AR Mono Engine Volume Delivery Achieved\" then \"Overseas Key Customers Ramp in 2H26 / 2027\". Whether the ramp line refers to TLens is ambiguous. | Deck cover reads \"2026 Interim Results, 24 August 2026\""
+  },
+  {
+   "id": "r4-polight-5-20",
+   "title": "Program B purchase order #1",
+   "date": "2025-11-24",
+   "verdict": "confirmed",
+   "note": "Newsweb API publishedTime 2025-11-24T07:43Z (08:43 CET). Title: \"poLight ASA Receives Follow-on Purchase Order for TLens® for AR|MR Use from a Leading Consumer OEM\", ~NOK 0.9m. This is the same release as r4-polight-6-11, so 'PO #1' versus 'PO #0' numbering is inconsistent. | Newsweb message 660377 (poLight, 2025-11-24 08:43 CET, inside information) is the release for \"several follow-on purchase o"
+  },
+  {
+   "id": "r4-polight-6-11",
+   "title": "Program B PO #0: ~NOK 0.9m TLens follow-on from a Leading Consumer OEM (AR|MR)",
+   "date": "2025-11-24",
+   "verdict": "confirmed",
+   "note": "Dated \"Tønsberg, Norway 24 November 2025\" and submitted 2025-11-24 08:43 CET. It covers several follow-on POs \"total approximate worth of NOK 0.9 million\" over the last week, calls it a \"mature proof-of-concept program\", and expects delivery in Q4 2025. | poLight release, 24 Nov 2025: \"several follow-on purchase orders with a total approximate worth of NOK 0.9 million\" for TLens for \"a leading con"
+  },
+  {
+   "id": "r4-alibaba-6-42",
+   "title": "Alibaba Qwen AI Glasses N1 / N1 Pro launched: 50 MP sensor, 4K, no display; sale 2026-10-13",
+   "date": "2026-09-22",
+   "verdict": "confirmed",
+   "note": "IT之家 article of 2026-09-22 12:23: the N1 series debuted at the Yunqi conference (Sept 22-24), pre-orders are open, and in-stock sales start October 13. It cites a 50 MP sensor and gives no price. The article itself has no 4K or display wording. | Cited ithome (22 Sep): 50MP sensor, N1 Pro eye tracking and iris payment, on sale 10月13日, no price. 17173: AR1 + BES2800 + low-power sensing chip, 4K. sm"
+  },
+  {
+   "id": "w-r4-qtech-3-3",
+   "title": "Q Tech: TLens + AR Mono Engine ramp for overseas key customers in 2H26 / 2027",
+   "date": "2026-07-01→2027-12-31",
+   "verdict": "partially_supported",
+   "note": "Company deck shows \"TLens + AR Mono Engine / Volume Delivery Achieved\" and a separate line \"Overseas Key Customers / Ramp in 2H26 / 2027\". Linking the ramp specifically to TLens + AR Mono Engine is an inference. The deck also says TLens volume delivery is already achieved. | The 24 Aug 2026 deck reads \"Overseas Key Customers\" / \"Ramp in 2H26 / 2027\" next to \"TLens + AR Mono Engine Volume Delivery "
+  },
+  {
+   "id": "w-r4-xreal-6-1",
+   "title": "XREAL Aura pre-orders (late October)",
+   "date": "2026-10-01→2026-10-31",
+   "verdict": "date_wrong",
+   "note": "9to5google (7 Oct) says \"Pre-orders open later this month\". XREAL's 7 Oct 2026 PR Newswire release says \"pre-orders now open exclusively for customers who placed paid reservations\" and \"Orders will open to the general public in the coming weeks\". Pre-orders started 7 Oct, not late October. | Article of 2026-10-07 says \"Pre-orders open later this month\", which means after Oct 7, so a 2026-10-01 sta"
+  },
+  {
+   "id": "r4-meta-0-10",
+   "title": "Road to VR spec sheet: VR Glasses passthrough 26 PPD RGB, Autofocus: Yes, depth sensing",
+   "date": "2026-09-23",
+   "verdict": "confirmed",
+   "note": "Road to VR byline is September 23, 2026. Its 'Meta VR Glasses Specs' table lists 'Passthrough Cameras: 26 PPD RGB', 'Autofocus: Yes', 'Depth Sensing: Yes', 4 eye-tracking cameras, ~100g glasses, 300g puck, 5.5MP (2,412 x 2,288), H70°×V66° (D88°). | Road to VR, Sept 23 2026 spec sheet: \"Passthrough Cameras: 26 PPD RGB\", \"Autofocus: Yes\", \"Depth Sensing: Yes\", \"Eye Tracking: 4 cameras, 2 per eye\", w"
+  },
+  {
+   "id": "r4-meta-2-16",
+   "title": "2AYOA-4003 C2PC for Oakley HSTN OW8002 grant note names a camera change",
+   "date": "2025-06-30",
+   "verdict": "partially_supported",
+   "note": "The 2025-06-30 C2PC is real. The wording is from Luxottica's cover letter, not a grant note: \"Change the product dimensions (Include LENS & Frame & Temple). Change Digital component & camera for OW8002. Add the model name: OW8002\". The page's grant comments show only RW4012-14/RW4006S. | fccid.io (403 to WebFetch, read via Firecrawl): 'Date of Grant: 06/30/2025, Application Dated: 06/30/2025', not"
+  },
+  {
+   "id": "r4-meta-3-30",
+   "title": "The Elec: SeeYA mass-producing Phoenix OLEDoS since May, ~1M panels shipped; BOE failed approval; launch 1H 2027",
+   "date": "2026-08-28",
+   "verdict": "confirmed",
+   "note": "The Elec published this on Aug 28, 2026 (updated the same day). It quotes 'SeeYA began mass production of OLEDoS panels for Meta's ... Phoenix, in May' and 'Cumulative shipments have reached about 1 million units'. It says BOE did not pass qualification and the launch targets 'first half of next year'. | The Elec, Aug 28 2026: \"SeeYA began mass production of OLEDoS panels for Meta's goggle-type MR"
+  },
+  {
+   "id": "r4-polight-5-23",
+   "title": "Program A follow-on call-off",
+   "date": "2026-02-11",
+   "verdict": "confirmed",
+   "note": "Oslo Bors NewsWeb message 665399 (read via API) was published 2026-02-11 12:37Z ('2026-02-11 13:37 CET'). Title: 'poLight ASA Announces Follow-on TLens Purchase Order Supporting Top Tier Consumer OEM Qualification Program'. It is the final 50% call (~NOK 1M), with deliveries in Q1-2026. | poLight inside-information notice, 11 Feb 2026: \"received the call for the final 50 per cent\" of the 6 Aug 202"
+  },
+  {
+   "id": "r4-samsung-6-14",
+   "title": "GalaxyClub leak: Samsung SM-O200P/J glasses 12 MP camera \"met autofocus\"",
+   "date": "2026-01-13",
+   "verdict": "confirmed",
+   "note": "GalaxyClub article 'Galaxy Glasses: meer details van Samsungs eerste XR-bril' is dated 13 January 2026 and covers SM-O200P/SM-O200J with the 12 MP autofocus camera. The reader comment is dated 14 Jan 2026. | GalaxyClub, 13 Jan 2026: SM-O200J (after SM-O200P), \"12-megapixelcamera\" with autofocus, citing a 2024 South Korean report; \"waarschijnlijk alleen in de VS en Zuid-Korea\". Comment by Joegubben"
+  },
+  {
+   "id": "r4-qtech-6-45",
+   "title": "Q Tech Kunshan job ad: new XR whole-device factory dealing directly with brands such as Meta and Pico",
+   "date": "2026-09-28",
+   "verdict": "partially_supported",
+   "note": "The Liepin ad for 'AR/VR制造中心负责人' at 昆山丘钛微 shows '9月28日更新' (an update date, not a posting date). The year 2026 is inferred from the page timestamp of 2026-10-08. It quotes '直接对接品牌客户（如Meta、Pico等）'. | Liepin ad by 昆山丘钛微, \"AR/VR制造中心负责人\", \"9月28日更新\". It mentions a new-factory line layout for \"AR/VR整机\", inventory of \"摄像头模组\", and \"直接对接品牌客户（如Meta、Pico等）\". The company posted it, but it is a recruitment ad, "
+  },
+  {
+   "id": "w-r4-vcm-3-4",
+   "title": "Q Tech connected-transaction cap RMB 325m for actuators from Heyuan Yova, Actutek and QT Investment group",
+   "date": "2026-09-01→2026-12-31",
+   "verdict": "confirmed",
+   "note": "Q Tech circular dated 二零二六年七月二十七日 (2026-07-27). It sets a cap of RMB 325,000,000 for the 'four months ending 31 Dec 2026', counted 'from 1 Sep 2026' on the assumption of shareholder approval by then. Later caps: RMB 765m (2027), RMB 870m (2028). | Q Tech HKEX announcement, 27 Jul 2026, QT Investment purchase framework covering Heyuan Yova and Actutek. Caps: RMB 325,000,000 for four months from 1 S"
+  },
+  {
+   "id": "w-r4-xreal-6-2",
+   "title": "XREAL Aura first shipments \"before the holidays\"",
+   "date": "2026-11-01→2026-12-31",
+   "verdict": "partially_supported",
+   "note": "9to5Google (Oct 7, 2026) says the first delivery wave arrives 'before the holidays' and 'Pre-orders open later this month'. The Nov 1 start is inferred, not stated. The source supports an end around late Dec 2026 but no start date. | 9to5Google, Oct 7 2026: XREAL says the first delivery wave arrives \"before the holidays\", with a second wave in early 2027. Pre-orders open later in October. Price fr"
+  },
+  {
+   "id": "r4-meta-0-11",
+   "title": "GadgetGuy hands-on: passthrough cameras have autofocus, eye tracking sharpens focus",
+   "date": "2026-09-23",
+   "verdict": "confirmed",
+   "note": "Page metadata article:published_time \"2026-09-23T23:43:11+00:00\". The visible byline date is 24/09/2026 (AU time). Author is Valens Quinn. Quotes match: \"26 pixels per degree, compared with 18 on the Quest 3, and they have autofocus\" and \"13 cameras and sensors in total.\" | Valens Quinn, page dated 24/09/2026 (AEST, which matches 23:43Z on 23 Sep). Quotes '26 pixels per degree, compared with 18 on"
+  },
+  {
+   "id": "r4-meta-2-30",
+   "title": "Meta launches own-brand Meta Glasses (12 MP camera, from US$299), matches G4Q",
+   "date": "2026-06-23",
+   "verdict": "partially_supported",
+   "note": "Meta release dated June 23, 2026, 'In partnership with EssilorLuxottica', 'starting at $299', 'available in several countries starting today'. Models: Adventurer, Fury, Meta Glasses by Kylie. No 12 MP figure, no US$399, no Starfire price in the article. FCC G4Q mapping is not in the source. | Meta newsroom post dated June 23, 2026: \"Meta Glasses are available in several countries starting today\", "
+  },
+  {
+   "id": "r4-analysts-3-34",
+   "title": "Chinese preview: Goertek assembles Phoenix and pancake optics; Sunny listed as camera module vendor for Meta glasses",
+   "date": "2026-09-20",
+   "verdict": "confirmed",
+   "note": "AR圈 on Tencent News, dated 2026-09-20 19:25. Quotes: \"整机制造与Pancake光机模组均由歌尔股份承担\", \"摄像头传感器来自索尼\", \"摄像头模组则由舜宇光学提供\". It also says the Phoenix launch slipped to 1H 2027. | AR圈, dated 2026-09-20. Quote: '整机制造与Pancake光机模组均由歌尔股份承担', with SoC from 高通 and MicroOLED from 视涯科技. Camera: '传感器来自索尼…模组则由舜宇光学提供' for AI glasses. No AF, actuator or volume mentions. Rumor fits."
+  },
+  {
+   "id": "r4-polight-5-26",
+   "title": "Program B purchase order (~NOK 2.4m)",
+   "date": "2026-04-07",
+   "verdict": "partially_supported",
+   "note": "poLight inside-information release, 7 April 2026: a 'follow-on purchase order with a total value of approximately NOK 2.4 million' for TLens to 'a consumer OEM for an AR|MR application'. Delivery starts May 2026. The 'Program B' label is not in the release; it is our own mapping. | Newsweb API record 670070 has publishedTime 2026-04-07T13:12Z: \"7 April, 2026 ... follow-on purchase order ... approx"
+  },
+  {
+   "id": "r4-samsung-6-15",
+   "title": "XRVision (Xueqiu): Samsung glasses \"很可能会搭载液态镜头\" (poLight T-Lens)",
+   "date": "2026-02-04",
+   "verdict": "confirmed",
+   "note": "Xueqiu post by XRVision, \"发布于2026-02-04 16:27\": \"三星AI眼镜很可能会搭载液态镜头\", based on Galaxy Club's \"AutoFocus\". It mentions an earlier claim about Meta studying poLight/丘钛 T-Lens modules. | Xueqiu page is WAF-blocked. Same article by 'XR Vision' (OFweek, 2026-02-04 16:14): if Galaxy Club's 'AutoFocus' leak is right, '三星AI眼镜很可能会搭载液态镜头' (poLight T-Lens). It also says Meta is studying poLight/丘钛 'T Lens模组'. "
+  },
+  {
+   "id": "r4-samsung-6-46",
+   "title": "Samsung SM-O200P/J clear FCC (single 12 MP front camera); Korea Herald: November 2026 launch",
+   "date": "2026-10-01",
+   "verdict": "partially_supported",
+   "note": "RoadtoVR (Oct 1, 2026) says SM-O200P/J \"have appeared in FCC filings\" with a \"single 12MP front-facing camera\" but gives no grant date and no Korea Herald detail. 9to5Google (Oct 1) has the Korea Herald November launch. vr.org: \"two grants dated September 27\". | RoadtoVR (Oct 1, 2026): SM-O200P/SM-O200J 'have appeared in FCC filings', single 12MP front camera (no official spec sheet yet). RoadtoVR"
+  },
+  {
+   "id": "w-r4-meta-3-5",
+   "title": "Meta VR Glasses (Phoenix) retail launch, spring 2027",
+   "date": "2027-03-01→2027-05-31",
+   "verdict": "partially_supported",
+   "note": "The Elec (Aug 28, 2026) says only \"first half of 2027\" and does not mention spring. The production/OLEDoS-orders quote matches. Spring 2027 comes from GadgetGuy (\"they go on sale in spring 2027\"), so a Mar–May window needs that source. The cited source alone supports Jan–Jun 2027. | The Elec (2026.08.28) has 'adjust Phoenix production and OLEDoS orders based on market response' and 'first half of "
+  },
+  {
+   "id": "w-r4-rokid-6-3",
+   "title": "Rokid gen-2 AI glasses launch event",
+   "date": "2026-10-27→2026-10-27",
+   "verdict": "confirmed",
+   "note": "10jqka, 2026-09-29 13:27: \"将于10月27日乐奇Rokid新品发布会正式发布\". The second-gen glasses launch at the Oct 27 event, and \"具体销售计划将在发布会上揭晓\". | Beijing Business Today, republished on 10jqka 2026-09-29: '公司称，第二代乐奇AI眼镜将于10月27日乐奇Rokid新品发布会正式发布'. This is press quoting the company, not a primary Rokid source, so strong rather than confirmed."
+  },
+  {
+   "id": "r4-meta-0-13",
+   "title": "MIXED quotes Meta dev spec: passthrough 26 PPD \"with autofocus and depth sensing\"",
+   "date": "2026-09-26",
+   "verdict": "confirmed",
+   "note": "MIXED article by Chris Steven, published September 26, 2026, lists \"Colour stereoscopic passthrough at 26 PPD, with autofocus and depth sensing\". The date and day precision match. | MIXED, Chris Steven, Sep 26 2026: \"Colour stereoscopic passthrough at 26 PPD, with autofocus and depth sensing\", taken from the comparison table on Meta's developer docs, which it links. This is a press report quoting "
+  },
+  {
+   "id": "r4-otheroem-2-34",
+   "title": "Pico Space Pro FCC IDs 2A5NV-AA1Z0 (headset) and 2A5NV-B3110 (tethered puck) listed",
+   "date": "2026-09-01",
+   "verdict": "partially_supported",
+   "note": "Both IDs (2A5NV-AA1Z0, B3110) say 'Mixed Reality Computer', grant 09/01/2026, grantee 'Qingdao Chuangjian Weilai Technology', ByteDance/PICO contacts. AA1Z0 is BT-only; B3110 adds 2.4/5.9/6 GHz Wi-Fi. FCC shows no 'Space Pro' name, 7,000 mAh battery or STC end date. | fccid.io lists 2A5NV-B3110 and 2A5NV-AA1Z0 ('Mixed Reality Computer') with application date 2026-09-01. The B3110 TCB grants show '"
+  },
+  {
+   "id": "r4-qtech-4-5",
+   "title": "Q Tech signs Investment Agreement with poLight: 63.7m new shares at NOK 2.69 (~NOK 171.5m)",
+   "date": "2025-04-15",
+   "verdict": "confirmed",
+   "note": "HKEX announcement dated 5 June 2025: \"on 15 April 2025, the Company signed the Investment Agreement with poLight\" covering 63,743,112 shares at NOK2.69 (~NOK171,469,000 / ~RMB121,721,000). Completion was 4 June 2025. | HKEX 2025-06-05: \"on 15 April 2025, the Company signed the Investment Agreement with poLight\", 63,743,112 Placing Shares at \"NOK2.69 per share\", about \"NOK171,469,000 (equivalent to"
+  },
+  {
+   "id": "r4-polight-5-29",
+   "title": "Program B purchase order (~NOK 0.8m) on AGM morning",
+   "date": "2026-05-20",
+   "verdict": "confirmed",
+   "note": "NewsWeb message 673929 is dated 20.05.2026 ('submitted for publication ... at 2026-05-20 08:46 CEST'): a follow-on TLens PO of 'approximately NOK 0.8 million', the same case as 7 April 2026, delivery Q3 2026. The AGM timing was not checked. | NewsWeb 673929, 2026-05-20 08:46 CEST: follow-on TLens PO \"approximately NOK 0.8 million\", consumer OEM, AR|MR, \"same customer case as announced 7 April 2026"
+  },
+  {
+   "id": "r4-polight-6-17",
+   "title": "poLight CEO on Nov-2025 OEM: \"mainly focusing on U.S. and China. So you pick.\"; Q Tech involved",
+   "date": "2026-02-25",
+   "verdict": "confirmed",
+   "note": "Checkers searched ir.polight.com/qa only; found verbatim in the saved Investorweb Q&A index (copy of 2026-10-06, webcast 2026-02-25): 'we are mainly focusing on U.S. and China. So you pick.'"
+  },
+  {
+   "id": "w-r4-polight-0-0",
+   "title": "Delivery of NOK 1.2m TWedge technical samples to leading consumer OEM",
+   "date": "2026-09-01→2026-10-31",
+   "verdict": "confirmed",
+   "note": "MFN release dated 21 September 2026 (~NOK 1.2m TWedge samples PO) says delivery is \"expected to be completed in September/October 2026\". That fits the 2026-09-01 to 2026-10-31 window. | poLight release, 21 Sep 2026: follow-on TWedge PO of \"approximately NOK 1.2 million\" from a leading consumer OEM for an AR|MR display application. \"Delivery ... is expected to be completed in September/October 2026"
+  },
+  {
+   "id": "w-r4-qtech-4-1",
+   "title": "Overseas key customers ramp in 2H26 / 2027 (smart-glasses column)",
+   "date": "2026-07-01→2027-12-31",
+   "verdict": "confirmed",
+   "note": "Q Tech 2026 Interim Results deck dated 24 August 2026, 'Strategic Business Expansion Update' slide (about p.8), Smart Glasses column: \"Overseas Key Customers Ramp in 2H26 / 2027\". The 2026-07-01 to 2027-12-31 window follows from this. | Q Tech deck of 2026-08-24, p.8, Smart Glasses column: \"Overseas Key Customers / Ramp in 2H26 / 2027\". It sits apart from \"TLens + AR Mono Engine Volume Delivery Ac"
+  },
+  {
+   "id": "w-r4-polight-6-4",
+   "title": "poLight Q3 report (10-29) / Capital Markets Day (10-30): possible Program B launch status or design-win",
+   "date": "2026-10-29→2026-10-30",
+   "verdict": "partially_supported",
+   "note": "The dates are right, but the cited ir.polight.com/qa page does not show them. poLight's CMD invitation (6 Aug 2026) sets \"Friday 30 October 2026\". The poLight investors page lists \"29 October 2026, Quarterly Report – Q3 2026\". The Program B outcome is speculative. | The cited Q&A page doesn't show these dates. They come from poLight's financial calendar (NewsWeb 658930) listing \"Q3 Report 2026\" on"
+  },
+  {
+   "id": "r4-meta-0-14",
+   "title": "Earliest Wayback capture of Meta developer page already says passthrough \"with autofocus\"",
+   "date": "2026-09-27",
+   "verdict": "confirmed",
+   "note": "Wayback shows '1 capture', dated 27 Sep 2026 (20260927071227). The page reads 'Open-periphery color passthrough with autofocus and depth sensing', '5K micro-OLED display' and 'running Meta Horizon OS'. The /vr/ redirect was not checked. | Capture 20260927071227 contains \"Open-periphery color passthrough with autofocus and depth sensing\", \"5K micro-OLED display\" and \"running Meta Horizon OS\". The l"
+  },
+  {
+   "id": "r4-meta-2-36",
+   "title": "Connect 2026: Meta VR Glasses US$1,299.99, on sale Spring 2027; no FCC notice on blog",
+   "date": "2026-09-23",
+   "verdict": "partially_supported",
+   "note": "Blog is dated 'Sep 23, 2026' and says VR Glasses 'will be available in Spring 2027 for $1,299.99 USD'. It gives no same-day availability for Ray-Ban Meta Gen 3 and no 2026-10-13 ship date for Ray-Ban Meta Audio. | The blog, dated Sep 23, 2026, says VR Glasses \"will be available in Spring 2027 for $1,299.99 USD\", lists Gen 3, Audio and new styles, and has no FCC mention. It gives no Gen 3 date. \"Oc"
+  },
+  {
+   "id": "r4-qtech-4-8",
+   "title": "poLight general meeting appoints two Q Tech nominees: 'two-seventh of the board'",
+   "date": "2025-05-21",
+   "verdict": "confirmed",
+   "note": "HKEX announcement 'Hong Kong, 5 June 2025': two Q Tech-nominated directors 'appointed as directors at the general meeting of poLight held on 21 May 2025, representing two-seventh of the board of directors'. | Q Tech's HKEX filing of 5 June 2025: \"the two directors nominated by the Company have been appointed as directors at the general meeting of poLight held on 21 May 2025, representing two-seven"
+  },
+  {
+   "id": "r4-polight-5-31",
+   "title": "Program A purchase order (NOK 0.7m)",
+   "date": "2026-06-18",
+   "verdict": "confirmed",
+   "note": "NewsWeb 676475 is inside information dated '18 June, 2026', submitted '2026-06-18 11:40 CEST': a 'follow-on purchase order worth NOK 0.7 million' for the Top Tier OEM qualification program; deliveries 'likely' H2 2026. Yahoo close and volume not checked. | Newsweb (via API), 18 June 2026: a \"follow-on purchase order worth NOK 0.7 million\" for the \"Top Tier consumer OEM\" qualification program, deli"
+  },
+  {
+   "id": "r4-polight-6-20",
+   "title": "Program B PO #1: ~NOK 2.4m TLens follow-on from a consumer OEM, mass-production priced",
+   "date": "2026-04-07",
+   "verdict": "partially_supported",
+   "note": "MFN, 7 Apr 2026: a \"follow-on purchase order with a total value of approximately NOK 2.4 million to supply TLens® to a consumer OEM for an AR|MR application\", with delivery \"expected to start in May 2026\". The release does not say \"mass-production priced\". | MFN release published 7 April 2026, 15:12 CEST: about NOK 2.4 million follow-on TLens order for a consumer OEM's AR|MR use; 'Delivery ... exp"
+  },
+  {
+   "id": "w-r4-polight-0-1",
+   "title": "poLight Q3 2026 report (07:00)",
+   "date": "2026-10-29→2026-10-29",
+   "verdict": "confirmed",
+   "note": "MFN calendar lists 'Kvartalsrapport 2026-Q3' on 29 October 2026 at 07:00, under the column 'Est. tid' (estimated time). | MFN poLight calendar: \"Kvartalsrapport 2026-Q3\" on 29 October 2026 at 07:00. The Capital Markets Day follows on 30 October 2026."
+  },
+  {
+   "id": "w-r4-qtech-4-2",
+   "title": "Module roadmap year 2026: Light Engine, TLens, TWedge, AR DSA",
+   "date": "2026-01-01→2026-12-31",
+   "verdict": "partially_supported",
+   "note": "The 2025-08-11 Q Tech deck (32 pp, near the end) reads \"2025: Pancake, 2026: Light Engine, TLens, TWedge, AR DSA 2027-2028: Waveguide\". The claims about the 2026-03-16 deck (p.18) and the 2026-08-24 deck were not checked. | The 2025-08-11 interim results deck says '2025: Pancake, 2026: Light Engine, TLens, TWedge, AR DSA 2027-2028: Waveguide'. Page number and the 2026-03-16 and 2026-08-24 decks we"
+  },
+  {
+   "id": "w-r4-samsung-6-5",
+   "title": "Samsung intelligent eyewear on sale (select markets, US and Korea likely)",
+   "date": "2026-11-01→2026-11-30",
+   "verdict": "partially_supported",
+   "note": "9to5Google, Oct 1 2026, citing the Korea Herald and a \"Samsung official\": Samsung \"has apparently confirmed a November 2026 launch for its first Android XR smart glasses\". It names no markets (US/Korea) and does not use \"intelligent eyewear\". The GalaxyClub source was not checked. | 9to5Google, 1 Oct 2026, says Samsung 'apparently confirmed a November 2026 launch' (Korea Herald); 'A specific relea"
+  },
+  {
+   "id": "r4-meta-0-15",
+   "title": "Wayback capture of Meta compare-devices: \"Color stereoscopic (26 PPD) passthrough with autofocus\"",
+   "date": "2026-10-05",
+   "verdict": "confirmed",
+   "note": "Wayback CDX lists 20261005110543 as the only/earliest capture of /vr/essentials/compare-devices/. The page text contains \"Color stereoscopic (26 PPD) passthrough with autofocus and depth sensing\". The 2026-09-08 /horizon/ capture was not checked. | Wayback capture 20261005110543 (CDX shows it as the only capture of this URL) lists 'Meta VR Glasses' with 'Color stereoscopic (26 PPD) passthrough wit"
+  },
+  {
+   "id": "r4-samsung-2-37",
+   "title": "FCC grants A3LSMO200P/J Samsung Smart Glasses; no public exhibit mentions camera, lens or AF",
+   "date": "2026-09-27",
+   "verdict": "partially_supported",
+   "note": "The fccid.io page shows 'Smart Glasses', 'Date of Grant: 09/27/2026', 'Application Dated: 07/22/2026', 6 GHz VLP and LPI grants, a WiFi 6E attestation, and short-term confidentiality to 2027-03-26. The SM-O201P-O204P variants and 'design of the front frame' come only from secondary press (VR.org). I did not see the charging case or 'Extended Reality Glasses'. | fccid.io A3LSMO200P shows \"Date of G"
+  },
+  {
+   "id": "r4-qtech-4-9",
+   "title": "poLight placement completed: 63.7m shares, ~32.97%; Q Tech becomes largest shareholder",
+   "date": "2025-06-04",
+   "verdict": "confirmed",
+   "note": "HKEX announcement dated 5 June 2025: \"On 4 June 2025, the Private Placement has been completed\", 63,743,112 shares, \"approximately 32.97%\", \"largest single shareholder\". Investment Agreement dated 15 April 2025. Lock-up wording matches (garbled). | Q Tech HKEX announcement: 'On 4 June 2025, the Private Placement has been completed', 63,743,112 shares, 'approximately 32.97%', 'largest single shareh"
+  },
+  {
+   "id": "r4-polight-5-33",
+   "title": "Program B PO #4; case reclassified as first consumer AR|MR design-in",
+   "date": "2026-07-10",
+   "verdict": "partially_supported",
+   "note": "NewsWeb 677988 (10.07.2026, inside information): 'another follow-on purchase order' of about NOK 0.8m, same case as 7 April. CEO: 'We now define this case as design-in'. Delivery is Q4 2026. The source does not say 'first' design-in or give a PO count. Yahoo prices not checked. | NewsWeb msg 677988, 10.07.2026: \"another follow-on purchase order\" of ~NOK 0.8m for the \"same customer case announced 7"
+  },
+  {
+   "id": "r4-polight-6-23",
+   "title": "Program B PO #2: ~NOK 0.8m, same customer case as 7 April; delivery Q3 2026",
+   "date": "2026-05-20",
+   "verdict": "confirmed",
+   "note": "MFN release dated 20 May 2026 08:46 CEST: ~NOK 0.8m follow-on PO, \"same customer case as announced 7 April 2026\", shipment anticipated in Q3 2026. | MFN poLight release, 20 May 2026: TLens follow-on PO of about NOK 0.8 million to a consumer OEM for AR|MR. Quotes 'This is for the same customer case as announced 7 April 2026' and delivery 'expected in Q3 2026'. The PO #2 label is the row's own numbe"
+  },
+  {
+   "id": "w-r4-polight-0-2",
+   "title": "poLight Capital Markets Day, Oslo (guest speakers; agenda unpublished)",
+   "date": "2026-10-30→2026-10-30",
+   "verdict": "partially_supported",
+   "note": "MFN release of 6 Aug 2026 confirms Fri 30 Oct 2026, 09:00-15:00 CET at Pareto Securities AS, Dronning Mauds gate 3, Oslo, plus 'external review of key strategic markets' and 'More details on the program and how to register attendance will follow'. It names no guest speakers. I did not verify the LinkedIn claim or NewsWeb 679139. | Release dated 6 Aug 2026: CMD on \"Friday, 30 October 2026, 09:00–15"
+  },
+  {
+   "id": "w-r4-qtech-4-3",
+   "title": "QT Investment actuator purchase caps RMB 325m / 765m / 870m",
+   "date": "2026-09-01→2028-12-31",
+   "verdict": "partially_supported",
+   "note": "Caps of RMB 325,000,000 (four months to 31 Dec 2026), 765,000,000 (2027) and 870,000,000 (2028) are confirmed, with an EGM required. The 'Products' cover open-loop, closed-loop and VCM motors, OIS and variable-aperture motors, plus connectors, holders, card trays, metal cases and moulds. The caps are therefore not 'VCM-type motors only'. EGM approval on 2026-09-11 not seen. | Announcement dated 27"
+  },
+  {
+   "id": "w-r4-otheroem-6-6",
+   "title": "Pico Space Pro release (China first), Q4 2026",
+   "date": "2026-10-01→2026-12-31",
+   "verdict": "partially_supported",
+   "note": "Road to VR (2026-08-25): Pico will \"adjust the product release date to the fourth quarter of this year\", and the Sept 2 Beijing event is cancelled. Q4 2026 window is confirmed, but \"China first\" is not stated; the article notes a global launch with no staggered schedule. | Road to VR (25 Aug 2026): Pico moved the Pico Space Pro release to 'the fourth quarter of this year' and the 2 Sept Beijing re"
+  },
+  {
+   "id": "r4-meta-0-18",
+   "title": "Live Meta developer page: passthrough \"with autofocus and depth sensing\", 100 g, Spring 2027",
+   "date": "2026-10-08",
+   "verdict": "confirmed",
+   "note": "Live page (fetched 2026-10-08) shows \"Open-periphery color passthrough with autofocus and depth sensing\", \"At about 100g\", \"Available Spring 2027\". The row date is the retrieval date. The page itself carries no publication date. | Live page shows VR Glasses row \"Open-periphery color passthrough with autofocus and depth sensing\", Quest \"Color passthrough with depth sensing\", the use-case sentence, "
+  },
+  {
+   "id": "r4-meta-2-39",
+   "title": "Verification: Meta developer page says VR Glasses have passthrough 'with autofocus and depth sensing'",
+   "date": "2026-10-08",
+   "verdict": "confirmed",
+   "note": "Retrieved 2026-10-08. Page has both quoted passthrough lines verbatim and no \"26 PPD\" or any PPD figure. The date is the retrieval date, not a publication date. | Live page has both quotes verbatim: \"Open-periphery color passthrough with autofocus and depth sensing\" and \"High-quality, full-color passthrough with autofocus and depth lets your apps blend...\". Neither \"PPD\" nor \"stereoscopic\" appears"
+  },
+  {
+   "id": "r4-qtech-4-10",
+   "title": "HKEX voluntary announcement: Completion of participating in the private placement of poLight ASA",
+   "date": "2025-06-05",
+   "verdict": "partially_supported",
+   "note": "Q Tech HKEX announcement dated 5 June 2025, completed 4 June. It names XR, robotics, drones, endoscopes, industrial and light-field cameras, plus \"TLens/TWedge and other products\". 63,743,112 shares at NOK2.69 (~32.97%). The claim that this is the only poLight filing in 2025-2026 is not checked. | HKEX PDF is signed \"Hong Kong, 5 June 2025\". It says the placement \"has been completed\" \"On 4 June 20"
+  },
+  {
+   "id": "r4-polight-5-35",
+   "title": "Capital Markets Day invitation for 30 Oct 2026",
+   "date": "2026-08-06",
+   "verdict": "confirmed",
+   "note": "Newsweb API msg 679139, published 2026-08-06T09:00Z: \"Tønsberg, 6 August 2026\", CMD \"Friday 30 October 2026\", \"the day following poLight's Q3 2026 quarterly presentation\", 09.00-15.00 CET, Pareto Securities AS, Oslo. | NewsWeb 679139, poLight, 06.08.2026: \"Invitation to Capital Markets Day 30 October 2026\". It says the event is \"the day following poLight's Q3 2026 quarterly presentation\", \"09.00-1"
+  },
+  {
+   "id": "r4-polight-6-26",
+   "title": "Program B PO #3 ~NOK 0.8m; poLight defines the case as its first consumer AR|MR design-in",
+   "date": "2026-07-10",
+   "verdict": "partially_supported",
+   "note": "poLight release of 10 Jul 2026 confirms ~NOK 0.8m TLens order, delivery Q4 2026, units \"potentially\" for the commercial product, and \"We now define this case as design-in.\" The labels \"Program B\", \"PO #3\" and \"first\" design-in do not appear. | Release dated 10 July 2026, \"approximately NOK 0.8 million\", delivery \"expected to be in Q4 2026\", \"We now define this case as design-in.\" It calls this a f"
+  },
+  {
+   "id": "w-r4-meta-0-4",
+   "title": "Meta VR Glasses on sale (Spring 2027, US$1,299.99)",
+   "date": "2027-03-01→2027-05-31",
+   "verdict": "confirmed",
+   "note": "Meta blog dated Sep 23, 2026: \"Launching in Spring 2027\", \"on sale Spring 2027\", \"$1,299.99 USD\". A Mar 1 to May 31 2027 window is a fair reading of Spring 2027. | Meta blog post of Sep 23, 2026: \"on sale Spring 2027 for $1,299.99 USD\", \"weigh about 100 grams\". The Mar-May window is our reading of \"Spring\". I did not check the newsroom copy separately."
+  },
+  {
+   "id": "w-r4-polight-5-0",
+   "title": "Q3 2026 results invitation notice expected",
+   "date": "2026-10-21→2026-10-22",
+   "verdict": "partially_supported",
+   "note": "Pattern checks out: 2025-10-24 (a correction; its original went out the same day), 2026-02-17, 2026-04-22, 2026-07-30. The CMD notice puts the Q3 presentation on 29 Oct 2026, so 6-7 days earlier is 22-23 Oct, not 21-22 Oct. | NewsWeb 678800 (30.07.2026) confirms the Q2 invitation for results on 6 Aug at 07.00 CET, presented 09:00 CET at Continental, Stortingsgaten 24/26. The CMD notice puts the Q3"
+  },
+  {
+   "id": "w-r4-otheroem-6-7",
+   "title": "Pico FCC short-term confidentiality on exhibits ends",
+   "date": "2027-02-28→2027-02-28",
+   "verdict": "partially_supported",
+   "note": "UploadVR (5 Sep 2026, press) names FCC IDs 2A5NV-AA1Z0 (headset) and 2A5NV-B3110 (puck), and says short-term confidentiality is \"set to expire on February 28, 2027\". The article does not mention passthrough cameras, and fccid.io returned 403. | UploadVR, 5 Sep 2026: FCC IDs 2A5NV-AA1Z0 (headset) and 2A5NV-B3110 (puck). \"Short-term confidentiality for documents in the FCC filings is set to expire o"
+  },
+  {
+   "id": "r4-meta-0-19",
+   "title": "Live Meta compare-devices table: passthrough with autofocus; no camera MP given",
+   "date": "2026-10-08",
+   "verdict": "confirmed",
+   "note": "The live page, fetched 2026-10-08, matches the row: Meta VR Glasses have \"Color stereoscopic (26 PPD) passthrough with autofocus and depth sensing\", micro-OLED 2412x2288, 37 PPD, 70°/66° FOV, XR2 Gen 3, 12 GB. Only the Quest 3 and 3S rows give 4 MP. The date is a snapshot date. | The live table lists \"Meta VR Glasses\": \"Color stereoscopic (26 PPD) passthrough with autofocus and depth sensing\", mic"
+  },
+  {
+   "id": "r4-qtech-3-11",
+   "title": "poLight TLens assembly line at Q Tech announced",
+   "date": "2025-04-15",
+   "verdict": "confirmed",
+   "note": "Oslo Bors message 643901, published 2025-04-15T14:33Z: \"Q Tech is working to establish a dedicated TLens® assembly and test line\" as part of the strategic investment. This fills the row's missing URL. The 16-month path milestones were not checked here. | Oslo Bors NewsWeb msg 643901, published 2025-04-15: strategic investment agreement under which \"Q Tech is working to establish a dedicated TLens®"
+  },
+  {
+   "id": "r4-qtech-4-15",
+   "title": "2025 interim deck: 'VR VST TLens AF camera' and 'AR SWIS TLens AF camera' marked 'Future Plan'",
+   "date": "2025-08-11",
+   "verdict": "confirmed",
+   "note": "Deck cover reads \"二零二五年中期业绩投资者交流会议 2025年8月11日\". The IoT slide lists VR VST TLens AF camera and AR SWIS TLens AF camera with the Future Plan / Ready legend. Roadmap: \"2026: Light Engine, TLens, TWedge, AR DSA\". | PDF metadata shows creation on 2025-08-11. On p.18 (rendered) the VR VST TLens AF, AR SWIS TLens AF, VR VST Shaft VCM AF and AR 光引擎+Wobulator items have the hollow 'Future Plan' icon. VR P"
+  },
+  {
+   "id": "r4-qtech-5-40",
+   "title": "Investor question cites Q Tech top-tier customer design-in with poLight, MP H1 2027",
+   "date": "2026-09-03",
+   "verdict": "confirmed",
+   "note": "The public QA API record has created_date \"2026-09-03T18:36:46\" (published 2026-09-10) with the exact question text. CEO answer: \"We cannot comment on the specific reference made by Q Tech\". The Q Tech statement itself is unverified. | The public IR Q&A data (InvestorQuestion entity) holds the quoted question verbatim, created 2026-09-03 and answered 2026-09-10. The CEO replied: \"engaged with Q-Te"
+  },
+  {
+   "id": "r4-samsung-6-27",
+   "title": "Samsung Unpacked: \"intelligent eyewear\" with built-in camera, AR1 Gen1; no AF spec; 12 days after Program B design-in",
+   "date": "2026-07-22",
+   "verdict": "confirmed",
+   "note": "Newsroom dateline: \"United Kingdom on July 22, 2026\". Text: \"introduced its intelligent eyewear at Galaxy Unpacked in London\", \"A built-in camera brings visual context\", \"Snapdragon AR1 Gen1\". The '12 days after Program B' claim is not in this source. | Samsung Newsroom, July 22, 2026: \"introduced its intelligent eyewear at Galaxy Unpacked in London\" with Gentle Monster and Warby Parker, \"A built-"
+  },
+  {
+   "id": "w-r4-polight-0-5",
+   "title": "poLight Q4/FY2026 report (estimated date)",
+   "date": "2027-02-24→2027-02-24",
+   "verdict": "confirmed",
+   "note": "The MFN financial calendar lists \"Bokslutskommuniké 2026\" on 2027-02-24 at 07:00, marked \"Est. tid\" (estimated). This matches the Oslo Bors calendar line \"24.02.2027 - Quarterly Report - Q4\". | MFN calendar lists \"2027-02-24 07:00 Bokslutskommuniké 2026\" under the header \"Est. tid*\". The company's NewsWeb financial calendar (msg 658930) also states \"24.02.2027 - Quarterly Report - Q4\", so it is a "
+  },
+  {
+   "id": "w-r4-polight-5-1",
+   "title": "Q3 2026 report",
+   "date": "2026-10-29→2026-10-29",
+   "verdict": "confirmed",
+   "note": "Oslo Bors message 658930 (Financial calendar, published 2025-11-06) reads \"29.10.2026 - Quarterly Report - Q3\". | NewsWeb msg 658930 \"Financial calendar\" (published 2025-11-06) includes \"29.10.2026 - Quarterly Report - Q3\". IR site data shows \"Q3 2026 Webcast\" on 2026-10-29 with location \"TBA\". I did not see the 'Hybrid' wording."
+  },
+  {
+   "id": "w-r4-snap-6-8",
+   "title": "Snap SPECS shipping begins \"later this fall\" (US/UK/FR)",
+   "date": "2026-09-22→2026-12-21",
+   "verdict": "partially_supported",
+   "note": "Snap release dated September 16, 2026 says \"Shipping is expected to begin later this fall in the United States, United Kingdom and France.\" The window uses astronomical fall (Sep 22 to Dec 21) but the row calls it meteorological. Meteorological fall would run from the 2026-09-16 announcement to 2026-11-30. | Snap release dated September 16, 2026: \"Shipping is expected to begin later this fall in t"
+  },
+  {
+   "id": "r4-metaip-1-2",
+   "title": "Huang at Meta (Sep 2020-Apr 2025): piezo tunable-lens AF module passed reliability, high NTI yields",
+   "date": "2020-09",
+   "verdict": "source_unreachable",
+   "note": "LinkedIn profile returned HTTP 999 (login wall) and Firecrawl refused person profiles. Two searches found no public snippet of the 'Sep 2020 - Apr 2025' Meta entry, so I could not verify the start date. | LinkedIn profile returned HTTP 999 (login wall). An extended web search found no indexed snippet with 'STL - Camera Actuators', the piezo tunable-lens AF bullet or the NTI-yield bullet, so none o"
+  },
+  {
+   "id": "r4-polight-3-17",
+   "title": "Q3 2025 deck: Philippine line ~200k/month installed, 400-500k test, ramp plan to 1M/month; Q Tech line equipment installed",
+   "date": "2025-10-30",
+   "verdict": "confirmed",
+   "note": "The PDF cover is dated '30 October 2025'. Slide text matches: 'installed capacity around 200k per month', 'Test installed capacity around 400 -500k per month', 'Ramp up plan in place for 1 mill per month', and Q Tech line 'All equipment installed'. | poLight Q3 2025 deck dated 30 October 2025: 'Assembly: installed capacity around 200k per month', 'Test installed capacity around 400 -500k per month"
+  },
+  {
+   "id": "r4-qtech-4-29",
+   "title": "FY2025 deck: 18 smart-glasses makers, 2 leading overseas brands in small-batch delivery; poLight revenue NOK 20.5m",
+   "date": "2026-03-16",
+   "verdict": "confirmed",
+   "note": "The deck is dated '2026年3月16日' (16 March 2026), which matches the upload path 20260316. The quoted '18家智能眼镜厂商... 海外2家头部终端已进行小批量交付' text and a 'poLight (挪威克朗百万元)' chart are present. | Q Tech FY2025 deck dated 16 March 2026: '已与境内外18家智能眼镜厂商建立业务关系，其中海外2家头部终端已进行小批量交付'. poLight revenue reads 9.6 to 20.5 (NOK m), with '围绕提升XR领域镜头与机械式对焦技术'. Also '2026: Light Engine, TLens, TWedge, AR DSA', 'Wobulator, TL"
+  },
+  {
+   "id": "r4-polight-5-41",
+   "title": "CEO: 'cannot comment' on Q Tech's H1-2027 design-in statement",
+   "date": "2026-09-10",
+   "verdict": "confirmed",
+   "note": "Base44 data behind the IR Q&A page: the question was submitted 2026-09-03 and published 2026-09-10. Answer reads 'We cannot comment on the specific reference made by Q Tech'. The AirPods and 'Difficult to say' answers were also published 2026-09-10. | Read from the IR site's public Q&A data (answer updated 2026-09-10). CEO: 'We are engaged with Q-Tech on several customer projects... We cannot comm"
+  },
+  {
+   "id": "r4-alibaba-6-28",
+   "title": "Ant Group WAIC AI-glasses reference design uses Q Tech TLens with real-time autofocus",
+   "date": "2026-07-22",
+   "verdict": "confirmed",
+   "note": "ZOL article dated '2026-07-22 18:00:23', titled '蚂蚁集团首发AI眼镜参考设计' (Ant Group debuts AI-glasses reference design) and shown at 2026 WAIC. It says '搭载索尼IMX681图像传感器及邱钛Tlens液态可变焦镜头，支持实时自动对焦' (Sony IMX681 sensor and Q Tech TLens with real-time autofocus). | ZOL original article, 2026-07-22: Ant Group WAIC reference design on Ling Device OS; '恒玄BES2800' + '研极微SA62105X'; '索尼IMX681图像传感器及邱钛Tlens液态可变焦镜头，支持实时"
+  },
+  {
+   "id": "w-r4-meta-2-6",
+   "title": "G4Q (Meta Glasses) FCC exhibits public, first batch",
+   "date": "2026-11-24→2026-11-24",
+   "verdict": "confirmed",
+   "note": "fccid.io lists 'intpho' (Internal Photos), 'extpho' and SWG manuals as available 2026-11-24. These are from the first grants (05-21 and 05-27). Some test-setup photos release earlier, on 2026-11-18, and later batches on 2026-12-27 and 2027-01-17. | fccid.io lists 2AGOZ-G4Q 'AI Glasses' by Meta Platforms Technologies: 'intpho' Internal Photos and 'extpho' available 2026-11-24, with a second set ('2"
+  },
+  {
+   "id": "w-r4-polight-5-2",
+   "title": "poLight Capital Markets Day, Pareto Securities, Oslo",
+   "date": "2026-10-30→2026-10-30",
+   "verdict": "confirmed",
+   "note": "Newsweb notice published 2026-08-06: 'Capital Market Day on Friday 30 October 2026', held 'the day following poLight's Q3 2026 quarterly presentation', 09.00-15.00 CET, at 'Pareto Securities AS, Dronning Mauds gate 3, Oslo'. | Oslo Børs NewsWeb msg 679139, 06.08.2026: 'Invitation to Capital Markets Day 30 October 2026', 'held the day following poLight's Q3 2026 quarterly presentation'; 'Venue: Par"
+  },
+  {
+   "id": "r4-modules-1-5",
+   "title": "Hon Hai Sr Manager profile: 'completed TLens fast-focus camera module driver development'",
+   "date": "2024",
+   "verdict": "source_unreachable",
+   "note": "The LinkedIn profile needs a login (HTTP 999). An extended search turned up no snippet showing the role's dates or the 'Tlens' bullet. The 2024 year, bounded only as after 2023-12, could not be verified. | LinkedIn profile is login-gated (HTTP 999), so I could not see it. An extended search for the exact bullet \"完成Tlens快速對焦相機模組驅動程式開發\" and the role returned no snippet. Role, customers and 2024 date"
+  },
+  {
+   "id": "r4-polight-3-20",
+   "title": "CEO: Program A units \"likely coming from the Philippines\"; Q Tech involved but not alone",
+   "date": "2026-02-25",
+   "verdict": "confirmed",
+   "note": "Checkers searched ir.polight.com/qa only; found verbatim in the saved Investorweb Q&A index (copy of 2026-10-06): units 'compared to units produced in the Philippines'"
+  },
+  {
+   "id": "r4-qtech-4-45",
+   "title": "Interim deck: 'TLens + AR Mono Engine - Volume Delivery Achieved'; overseas key customers ramp 2H26 / 2027",
+   "date": "2026-08-24",
+   "verdict": "confirmed",
+   "note": "The PDF is titled '2026 Interim Results Investor Presentation', dated 24 August 2026, and sits under an upload path dated 20260824. It contains 'TLens + AR Mono Engine - Volume Delivery Achieved' and 'Overseas Key Customers - Ramp in 2H26 / 2027'. | Q Tech '2026 Interim Results Investor Presentation, 24 August 2026', Strategic Business Expansion Update, Smart Glasses: '22 Partners +4 Added vs. YE2"
+  },
+  {
+   "id": "r4-polight-5-42",
+   "title": "TWedge follow-on PO from a leading consumer OEM",
+   "date": "2026-09-21",
+   "verdict": "partially_supported",
+   "note": "NewsWeb 21.09.2026 (inside information): follow-on PO 'worth approximately NOK 1.2 million' for 'TWedge® wobulation technology technical samples' to 'a leading consumer OEM for an AR|MR display application'; delivery 'September/October 2026'. The Yahoo close (NOK 12.88 to 13.96) and 1.12m volume are not in the source and were not verified. | NewsWeb MessageID 682779 is dated 21.09.2026 at 04:22, c"
+  },
+  {
+   "id": "r4-polight-6-31",
+   "title": "poLight Q2 call: CEO acknowledges Ant/Alibaba TLens glasses initiative; Program B launch this year, \"external device\"",
+   "date": "2026-08-06",
+   "verdict": "confirmed",
+   "note": "The transcript covers the Q2 2026 presentation; the invitation and Investing.com put the webcast on 6 August 2026 at 09:00 CET. It has the CFO's question on 'Ant Group showed off a demo glasses with a TLens camera', the CEO's 'we know that initiative. It's Alibaba', 'release plan is this year' and 'It's an external device.' | poLight Q2 2026 transcript (presentation 6 Aug 2026). CFO reads question"
+  },
+  {
+   "id": "w-r4-meta-2-7",
+   "title": "G4Q (Meta Glasses) FCC exhibits public, second batch",
+   "date": "2027-01-17→2027-01-17",
+   "verdict": "partially_supported",
+   "note": "On fccid.io, the 2AGOZ-G4Q users manual, internal/external photos and some test setup photos become available 2027-01-17, so the date is correct. But it is the fourth and latest batch, not the second: earlier batches open 2026-11-18, 2026-11-24 and 2026-12-27. | fccid.io 2AGOZ-G4Q 'AI Glasses' by Meta Platforms Technologies: users manuals, int/ext photos and setup photos list 'Available 2027-01-17"
+  },
+  {
+   "id": "w-r4-polight-5-3",
+   "title": "Next possible PDMR option-exercise window after Q3",
+   "date": "2026-11-01→2026-11-30",
+   "verdict": "partially_supported",
+   "note": "AR2025 says exercise windows 'shall be opened, normally each quarter after the presentation of quarterly reports' and notes the Board 'has on several occasions not been able to open' them. The calendar lists the Q3 2026 report for 29 October 2026, so a window could open from 10-29, not 11-01. No end date is stated. | AR2025: 'exercise windows... shall be opened, normally each quarter after the pre"
+  },
+  {
+   "id": "r4-modules-1-10",
+   "title": "Chongqing TS-Precision LinkedIn post 'TSP CAMERA MODULE: Tlens Camera Module Technology'",
+   "date": "2025-09-28",
+   "verdict": "confirmed",
+   "note": "The public post text renders without login, but the page gives only a relative age (\"1y\"). Decoding activity ID 7377973522435932160 (ID >> 22 = ms epoch) gives 2025-09-28 07:52 UTC, which matches the row. The rest of the page is behind 'Sign in to view more'. | Public post by Chongqing TS-Precision Technology shows without login, though comments are behind a sign-in overlay. It describes the poLig"
+  },
+  {
+   "id": "r4-polight-3-21",
+   "title": "Annual Report 2025: assembly in Philippines and China (Q Tech line under establishment); AR/MR 55% of 2025 deliveries",
+   "date": "2026-03",
+   "verdict": "date_wrong",
+   "note": "The PDF quotes match: \"deliveries were mainly to AR/MR (55%)\" and \"new assembly line setup at Q Tech in China is under establishment\". But the statements were \"authorised for issue... on 28 April 2025\" (a typo for 2026), and the Oslo Børs calendar lists the Annual Report on 28.04.2026. So the date is not March. | All quotes are in the PDF: \"shipped to manufacturing partners in the Philippines and "
+  },
+  {
+   "id": "r4-qtech-4-46",
+   "title": "Interim deck: poLight listed as 'TLens & Piezo Motor'; Actutek Philippines/Taiwan as connected companies",
+   "date": "2026-08-24",
+   "verdict": "confirmed",
+   "note": "The deck is dated \"24 August 2026\" (the upload path also contains 20260824). It contains \"Manufacturing bases in Mainland China, Vietnam, the Philippines and India\", \"* poLight | TLens & Piezo Motor\", \"* Actutek Philippines | Actuator\" and \"* Actutek Taiwan | Actuator R&D Center\". | Q Technology '2026 Interim Results Investor Presentation, 24 August 2026'. Page 15 reads \"Manufacturing bases in Mai"
+  },
+  {
+   "id": "r4-otheroem-6-1",
+   "title": "Varjo XR-4 series announced; Focal Edition has gaze-directed autofocus passthrough",
+   "date": "2023-11-27",
+   "verdict": "partially_supported",
+   "note": "RoadtoVR article by Ben Lang, Nov 27 2023: XR-4, Focal Edition ($10,000) and Secure Editions. Focal has \"eye-tracked autofocus\" passthrough, 2x 20MP RGB cameras and 51 PPD, and ships \"by the end of 2023\". The EUR 9,990 price is not in this source, and the CNBC second source was not checked. This is a press source, so 'strong' is OK. | The RoadtoVR article by Ben Lang is dated November 27, 2023 and"
+  },
+  {
+   "id": "r4-polight-6-33",
+   "title": "poLight Q&A: Program B customer is \"a big company and a major player in the ecosystem\"",
+   "date": "2026-08-19",
+   "verdict": "confirmed",
+   "note": "Checkers searched ir.polight.com/qa only; found in the post-Q2 2026 Q&A PDF (Investorweb, 2026-08-19/20): 'a big company and a major player in the ecosystem'"
+  },
+  {
+   "id": "w-r4-meta-2-8",
+   "title": "Ray-Ban Meta Audio (2AYOA-4012) FCC exhibits public",
+   "date": "2027-03-08→2027-03-08",
+   "verdict": "partially_supported",
+   "note": "fccid.io lists 2AYOA-4012 as \"AI GLASSES\" by Luxottica Group S.p.A, models RW7004/RW7005, granted 2026-09-09, with short-term confidentiality. Manuals and internal/external/setup photos are 'Available 2027-03-08'. The page never says \"Ray-Ban Meta Audio\", so that product name is unverified (the related domain shown is oakley.com). | On fccid.io, 2AYOA-4012 ('AI GLASSES', Luxottica, models RW7004/R"
+  },
+  {
+   "id": "w-r4-polight-5-4",
+   "title": "Q4 2026 report",
+   "date": "2027-02-24→2027-02-24",
+   "verdict": "confirmed",
+   "note": "Oslo Børs message 658930 (poLight, dated 06.11.2025) is a financial calendar. Under financial year 2026 it lists \"24.02.2027 - Quarterly Report - Q4\". | Oslo Børs NewsWeb message 658930 (poLight ASA, 06.11.2025), 'Financial calendar': \"24.02.2027 - Quarterly Report - Q4\" under financial year 2026."
+  },
+  {
+   "id": "r4-polight-1-13",
+   "title": "poLight posts Technical Sales Engineer (Tunable Optics/Camera Modules), North America Bay Area",
+   "date": "2026-02-18",
+   "verdict": "confirmed",
+   "note": "poLight PDF: 'Technical Sales Engineer – Tunable Optics / Camera Modules', 'North America (Bay Area preferred)', 'North American TLens® and TWedge™ customers', 'camera modules and display optical systems', 'OEMs, module integrators', 'consumer, AR/VR'. PDF CreationDate D:20260218135617+01'00'. | PDF metadata reads \"CreationDate: Wed Feb 18 12:56:17 2026 UTC\" and it sits in the /2026/02/ upload fol"
+  },
+  {
+   "id": "r4-polight-3-22",
+   "title": "Written Q&A: Q Tech line under qualification, limited by a single test machine",
+   "date": "2026-03-10",
+   "verdict": "confirmed",
+   "note": "Checkers searched ir.polight.com/qa only; found verbatim in the saved Investorweb Q&A index (copy of 2026-10-06): 'Capacity there is limited by only having one test machine.'"
+  },
+  {
+   "id": "r4-qtech-5-3",
+   "title": "Q Tech strategic investment in poLight: 63,743,112 shares at NOK 2.69",
+   "date": "2025-04-15",
+   "verdict": "confirmed",
+   "note": "Newsweb 643901 (15 Apr 2025): 'issue 63,743,112 new shares to Q Tech at... NOK 2.69', 'gross proceeds of NOK 171,468,971.28', 'subsequent offering of up to 19,122,933'. 643904: 'Record date: 22 April 2025'. Yahoo shows closes of 2.715 (04-14) and 3.45 (04-16). | NewsWeb shows \"Date/time 15.04.2025, 10:33:10\", category INSIDE INFORMATION: \"issue 63,743,112 new shares to Q Tech at a subscription pri"
+  },
+  {
+   "id": "r4-polight-6-2",
+   "title": "poLight design-win: TLens in MR HMD from a market leader, PO ~NOK 0.4m (same day as Varjo XR-4)",
+   "date": "2023-11-27",
+   "verdict": "confirmed",
+   "note": "Inderes repost of poLight release dated 27 Nov 2023: TLens 'used in a recently announced MR head-mounted device from a market leading company'; 'initial mass production purchase order worth approximately NOK 0.4 million'. No customer named. Auganix confirms Varjo announced XR-4 on 27 Nov 2023. | The Inderes release is dated November 27, 2023: TLens \"used in a recently announced MR head-mounted dev"
+  },
+  {
+   "id": "r4-qtech-6-34",
+   "title": "Q Tech 1H26 deck: TLens and AR mono light engines in volume delivery; overseas key customers ramp 2H26/2027",
+   "date": "2026-08-24",
+   "verdict": "confirmed",
+   "note": "Q Tech 2026 interim deck ('2026年8月24日'), smart-glasses section: 'TLens及AR单色光机 实现批量交付'; '海外关键客户预计于 26H2 / 2027年放量'; also '22家合作厂商'. | The deck cover reads \"二零二六中期业绩 投资者交流会议 2026年8月24日\" (2026 interim results investor meeting, 24 Aug 2026). The slide text includes \"TLens及AR单色光机 实现批量交付\" (TLens and AR mono light engines in volume delivery) and \"海外关键客户预计于 ... 26H2 / 2027年放量\" (key overseas customers expe"
+  },
+  {
+   "id": "w-r4-samsung-2-9",
+   "title": "Samsung SM-O200P/J photos and manual public on FCC",
+   "date": "2027-03-26→2027-03-26",
+   "verdict": "confirmed",
+   "note": "fccid.io A3LSMO200P: Samsung 'Smart Glasses', Date of Grant 09/27/2026, Short-Term Confidentiality Yes; Users Manual, Internal and External Photos available '2027-03-26'. A3LSMO200J also shows grant 2026-09-27 and manual/photos on 2027-03-26. | fccid.io shows \"Date of Grant: 09/27/2026\" for A3LSMO200P. The Users Manual, Internal and External Photos and Test Setup Photos are listed as available 202"
+  },
+  {
+   "id": "w-r4-polight-5-5",
+   "title": "Next SRD II look-through shareholder report (~Apr 2027)",
+   "date": "2027-04-01→2027-04-30",
+   "verdict": "confirmed",
+   "note": "Page says poLight 'will annually update the identification of shareholders through the intermediary chain' 'in due time before the company's Annual General Meeting'. 2026 SRD2 report: shareholding date 2026-03-25, analysis 2026-04-08. An April 2027 date is only an estimate. | The page says poLight \"will annually update the identification of shareholders ... in due time before the company's Annual "
   }
  ]
 }
