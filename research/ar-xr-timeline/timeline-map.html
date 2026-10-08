@@ -401,7 +401,8 @@ tr.future td { background: var(--future); }
       s += `<g class="win win-${CAT_CLASS[w.cat] || 'prod'}${hollow ? ' hollow' : ''}${dim}" data-id="${w.id}" tabindex="0" role="button" aria-label="${esc(w.title)}"><rect x="${xa}" y="${yy}" width="${xb - xa}" height="8" rx="3"/>`;
       if (showLabel && (wslot < 3 || isFocus)) { const inside = labelW + 10 <= xb - xa; const txt = inside ? w.title : (isFocus ? w.title.slice(0, 70) : (w.title.length > maxChars ? w.title.slice(0, Math.max(maxChars - 1, 1)) + '…' : w.title)); const tw = txt.length * CW;
         if (!inside && isFocus) s += `<rect x="${xb + 3}" y="${yy - 1}" width="${tw + 5}" height="10" rx="2" fill="var(--bg)" opacity="0.9"/>`;
-        s += `<text x="${inside ? xa + 5 : xb + 5}" y="${yy + 7.5}" style="fill:${inside && !hollow ? '#fff' : 'var(--fg)'}">${esc(txt)}</text>`; }
+        const within = inside || !isFocus;
+        s += `<text x="${within ? xa + 5 : xb + 5}" y="${yy + 7.5}" style="fill:${within && !hollow ? '#fff' : 'var(--fg)'}">${esc(txt)}</text>`; }
       s += `</g>`;
     });
     // events (markers) with collision offsets
