@@ -1,0 +1,233 @@
+[
+{
+"id": "xreal-2-25",
+"date": "2023",
+"precision": "year",
+"cat": "commercial",
+"type": "earnings",
+"title": "Xreal sold 137,200 AR glasses in 2023; revenue RMB 390m (prospectus)",
+"detail": "Prospectus figures as reported: 137,200 AR glasses sold in 2023, revenue RMB 390m.",
+"url": "https://finance.biggo.com/news/ICgPip0BrdTHlKtCu4lo",
+"conf": "strong"
+},
+{
+"id": "xreal-2-28",
+"date": "2024",
+"precision": "year",
+"cat": "commercial",
+"type": "earnings",
+"title": "Xreal sold 124,900 units in 2024 (Air series ~104,000); revenue RMB 395m",
+"detail": "Prospectus figures as reported: 124,900 units sold in 2024, of which Air series about 104,000; revenue RMB 395m.",
+"url": "https://finance.biggo.com/news/ICgPip0BrdTHlKtCu4lo",
+"conf": "strong"
+},
+{
+"id": "xreal-2-26",
+"date": "2024-01-04",
+"precision": "day",
+"cat": "commercial",
+"type": "announcement",
+"title": "Xreal ships 350,000 AR glasses, 51% worldwide AR share in Q3 2023 (IDC)",
+"detail": "PR: 'XREAL (formerly Nreal) Ships Industry-Leading 350,000 AR Glasses, Takes 51% of Worldwide AR Market in Q3 2023' citing IDC.",
+"url": "https://www.prnewswire.com/news/xreal/?page=2&pagesize=25",
+"conf": "confirmed"
+},
+{
+"id": "xreal-2-27",
+"date": "2024-01-07",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Air 2 Ultra announced at CES 2024 for developers: two front cameras for 6DoF/hand tracking",
+"detail": "Air 2 Ultra developer glasses announced at CES 2024 with two front tracking cameras (no photo camera).",
+"url": "https://www.prnewswire.com/news/xreal/?page=2&pagesize=25",
+"conf": "confirmed"
+},
+{
+"id": "xreal-2-29",
+"date": "2024-12-04",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Xreal One series announced (X1 chip): One US$499 ships 2024-12-25; 12MP Eye module announced",
+"detail": "Xreal One series with 'X1 Independent Spatial Computing Chip': One US$499 ships 2024-12-25; One Pro US$599 ships March 2025 (later slipped); Eye camera module announced (12MP, 1.5 g).",
+"url": "https://www.prnewswire.com/news/xreal/",
+"conf": "confirmed"
+},
+{
+"id": "xreal-2-34",
+"date": "2025",
+"precision": "year",
+"cat": "commercial",
+"type": "earnings",
+"title": "Xreal 2025: 133,700 units (One series 111,400), revenue RMB 516m, adj. net loss RMB 250m",
+"detail": "Prospectus figures: 133,700 units sold in 2025 (One series 111,400 at ASP RMB 3,196; Air 17,400; Light/Ultra/Aura 4,973 at ASP RMB 3,665); revenue RMB 516m (+30.8%); gross margin 35.2%; adjusted net loss RMB 250m; cash RMB 63.63m at year-end.",
+"url": "https://finance.biggo.com/news/ICgPip0BrdTHlKtCu4lo",
+"conf": "strong"
+},
+{
+"id": "xreal-2-30",
+"date": "2025-01-06",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "CES 2025: One Pro pre-orders US$599, ship 'before end of Q2'; >500,000 AR glasses life-to-date",
+"detail": "One Pro pre-orders at US$599 shipping 'before the end of Q2'; Eye 'coming later this year'; 'more than half a million AR glasses sold life-to-date'; One 'sold out within weeks'.",
+"url": "https://www.aap.com.au/aapreleases/cision20250106ae89071",
+"conf": "confirmed"
+},
+{
+"id": "xreal-2-31",
+"date": "2025-05-20",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "Project Aura announced with Google at I/O 2025: optical see-through Android XR glasses",
+"detail": "Xreal and Google announce Project Aura, an optical see-through Android XR device on Snapdragon XR; details promised at AWE (June 10-12, 2025).",
+"url": "https://www.prnewswire.com/news/xreal/",
+"conf": "confirmed"
+},
+{
+"id": "xreal-1-34",
+"date": "2025-06",
+"precision": "month",
+"cat": "product",
+"type": "announcement",
+"title": "AWE 2025: Xreal Project Aura shown with 57-degree FOV and 11 mm optics",
+"detail": "Tested hands-on coverage; FOV later widened to 70 degrees.",
+"url": "https://www.facebook.com/testedcom/posts/new-we-take-an-in-depth-hands-on-look-at-xreals-project-aura-lightweight-glasses/1400577855436262/",
+"conf": "circumstantial"
+},
+{
+"id": "xreal-2-32",
+"date": "2025-06-18",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "One Pro GA 2025-07-01 at US$649; >10,000 pre-orders; Eye ships July 2025 at US$99",
+"detail": "PR: One Pro general availability 2025-07-01 at US$649 (pre-order US$599); more than 10,000 pre-orders; Eye camera module ships July 2025 at US$99.",
+"url": "https://www.aap.com.au/aapreleases/cision20250618ae12036",
+"conf": "confirmed"
+},
+{
+"id": "xreal-2-33",
+"date": "2025-07",
+"precision": "month",
+"cat": "product",
+"type": "product_release",
+"title": "Xreal Eye (X7011) ships: 12MP f/2.25, fixed focus, autofocus not supported, 1.35 g",
+"detail": "[Verification: partially supported — Spec page confirms X7011, 12MP f/2.25, 2016×1512, 1600×1200, EIS, 1.35 g. It says nothing about focus; 'fixed focus / autofocus not supported' is unsourced. No ship date on page; Xreal said available July 1, 2025.] Xreal de",
+"url": "https://tutorials.xreal.com/docs/accessories/eye/spec",
+"conf": "strong"
+},
+{
+"id": "xreal-1-38",
+"date": "2026-01",
+"precision": "month",
+"cat": "product",
+"type": "announcement",
+"title": "CES 2026: Xreal Project Aura shown, CES Innovation Awards honoree",
+"detail": "Later I/O build adds better image quality, hand tracking, cooler puck, GPS, face-detection dimming.",
+"url": "https://www.ces.tech/ces-innovation-awards/2026/xreal-project-aura/",
+"conf": "strong"
+},
+{
+"id": "xreal-2-35",
+"date": "2026-01",
+"precision": "month",
+"cat": "commercial",
+"type": "financing",
+"title": "Xreal Series D US$100m at ~US$1bn valuation",
+"detail": "Series D of US$100m at about US$1bn valuation, 'from supply chain investors' per Reality Atlas.",
+"url": "https://eu.36kr.com/en/p/3759537313563137",
+"conf": "strong"
+},
+{
+"id": "xreal-2-36",
+"date": "2026-01-04",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Xreal 1S launched at CES 2026: US$449, 1200p, 52° FOV, 82 g, available same day",
+"detail": "Xreal 1S at US$449 (US$50 below One), 1200p, 700 nits, 52° FOV, 82 g, available same day at Amazon/Best Buy; Neo 10,000 mAh DisplayPort power hub US$99.",
+"url": "https://9to5google.com/2026/01/04/xreal-1s-delivers-big-display-upgrades-for-450-ahead-of-aura-android-xr/",
+"conf": "strong"
+},
+{
+"id": "xreal-2-37",
+"date": "2026-01-05",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "ROG XREAL R1 AR gaming glasses with ASUS announced (H1/Q2 2026 target)",
+"detail": "Xreal and ASUS announce ROG XREAL R1 AR gaming glasses, targeted for H1/Q2 2026.",
+"url": "https://www.prnewswire.com/news/xreal/",
+"conf": "confirmed"
+},
+{
+"id": "xreal-2-38",
+"date": "2026-01-06",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "Google partnership extended: Xreal 'all-in on Android XR'; Aura X1S, 70° FOV, tethered puck",
+"detail": "Xreal deepens collaboration with Google and goes 'all-in on Android XR'; Aura to use X1S chip, 70° FOV and a tethered puck.",
+"url": "https://www.prnewswire.com/news/xreal/",
+"conf": "confirmed"
+},
+{
+"id": "xreal-2-39",
+"date": "2026-01-15",
+"precision": "day",
+"cat": "commercial",
+"type": "other",
+"title": "Xreal files patent-infringement lawsuit against Viture",
+"detail": "Xreal PR announces a patent-infringement suit against Viture.",
+"url": "https://www.prnewswire.com/news/xreal/",
+"conf": "confirmed"
+},
+{
+"id": "xreal-2-40",
+"date": "2026-04-01",
+"precision": "day",
+"cat": "commercial",
+"type": "financing",
+"title": "Xreal files HKEX listing application; raise up to US$400m; Luxshare, Alibaba shareholders",
+"detail": "HKEX prospectus filed with sponsors CICC and Citi; reported raise up to US$400m; shareholders include Alibaba (6.68%), Kuaishou (6.66%), founder Xu Chi (~27.98%), Luxshare Precision, Sequoia China, Shunwei; planned products 'Project Helen' (mass-market), 'R1' ",
+"url": "https://finance.biggo.com/news/ICgPip0BrdTHlKtCu4lo",
+"conf": "confirmed"
+},
+{
+"id": "xreal-2-41",
+"date": "2026-06-16",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "AWE 2026: Xreal Aura revealed, 70° FOV, 2 tracking + 1 high-res camera, ≤US$1,500, fall 2026",
+"detail": "Aura: 70° FOV, Sony micro-OLED 1920x1200/eye, 120 Hz; puck on Snapdragon 'Reality Elite' + X1S coprocessor; 2 world-facing tracking cameras + 1 high-res camera (privacy LED); 4,455 mAh puck; price 'no more than US$1,500'; fall 2026 launch in 29 countries (US, ",
+"url": "https://www.xreal.com/us/aura",
+"conf": "confirmed"
+},
+{
+"id": "xreal-2-42",
+"date": "2026-07-10",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "'X by XREAL a01+' big-screen AR glasses at US$299",
+"detail": "PR launch of the a01+ big-screen AR glasses at US$299.",
+"url": "https://www.prnewswire.com/news/xreal/",
+"conf": "confirmed"
+},
+{
+"id": "xreal-2-43",
+"date": "2026-09-06",
+"precision": "day",
+"cat": "press",
+"type": "press",
+"title": "Android Authority Aura hands-on: launch 'before the end of 2026'; 4-5 h streaming battery",
+"detail": "Hands-on: launch 'before the end of 2026'; '<US$1,500 does not necessarily mean US$1,499'; 4-5 h streaming battery.",
+"url": "https://www.androidauthority.com/xreal-aura-hands-on-experience-impressions-3708053/",
+"conf": "strong"
+}
+]

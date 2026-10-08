@@ -1,0 +1,110 @@
+[
+{
+"id": "r4-samsung-6-6",
+"date": "2024-11-16",
+"precision": "day",
+"cat": "press",
+"type": "rumor",
+"title": "MK citing Wellsenn XR: Samsung AI glasses 12 MP IMX681, 500k first production Q3 2025",
+"detail": "Maeil Business (MK), citing Wellsenn XR (Shenzhen): Samsung AI glasses use AR1 + NXP, 12 MP Sony IMX681, \"payment with QR code recognition\", 155 mAh, 50 g; \"first production volume is 500,000 units in the third quarter o",
+"url": "https://www.mk.co.kr/en/business/11169803",
+"src": "press",
+"conf": "rumor"
+},
+{
+"id": "r4-samsung-6-14",
+"date": "2026-01-13",
+"precision": "day",
+"cat": "press",
+"type": "rumor",
+"title": "GalaxyClub leak: Samsung SM-O200P/J glasses 12 MP camera \"met autofocus\"",
+"detail": "GalaxyClub: Samsung SM-O200P/SM-O200J glasses, \"12-megapixelcamera … met autofocus\", probably launching only in the US and South Korea. A reader comment asks \"Will the autofocus come from a VCM or a liquid/tlens?\". The o",
+"url": "https://www.galaxyclub.nl/samsung/galaxy-glasses/",
+"src": "press",
+"conf": "rumor"
+},
+{
+"id": "r4-samsung-6-15",
+"date": "2026-02-04",
+"precision": "day",
+"cat": "press",
+"type": "rumor",
+"title": "XRVision (Xueqiu): Samsung glasses \"很可能会搭载液态镜头\" (poLight T-Lens)",
+"detail": "XRVision column on Xueqiu says Samsung glasses \"很可能会搭载液态镜头\". The only basis given is GalaxyClub's \"AutoFocus\". Same author previously claimed Meta is studying poLight/Q Tech T-Lens modules.",
+"url": "https://xueqiu.com/7140368854/374858752",
+"src": "forum",
+"conf": "rumor"
+},
+{
+"id": "r4-samsung-6-16",
+"date": "2026-02-06",
+"precision": "day",
+"cat": "press",
+"type": "rumor",
+"title": "Sina XR / Tencent repost: Samsung 2026 AI glasses may carry liquid lens and pixel-shift tech",
+"detail": "Article \"三星2026款AI眼镜或将搭载液态镜头与像素位移技术\" (AI-assisted; mentions poLight T-Lens and TWedge). Second source: https://www.sinaxr.com/doc/docView/7411",
+"url": "https://news.qq.com/rain/a/20260206A06DRK00",
+"src": "press",
+"conf": "rumor"
+},
+{
+"id": "r4-samsung-2-25",
+"date": "2026-02-26",
+"precision": "day",
+"cat": "product",
+"type": "other",
+"title": "Samsung SM-O200P SAR testing begins (runs to 2026-07-13)",
+"detail": "Samsung SM-O200P SAR testing begins 2026-02-26 and runs to 2026-07-13 (RF Exposure Test Report), for a roughly November 2026 launch.",
+"url": "https://fccid.io/A3LSMO200P",
+"src": "other",
+"conf": "confirmed"
+},
+{
+"id": "r4-samsung-6-27",
+"date": "2026-07-22",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Samsung Unpacked: \"intelligent eyewear\" with built-in camera, AR1 Gen1; no AF spec; 12 days after Program B design-in",
+"detail": "Samsung Unpacked (London): \"intelligent eyewear\" (Gentle Monster / Warby Parker), Snapdragon AR1 Gen1, \"A built-in camera brings visual context into the AI experience\". No resolution or AF spec; Korean release says \"연내 출",
+"url": "https://news.samsung.com/global/samsung-brings-galaxy-ecosystem-into-everyday-eyewear",
+"src": "company",
+"conf": "confirmed"
+},
+{
+"id": "r4-samsung-6-29",
+"date": "2026-07-31",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Samsung interview on intelligent eyewear: \"high-quality camera\" integrated in frame, no AF wording",
+"detail": "Samsung interview: \"With a high-quality camera, microphones and speakers integrated into its frame…\". No AF wording.",
+"url": "https://news.samsung.com/global/interview-galaxy-unpacked-july-2026-intelligent-eyewear-the-first-step-toward-the-next-mobile-ai-interface",
+"src": "company",
+"conf": "confirmed"
+},
+{
+"id": "r4-samsung-2-37",
+"date": "2026-09-27",
+"precision": "day",
+"cat": "product",
+"type": "other",
+"title": "FCC grants A3LSMO200P/J Samsung Smart Glasses; no public exhibit mentions camera, lens or AF",
+"detail": "[Source check: partially supported — The fccid.io page shows 'Smart Glasses', 'Date of Grant: 09/27/2026', 'Application Dated: 07/22/2026', 6 GHz VLP and LPI grants, a WiFi 6E attestation, and short-term confidentiality to 2027-03-26. The SM-O201P-O204P variants and 'design of the front frame' come only from secondary press (VR.org). I did not see the charging case or 'Extended Reality Glasses'. | fccid.io A3LSMO200P shows \"Date of Grant: 09/27/2026, Application Dated: 07/22/2026\" for all six grants. Photos and manual are under STC until 2027-03-26. The A3LSMO200J page was not separately checked.] FCC grants A3LSMO200P and A3LSMO200J (Samsung 'Smart Glasses'/'Extended Reality Glasses'; application 2026-07-22). Variants SM-O201P to O204P differ only in 'the design of the front frame'. Wi-Fi 6E incl. VLP, charging case, STC to 2027-03-26. No public exhibit mentions a camera, lens or autofo",
+"url": "https://fccid.io/A3LSMO200P",
+"src": "other",
+"conf": "strong"
+},
+{
+"id": "r4-samsung-6-46",
+"date": "2026-10-01",
+"precision": "day",
+"cat": "product",
+"type": "other",
+"title": "Samsung SM-O200P/J clear FCC (single 12 MP front camera); Korea Herald: November 2026 launch",
+"detail": "[Source check: partially supported — RoadtoVR (Oct 1, 2026) says SM-O200P/J \"have appeared in FCC filings\" with a \"single 12MP front-facing camera\" but gives no grant date and no Korea Herald detail. 9to5Google (Oct 1) has the Korea Herald November launch. vr.org: \"two grants dated September 27\". | RoadtoVR (Oct 1, 2026): SM-O200P/SM-O200J 'have appeared in FCC filings', single 12MP front camera (no official spec sheet yet). RoadtoVR does not mention Korea Herald. 9to5Google: Korea Herald cites a 'Samsung official' confirming a November launch.] Samsung SM-O200P/SM-O200J clear the FCC (single 12 MP front camera); Korea Herald: a Samsung official confirms a November 2026 launch. Second source: https://9to5google.com/2026/10/01/samsung-android-xr-glasses-release-date-report/",
+"url": "https://roadtovr.com/samsung-fcc-gentle-monster-warby-parker-smart-glasses/",
+"src": "press",
+"conf": "strong"
+}
+]

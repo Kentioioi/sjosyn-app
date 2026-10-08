@@ -1,0 +1,233 @@
+[
+{
+"id": "snap-2-0",
+"date": "2016-09-24",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Spectacles gen 1 announced: single camera, 115° FOV circular video",
+"detail": "Snap announced its first Spectacles camera glasses with a single fixed-focus camera, 115° FOV, recording circular video for Snapchat.",
+"url": "https://en.wikipedia.org/wiki/Spectacles_(product)",
+"conf": "strong"
+},
+{
+"id": "snap-2-1",
+"date": "2016-11-10",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Spectacles gen 1 released via Snapbot vending machines",
+"detail": "First Spectacles went on sale through Snapbot vending machines.",
+"url": "https://en.wikipedia.org/wiki/Spectacles_(product)",
+"conf": "strong"
+},
+{
+"id": "snap-2-2",
+"date": "2017-05-19",
+"precision": "day",
+"cat": "press",
+"type": "teardown",
+"title": "TechInsights teardown of Spectacles: Ambarella A12, Kingston ePOP, Nordic nRF51822",
+"detail": "TechInsights 'Deep Dive Teardown' of Spectacles gen 1 identified Ambarella A12 camera SoC, Kingston ePOP memory and Nordic nRF51822.",
+"url": "https://www.techinsights.com/products/ddt-1705-820",
+"conf": "confirmed"
+},
+{
+"id": "snap-2-3",
+"date": "2018-04-26",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Spectacles 2 released; cumulative sales 220,000 pairs by May 2018",
+"detail": "Spectacles 2 released; cumulative sales reported at 220,000 pairs as of May 2018.",
+"url": "https://en.wikipedia.org/wiki/Spectacles_(product)",
+"conf": "strong"
+},
+{
+"id": "snap-2-4",
+"date": "2019-08",
+"precision": "month",
+"cat": "product",
+"type": "announcement",
+"title": "Spectacles 3 announced: two HD cameras, US$380 (released Nov 2019)",
+"detail": "Spectacles 3 announced with two HD cameras at US$380; released November 2019.",
+"url": "https://en.wikipedia.org/wiki/Spectacles_(product)",
+"conf": "strong"
+},
+{
+"id": "snap-2-5",
+"date": "2021-05",
+"precision": "month",
+"cat": "product",
+"type": "product_release",
+"title": "Spectacles gen 4: first AR display, 2 RGB cameras, Snapdragon XR1, developer-only",
+"detail": "Fourth-generation Spectacles introduced an AR display with two RGB cameras on Snapdragon XR1; developer-only distribution.",
+"url": "https://en.wikipedia.org/wiki/Spectacles_(product)",
+"conf": "strong"
+},
+{
+"id": "snap-2-6",
+"date": "2024-09-17",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Spectacles '24 (gen 5) to developers: 2 RGB + 2 IR cameras, 46° FOV, 226 g, US$99/mo",
+"detail": "Spectacles '24 available to developers 'starting today': 2 RGB + 2 IR cameras, 2 LCoS waveguides (WaveOptics), 46° diagonal FOV, 37 PPD, 120 Hz, 226 g, 2 Snapdragons, 45-min battery, depth sensor, 6 mics, GPS; US$99/month on 12-month commitment. Camera resolut",
+"url": "https://roadtovr.com/snapchat-spectacles-24-ar-glasses-specs-price-release-date/",
+"conf": "strong"
+},
+{
+"id": "snap-2-7",
+"date": "2025-06-10",
+"precision": "day",
+"cat": "product",
+"type": "roadmap",
+"title": "Snap IR: 'Snap to Launch New Lightweight, Immersive Specs in 2026' (AWE 2025)",
+"detail": "Snap investor-relations press release commits to 'launching lightweight, immersive Specs in 2026'; cites 400,000+ developers and OpenAI/Gemini and Niantic Spatial VPS partners.",
+"url": "https://investor.snap.com/news/news-details/2025/Snap-to-Launch-New-Lightweight-Immersive-Specs-in-2026/default.aspx",
+"conf": "confirmed"
+},
+{
+"id": "snap-2-9",
+"date": "2025-08-07",
+"precision": "day",
+"cat": "press",
+"type": "analyst_report",
+"title": "Karl Guttag: Spectacles 5 is 'a developer kit, not a consumer product'",
+"detail": "Guttag analysis identifies LCoS from Compound Photonics and WaveOptics waveguides (Snap-owned since 2021); Snap VP Hardware Scott Myers declined 2026 specifics.",
+"url": "https://kguttag.com/2025/08/07/snap-spectacles-at-ces-ar-vr-mr-awe-2025-conumer-product-in-2026/",
+"conf": "strong"
+},
+{
+"id": "snap-2-10",
+"date": "2025-09-15",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Spectacles OS 2.0 released; sixth-gen 'expected to launch next year', 'lighter and smaller'",
+"detail": "Snap released Spectacles OS 2.0 and reiterated that the sixth-generation consumer glasses are expected next year, lighter and smaller.",
+"url": "https://roadtovr.com/snap-spectacles-os-2-0-consumer-ar-glasses-2026/",
+"conf": "strong"
+},
+{
+"id": "snap-2-11",
+"date": "2026-01",
+"precision": "month",
+"cat": "product",
+"type": "other",
+"title": "Specs hardware demonstrated at CES 2026 (Snap pavilion)",
+"detail": "Specs hardware shown at CES 2026 in the Snap pavilion by product manager Russell Patton.",
+"url": "https://techcrunch.com/2026/01/28/snap-gets-serious-about-specs-spins-ar-glasses-into-standalone-company",
+"conf": "strong"
+},
+{
+"id": "snap-2-12",
+"date": "2026-01-28",
+"precision": "day",
+"cat": "commercial",
+"type": "announcement",
+"title": "Snap creates wholly-owned subsidiary Specs Inc.; consumer Specs 'later in 2026'",
+"detail": "Snap establishes Specs Inc. for 'greater operational focus'; consumer Specs due 'later in 2026' with no firm date; form factor 'expected to change before public launch'.",
+"url": "https://techcrunch.com/2026/01/28/snap-gets-serious-about-specs-spins-ar-glasses-into-standalone-company",
+"conf": "strong"
+},
+{
+"id": "snap-2-13",
+"date": "2026-04-10",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "Specs Inc. and Qualcomm multi-year Snapdragon XR partnership; Specs 'later this year'",
+"detail": "Specs Inc. and Qualcomm announce a multi-year partnership covering a Snapdragon XR SoC for Specs and future iterations; both 'reaffirmed that Snap's next-gen Specs are coming later this year'.",
+"url": "https://roadtovr.com/snap-qualcomm-partnership-specs-2026-ar-glasses/",
+"conf": "strong"
+},
+{
+"id": "snap-2-14",
+"date": "2026-05-22",
+"precision": "day",
+"cat": "press",
+"type": "rumor",
+"title": "Report: Specs ~US$2,500, fall 2026; Snap eyes US$1bn fundraise for Specs",
+"detail": "Alex Heath (Sources newsletter) via 9to5Google: Specs priced around US$2,500 for fall 2026, Snap seeking a ~US$1 billion raise for Specs, keynote planned at AWE June 2026.",
+"url": "https://9to5google.com/2026/05/22/snap-ar-glasses-spectacles-price-release-date-report/",
+"conf": "circumstantial"
+},
+{
+"id": "snap-2-16",
+"date": "2026-06-16",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Specs: four cameras reported (2 RGB + 2 IR); megapixels/autofocus not disclosed",
+"detail": "Tom's Guide live coverage reports four cameras on Specs: 2 RGB for photo/video and 2 IR for hand tracking and spatial mapping; no megapixel or focus-type figure disclosed.",
+"url": "https://www.tomsguide.com/news/live/snap-specs-launch-live-latest-updates",
+"conf": "strong"
+},
+{
+"id": "snap-2-15",
+"date": "2026-06-16",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "AWE 2026: Snap unveils consumer Specs at US$2,195, 51° FOV, 132/136 g, fall 2026 ship",
+"detail": "[Verification: partially supported — CNBC 16 Jun 2026 ('On Tuesday'): Specs $2,195, $200 refundable deposit, ship 'later this year in the U.S., U.K. and France'. CNBC omits AWE/Long Beach, 51°, '115-inch', weights, two Snapdragons; specs.com confirms 51°, 132/",
+"url": "https://www.cnbc.com/2026/06/16/snap-unveils-2195-specs-ar-glasses-spiegel-bets-on-post-smartphone.html",
+"conf": "circumstantial"
+},
+{
+"id": "snap-2-18",
+"date": "2026-09-16",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Snap newsroom: SPECS pre-orders, US$2,195, US$200 deposit, shipping 'later this fall' US/UK/FR",
+"detail": "Newsroom post 'Making Computing More Human with SPECS': SPECS US$2,195 with US$200 refundable deposit; Connected (cellular) Case bundle US$2,395; Verizon US$10/US$20 per month; shipping 'later this fall' in US, UK, France; First Look pop-up at Westfield Centur",
+"url": "https://newsroom.snap.com/making-computing-more-human-with-specs",
+"conf": "confirmed"
+},
+{
+"id": "snap-2-20",
+"date": "2026-09-17",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Snap newsroom: SPECS Intelligence, SPECS for Enterprise (Salesforce/AWS/NVIDIA)",
+"detail": "Newsroom posts 'Introducing SPECS Intelligence', 'New Ways to Work with SPECS for Enterprise' (field service, remote support, retail; Salesforce/AWS/NVIDIA partners) and 'How Visionaries Are Bringing SPECS to Life'.",
+"url": "https://newsroom.snap.com/",
+"conf": "confirmed"
+},
+{
+"id": "snap-2-22",
+"date": "2026-09-23",
+"precision": "day",
+"cat": "press",
+"type": "press",
+"title": "Startup Fortune: Snap 'starts shipping' Specs; initial run capped at ~100,000 units",
+"detail": "Claims Snap began shipping Specs the week of Sept 23 to early pre-order customers with initial production 'capped at approximately 100,000 units'; reviews split. Conflicts with Snap's own 2026-10-02 wording that shipping is 'expected to begin later this fall'.",
+"url": "https://startupfortune.com/snap-starts-shipping-2195-specs-ar-glasses-as-reviews-split/",
+"conf": "circumstantial"
+},
+{
+"id": "snap-2-24",
+"date": "2026-10",
+"precision": "month",
+"cat": "product",
+"type": "other",
+"title": "specs.com product page: 'Shipping Fall 2026'; no camera MP or focus spec published",
+"detail": "[Verification: partially supported — specs.com wording is 'Expected to ship starting Fall 2026' (not 'Shipping Fall 2026'); 'Wi-Fi + Cellular' with '5G-capable charging case' +$200.00; 51°, 16 million colors, 10 s tint, dual Snapdragon, 132/136 g, -8 to +2 D, ",
+"url": "https://www.specs.com/smart-glasses/specs-27",
+"conf": "circumstantial"
+},
+{
+"id": "snap-2-23",
+"date": "2026-10-02",
+"precision": "day",
+"cat": "product",
+"type": "other",
+"title": "MIXED: LA pop-up open; US$200 deposit 'is not an order confirmation'; ship 'later this fall'",
+"detail": "Snap says the US$200 deposit 'is not an order confirmation', balance due 'closer to the shipping window', shipping 'expected to begin later this fall' (US/UK/France); 6 MEMS mics, Swiss TR90 frames, 60-language translation, 14-day returns.",
+"url": "https://mixed-news.com/en/snap-specs-first-look-popup-200-deposit-not-an-order/",
+"conf": "strong"
+}
+]

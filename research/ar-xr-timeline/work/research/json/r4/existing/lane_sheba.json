@@ -1,0 +1,101 @@
+[
+{
+"id": "sheba-6-30",
+"date": "2015",
+"precision": "year",
+"cat": "commercial",
+"type": "other",
+"title": "Sheba Microsystems founded (2015 per company release; 2016 per Ontario delegate page)",
+"detail": "Fabless Toronto MEMS company led by CEO Dr. Faez Ba-Tis and CTO Ridha Ben Mrad; founding year given as 2015 in its Jan-2024 release summary and 2016 on the Ontario CES-2026 delegate page.",
+"url": "https://venturebeat.com/business/sheba-microsystems-launches-mems-autofocus-compact-camera-for-ar-vr-xr-headsets/",
+"conf": "strong"
+},
+{
+"id": "sheba-6-31",
+"date": "2023-09-21",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Sheba launches MEMS AF actuator for 'active athermalization' in embedded vision cameras",
+"detail": "BusinessWire release: MEMS autofocus actuator for automotive, action, drone, machine vision, security and robotics cameras.",
+"url": "https://www.businesswire.com/news/home/20230921387023/en/Sheba-Microsystems-Launches-Revolutionary-MEMS-Autofocus-Actuator-for-Active-Athermalization-in-Embedded-Vision-Cameras",
+"conf": "confirmed"
+},
+{
+"id": "sheba-6-32",
+"date": "2024-01-09",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Sheba launches MEMS sensor-shift AF compact camera for AR/VR/XR headsets (<10 mW, <5 ms)",
+"detail": "'Sheba MEMS Autofocus Compact Camera for AR/VR/XR Headsets': electrostatic µPistons move the image sensor; <10 mW, <5 ms response, <0.5 µm precision, supports large-aperture optics, no EMI; targets 'consumer and enterprise AR/VR/XR'. No customers named.",
+"url": "https://www.businesswire.com/news/home/20240109847144/en/Sheba-Microsystems-Launches-MEMS-Autofocus-Compact-Camera-for-ARVRXR-Headsets",
+"conf": "confirmed"
+},
+{
+"id": "sheba-6-33",
+"date": "2024-05-16",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Sheba Sharp-7 'world's first autofocus automotive camera' (8 MP, -40 to 150 °C)",
+"detail": "Sharp-7 with integrated MEMS driver; demo at AutoSens Detroit 2024-05-21/23; evaluation kits 'exclusively available for OEMs and Tier 1 customers'.",
+"url": "https://www.businesswire.com/news/home/20240516532004/en/Sheba-Microsystems-Launches-Sharp-7-The-Worlds-First-Autofocus-Automotive-Camera",
+"conf": "confirmed"
+},
+{
+"id": "sheba-6-34",
+"date": "2024-06-11",
+"precision": "day",
+"cat": "ip",
+"type": "hire",
+"title": "Sheba appoints Matt Crowley (ex-Sand 9, Vesper, Qualcomm) Senior Strategic Advisor",
+"detail": "BusinessWire listing of the advisor appointment.",
+"url": "https://www.businesswire.com/news/home/20240611750148/en/",
+"conf": "confirmed"
+},
+{
+"id": "sheba-6-35",
+"date": "2024-10-10",
+"precision": "day",
+"cat": "commercial",
+"type": "other",
+"title": "DXOMARK test report on Sheba Sharp-7 across automotive temperature range",
+"detail": "BusinessWire listing: DXOMARK validation of the Sharp-7 autofocus automotive camera.",
+"url": "https://www.businesswire.com/news/home/20241010637010/en/",
+"conf": "confirmed"
+},
+{
+"id": "sheba-6-36",
+"date": "2026-01-06",
+"precision": "day",
+"cat": "commercial",
+"type": "other",
+"title": "CES 2026 Ontario delegation lists Sheba: 17 staff, USD 400K annual sales",
+"detail": "Ontario delegate page for CES 2026 (2026-01-06 to 01-09): 'Founded: 2016; Staff: 17; Annual sales: USD 400K'; targets include 'AR/VR camera systems'. Indicates sub-consumer-ramp scale.",
+"url": "https://www.sourcefromontario.com/en/page/delegate/138117/sheba-microsystems",
+"conf": "confirmed"
+},
+{
+"id": "sheba-6-37",
+"date": "2026-06-09",
+"precision": "day",
+"cat": "ip",
+"type": "hire",
+"title": "Sheba appoints Vincent Cruvellier COO, 'Enters New Acceleration Phase'",
+"detail": "COO brings 'industrialization, supply chain, manufacturing readiness' experience; no customer or volume target published.",
+"url": "https://www.businesswire.com/news/home/20260609394591/en/",
+"conf": "confirmed"
+},
+{
+"id": "sheba-9-57",
+"date": "2026-06-25",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "Sheba names Teledyne MEMS production partner for ADAS camera actuators (not Meta)",
+"detail": "Press release concerns temperature-compensated actuators for driver-assistance cameras, not consumer glasses.",
+"url": "",
+"conf": "circumstantial"
+}
+]

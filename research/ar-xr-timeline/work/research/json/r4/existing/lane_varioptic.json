@@ -1,0 +1,112 @@
+[
+{
+"id": "varioptic-6-19",
+"date": "2007",
+"precision": "year",
+"cat": "product",
+"type": "product_release",
+"title": "Varioptic AF liquid lenses 'deployed since 2007' (camcorders, barcode, security)",
+"detail": "Laser Focus World: Varioptic electrowetting AF liquid lenses deployed in consumer/industrial devices since 2007.",
+"url": "https://www.laserfocusworld.com/optics/article/16563070/varioptic-programmable-liquid-lens-for-smart-phone-cameras",
+"conf": "strong"
+},
+{
+"id": "varioptic-6-20",
+"date": "2011-01-24",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Varioptic B617 smartphone liquid lens with OIS + AF, 'up to 90% less power' than VCM",
+"detail": "Second-generation programmable liquid lens for smartphones with OIS and AF; 'up to 90% less power' than VCM; sampling April 2011. No smartphone design win reported.",
+"url": "https://www.laserfocusworld.com/optics/article/16563070/varioptic-programmable-liquid-lens-for-smart-phone-cameras",
+"conf": "strong"
+},
+{
+"id": "varioptic-6-21",
+"date": "2016-12-29",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "Invenios completes acquisition of Varioptic from Parrot Drones",
+"detail": "Invenios LLC closed the acquisition of Varioptic from Parrot Drones (undisclosed amount); assets moved to Invenios France SAS.",
+"url": "https://www.vision-systems.com/cameras-accessories/article/16750650/liquid-lens-company-varioptic-acquired-by-invenios",
+"conf": "strong"
+},
+{
+"id": "varioptic-6-22",
+"date": "2017",
+"precision": "year",
+"cat": "commercial",
+"type": "partnership",
+"title": "Varioptic becomes part of Corning (Varioptic + Invenios technologies)",
+"detail": "John Duke (Corning): 'Varioptic became a part of Corning in 2017 through an acquisition that included Varioptic and Invenios technologies.'",
+"url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2019/06/corning-celebrates-2-million-varioptic-lenses.html",
+"conf": "confirmed"
+},
+{
+"id": "varioptic-6-23",
+"date": "2018",
+"precision": "year",
+"cat": "commercial",
+"type": "capacity",
+"title": "Corning Varioptic manufacturing capacity 'nearly doubled in 2018'",
+"detail": "Frédéric Laune (Corning): 'Our manufacturing capacity nearly doubled in 2018'; sales doubled over two years.",
+"url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2019/06/corning-celebrates-2-million-varioptic-lenses.html",
+"conf": "confirmed"
+},
+{
+"id": "varioptic-6-24",
+"date": "2019-06",
+"precision": "month",
+"cat": "commercial",
+"type": "capacity",
+"title": "2-millionth Corning Varioptic lens delivered (machine vision, barcode, medical)",
+"detail": "Announced at Laser World of Photonics, June 2019; markets named are machine vision, barcode and medical imaging.",
+"url": "https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2019/06/corning-celebrates-2-million-varioptic-lenses.html",
+"conf": "confirmed"
+},
+{
+"id": "varioptic-6-25",
+"date": "2022-01-28",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Corning launches 2.0 refractive-index glass wafers for AR/MR waveguides",
+"detail": "Corning's AR effort is waveguide glass: 2.0 index wafers (150/200/300 mm) shown at SPIE AR|VR|MR and Photonics West. Not an autofocus product.",
+"url": "https://displaydaily.com/corning-expands-high-index-glass-portfolio-to-help-accelerate-mass-adoption-of-augmented-reality-technology/",
+"conf": "strong"
+},
+{
+"id": "varioptic-6-26",
+"date": "2023-12-19",
+"precision": "day",
+"cat": "product",
+"type": "roadmap",
+"title": "Corning AR Solutions page: high-index waveguide glass for 'leading AR/MR device makers'; no liquid-lens mention",
+"detail": "Page (release date in metadata 2023-12-19): 'first to market with ultra-flat, high refractive index glass wafers for leading AR/MR device makers pursuing waveguide-based designs'; supports 'high-volume manufacturing' for 'industrial and consumer applications'.",
+"url": "https://www.corning.com/worldwide/en/products/advanced-optics/product-materials/PrecisionGlassSolutions/augmented-reality-solutions.html",
+"conf": "confirmed"
+},
+{
+"id": "varioptic-6-28",
+"date": "2026",
+"precision": "year",
+"cat": "product",
+"type": "product_release",
+"title": "Edmund catalog: Varioptic A-16F 1.6 mm 'smallest liquid lens'; A-25H packaged lens 3.50 mm thick",
+"detail": "Current Edmund listing: A-16F0 1.6 mm CA 'smallest liquid lens currently available ... barcode engines, industrial and medical endoscopes'; A-25H0-P33 packaged lens Ø9.40 mm, 3.50 mm thick, -5 to +13 dpt, 'barcode readers, industrial cameras, medical imaging a",
+"url": "https://www.edmundoptics.com/f/corning-varioptic-variable-focus-liquid-lenses/15042/",
+"conf": "strong"
+},
+{
+"id": "varioptic-6-27",
+"date": "2026-09-24",
+"precision": "day",
+"cat": "product",
+"type": "roadmap",
+"title": "Corning Varioptic page: 'adjustable lens solutions for industrial applications'; V-PE-80R0 8-electrode lens",
+"detail": "Landing page (lastModified 2026-09-24): 'Market-leading adjustable lens solutions for industrial applications'; new V-PE-80R0 8-electrode lens (focus + astigmatism), new C-mount (12 mm) and S-mount (25 mm) modules, AF Explorer kit. Events listed: VISION Stuttg",
+"url": "https://www.corning.com/worldwide/en/products/advanced-optics/product-materials/corning-varioptic-lenses.html",
+"conf": "confirmed"
+}
+]

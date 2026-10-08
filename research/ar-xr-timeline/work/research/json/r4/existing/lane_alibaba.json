@@ -1,0 +1,112 @@
+[
+{
+"id": "alibaba-3-11",
+"date": "2025-07-28",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Alibaba unveils Quark AI Glasses at WAIC 2025, release in China by end-2025",
+"detail": "Alibaba Cloud press release at WAIC 2025 (Shanghai): Quark AI Glasses unveiled, 'scheduled for official release in China by the end of 2025', powered by Qwen, with 'long battery life and high-quality imaging'.",
+"url": "https://www.alibabacloud.com/en/press-room/alibaba-unveils-intelligent-cockpits-enterprise",
+"conf": "confirmed"
+},
+{
+"id": "alibaba-3-12",
+"date": "2025-11-27",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Quark AI Glasses launched in China: S1 from 3,799 yuan, G1 from 1,899 yuan",
+"detail": "Xinhua: Quark AI Glasses launched in China in two series and six SKUs; S1 from 3,799 yuan (dual micro-OLED display), G1 from 1,899 yuan (no display, 40 g).",
+"url": "http://www.xinhuanet.com/tech/20251127/08d77754e3654647b345f1b71ca496c1/c.html",
+"conf": "strong"
+},
+{
+"id": "alibaba-3-14",
+"date": "2025-11-28",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Quark S1/G1 spec sheet: Qualcomm AR1 + BES2800, 12 MP camera, 3K video",
+"detail": "GIGAZINE spec sheet: S1 dual-chip with replaceable dual batteries (up to 24 h) and bone-conduction voice; G1 shares the S1 core minus display. Baidu Baike for G1: Qualcomm AR1 + BES2800, 272 mAh, 9 h, 5 mics, '12-megapixel camera capable of 3K video'.",
+"url": "https://gigazine.net/gsc_news/en/20251128-alibaba-quark-ai-glasses-s1-g1/",
+"conf": "strong"
+},
+{
+"id": "alibaba-3-18",
+"date": "2026-03-02",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Alibaba Cloud: Qwen Glasses S1/G1, G1 from RMB 1,997, China sales 2026-03-08, international within 2026",
+"detail": "Alibaba Cloud blog: Qwen Glasses S1 (premium) and G1 series (incl. sunglasses in 7 lens colours); G1 from RMB 1,997 (~$275); official China sales 2026-03-08; 'international release within 2026'.",
+"url": "https://www.alibabacloud.com/blog/alibaba-unveils-qwen-glasses-at-mwc-barcelona-accelerating-ai-hardware-ambitions_602920",
+"conf": "confirmed"
+},
+{
+"id": "otheroem-3-95",
+"date": "2026-03-02",
+"precision": "day",
+"cat": "product",
+"type": "other",
+"title": "MWC Barcelona 2026 (Mar 2–5): Alibaba Qwen AI Glasses reservations opened day 1",
+"detail": "MWC Barcelona 2026 (2026-03-02 to 03-05); Alibaba opened Qwen AI Glasses reservations on day 1.",
+"url": "https://en.wikipedia.org/wiki/Mobile_World_Congress",
+"conf": "strong"
+},
+{
+"id": "alibaba-3-17",
+"date": "2026-03-03",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Qwen Glasses MWC specs: 12 MP Sony IMX681, 5P lens, 109° FOV, Snapdragon AR1",
+"detail": "The Deep View booth specs: 12 MP POV camera with Sony IMX681 sensor, 5P lens, 109° ultra-wide, 3K video, HDR; Snapdragon AR1 + coprocessor; swappable 272 mAh packs; 8 mm temples. No autofocus mentioned.",
+"url": "https://www.thedeepview.com/articles/alibaba-makes-surprise-leap-into-ai-glasses",
+"conf": "strong"
+},
+{
+"id": "alibaba-3-97",
+"date": "2026-03-12",
+"precision": "day",
+"cat": "product",
+"type": "other",
+"title": "AWE2026 (Appliance & Electronics World Expo), Shanghai, Mar 12–15: full Qwen Glasses lineup shown",
+"detail": "Qwen Glasses full lineup shown at AWE2026 = Appliance & Electronics World Expo, Shanghai SNIEC, 2026-03-12 to 03-15 (not Augmented World Expo).",
+"url": "https://baike.baidu.com/en/item/Qwen%20AI%20Glasses/1469262",
+"conf": "strong"
+},
+{
+"id": "alibaba-3-19",
+"date": "2026-05-08",
+"precision": "day",
+"cat": "product",
+"type": "roadmap",
+"title": "Alizila: Qwen Glasses 'spatial 3D display' upgrade; claims 53% of China online smart-glasses sales",
+"detail": "Alizila: Qwen Glasses upgrade with 'proactive AI' services and a 'spatial 3D display' using 'dual optical engines with binocular stereoscopic imaging'; company claims 53% share of China online smart-glasses sales cumulative since launch.",
+"url": "https://www.alizila.com/alibabas-qwen-glasses-upgrades-with-proactive-ai-capabilities-and-spatial-3d-display-to-elevate-intuitive-ai-experiences/",
+"conf": "confirmed"
+},
+{
+"id": "alibaba-3-20",
+"date": "2026-09-10",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Qwen previews 'N1' glasses at Bund Summit: no display, iris recognition",
+"detail": "TechNode (via IT Home): Qwen previewed 'N1' glasses at the 2026 Bund Summit in Shanghai with no display and iris recognition; specs, price and date not disclosed.",
+"url": "https://technode.com/2026/09/10/alibaba-qwen-previews-n1-ai-glasses-with-iris-recognition-and-no-display/",
+"conf": "strong"
+},
+{
+"id": "alibaba-3-22",
+"date": "2026-09-22",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Alizila confirms Qwen N1 series (50 MP), pre-orders 2026-09-22, sales 2026-10-13, China only",
+"detail": "Alibaba's Alizila: Qwen Glasses N1 series with 50 MP camera; N1 Pro with eye-tracking and iris payment; pre-orders from 2026-09-22, sales 2026-10-13; China only. Also Qwen Clip earbuds with Bose.",
+"url": "https://www.alizila.com/alibaba-unveils-agentic-computer-ai-wearables-and-more-at-2026-apsara-conference/",
+"conf": "confirmed"
+}
+]

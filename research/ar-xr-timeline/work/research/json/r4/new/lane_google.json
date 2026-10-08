@@ -1,0 +1,26 @@
+[
+{
+"id": "r4-google-6-22",
+"date": "2026-05-19",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Google I/O: Samsung-built Android XR glasses previewed; Xreal Aura to launch before end-2026",
+"detail": "Google I/O previews Samsung-built Android XR glasses; Xreal says Aura will launch before end-2026.",
+"url": "https://9to5google.com/2026/05/19/xreal-project-aura-android-xr-developers-2026-launch/",
+"src": "press",
+"conf": "strong"
+},
+{
+"id": "r4-google-1-23",
+"date": "2026-10",
+"precision": "month",
+"cat": "press",
+"type": "hire",
+"title": "Google camera engineer profile lists 'Tlens (autofocus module) integration and characterization'",
+"detail": "[Source check: source unreachable — LinkedIn returns HTTP 999 without login. A search snippet shows only \"Arno Konings - Google\" in Mountain View; the Tlens bullet and the role dates could not be seen publicly. The 2026-10 'profile live' date is unverifiable. | LinkedIn returns HTTP 999 without login. A search snippet shows only \"Arno Konings - Google\", Mountain View and Lehigh coursework. The 'Tlens (autofocus module) integration' bullet could not be seen, so the claim is unverified.] Undated, profile live 2026-10. Mountain View; also \"Various camera (RGB, monochrome) module electrical integration\". Bullet sits in the role after a May 2016-May 2017 university research assistantship; employer for that role not visible. TLens experience at a US OEM camera team, no link to Meta.",
+"url": "https://www.linkedin.com/in/arno-konings-045092106",
+"src": "forum",
+"conf": "circumstantial"
+}
+]

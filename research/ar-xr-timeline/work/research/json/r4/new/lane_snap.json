@@ -1,0 +1,26 @@
+[
+{
+"id": "r4-snap-6-25",
+"date": "2026-06-16",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Snap SPECS unveiled at AWE: US$2,195, pre-order, ships this fall; two colour + two IR cameras",
+"detail": "Snap SPECS unveiled at AWE: US$2,195, pre-order, ships \"this fall\" in US/UK/France; two full-colour high-resolution cameras plus two IR cameras; Snap gave no camera specs. Second source: https://www.techtimes.com/article",
+"url": "https://www.macrumors.com/2026/06/16/snap-specs-ar-glasses/",
+"src": "press",
+"conf": "strong"
+},
+{
+"id": "r4-snap-6-40",
+"date": "2026-09-16",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Snap SPECS event: shipping later this fall in US/UK/France; no puck or tether",
+"detail": "\"Shipping is expected to begin later this fall in the United States, United Kingdom and France\"; \"computing hardware built directly into the glasses without a puck or tether\".",
+"url": "https://investor.snap.com/news/news-details/2026/SPECS-Make-Computing-More-Human-with-New-Experiences-Partnerships-and-SPECS-Intelligence/default.aspx",
+"src": "company",
+"conf": "confirmed"
+}
+]

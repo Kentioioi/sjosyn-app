@@ -1,0 +1,478 @@
+{
+ "dedupe:qtech": {
+  "drop": [
+   "r4-qtech-3-11",
+   "r4-qtech-4-5",
+   "r4-qtech-5-3",
+   "r4-qtech-4-6",
+   "r4-qtech-5-5",
+   "r4-qtech-4-9",
+   "r4-qtech-4-10",
+   "r4-qtech-4-15",
+   "r4-qtech-4-18",
+   "r4-qtech-4-35",
+   "r4-qtech-5-32",
+   "r4-qtech-4-40",
+   "r4-qtech-4-41",
+   "r4-qtech-5-36",
+   "r4-qtech-3-29",
+   "r4-qtech-4-45",
+   "r4-qtech-6-34",
+   "r4-qtech-4-50",
+   "r4-qtech-6-45"
+  ],
+  "fix": [
+   {
+    "id": "qtech-5-67",
+    "field": "conf",
+    "value": "confirmed"
+   },
+   {
+    "id": "qtech-5-67",
+    "field": "url",
+    "value": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0727/2026072701163.pdf"
+   },
+   {
+    "id": "qtech-5-67",
+    "field": "detail",
+    "value": "[Verification: partially supported — PitchBook page is reachable: 'most recent deal was a Merger/Acquisition with TDK (Microactuator Business). The deal was made on 31-Mar-2026' — wording is 'made on', not 'completed on'. No HKEX completion notice checked.] Pi [Primary copy, round 4: HKEX announcement of 2026-07-27: 'Acquisition of Actutek by a member of QT Investment Group ... completed on 1 June 2026'. Actutek became a wholly-owned subsidiary of QT Investment Group and therefore a connected person of Q Tech; it is not a Q Tech subsidiary.]"
+   },
+   {
+    "id": "r4-qtech-1-20",
+    "field": "cat",
+    "value": "ip"
+   }
+  ]
+ },
+ "dedupe:polight": {
+  "drop": [
+   "r4-polight-3-3",
+   "r4-polight-3-5",
+   "r4-polight-6-2",
+   "r4-polight-5-4",
+   "r4-polight-3-14",
+   "r4-polight-5-6",
+   "r4-polight-5-14",
+   "r4-polight-5-15",
+   "r4-polight-6-10",
+   "r4-polight-5-17",
+   "r4-polight-3-17",
+   "r4-polight-5-20",
+   "r4-polight-6-11",
+   "r4-polight-5-23",
+   "r4-polight-3-20",
+   "r4-polight-6-17",
+   "r4-polight-3-22",
+   "r4-polight-5-26",
+   "r4-polight-6-20",
+   "r4-polight-5-29",
+   "r4-polight-6-23",
+   "r4-polight-5-31",
+   "r4-polight-3-26",
+   "r4-polight-5-33",
+   "r4-polight-6-26",
+   "r4-polight-5-34",
+   "r4-polight-5-35",
+   "r4-polight-0-4",
+   "r4-polight-6-33",
+   "r4-polight-5-38",
+   "r4-polight-5-39",
+   "r4-polight-0-7",
+   "r4-polight-5-42",
+   "r4-polight-6-41",
+   "r4-polight-5-45",
+   "r4-polight-3-21"
+  ],
+  "fix": [
+   {
+    "id": "r4-polight-1-13",
+    "field": "cat",
+    "value": "ip"
+   },
+   {
+    "id": "r4-polight-3-27",
+    "field": "cat",
+    "value": "commercial"
+   },
+   {
+    "id": "r4-polight-0-17",
+    "field": "cat",
+    "value": "product"
+   },
+   {
+    "id": "polight-4-81",
+    "field": "conf",
+    "value": "confirmed"
+   },
+   {
+    "id": "polight-4-81",
+    "field": "url",
+    "value": "https://newsweb.oslobors.no/message/676475"
+   },
+   {
+    "id": "polight-4-81",
+    "field": "detail",
+    "value": "[VERBATIM_PLACEHOLDER_4_81]"
+   },
+   {
+    "id": "polight-9-49",
+    "field": "conf",
+    "value": "confirmed"
+   },
+   {
+    "id": "polight-9-49",
+    "field": "url",
+    "value": "https://storage.mfn.se/26f4d787-badf-4c7d-be3a-7319960ce333/polight-q2-2026-report.pdf"
+   },
+   {
+    "id": "polight-9-49",
+    "field": "detail",
+    "value": "Existing inventory was sufficient for current needs. [Primary copy, round 4: Q2 2026 report (2026-08-05): \"No new MEMS wafers were ordered, manufactured or deliv[ered]\"; \"Activity levels and workloads at our assembly partners are relatively high, both due to increased demand and efforts to establish a TLens assembly line at Q Tech\"]"
+   },
+   {
+    "id": "polight-9-50",
+    "field": "conf",
+    "value": "confirmed"
+   },
+   {
+    "id": "polight-9-50",
+    "field": "url",
+    "value": "https://storage.mfn.se/26f4d787-badf-4c7d-be3a-7319960ce333/polight-q2-2026-report.pdf"
+   },
+   {
+    "id": "polight-9-50",
+    "field": "detail",
+    "value": "Quarterly report shows additional Q Tech invoicing plus commercial supply of TLens components to Q Tech. [Primary copy, round 4: Q2 2026 report (2026-08-05), headline: NRE USD 178,662 invoiced to Q Tech; \"Activity levels and workloads at our assembly partners are relatively high, both due to increased demand and efforts to establish a TLens assembly line at Q Tech\"]"
+   },
+   {
+    "id": "polight-6-74",
+    "field": "conf",
+    "value": "confirmed"
+   }
+  ]
+ },
+ "dedupe:meta": {
+  "drop": [
+   "r4-meta-2-0",
+   "r4-meta-2-3",
+   "r4-meta-2-7",
+   "r4-meta-2-12",
+   "r4-meta-2-15",
+   "r4-meta-2-21",
+   "r4-meta-2-30",
+   "r4-meta-2-36",
+   "r4-meta-6-43",
+   "r4-meta-3-24",
+   "r4-meta-3-30",
+   "r4-meta-0-8",
+   "r4-meta-0-18",
+   "r4-meta-0-19",
+   "r4-meta-2-39"
+  ],
+  "fix": [
+   {
+    "id": "meta-0-73",
+    "field": "conf",
+    "value": "confirmed"
+   },
+   {
+    "id": "meta-0-73",
+    "field": "url",
+    "value": "https://developers.meta.com/vr/discover/meta-vr-glasses/"
+   },
+   {
+    "id": "meta-0-73",
+    "field": "detail",
+    "value": "[Verification: partially supported — Quotes verified: landing page 'full-color passthrough with autofocus and depth'; compare-devices page 'Color stereoscopic (26 PPD) passthrough with autofocus and depth sensing' vs Quest 3 '4 MP (18 PPD) passthrough with dep... [Primary copy, round 4: Live Meta developer page, 2026-10-08: \"Open-periphery color passthrough with autofocus and depth sensing\" (Quest: \"Color passthrough with depth sensing\"); live compare-devices table: \"Color stereoscopic (26 PPD) passthrough with autofocus and depth sensing\" (Quest 3: \"Color stereoscopic 4 MP (18 PPD) passthrough with depth sensor\"); saved copy states 'High-quality, full-color passthrough with autofocus and depth lets your apps ble...'. Camera MP not given.]"
+   },
+   {
+    "id": "meta-0-68",
+    "field": "conf",
+    "value": "strong"
+   },
+   {
+    "id": "meta-0-68",
+    "field": "url",
+    "value": "https://developers.meta.com/vr/resources/compare-devices/"
+   },
+   {
+    "id": "meta-0-68",
+    "field": "detail",
+    "value": "[Verification: partially supported — Blog (23 Sep 2026) has only price, Spring 2027, ~100 g, Reality Elite, 37 PPD; Meta dev pages confirm 2412x2288, 70x66, '(26 PPD) passthrough with autofocus and depth sensing'. ... [Primary copy, round 4: Live Meta compare-devices spec table: \"Color stereoscopic (26 PPD) passthrough with autofocus and depth sensing\" (Quest 3: \"Color stereoscopic 4 MP (18 PPD) passthrough with depth sensor\"); no camera MP given. The consumer blog itself does not state autofocus.]"
+   },
+   {
+    "id": "r4-meta-2-16",
+    "field": "title",
+    "value": "2AYOA-4003 C2PC (2025-06-30) for Oakley HSTN OW8002: Luxottica cover letter cites camera change"
+   }
+  ]
+ },
+ "dedupe:metaip": {
+  "drop": [
+   "r4-metaip-1-1",
+   "r4-metaip-1-2",
+   "r4-metaip-1-7",
+   "r4-metaip-1-9",
+   "r4-metaip-1-19",
+   "r4-metaip-1-22"
+  ],
+  "fix": [
+   {
+    "id": "r4-metaip-1-0",
+    "field": "cat",
+    "value": "ip"
+   },
+   {
+    "id": "r4-metaip-1-4",
+    "field": "cat",
+    "value": "ip"
+   },
+   {
+    "id": "r4-metaip-1-6",
+    "field": "cat",
+    "value": "ip"
+   },
+   {
+    "id": "r4-metaip-1-8",
+    "field": "cat",
+    "value": "ip"
+   },
+   {
+    "id": "r4-metaip-1-16",
+    "field": "cat",
+    "value": "ip"
+   },
+   {
+    "id": "r4-metaip-1-17",
+    "field": "cat",
+    "value": "press"
+   },
+   {
+    "id": "r4-metaip-1-18",
+    "field": "cat",
+    "value": "ip"
+   },
+   {
+    "id": "r4-metaip-1-21",
+    "field": "cat",
+    "value": "ip"
+   },
+   {
+    "id": "r4-metaip-1-21",
+    "field": "date",
+    "value": "2026-10-03"
+   }
+  ]
+ },
+ "dedupe:otheroem": {
+  "drop": [
+   "r4-otheroem-6-1",
+   "r4-otheroem-6-8",
+   "r4-otheroem-6-18",
+   "r4-otheroem-6-32",
+   "r4-otheroem-6-35",
+   "r4-otheroem-6-37"
+  ],
+  "fix": [
+   {
+    "id": "r4-otheroem-6-9",
+    "field": "detail",
+    "value": "[Source check: partially supported — Varjo's release and Auganix, both 8 Oct 2025, list the refreshed XR-4 Series with \"Optimized autofocus passthrough cameras\". Neither mentions a 'Focal Edition'; Varjo names only an XR-4 Secure Edition.] Varjo announces a refreshed XR-4 Series with \"optimized autofocus passthrough cameras\". Second source: https://varjo.com/news/varjo-launches-mixed-reality-headsets-purpose-built-for-training-across-air-land-and-sea"
+   },
+   {
+    "id": "r4-otheroem-1-15",
+    "field": "cat",
+    "value": "ip"
+   },
+   {
+    "id": "r4-otheroem-1-14",
+    "field": "cat",
+    "value": "ip"
+   }
+  ]
+ },
+ "dedupe:analysts": {
+  "drop": [
+   "r4-analysts-0-3",
+   "r4-analysts-0-5",
+   "r4-analysts-6-36",
+   "r4-analysts-3-34"
+  ],
+  "fix": [
+   {
+    "id": "r2-analysts-4-45",
+    "field": "conf",
+    "value": "strong"
+   },
+   {
+    "id": "r2-analysts-4-45",
+    "field": "detail",
+    "value": "DBS 'Q Technology - Handset share gains intact; auto and AI vision drive the next leg', p.4: \"A Meta project combining Q Tech's module capabilities with poLight's low-power tunable-lens technology is expected to enter mass production in 1H27.\" Only document fo [Primary copy, round 4: DBS (Jim Au), Q Tech, \"Maintain BUY; lower TP to HKD12.6\" (prev. HKD15.0), 13x FY27F PE; not an initiation. Primary PDF page 4: \"A Meta project combining Q Tech's module capabilities with poLight's low-power tunable-lens technology is expected to enter mass production in 1H27.\"]"
+   },
+   {
+    "id": "analysts-7-52",
+    "field": "conf",
+    "value": "strong"
+   },
+   {
+    "id": "analysts-7-52",
+    "field": "url",
+    "value": "https://www.dbs.com/content/article/pdf/000000_HK/1478_HK.pdf"
+   },
+   {
+    "id": "analysts-7-52",
+    "field": "detail",
+    "value": "Secondary claim (via the user's ChatGPT thread) attributed to the gated DBS 2026-08-26 PDF: \"A Meta project combining Q Tech's module capabilities with poLight's low-power tunable-lens technology is expected to enter mass production in 1H27\". Not present in DB [Primary copy, round 4: DBS (Jim Au), Q Tech, \"Maintain BUY; lower TP to HKD12.6\" (prev. HKD15.0), 13x FY27F PE; not an initiation. Primary PDF page 4: \"A Meta project combining Q Tech's module capabilities with poLight's low-power tunable-lens technology is expected to enter mass production in 1H27.\"]"
+   }
+  ]
+ },
+ "dedupe:modules": {
+  "drop": [
+   "r4-modules-3-0",
+   "r4-modules-1-5",
+   "r4-modules-6-5",
+   "r4-modules-1-10",
+   "r4-modules-1-12",
+   "r4-modules-6-39"
+  ],
+  "fix": [
+   {
+    "id": "r4-modules-1-3",
+    "field": "cat",
+    "value": "ip"
+   },
+   {
+    "id": "r2-modules-2-19",
+    "field": "conf",
+    "value": "confirmed"
+   },
+   {
+    "id": "r2-modules-2-19",
+    "field": "url",
+    "value": "https://www.linkedin.com/posts/chongqing-ts-precision-technology-co-ltd_tsp-tlens-camera-module-technology-activity-7377973522435932160-ovr3"
+   },
+   {
+    "id": "r2-modules-2-19",
+    "field": "detail",
+    "value": "Electrically tunable piezo-MEMS lens module; post dates visible only as relative ages. [Primary copy, round 4: Company post: \"A poLight TLens is an electrically tunable lens that uses proprietary piezo MEMS technology...\". Undated in dataset; activity ID dates it to 2025-09-28. Widely reshared in smart-glasses threads.]"
+   }
+  ]
+ },
+ "dedupe:vcm": {
+  "drop": [
+   "r4-vcm-3-12",
+   "r4-vcm-3-18",
+   "r4-vcm-3-25"
+  ],
+  "fix": []
+ },
+ "dedupe:samsung": {
+  "drop": [
+   "r4-samsung-6-27",
+   "r4-samsung-6-29",
+   "r4-samsung-2-37",
+   "r4-samsung-6-46"
+  ],
+  "fix": [
+   {
+    "id": "samsung-1-64",
+    "field": "url",
+    "value": "https://fccid.io/A3LSMO200P"
+   },
+   {
+    "id": "samsung-1-64",
+    "field": "detail",
+    "value": "Road to VR: FCC filing shows Snapdragon AR1 Gen 1, single 12MP front camera with indicator LED, 9 h battery; Warby Parker three frames, Gentle Monster two frames; Korea Herald: Samsung official confirms launch in November 2026; weight target up to 5 g lighter  [Primary copy, round 4: fccid.io A3LSMO200P (Samsung 'Smart Glasses') shows Date of Grant 09/27/2026 and Application Dated 07/22/2026 for all six grants (6 GHz VLP and LPI, WiFi 6E attestation); photos and manual under short-term confidentiality until 2027-03-26; no public exhibit mentions a camera, lens or autofocus. The 12MP camera and Korea Herald November launch remain press-sourced (Road to VR, 9to5Google https://9to5google.com/2026/10/01/samsung-android-xr-glasses-release-date-report/).]"
+   }
+  ]
+ },
+ "dedupe:alibaba": {
+  "drop": [
+   "r4-alibaba-6-12",
+   "r4-alibaba-6-38",
+   "r4-alibaba-6-42"
+  ],
+  "fix": [
+   {
+    "id": "r4-alibaba-6-19",
+    "field": "cat",
+    "value": "press"
+   },
+   {
+    "id": "r4-alibaba-6-28",
+    "field": "lane",
+    "value": "qtech"
+   },
+   {
+    "id": "r4-alibaba-6-28",
+    "field": "cat",
+    "value": "commercial"
+   }
+  ]
+ },
+ "dedupe:google": {
+  "drop": [
+   "r4-google-6-22",
+   "r4-google-1-23"
+  ],
+  "fix": []
+ },
+ "dedupe:rokid": {
+  "drop": [],
+  "fix": []
+ },
+ "dedupe:xreal": {
+  "drop": [],
+  "fix": []
+ },
+ "dedupe:rayneo": {
+  "drop": [],
+  "fix": []
+ },
+ "dedupe:snap": {
+  "drop": [
+   "r4-snap-6-25",
+   "r4-snap-6-40"
+  ],
+  "fix": []
+ },
+ "dedupe:xiaomi": {
+  "drop": [
+   "r4-xiaomi-6-30"
+  ],
+  "fix": []
+ },
+ "dedupe:windows": {
+  "drop": [
+   "w-r4-polight-0-0",
+   "w-r4-polight-0-1",
+   "w-r4-polight-0-2",
+   "w-r4-analysts-0-3",
+   "w-r4-meta-0-4",
+   "w-r4-polight-0-5",
+   "w-r4-polight-1-0",
+   "w-r4-meta-1-3",
+   "w-r4-meta-2-3",
+   "w-r4-polight-3-0",
+   "w-r4-polight-3-1",
+   "w-r4-polight-3-2",
+   "w-r4-qtech-3-3",
+   "w-r4-vcm-3-4",
+   "w-r4-meta-3-5",
+   "w-r4-polight-3-6",
+   "w-r4-qtech-4-1",
+   "w-r4-qtech-4-2",
+   "w-r4-qtech-4-3",
+   "w-r4-polight-5-1",
+   "w-r4-polight-5-2",
+   "w-r4-polight-5-4",
+   "w-r4-alibaba-6-0",
+   "w-r4-polight-6-4",
+   "w-r4-samsung-6-5",
+   "w-r4-otheroem-6-6",
+   "w-r4-snap-6-8",
+   "w-r4-xiaomi-6-9"
+  ],
+  "fix": []
+ }
+}

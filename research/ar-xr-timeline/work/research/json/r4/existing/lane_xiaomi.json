@@ -1,0 +1,68 @@
+[
+{
+"id": "xiaomi-3-23",
+"date": "2020-01-07",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Xiaomi Mitu Children's Learning Watch 4Pro launched with 8 MP 'T-LENS ultra-fast focus' camera",
+"detail": "Gizmochina: Mitu (Mi Bunny) Children's Learning Watch 4Pro launched at 1,299 yuan; front 5 MP f/2.4 82°; side '8-megapixel zoom camera ... f/2.2 aperture and 84.9-degree field-of-view with T-LENS ultra-fast focus'. First commercial poLight TLens product.",
+"url": "https://www.gizmochina.com/2020/01/07/xiaomi-mitu-children-learning-watch-4pro-launched/",
+"conf": "strong"
+},
+{
+"id": "xiaomi-6-39",
+"date": "2021-03-30",
+"precision": "day",
+"cat": "commercial",
+"type": "design_in",
+"title": "Xiaomi Mi MIX Fold ships NEXTLENS liquid lens in telephoto/macro camera",
+"detail": "Nextlens via gophotonics: 'first ever usage of its novel liquid lens element in a flagship phone'; Xiaomi launch 'today' per Android Central (date approx. from article).",
+"url": "https://www.androidcentral.com/xiaomis-new-1500-mi-mix-fold-galaxy-z-fold-2-rival-liquid-lens-camera",
+"conf": "strong"
+},
+{
+"id": "xiaomi-3-25",
+"date": "2024-11-13",
+"precision": "day",
+"cat": "press",
+"type": "rumor",
+"title": "36Kr: Xiaomi partnering with ODM Goertek on AI glasses; Lei Jun expects >300,000 units",
+"detail": "Road to VR citing 36Kr: Xiaomi partnering with ODM Goertek on AI glasses benchmarked against Ray-Ban Meta; launch expected Q2 2025; Lei Jun reportedly expects more than 300,000 units.",
+"url": "https://roadtovr.com/xiaomi-goertek-competes-ray-ban-meta-smart-glasses/",
+"conf": "strong"
+},
+{
+"id": "xiaomi-3-26",
+"date": "2025-06-25",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Xiaomi teases AI Glasses as 'next-generation personal smart device' for next-day launch",
+"detail": "Xiaomi officially teased its AI Glasses for launch the following day, calling them a 'next-generation personal smart device'.",
+"url": "https://finance.sina.com.cn/jjxw/2025-06-25/doc-infchcvt4745357.shtml",
+"conf": "strong"
+},
+{
+"id": "xiaomi-3-27",
+"date": "2025-06-26",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Xiaomi AI Glasses launched: 12 MP Sony IMX681, Snapdragon AR1, from 1,999 yuan",
+"detail": "Launched at the 'Human x Car x Home' event: 12 MP Sony IMX681, f/2.2, 105° FOV, EIS, 4032×3024 stills, 2K/30 fps video (45-min cap); Snapdragon AR1 + BES2700; 263 mAh / 8.6 h; 40 g; 1,999 yuan base, 2,699 electrochromic, 2,999 colour electrochromic; China only",
+"url": "https://roadtovr.com/xiaomi-ai-glasses-meta-smart-glasses-features/",
+"conf": "strong"
+},
+{
+"id": "xiaomi-3-29",
+"date": "2026-08-05",
+"precision": "day",
+"cat": "press",
+"type": "rumor",
+"title": "IT Home: Xiaomi AI Glasses gen 2 'R&D complete' but paused, may slip to Q4 2026/2027 (denied)",
+"detail": "IT Home citing XR Vision: 2nd-gen AI glasses 'R&D complete' but Lu Weibing 'pressed the pause button' over appearance; launch may slip to Q4 2026 or 2027. Xiaomi called the report 'false ... constitutes rumors'. Same piece: gen-1 held 28% of China smart-glasse",
+"url": "https://www.ithome.com/0/985/781.htm",
+"conf": "rumor"
+}
+]

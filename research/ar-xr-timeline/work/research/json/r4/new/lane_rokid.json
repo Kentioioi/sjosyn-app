@@ -1,0 +1,26 @@
+[
+{
+"id": "r4-rokid-6-7",
+"date": "2025-06-17",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Rokid and Alipay launch look-to-pay on Rokid Glasses (12 MP QR scanning)",
+"detail": "Rokid and Alipay launch the \"看一下支付\" (look-to-pay) feature on Rokid Glasses, using a 12 MP camera to scan Alipay QR codes. Shows why close-range autofocus matters for QR payment.",
+"url": "https://www.thepaper.cn/newsDetail_forward_30998406",
+"src": "press",
+"conf": "strong"
+},
+{
+"id": "r4-rokid-6-44",
+"date": "2026-09-24",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Rokid gen-2 display AI glasses shown in Hangzhou; formal launch 2026-10-27; no AF wording",
+"detail": "Rokid gen-2 display AI glasses shown in Hangzhou; formal launch 2026-10-27. Upgrades: stabilisation and night mode; no AF wording. Second source: http://news.10jqka.com.cn/20260929/c680355614.shtml",
+"url": "https://finance.sina.com.cn/tech/roll/2026-09-24/doc-inisxxkt8167761.shtml",
+"src": "press",
+"conf": "strong"
+}
+]

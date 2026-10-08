@@ -1,0 +1,68 @@
+[
+{
+"id": "even-2-101",
+"date": "2024-06-26",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "PR: 'Even Realities Unveils G1 Digital Glasses'",
+"detail": "Even Realities unveils G1 camera-free display glasses.",
+"url": "https://www.prnewswire.com/news/even-realities/",
+"conf": "confirmed"
+},
+{
+"id": "even-2-103",
+"date": "2025-11-12",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Even G2 (US$599) and R1 ring (US$249) available to order; 27.5° FOV, no cameras/speakers",
+"detail": "G2 and R1 smart ring available to order: HAO 2.0 optics, 27.5° FOV, 640x350, 1,200 nits, 2-day battery, IP67, no cameras or speakers; Even Hub developer platform 'later this year'.",
+"url": "https://www.auganix.org/?p=17845",
+"conf": "strong"
+},
+{
+"id": "even-2-104",
+"date": "2026-03-26",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Even G2 'Conversation Support Prep Notes' feature",
+"detail": "PR announcing the Conversation Support Prep Notes feature for G2.",
+"url": "https://www.prnewswire.com/news/even-realities/",
+"conf": "confirmed"
+},
+{
+"id": "even-2-105",
+"date": "2026-07-06",
+"precision": "day",
+"cat": "commercial",
+"type": "financing",
+"title": "Even Realities US$150m pre-Series B led by Meituan and Tencent at US$1bn valuation",
+"detail": "US$150m pre-Series B led by Meituan and Tencent; US$1bn valuation; proceeds for next-gen glasses platform, optics stack and in-house lens factory; users wear G2 8-10 h/day; >50% of users in US.",
+"url": "https://the-gadgeteer.com/2026/07/06/even-realities-raises-150m-funding-2026/",
+"conf": "strong"
+},
+{
+"id": "even-2-106",
+"date": "2026-07-07",
+"precision": "day",
+"cat": "product",
+"type": "roadmap",
+"title": "CEO Will Wang: G3 'will not launch in 2026'; cameras excluded from roadmap direction",
+"detail": "CEO says next-gen glasses will not launch in 2026, may not carry the G3 name, trade-in for G2 users considered; cameras excluded for battery/privacy reasons ('we're aiming in a different direction').",
+"url": "https://finance.biggo.com/news/77494559-a188-4beb-842d-bc46804071b1",
+"conf": "strong"
+},
+{
+"id": "even-2-107",
+"date": "2026-07-17",
+"precision": "day",
+"cat": "product",
+"type": "roadmap",
+"title": "Even G2 software overhaul (Terminal Mode, AI Ques, Even AI, Even Hub) within 1-3 months",
+"detail": "Planned G2 software overhaul including Terminal Mode, AI Ques, Even AI and Even Hub within one to three months.",
+"url": "https://finance.biggo.com/news/a1dc6297-0727-432a-a674-e60687b4b98d",
+"conf": "strong"
+}
+]

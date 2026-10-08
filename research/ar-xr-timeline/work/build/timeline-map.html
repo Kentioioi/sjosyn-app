@@ -1,0 +1,618 @@
+<title>poLight XR Timeline Map</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: a research console. Filter row scopes a wide swimlane timeline (scrolls inside its own frame,
+   sticky lane labels), then a detail/commentary ledger below. Color is spent on event category only;
+   lanes are identified by label. */
+:root {
+  --bg: #f6f7f8;            /* page plane, cool-grey bias (glass/optics) */
+  --surface: #fdfdfd;       /* chart + card surface */
+  --surface-2: #eef1f4;     /* muted panel */
+  --fg: #101418;
+  --fg-2: #4f5962;
+  --muted: #86909a;
+  --grid: #e3e7eb;
+  --axis: #c4ccd3;
+  --border: rgba(16,20,24,0.10);
+  --accent: #0b5aa8;        /* today line, links, selection */
+  --future: rgba(11,90,168,0.055);
+  --cat-product: #2a78d6;   /* slot 1 blue   — product releases / roadmap */
+  --cat-commercial: #eb6834;/* slot 2 orange — orders, design-in, qualification, capacity, partnerships */
+  --cat-ip: #1baf7a;        /* slot 3 aqua   — patents, hires, papers */
+  --cat-press: #9aa3ab;     /* de-emphasis   — analyst, press, rumour */
+  --good: #0ca30c; --warn: #fab219; --serious: #ec835a; --critical: #d03b3b;
+  --font-ui: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1215; --surface: #171b1f; --surface-2: #1f252b; --fg: #f2f4f6; --fg-2: #c3c9cf; --muted: #8b949d;
+    --grid: #262c32; --axis: #39424a; --border: rgba(255,255,255,0.10); --accent: #5aa0ea; --future: rgba(90,160,234,0.08);
+    --cat-product: #3987e5; --cat-commercial: #d95926; --cat-ip: #199e70; --cat-press: #6f7982; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1215; --surface: #171b1f; --surface-2: #1f252b; --fg: #f2f4f6; --fg-2: #c3c9cf; --muted: #8b949d;
+  --grid: #262c32; --axis: #39424a; --border: rgba(255,255,255,0.10); --accent: #5aa0ea; --future: rgba(90,160,234,0.08);
+  --cat-product: #3987e5; --cat-commercial: #d95926; --cat-ip: #199e70; --cat-press: #6f7982; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-ui); font-size: 14px; line-height: 1.5; margin: 0; }
+.wrap { max-width: 1480px; margin: 0 auto; padding-block: 20px 48px; padding-inline: 16px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+h1 { font-size: 24px; font-weight: 800; letter-spacing: -0.01em; }
+h2 { font-size: 16px; font-weight: 700; margin-top: 28px; }
+h3 { font-size: 14px; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--accent); }
+.sub { color: var(--fg-2); max-width: 70ch; margin-top: 4px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.mono { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+.kpis { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 12px; min-width: 120px; }
+.kpi .v { font-size: 20px; font-weight: 700; }
+.kpi .l { font-size: 12px; color: var(--fg-2); }
+/* filter row */
+.filters { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-top: 18px; padding: 10px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.filters label { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--fg-2); cursor: pointer; }
+.filters select, .filters input[type="search"] { font: inherit; font-size: 13px; color: var(--fg); background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px; padding: 4px 8px; }
+.filters input[type="search"] { min-width: 160px; }
+.filters label { min-width: 0; max-width: 100%; flex-wrap: wrap; }
+#f-focus { max-width: min(100%, 420px); }
+@media (max-width: 700px) { #f-focus { max-width: 230px; } }
+.filters .grp { display: inline-flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; padding-right: 12px; border-right: 1px solid var(--grid); max-width: 100%; min-width: 0; }
+@media (max-width: 700px) { .filters .grp { border-right: 0; padding-right: 0; } .lanes { width: 128px; } .lane .n { font-size: 12px; } }
+.filters .grp:last-child { border-right: 0; }
+.swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.swatch.product { background: var(--cat-product); } .swatch.commercial { background: var(--cat-commercial); }
+.swatch.ip { background: var(--cat-ip); } .swatch.press { background: var(--cat-press); }
+.swatch.hollow { background: transparent; border: 2px solid var(--fg-2); }
+.btn { font: inherit; font-size: 13px; font-weight: 600; color: var(--fg); background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+.btn[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* timeline frame */
+.tl-frame { position: relative; margin-top: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow-x: auto; overflow-y: hidden; }
+.tl-inner { display: flex; align-items: flex-start; width: max-content; min-width: 100%; }
+.lanes { position: sticky; left: 0; z-index: 2; background: var(--surface); border-right: 1px solid var(--grid); width: 190px; flex: none; }
+.lane-head { height: var(--axis-h); border-bottom: 1px solid var(--grid); display: flex; align-items: flex-end; padding: 0 10px 6px; }
+.lane-group { height: 26px; display: flex; align-items: center; padding: 0 10px; background: var(--surface-2); border-bottom: 1px solid var(--grid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lane { height: var(--lane-h); display: flex; flex-direction: column; justify-content: center; padding: 0 10px; border-bottom: 1px solid var(--grid); cursor: pointer; }
+.lane:hover { background: var(--surface-2); }
+.lane.active { box-shadow: inset 3px 0 0 var(--accent); }
+.lane .n { font-weight: 700; font-size: 13px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lane .c { font-size: 11px; color: var(--muted); line-height: 1.2; }
+svg.tl { display: block; }
+svg.tl text { font-family: var(--font-data); font-size: 11px; fill: var(--fg-2); }
+svg.tl .grid { stroke: var(--grid); stroke-width: 1; }
+svg.tl .grid.year { stroke: var(--axis); }
+svg.tl .lane-sep { stroke: var(--grid); stroke-width: 1; }
+svg.tl .group-band { fill: var(--surface-2); }
+svg.tl .future { fill: var(--future); }
+svg.tl .today { stroke: var(--accent); stroke-width: 1.5; }
+svg.tl .today-label { fill: var(--accent); font-weight: 600; }
+svg.tl .ev { cursor: pointer; }
+svg.tl .ev .hit { fill: transparent; }
+svg.tl .ev .dot { stroke: var(--surface); stroke-width: 2; }
+svg.tl .ev.hollow .dot { fill: var(--surface); stroke-width: 2; }
+svg.tl .ev.dim { opacity: 0.18; }
+svg.tl .ev.sel .dot { stroke: var(--fg); stroke-width: 2.5; }
+svg.tl .win { cursor: pointer; }
+svg.tl .win rect { stroke: var(--surface); stroke-width: 2; }
+svg.tl .win.hollow rect { fill-opacity: 0.18; stroke: none; }
+svg.tl .win text { font-size: 10px; fill: var(--fg); pointer-events: none; font-family: var(--font-data); }
+svg.tl .win.dim { opacity: 0.18; }
+svg.tl .lead { fill-opacity: 0.28; }
+svg.tl .focus-win { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-opacity: 0.8; }
+svg.tl .lead-label { font-size: 9.5px; fill: var(--muted); }
+svg.tl .range { stroke-width: 3; stroke-linecap: round; opacity: 0.35; }
+svg.tl .match { stroke: var(--fg-2); stroke-width: 1; fill: none; opacity: 0.45; }
+svg.tl .match.hi { stroke: var(--fg); stroke-width: 1.5; opacity: 0.9; }
+svg.tl .evlabel { font-size: 10px; fill: var(--fg-2); pointer-events: none; }
+.ev-prod .dot, .win-prod rect, .range-prod { fill: var(--cat-product); stroke: var(--cat-product); }
+.ev-comm .dot, .win-comm rect, .range-comm { fill: var(--cat-commercial); stroke: var(--cat-commercial); }
+.ev-ip .dot, .win-ip rect, .range-ip { fill: var(--cat-ip); stroke: var(--cat-ip); }
+.ev-press .dot, .win-press rect, .range-press { fill: var(--cat-press); stroke: var(--cat-press); }
+svg.tl .ev .dot { stroke: var(--surface); }
+svg.tl .ev.hollow.ev-prod .dot { stroke: var(--cat-product); } svg.tl .ev.hollow.ev-comm .dot { stroke: var(--cat-commercial); }
+svg.tl .ev.hollow.ev-ip .dot { stroke: var(--cat-ip); } svg.tl .ev.hollow.ev-press .dot { stroke: var(--cat-press); }
+.tip { position: absolute; z-index: 5; pointer-events: none; max-width: 340px; background: var(--fg); color: var(--bg); padding: 8px 10px; border-radius: 6px; font-size: 12px; line-height: 1.4; box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+.tip .d { font-family: var(--font-data); font-weight: 600; }
+.tip .t { font-weight: 700; font-size: 13px; margin-top: 2px; }
+.tip .m { opacity: 0.8; margin-top: 3px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 8px; font-size: 12px; color: var(--fg-2); align-items: center; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend .bar { width: 22px; height: 8px; border-radius: 3px; background: var(--cat-product); display: inline-block; }
+.legend .lead-k { width: 22px; height: 12px; background: var(--cat-commercial); opacity: 0.18; display: inline-block; border-radius: 2px; }
+.legend .today-k { width: 2px; height: 14px; background: var(--accent); display: inline-block; }
+/* detail + commentary */
+.grid2 { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 14px; margin-top: 14px; }
+@media (max-width: 860px) { .grid2 { grid-template-columns: 1fr; } }
+.est { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+.est .p { min-width: 0; flex: 1 1 220px; border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; }
+.est .p .v { font-family: var(--font-data); font-size: 26px; font-weight: 700; }
+.est .p .l { font-size: 12px; color: var(--fg-2); }
+.est .p .d { font-size: 11px; color: var(--muted); font-family: var(--font-data); margin-top: 2px; }
+.qlist { margin: 8px 0 0 18px; padding: 0; max-width: 95ch; }
+.qlist li { margin-bottom: 8px; }
+.qlist .why { display: block; font-size: 12px; color: var(--fg-2); margin-top: 2px; }
+.wl { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12.5px; }
+.wl th, .wl td { text-align: left; vertical-align: top; padding: 6px 8px; border-top: 1px solid var(--border); }
+.wl th { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.wl td.dt { font-family: var(--font-data); white-space: nowrap; }
+.wl-wrap { overflow-x: auto; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; min-width: 0; }
+.detail .d { font-family: var(--font-data); color: var(--fg-2); font-size: 12px; }
+.detail .t { font-size: 16px; font-weight: 700; margin-top: 2px; }
+.detail .x { margin-top: 8px; color: var(--fg); }
+.detail .meta { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.pill { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--fg-2); border: 1px solid var(--border); }
+.pill.conf-confirmed { color: var(--good); } .pill.conf-strong { color: var(--accent); } .pill.conf-circumstantial { color: var(--serious); } .pill.conf-rumor { color: var(--critical); }
+.seg { padding: 10px 0; border-top: 1px solid var(--grid); }
+.seg:first-of-type { border-top: 0; padding-top: 4px; }
+.seg .r { font-family: var(--font-data); font-size: 11px; color: var(--muted); }
+.seg .h { font-weight: 700; margin-top: 2px; }
+.seg .b { color: var(--fg); margin-top: 3px; max-width: 72ch; }
+.cadence { margin-top: 8px; overflow-x: auto; }
+.cadence svg text { font-family: var(--font-data); font-size: 10px; fill: var(--fg-2); }
+.cadence svg .ax { stroke: var(--axis); }
+.cadence svg .gap { stroke: var(--grid); stroke-width: 6; stroke-linecap: butt; }
+.cadence svg .gapl { fill: var(--muted); font-size: 9.5px; }
+/* lane commentary list */
+.laneblock { padding: 12px 0; border-top: 1px solid var(--grid); }
+.laneblock:first-of-type { border-top: 0; }
+.laneblock .hd { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.laneblock .blurb { color: var(--fg-2); margin-top: 2px; max-width: 80ch; }
+/* table */
+.tbl-wrap { overflow-x: auto; margin-top: 10px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; position: sticky; top: 0; background: var(--surface); cursor: pointer; }
+td.d { font-family: var(--font-data); white-space: nowrap; }
+tr.future td { background: var(--future); }
+.matches .m { padding: 10px 0; border-top: 1px solid var(--grid); }
+.matches .m:first-of-type { border-top: 0; }
+.matches .m .h { font-weight: 700; }
+.matches .m .b { color: var(--fg); margin-top: 2px; max-width: 80ch; }
+.foot { margin-top: 28px; color: var(--muted); font-size: 12px; max-width: 80ch; }
+@media (prefers-reduced-motion: no-preference) { .lane, .btn { transition: background 120ms ease; } }
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Research console · as of <span id="asof" class="mono"></span></div>
+  <h1 id="title">poLight XR Timeline Map</h1>
+  <p class="sub" id="subtitle"></p>
+  <div class="kpis" id="kpis"></div>
+
+  <div class="filters" role="group" aria-label="Filters">
+    <div class="grp">
+      <label>Range <select id="f-range">
+        <option value="all">All (2018→2028)</option>
+        <option value="2023">2023 →</option>
+        <option value="2025" selected>2025 →</option>
+        <option value="2026">2026 →</option>
+        <option value="future">Future only</option>
+      </select></label>
+      <label>Zoom <input id="f-zoom" type="range" min="18" max="120" value="46" aria-label="Pixels per month"></label>
+    </div>
+    <div class="grp">
+      <label><input type="checkbox" id="f-cat-product" checked><span class="swatch product"></span>Product</label>
+      <label><input type="checkbox" id="f-cat-commercial" checked><span class="swatch commercial"></span>Commercial</label>
+      <label><input type="checkbox" id="f-cat-ip" checked><span class="swatch ip"></span>IP &amp; people</label>
+      <label><input type="checkbox" id="f-cat-press" checked><span class="swatch press"></span>Analyst / press</label>
+      <label><input type="checkbox" id="f-rumor"><span class="swatch hollow"></span>Hide rumours</label>
+    </div>
+    <div class="grp">
+      <label><input type="checkbox" id="f-grp-producer" checked>Producers</label>
+      <label><input type="checkbox" id="f-grp-supplier" checked>Suppliers</label>
+      <label><input type="checkbox" id="f-matches" checked>Match lines (focused launch / selection)</label>
+      <label><input type="checkbox" id="f-lead" checked>Expected windows for <select id="f-focus" aria-label="Focus launch"></select></label>
+    </div>
+    <div class="grp">
+      <input type="search" id="f-q" placeholder="Search events…" aria-label="Search events">
+      <button class="btn" id="v-timeline" aria-pressed="true">Timeline</button>
+      <button class="btn" id="v-table" aria-pressed="false">Table</button>
+    </div>
+  </div>
+
+  <div id="view-timeline">
+    <div class="tl-frame" id="tl-frame">
+      <div class="tl-inner" id="tl-inner">
+        <div class="lanes" id="lanes"></div>
+        <svg class="tl" id="tl-svg" role="img" aria-label="Swimlane timeline of producers and suppliers"></svg>
+      </div>
+      <div class="tip" id="tip" hidden></div>
+    </div>
+    <div class="legend" id="legend">
+      <span><span class="swatch product"></span>Product release / roadmap</span>
+      <span><span class="swatch commercial"></span>Commercial signal (order, design-in, qualification, capacity, partnership)</span>
+      <span><span class="swatch ip"></span>IP &amp; people (patents, hires, papers)</span>
+      <span><span class="swatch press"></span>Analyst / press / rumour</span>
+      <span><span class="swatch hollow"></span>Hollow = circumstantial or rumour</span>
+      <span><span class="bar"></span>Bar = launch window / date range</span>
+      <span><span class="lead-k"></span>Strips at the top of a supplier lane = where its milestones are expected for the focused launch (three phases, top to bottom)</span>
+      <span><span class="today-k"></span>Today</span>
+    </div>
+
+    <div class="card" id="estimate" style="margin-top:14px" hidden><div class="eyebrow">Working estimate</div><div class="est" id="est-vals"></div><details style="margin-top:8px"><summary style="cursor:pointer;font-size:13px">Reasoning</summary><p id="est-reason" style="max-width:90ch;font-size:13.5px;line-height:1.55;margin:8px 0 0"></p></details></div>
+    <div class="card" id="findings" style="margin-top:14px" hidden><div class="eyebrow">Headline findings</div><ol id="findings-list" style="margin:8px 0 0 18px; padding:0; max-width:90ch"></ol></div>
+    <div class="card" id="cmd" style="margin-top:14px" hidden><div class="eyebrow" id="cmd-title">Questions for the Q3 report and Capital Markets Day</div><ol class="qlist" id="cmd-list"></ol></div>
+    <div class="card" id="watch" style="margin-top:14px" hidden><div class="eyebrow">Hard-evidence watch list</div><div class="wl-wrap"><table class="wl"><thead><tr><th>When</th><th>What to check</th><th>Where</th><th>If positive</th><th>If negative</th></tr></thead><tbody id="watch-body"></tbody></table></div></div>
+    <div class="card detail" id="focus-note" style="margin-top:14px" hidden></div>
+    <div class="grid2">
+      <div class="card detail" id="detail"><div class="eyebrow">Selected</div><p class="x" id="detail-empty">Hover or click any marker or bar. Click a lane name for its commentary.</p></div>
+      <div class="card" id="lane-commentary"><div class="eyebrow">Lane commentary</div><p class="x" id="lane-empty" style="margin-top:8px">Click a lane name on the left to read what its timeline indicates, including the time between updates.</p></div>
+    </div>
+
+    <h2>Where supplier timelines meet future launches</h2>
+    <p class="sub">Each match pairs a dated supplier signal with a producer launch window and says what the spacing implies. Strength reflects the sources, not the author's hopes.</p>
+    <div class="card matches" id="matches" style="margin-top:10px"></div>
+
+    <h2>Commentary per lane</h2>
+    <p class="sub">What each timeline indicates, segment by segment, with the cadence strip showing days between updates.</p>
+    <div class="card" id="all-commentary" style="margin-top:10px"></div>
+  </div>
+
+  <div id="view-table" hidden>
+    <div class="tbl-wrap"><table id="tbl"><thead><tr>
+      <th data-k="date">Date</th><th data-k="lane">Lane</th><th data-k="cat">Category</th><th data-k="title">Event</th><th data-k="conf">Confidence</th><th data-k="src">Source</th>
+    </tr></thead><tbody></tbody></table></div>
+  </div>
+
+  <p class="foot" id="foot"></p>
+</div>
+
+<script type="application/json" id="tl-data">
+{"meta":{"today":"2026-10-06","subtitle":"Sample data — replaced by the research dataset.","foot":"Sample."},
+ "lanes":[
+  {"id":"meta","name":"Meta","group":"producer","blurb":"Sample lane."},
+  {"id":"polight","name":"poLight","group":"supplier","blurb":"Sample lane."}
+ ],
+ "events":[
+  {"id":"e1","lane":"meta","date":"2025-09-17","precision":"day","cat":"product","type":"product_release","title":"Meta Ray-Ban Display announced","detail":"Sample.","url":"https://example.com","src":"company","conf":"confirmed"},
+  {"id":"e2","lane":"meta","date":"2026-09-23","precision":"day","cat":"product","type":"announcement","title":"Meta VR Glasses announced for spring 2027","detail":"Sample.","url":"https://example.com","src":"company","conf":"confirmed"},
+  {"id":"e3","lane":"polight","date":"2025-04-15","precision":"day","cat":"commercial","type":"partnership","title":"Q Tech strategic partnership","detail":"Sample.","url":"https://example.com","src":"company","conf":"confirmed"},
+  {"id":"e4","lane":"polight","date":"2026-08","precision":"month","cat":"commercial","type":"design_in","title":"Design-in wording","detail":"Sample.","url":"https://example.com","src":"company","conf":"strong"},
+  {"id":"e5","lane":"polight","date":"2026-09-25","precision":"day","cat":"press","type":"analyst_report","title":"DBS note","detail":"Sample.","url":"https://example.com","src":"analyst","conf":"circumstantial"}
+ ],
+ "windows":[
+  {"id":"w1","lane":"meta","start":"2027-03-01","end":"2027-06-20","cat":"product","title":"Meta VR Glasses launch (spring 2027)","detail":"Sample.","url":"https://example.com","conf":"confirmed"}
+ ],
+ "leadtimes":[
+  {"window":"w1","lanes":["polight"],"phases":[{"label":"qualification orders expected","start":"2025-10-01","end":"2026-06-30"},{"label":"production POs expected","start":"2026-09-01","end":"2027-01-31"}]}
+ ],
+ "matches":[
+  {"id":"m1","from":"e4","to":"w1","title":"Design-in → spring-2027 launch","comment":"Sample.","strength":"strong"}
+ ],
+ "commentary":[
+  {"lane":"polight","segments":[{"start":"2025-04-15","end":"2026-09-30","title":"Sample segment","text":"Sample."}]}
+ ]
+}
+</script>
+
+<script>
+(function () {
+  'use strict';
+  const DATA = JSON.parse(document.getElementById('tl-data').textContent);
+  const $ = (s) => document.querySelector(s);
+  const MS_DAY = 86400000;
+  const TODAY = parseDate(DATA.meta.today);
+  const CAT_CLASS = { product: 'prod', commercial: 'comm', ip: 'ip', press: 'press' };
+  const CAT_NAME = { product: 'Product', commercial: 'Commercial', ip: 'IP & people', press: 'Analyst / press' };
+  const LANE_H = 58, AXIS_H = 46, GROUP_H = 26, LABEL_W = 190;
+
+  function parseDate(s) {
+    if (!s) return null;
+    const m = /^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/.exec(s);
+    if (m) return new Date(Date.UTC(+m[1], m[2] ? +m[2] - 1 : 0, m[3] ? +m[3] : 1));
+    const q = /^(\d{4})-Q([1-4])$/.exec(s);
+    if (q) return new Date(Date.UTC(+q[1], (+q[2] - 1) * 3, 1));
+    const h = /^(\d{4})-H([12])$/.exec(s);
+    if (h) return new Date(Date.UTC(+h[1], (+h[2] - 1) * 6, 1));
+    return null;
+  }
+  function spanOf(ev) { // uncertainty span for imprecise dates
+    const d = parseDate(ev.date); if (!d) return null;
+    const p = ev.precision || (/-Q/.test(ev.date) ? 'quarter' : /-H/.test(ev.date) ? 'half' : ev.date.length === 4 ? 'year' : ev.date.length === 7 ? 'month' : 'day');
+    const e = new Date(d);
+    if (p === 'month') e.setUTCMonth(e.getUTCMonth() + 1);
+    else if (p === 'quarter') e.setUTCMonth(e.getUTCMonth() + 3);
+    else if (p === 'half') e.setUTCMonth(e.getUTCMonth() + 6);
+    else if (p === 'year') e.setUTCFullYear(e.getUTCFullYear() + 1);
+    else return null;
+    return [d, e];
+  }
+  function mid(ev) { const s = spanOf(ev); const d = parseDate(ev.date); return s ? new Date((s[0].getTime() + s[1].getTime()) / 2) : d; }
+  function fmt(d) { return d ? d.toISOString().slice(0, 10) : '?'; }
+  function fmtLabel(ev) { return ev.date; }
+  const isFuture = (d) => d && d.getTime() > TODAY.getTime();
+  const isHollow = (c) => c === 'circumstantial' || c === 'rumor' || c === 'speculative';
+
+  const byId = {}; DATA.events.forEach(e => byId[e.id] = e); DATA.windows.forEach(w => byId[w.id] = w);
+  const laneById = {}; DATA.lanes.forEach(l => laneById[l.id] = l);
+
+  // ---------- state ----------
+  const state = { range: '2025', zoom: 46, cats: { product: true, commercial: true, ip: true, press: true }, hideRumor: false,
+    groups: { producer: true, supplier: true }, matches: true, lead: true, focus: '', q: '', view: 'timeline', sel: null, lane: null, sortK: 'date', sortDir: 1 };
+  try { const saved = JSON.parse(localStorage.getItem('plt-tl-state') || 'null'); if (saved && saved.range) Object.assign(state, saved, { sel: null, lane: null }); } catch (e) {}
+  function persist() { try { localStorage.setItem('plt-tl-state', JSON.stringify({ range: state.range, zoom: state.zoom, cats: state.cats, hideRumor: state.hideRumor, groups: state.groups, matches: state.matches, lead: state.lead, focus: state.focus })); } catch (e) {} }
+
+  function rangeStart() {
+    if (state.range === 'all') return new Date(Date.UTC(2018, 0, 1));
+    if (state.range === 'future') return new Date(TODAY.getTime() - 60 * MS_DAY);
+    return new Date(Date.UTC(+state.range, 0, 1));
+  }
+  function rangeEnd() { return new Date(Date.UTC(2028, 6, 1)); }
+
+  function passes(ev) {
+    if (!state.cats[ev.cat]) return false;
+    if (state.hideRumor && isHollow(ev.conf)) return false;
+    if (state.q) { const q = state.q.toLowerCase(); if (!((ev.title || '') + ' ' + (ev.detail || '') + ' ' + (laneById[ev.lane] || {}).name).toLowerCase().includes(q)) return false; }
+    return true;
+  }
+  function visibleLanes() { return DATA.lanes.filter(l => state.groups[l.group]); }
+
+  // ---------- header ----------
+  $('#asof').textContent = DATA.meta.today;
+  if (DATA.meta.title) $('#title').textContent = DATA.meta.title;
+  $('#subtitle').textContent = DATA.meta.subtitle || '';
+  $('#foot').textContent = DATA.meta.foot || '';
+  if (DATA.headline_findings && DATA.headline_findings.length) { $('#findings').hidden = false; DATA.headline_findings.forEach(f => { const li = document.createElement('li'); li.textContent = f; li.style.marginBottom = '4px'; $('#findings-list').appendChild(li); }); }
+  if (DATA.estimate) { const e = DATA.estimate; $('#estimate').hidden = false;
+    const fmt = v => (typeof v === 'number' ? Math.round(v * 100) + '%' : '–');
+    const hist = DATA.estimate_history || [];
+    const prevOf = k => { const h = hist.filter(x => typeof x[k] === 'number'); return h.length ? h[h.length - 1] : null; };
+    const cell = (k, l) => { const p = prevOf(k); return `<div class="p"><div class="v">${fmt(e[k])}</div><div class="l">${l}</div>${p ? `<div class="d">was ${fmt(p[k])} after ${esc(p.round)}</div>` : ''}</div>`; };
+    $('#est-vals').innerHTML = cell('p_tlens_in_meta_vr_glasses', 'TLens in Meta VR Glasses at launch') + cell('p_meta_is_qtech_backed_oem', 'Meta is the Q Tech-backed OEM (Program A)');
+    $('#est-reason').textContent = e.reasoning || ''; }
+  if (DATA.cmd_questions && DATA.cmd_questions.length) { $('#cmd').hidden = false;
+    $('#cmd-list').innerHTML = DATA.cmd_questions.map(q => `<li><strong>${esc(q.question)}</strong><span class="why">${esc(q.why || '')}${q.if_yes ? ' If yes: ' + esc(q.if_yes) : ''}${q.if_no ? ' If no: ' + esc(q.if_no) : ''}</span></li>`).join(''); }
+  if (DATA.watchlist && DATA.watchlist.length) { $('#watch').hidden = false;
+    $('#watch-body').innerHTML = DATA.watchlist.map(w => `<tr><td class="dt">${esc(w.date_from || '')}${w.date_to && w.date_to !== w.date_from ? ' → ' + esc(w.date_to) : ''}</td><td>${esc(w.what || '')}</td><td>${esc(w.where || '')}</td><td>${esc(w.if_positive || '')}</td><td>${esc(w.if_negative || '')}</td></tr>`).join(''); }
+  (function kpis() {
+    const future = DATA.windows.filter(w => isFuture(parseDate(w.end || w.start))).length + DATA.events.filter(e => isFuture(parseDate(e.date))).length;
+    const confirmed = DATA.events.filter(e => e.conf === 'confirmed').length;
+    const rows = [[DATA.events.length, 'dated signals'], [DATA.lanes.length, 'lanes'], [DATA.windows.length, 'launch windows'], [future, 'future items'], [confirmed, 'confirmed by primary source'], [DATA.matches.length, 'supplier↔launch matches']];
+    $('#kpis').innerHTML = rows.map(r => `<div class="kpi"><div class="v">${r[0]}</div><div class="l">${r[1]}</div></div>`).join('');
+  })();
+
+  // ---------- timeline ----------
+  function render() {
+    const lanes = visibleLanes();
+    const x0 = rangeStart(), x1 = rangeEnd();
+    const pxMonth = state.zoom;
+    const months = (x1.getUTCFullYear() - x0.getUTCFullYear()) * 12 + (x1.getUTCMonth() - x0.getUTCMonth());
+    const W = Math.max(600, months * pxMonth + 300);
+    const X = (d) => 20 + ((d.getTime() - x0.getTime()) / MS_DAY) * (pxMonth / 30.4375);
+    // lane rows with group headers
+    const rows = []; let y = AXIS_H; let lastGroup = null;
+    lanes.forEach(l => { if (l.group !== lastGroup) { rows.push({ type: 'group', group: l.group, y }); y += GROUP_H; lastGroup = l.group; } rows.push({ type: 'lane', lane: l, y }); y += LANE_H; });
+    const H = y;
+    document.documentElement.style.setProperty('--axis-h', AXIS_H + 'px');
+    document.documentElement.style.setProperty('--lane-h', LANE_H + 'px');
+    // left labels
+    const lanesEl = $('#lanes');
+    lanesEl.innerHTML = '';
+    const head = document.createElement('div'); head.className = 'lane-head eyebrow'; head.textContent = 'Lane'; lanesEl.appendChild(head);
+    rows.forEach(r => {
+      if (r.type === 'group') { const g = document.createElement('div'); g.className = 'lane-group eyebrow'; g.textContent = r.group === 'producer' ? 'Producers' : 'Suppliers'; g.title = r.group === 'producer' ? 'Glasses and headset makers' : 'Autofocus / tunable-lens suppliers and evidence lanes'; lanesEl.appendChild(g); return; }
+      const d = document.createElement('div'); d.className = 'lane' + (state.lane === r.lane.id ? ' active' : ''); d.tabIndex = 0; d.setAttribute('role', 'button');
+      const n = document.createElement('div'); n.className = 'n'; n.textContent = r.lane.name; d.appendChild(n);
+      const c = document.createElement('div'); c.className = 'c'; const cnt = DATA.events.filter(e => e.lane === r.lane.id && passes(e)).length; c.textContent = cnt + ' signals' + (r.lane.short ? ' · ' + r.lane.short : ''); d.appendChild(c);
+      d.addEventListener('click', () => { state.lane = r.lane.id; showLane(r.lane.id); render(); });
+      d.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); d.click(); } });
+      lanesEl.appendChild(d);
+    });
+    // svg
+    const svg = $('#tl-svg'); svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    let s = '';
+    // future shading
+    if (TODAY < x1) s += `<rect class="future" x="${X(TODAY)}" y="${AXIS_H}" width="${X(x1) - X(TODAY)}" height="${H - AXIS_H}"/>`;
+    // group bands
+    rows.filter(r => r.type === 'group').forEach(r => { s += `<rect class="group-band" x="0" y="${r.y}" width="${W}" height="${GROUP_H}"/>`; });
+    // grid: months (if zoomed) / quarters / years
+    const cur = new Date(Date.UTC(x0.getUTCFullYear(), x0.getUTCMonth(), 1));
+    while (cur <= x1) {
+      const m = cur.getUTCMonth();
+      const xx = X(cur);
+      if (m === 0) { s += `<line class="grid year" x1="${xx}" x2="${xx}" y1="${AXIS_H - 22}" y2="${H}"/>`; s += `<text x="${xx + 4}" y="${AXIS_H - 26}" font-weight="600">${cur.getUTCFullYear()}</text>`; }
+      else if (m % 3 === 0) { s += `<line class="grid" x1="${xx}" x2="${xx}" y1="${AXIS_H - 10}" y2="${H}"/>`; }
+      if (m % 3 === 0 && pxMonth >= 30) s += `<text x="${xx + 3}" y="${AXIS_H - 12}">Q${m / 3 + 1}</text>`;
+      else if (pxMonth >= 60) s += `<text x="${xx + 3}" y="${AXIS_H - 12}" fill="var(--muted)">${['J','F','M','A','M','J','J','A','S','O','N','D'][m]}</text>`;
+      cur.setUTCMonth(cur.getUTCMonth() + 1);
+    }
+    rows.forEach(r => { s += `<line class="lane-sep" x1="0" x2="${W}" y1="${r.y + (r.type === 'group' ? GROUP_H : LANE_H)}" y2="${r.y + (r.type === 'group' ? GROUP_H : LANE_H)}"/>`; });
+    // lead-time washes
+    const laneY = {}; rows.filter(r => r.type === 'lane').forEach(r => laneY[r.lane.id] = r.y);
+    if (state.lead) DATA.leadtimes.filter(lt => lt.window === state.focus).forEach(lt => {
+      lt.lanes.forEach(lid => { if (!(lid in laneY)) return; lt.phases.forEach((ph, i) => {
+        const a = parseDate(ph.start), b = parseDate(ph.end); if (!a || !b) return;
+        const xa = Math.max(X(a), 0), xb = Math.min(X(b), W); if (xb <= xa) return;
+        const yy = laneY[lid] + 3 + i * 5;
+        s += `<rect class="lead" x="${xa}" y="${yy}" width="${xb - xa}" height="4" fill="var(--cat-commercial)" rx="2"><title>${esc(ph.label)}: ${esc(ph.start)} → ${esc(ph.end)} — for ${esc((byId[lt.window] || {}).title || lt.window)}</title></rect>`;
+      }); });
+      // focus window outline on its own lane
+      const w = byId[lt.window]; if (w && (w.lane in laneY)) { const a = parseDate(w.start), b = parseDate(w.end || w.start); if (a) s += `<rect class="focus-win" x="${X(a) - 2}" y="${laneY[w.lane] + 1}" width="${Math.max(X(b) - X(a), 6) + 4}" height="${LANE_H - 2}" rx="4"/>`; }
+    });
+    // windows (bars)
+    const winPos = {}; const winOcc = {};
+    DATA.windows.forEach(w => {
+      if (!(w.lane in laneY) || !passes(w)) return;
+      const a = parseDate(w.start), b = parseDate(w.end || w.start); if (!a) return;
+      const xa = X(a), xb = Math.max(X(b), xa + 6);
+      if (xb < 0 || xa > W) return;
+      const wk = w.lane; winOcc[wk] = winOcc[wk] || [];
+      const isFocus = w.id === state.focus; const CW = 6.15; const labelW = w.title.length * CW; const maxChars = Math.floor((xb - xa - 10) / CW); const showLabel = isFocus || maxChars >= 16;
+      const lw = showLabel && isFocus && labelW + 10 > xb - xa ? labelW : 0; let wslot = 0;
+      while (winOcc[wk].some(o => o.slot === wslot && !(xb + lw + 6 < o.xa || xa > o.xb + o.lw + 6))) wslot++;
+      winOcc[wk].push({ slot: wslot, xa, xb, lw });
+      const yy = laneY[w.lane] + 17 + (wslot % 3) * 10; const hollow = isHollow(w.conf);
+      winPos[w.id] = { x: (xa + xb) / 2, y: yy + 4, xa, xb };
+      const dim = state.sel && state.sel !== w.id && !relatedTo(w.id).has(state.sel) ? ' dim' : '';
+      s += `<g class="win win-${CAT_CLASS[w.cat] || 'prod'}${hollow ? ' hollow' : ''}${dim}" data-id="${w.id}" tabindex="0" role="button" aria-label="${esc(w.title)}"><rect x="${xa}" y="${yy}" width="${xb - xa}" height="8" rx="3"/>`;
+      if (showLabel && (wslot < 3 || isFocus)) { const inside = labelW + 10 <= xb - xa; const txt = inside ? w.title : (isFocus ? w.title.slice(0, 70) : (w.title.length > maxChars ? w.title.slice(0, Math.max(maxChars - 1, 1)) + '…' : w.title)); const tw = txt.length * CW;
+        if (!inside && isFocus) s += `<rect x="${xb + 3}" y="${yy - 1}" width="${tw + 5}" height="10" rx="2" fill="var(--bg)" opacity="0.9"/>`;
+        const within = inside || !isFocus;
+        s += `<text x="${within ? xa + 5 : xb + 5}" y="${yy + 7.5}" style="fill:${within && !hollow ? '#fff' : 'var(--fg)'}">${esc(txt)}</text>`; }
+      s += `</g>`;
+    });
+    // events (markers) with collision offsets
+    const evPos = {}; const occupied = {};
+    const evs = DATA.events.filter(e => (e.lane in laneY) && passes(e)).map(e => ({ e, d: mid(e) })).filter(o => o.d).sort((a, b) => a.d - b.d);
+    evs.forEach(({ e, d }) => {
+      const xx = X(d); if (xx < -10 || xx > W + 10) return;
+      const key = e.lane; occupied[key] = occupied[key] || [];
+      let slot = 0; while (occupied[key].some(o => o.slot === slot && Math.abs(o.x - xx) < 11)) slot++;
+      occupied[key].push({ x: xx, slot });
+      const yy = laneY[e.lane] + 48 - [0, 8, -8][slot % 3];
+      evPos[e.id] = { x: xx, y: yy };
+      const span = spanOf(e); const hollow = isHollow(e.conf);
+      const dim = state.sel && state.sel !== e.id && !relatedTo(e.id).has(state.sel) ? ' dim' : '';
+      const sel = state.sel === e.id ? ' sel' : '';
+      s += `<g class="ev ev-${CAT_CLASS[e.cat] || 'press'}${hollow ? ' hollow' : ''}${dim}${sel}" data-id="${e.id}" tabindex="0" role="button" aria-label="${esc(e.date + ' ' + e.title)}">`;
+      if (span) s += `<line class="range range-${CAT_CLASS[e.cat] || 'press'}" x1="${X(span[0])}" x2="${X(span[1])}" y1="${yy}" y2="${yy}"/>`;
+      s += `<circle class="hit" cx="${xx}" cy="${yy}" r="12"/><circle class="dot" cx="${xx}" cy="${yy}" r="5"/>`;
+      if (e.label && slot === 0 && pxMonth >= 70) s += `<text class="evlabel" x="${xx + 8}" y="${yy + 4}">${esc(e.label)}</text>`;
+      s += `</g>`;
+    });
+    // match lines
+    if (state.matches) DATA.matches.forEach(m => {
+      const tied = m.to === state.focus || m.from === state.focus || (state.sel && (m.from === state.sel || m.to === state.sel));
+      if (!tied) return;
+      const a = evPos[m.from] || winPos[m.from], b = winPos[m.to] || evPos[m.to]; if (!a || !b) return;
+      const hi = state.sel && (state.sel === m.from || state.sel === m.to) ? ' hi' : '';
+      const cx = (a.x + b.x) / 2;
+      s += `<path class="match${hi}" d="M${a.x},${a.y} C${cx},${a.y} ${cx},${b.y} ${b.x},${b.y}"><title>${esc(m.title)}</title></path>`;
+    });
+    // today
+    if (TODAY >= x0 && TODAY <= x1) { const tx = X(TODAY); s += `<line class="today" x1="${tx}" x2="${tx}" y1="${AXIS_H - 30}" y2="${H}"/><text class="today-label" x="${tx + 4}" y="${AXIS_H - 32}">today ${DATA.meta.today}</text>`; }
+    svg.innerHTML = s;
+    // interactions
+    svg.querySelectorAll('.ev, .win').forEach(g => {
+      g.addEventListener('pointerenter', (ev) => showTip(g.dataset.id, ev));
+      g.addEventListener('pointermove', (ev) => moveTip(ev));
+      g.addEventListener('pointerleave', hideTip);
+      g.addEventListener('focus', (ev) => { showTip(g.dataset.id, null, g); });
+      g.addEventListener('blur', hideTip);
+      g.addEventListener('click', () => { state.sel = state.sel === g.dataset.id ? null : g.dataset.id; showDetail(g.dataset.id); render(); });
+      g.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); g.click(); } });
+    });
+  }
+  function relatedTo(id) { const set = new Set(); DATA.matches.forEach(m => { if (m.from === id) set.add(m.to); if (m.to === id) set.add(m.from); }); return set; }
+  function esc(t) { return String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+
+  // ---------- tooltip ----------
+  const tip = $('#tip'), frame = $('#tl-frame');
+  function showTip(id, ev, el) {
+    const o = byId[id]; if (!o) return;
+    tip.innerHTML = '';
+    const d = document.createElement('div'); d.className = 'd'; d.textContent = (o.date || (o.start + ' → ' + (o.end || ''))) + ' · ' + ((laneById[o.lane] || {}).name || ''); tip.appendChild(d);
+    const t = document.createElement('div'); t.className = 't'; t.textContent = o.title; tip.appendChild(t);
+    const m = document.createElement('div'); m.className = 'm'; m.textContent = (CAT_NAME[o.cat] || o.cat) + ' · ' + (o.type || 'window') + ' · ' + (o.conf || '') + (o.src ? ' · ' + o.src : ''); tip.appendChild(m);
+    if (o.detail) { const x = document.createElement('div'); x.className = 'm'; x.textContent = o.detail.length > 220 ? o.detail.slice(0, 217) + '…' : o.detail; tip.appendChild(x); }
+    tip.hidden = false;
+    if (ev) moveTip(ev); else if (el) { const r = el.getBoundingClientRect(), fr = frame.getBoundingClientRect(); place(r.left - fr.left + frame.scrollLeft, r.top - fr.top); }
+  }
+  function moveTip(ev) { const fr = frame.getBoundingClientRect(); place(ev.clientX - fr.left + frame.scrollLeft, ev.clientY - fr.top); }
+  function place(x, y) { const fw = frame.clientWidth; const tw = tip.offsetWidth || 300; let lx = x + 14 - frame.scrollLeft; if (lx + tw > fw - 8) lx = x - tw - 14 - frame.scrollLeft; tip.style.left = (lx + frame.scrollLeft) + 'px'; tip.style.top = Math.max(4, y - tip.offsetHeight - 14) + 'px'; }
+  function hideTip() { tip.hidden = true; }
+
+  // ---------- detail ----------
+  function showDetail(id) {
+    const o = byId[id]; const el = $('#detail'); if (!o) return;
+    el.innerHTML = '<div class="eyebrow">Selected</div>';
+    const d = document.createElement('div'); d.className = 'd'; d.textContent = (o.date || (o.start + ' → ' + (o.end || ''))) + ' · ' + ((laneById[o.lane] || {}).name || ''); el.appendChild(d);
+    const t = document.createElement('div'); t.className = 't'; t.textContent = o.title; el.appendChild(t);
+    const x = document.createElement('p'); x.className = 'x'; x.textContent = o.detail || ''; el.appendChild(x);
+    const meta = document.createElement('div'); meta.className = 'meta';
+    [[CAT_NAME[o.cat] || o.cat, ''], [o.type || 'launch window', ''], [o.conf || '', 'conf-' + (o.conf || '')], [o.src || '', ''], [o.precision ? 'precision: ' + o.precision : '', '']].forEach(p => { if (!p[0]) return; const s = document.createElement('span'); s.className = 'pill ' + p[1]; s.textContent = p[0]; meta.appendChild(s); });
+    el.appendChild(meta);
+    if (o.url) { const a = document.createElement('a'); a.href = o.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Source: ' + o.url.replace(/^https?:\/\//, '').slice(0, 70); a.style.display = 'block'; a.style.marginTop = '8px'; a.style.fontSize = '12px'; a.style.wordBreak = 'break-all'; el.appendChild(a); }
+    const rel = DATA.matches.filter(m => m.from === id || m.to === id);
+    if (rel.length) { const h = document.createElement('div'); h.className = 'eyebrow'; h.style.marginTop = '12px'; h.textContent = 'Linked matches'; el.appendChild(h);
+      rel.forEach(m => { const p = document.createElement('p'); p.className = 'x'; const other = byId[m.from === id ? m.to : m.from]; p.textContent = '↔ ' + (other ? other.title : '') + ' — ' + m.comment; el.appendChild(p); }); }
+  }
+  function cadenceSvg(laneId) {
+    const evs = DATA.events.filter(e => e.lane === laneId && e.cat !== 'press').map(e => ({ e, d: mid(e) })).filter(o => o.d).sort((a, b) => a.d - b.d);
+    if (evs.length < 2) return '';
+    const W = Math.max(320, evs.length * 38 + 40), H = 54; let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Days between updates">`;
+    s += `<line class="ax" x1="10" x2="${W - 10}" y1="30" y2="30"/>`;
+    evs.forEach((o, i) => { const x = 20 + i * ((W - 40) / (evs.length - 1)); s += `<circle cx="${x}" cy="30" r="4" fill="var(--cat-${o.e.cat === 'commercial' ? 'commercial' : o.e.cat === 'ip' ? 'ip' : 'product'})"/>`;
+      if (i > 0) { const px = 20 + (i - 1) * ((W - 40) / (evs.length - 1)); const days = Math.round((o.d - evs[i - 1].d) / MS_DAY); s += `<text class="gapl" x="${(px + x) / 2}" y="22" text-anchor="middle">${days}d</text>`; }
+      if (i === 0 || i === evs.length - 1 || evs.length <= 8) s += `<text x="${x}" y="46" text-anchor="middle">${o.e.date.slice(0, 7)}</text>`; });
+    return s + '</svg>';
+  }
+  function laneBlock(laneId) {
+    const l = laneById[laneId]; const c = (DATA.commentary.find(c => c.lane === laneId) || { segments: [] });
+    let h = `<div class="hd"><h3>${esc(l.name)}</h3><span class="eyebrow">${l.group}</span></div><p class="blurb">${esc(l.blurb || '')}</p>`;
+    const cs = cadenceSvg(laneId); if (cs) h += `<div class="cadence">${cs}</div>`;
+    c.segments.forEach(sg => { h += `<div class="seg"><div class="r">${esc(sg.start)} → ${esc(sg.end || '')}</div><div class="h">${esc(sg.title)}</div><p class="b">${esc(sg.text)}</p></div>`; });
+    if (!c.segments.length) h += `<p class="blurb">No commentary recorded for this lane.</p>`;
+    return h;
+  }
+  function showLane(laneId) { const el = $('#lane-commentary'); el.innerHTML = '<div class="eyebrow">Lane commentary</div>' + laneBlock(laneId); }
+  function renderAllCommentary() { $('#all-commentary').innerHTML = DATA.lanes.map(l => `<div class="laneblock">${laneBlock(l.id)}</div>`).join(''); }
+  function renderMatches() {
+    const el = $('#matches'); el.innerHTML = '';
+    DATA.matches.forEach(m => { const a = byId[m.from], b = byId[m.to]; const d = document.createElement('div'); d.className = 'm';
+      const h = document.createElement('div'); h.className = 'h'; h.textContent = m.title; d.appendChild(h);
+      const r = document.createElement('div'); r.className = 'seg r'; r.style.padding = '0'; r.style.border = '0'; r.textContent = (a ? (a.date || a.start) + ' ' + a.title : m.from) + '  ↔  ' + (b ? (b.start || b.date) + ' ' + b.title : m.to); d.appendChild(r);
+      const p = document.createElement('p'); p.className = 'b'; p.textContent = m.comment; d.appendChild(p);
+      const s = document.createElement('span'); s.className = 'pill conf-' + m.strength; s.textContent = 'strength: ' + m.strength; s.style.marginTop = '6px'; s.style.display = 'inline-block'; d.appendChild(s);
+      el.appendChild(d); });
+    if (!DATA.matches.length) el.textContent = 'No matches recorded.';
+  }
+  // ---------- table ----------
+  function renderTable() {
+    const tb = $('#tbl tbody'); tb.innerHTML = '';
+    const rows = DATA.events.filter(passes).map(e => ({ date: e.date, lane: (laneById[e.lane] || {}).name || e.lane, cat: CAT_NAME[e.cat] || e.cat, title: e.title + (e.detail ? ' — ' + e.detail : ''), conf: e.conf || '', src: e.url || '', fut: isFuture(parseDate(e.date)) }))
+      .concat(DATA.windows.filter(passes).map(w => ({ date: w.start + (w.end ? ' → ' + w.end : ''), lane: (laneById[w.lane] || {}).name, cat: CAT_NAME[w.cat] || w.cat, title: '[window] ' + w.title + (w.detail ? ' — ' + w.detail : ''), conf: w.conf || '', src: w.url || '', fut: isFuture(parseDate(w.end || w.start)) })));
+    rows.sort((a, b) => (a[state.sortK] > b[state.sortK] ? 1 : a[state.sortK] < b[state.sortK] ? -1 : 0) * state.sortDir);
+    rows.forEach(r => { const tr = document.createElement('tr'); if (r.fut) tr.className = 'future';
+      [['d', r.date], ['', r.lane], ['', r.cat], ['', r.title], ['', r.conf]].forEach(c => { const td = document.createElement('td'); td.className = c[0]; td.textContent = c[1]; tr.appendChild(td); });
+      const td = document.createElement('td'); if (r.src) { const a = document.createElement('a'); a.href = r.src; a.target = '_blank'; a.rel = 'noopener'; a.textContent = r.src.replace(/^https?:\/\/(www\.)?/, '').slice(0, 48); td.appendChild(a); } tr.appendChild(td); tb.appendChild(tr); });
+  }
+  document.querySelectorAll('#tbl th').forEach(th => th.addEventListener('click', () => { const k = th.dataset.k; if (state.sortK === k) state.sortDir *= -1; else { state.sortK = k; state.sortDir = 1; } renderTable(); }));
+
+  // ---------- wiring ----------
+  function syncControls() {
+    $('#f-range').value = state.range; $('#f-zoom').value = state.zoom;
+    Object.keys(state.cats).forEach(k => { $('#f-cat-' + k).checked = state.cats[k]; });
+    $('#f-rumor').checked = state.hideRumor; $('#f-grp-producer').checked = state.groups.producer; $('#f-grp-supplier').checked = state.groups.supplier;
+    $('#f-matches').checked = state.matches; $('#f-lead').checked = state.lead;
+  }
+  function all() { render(); renderTable(); persist(); }
+  $('#f-range').addEventListener('change', e => { state.range = e.target.value; all(); });
+  $('#f-zoom').addEventListener('input', e => { state.zoom = +e.target.value; render(); persist(); });
+  Object.keys(state.cats).forEach(k => $('#f-cat-' + k).addEventListener('change', e => { state.cats[k] = e.target.checked; all(); }));
+  $('#f-rumor').addEventListener('change', e => { state.hideRumor = e.target.checked; all(); });
+  $('#f-grp-producer').addEventListener('change', e => { state.groups.producer = e.target.checked; all(); });
+  $('#f-grp-supplier').addEventListener('change', e => { state.groups.supplier = e.target.checked; all(); });
+  $('#f-matches').addEventListener('change', e => { state.matches = e.target.checked; render(); persist(); });
+  $('#f-lead').addEventListener('change', e => { state.lead = e.target.checked; render(); persist(); });
+  $('#f-q').addEventListener('input', e => { state.q = e.target.value.trim(); all(); });
+  $('#v-timeline').addEventListener('click', () => setView('timeline'));
+  $('#v-table').addEventListener('click', () => setView('table'));
+  function setView(v) { state.view = v; $('#view-timeline').hidden = v !== 'timeline'; $('#view-table').hidden = v !== 'table'; $('#v-timeline').setAttribute('aria-pressed', String(v === 'timeline')); $('#v-table').setAttribute('aria-pressed', String(v === 'table')); if (v === 'table') renderTable(); }
+  (function populateFocus() {
+    const sel = $('#f-focus'); const seen = new Set();
+    DATA.leadtimes.forEach(lt => { const w = byId[lt.window]; if (!w || seen.has(lt.window)) return; seen.add(lt.window); const o = document.createElement('option'); o.value = lt.window; o.textContent = ((laneById[w.lane] || {}).name || '') + ' — ' + w.title.slice(0, 60) + ' (' + w.start + ')'; sel.appendChild(o); });
+    const opts = [...sel.options].map(o => o.value); if (!opts.includes(state.focus)) state.focus = opts.find(v => /meta-/.test(v) && /0-8$/.test(v)) || opts[0] || '';
+    sel.value = state.focus;
+    sel.addEventListener('change', e => { state.focus = e.target.value; showFocus(); render(); persist(); });
+  })();
+  function showFocus() {
+    const lt = DATA.leadtimes.find(l => l.window === state.focus); const w = byId[state.focus]; const el = $('#focus-note'); if (!el) return;
+    if (!lt || !w) { el.hidden = true; return; }
+    el.hidden = false; el.innerHTML = '';
+    const h = document.createElement('div'); h.className = 'eyebrow'; h.textContent = 'Expected supplier milestones for the focused launch'; el.appendChild(h);
+    const t = document.createElement('div'); t.className = 't'; t.textContent = w.title + ' (' + w.start + ' → ' + (w.end || w.start) + ')'; el.appendChild(t);
+    lt.phases.forEach((ph, i) => { const p = document.createElement('p'); p.className = 'x'; p.textContent = (i + 1) + '. ' + ph.label + ': ' + ph.start + ' → ' + ph.end; el.appendChild(p); });
+    const r = document.createElement('p'); r.className = 'x'; r.style.color = 'var(--fg-2)'; r.textContent = lt.rationale || ''; el.appendChild(r);
+    const lanes = document.createElement('p'); lanes.className = 'x'; lanes.style.color = 'var(--fg-2)'; lanes.textContent = 'Drawn on lanes: ' + lt.lanes.map(l => (laneById[l] || {}).name || l).join(', ') + '. Strips, top to bottom, follow the phase order above.'; el.appendChild(lanes);
+  }
+  syncControls(); showFocus(); render(); renderTable(); renderMatches(); renderAllCommentary();
+  // scroll so that today is visible
+  requestAnimationFrame(() => { const svg = $('#tl-svg'); const t = svg.querySelector('.today'); if (t) { const x = +t.getAttribute('x1'); frame.scrollLeft = Math.max(0, x - frame.clientWidth * 0.55); } });
+})();
+</script>

@@ -1,0 +1,74 @@
+[
+{
+"id": "r4-alibaba-6-12",
+"date": "2025-11-27",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Alibaba Quark AI Glasses S1 / G1 launched in China (12 MP IMX681, f/2.2, 5P lens)",
+"detail": "Quark AI Glasses S1 (display) and G1 launched in China; 12 MP Sony IMX681, f/2.2, 109 degree FOV, 5P lens.",
+"url": "https://news.qq.com/rain/a/20251127A06NI200",
+"src": "press",
+"conf": "strong"
+},
+{
+"id": "r4-alibaba-6-13",
+"date": "2025-12-02",
+"precision": "day",
+"cat": "product",
+"type": "press",
+"title": "VR陀螺 review of Quark S1 mentions autofocus wording but not the focus mechanism",
+"detail": "VR陀螺 review: \"大多数AI眼镜的拍摄对焦往往以「自动对焦」为主\"; S1's capacitive shutter \"通过波导镜片显示对焦标识\" (shows a focus marker). The focus mechanism is not stated, so AF hardware is unknown.",
+"url": "http://www.tuoluo.cn/article/detail-10127014.html",
+"src": "press",
+"conf": "strong"
+},
+{
+"id": "r4-alibaba-6-19",
+"date": "2026-03-11",
+"precision": "day",
+"cat": "product",
+"type": "teardown",
+"title": "52audio teardown of Quark S1: IMX681, 5-element lens, no focus actuator mentioned",
+"detail": "12 MP Sony IMX681, f/2.2, 109 degree, 5-element lens; TDK ICM-42688-P IMU used for stabilisation; manufacturer 浙江未来精灵人工智能科技有限公司. No focus actuator mentioned.",
+"url": "https://www.52audio.com/archives/269965.html",
+"src": "press",
+"conf": "strong"
+},
+{
+"id": "r4-alibaba-6-28",
+"date": "2026-07-22",
+"precision": "day",
+"cat": "product",
+"type": "design_in",
+"title": "Ant Group WAIC AI-glasses reference design uses Q Tech TLens with real-time autofocus",
+"detail": "ZOL: at WAIC 2026 Ant Group shows its AI-glasses reference design (Ling Device OS): BES2800 + SA62105X ISP; \"影像采集系统搭载索尼IMX681图像传感器及邱钛Tlens液态可变焦镜头，支持实时自动对焦\" (\"邱钛\" is a misspelling of 丘钛, Q Tech); 光峰 \"蜻蜓C1\" full-colour LCo",
+"url": "https://ai.zol.com.cn/1219/12198157.html",
+"src": "press",
+"conf": "strong"
+},
+{
+"id": "r4-alibaba-6-38",
+"date": "2026-09-10",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Alibaba Qwen N1 AI glasses previewed at Bund Summit (no display, iris recognition)",
+"detail": "Qwen N1 previewed at the Bund Summit AI-payment area (no display, iris recognition).",
+"url": "https://technode.com/2026/09/10/alibaba-qwen-previews-n1-ai-glasses-with-iris-recognition-and-no-display/",
+"src": "press",
+"conf": "strong"
+},
+{
+"id": "r4-alibaba-6-42",
+"date": "2026-09-22",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Alibaba Qwen AI Glasses N1 / N1 Pro launched: 50 MP sensor, 4K, no display; sale 2026-10-13",
+"detail": "Apsara: \"5000 万像素传感器\" (50 MP), 4K video, three-chip (AR1 + BES2800 + low-power sensing chip), \"晶曜\" lens; N1 Pro adds eye tracking (<1 degree centre) and iris payment; no display; in-stock sale 2026-10-13; price not annou",
+"url": "https://www.ithome.com/1/005/647.htm",
+"src": "company",
+"conf": "confirmed"
+}
+]

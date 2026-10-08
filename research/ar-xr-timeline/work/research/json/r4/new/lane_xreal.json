@@ -1,0 +1,26 @@
+[
+{
+"id": "r4-xreal-2-38",
+"date": "2026-09-29",
+"precision": "day",
+"cat": "product",
+"type": "other",
+"title": "Xreal FCC ID 2BBNY-X7012 XREAL Keyboard granted; no Aura glasses grant",
+"detail": "Xreal FCC ID 2BBNY-X7012 'XREAL Keyboard' granted. Exhibit filenames reference 'AURA_QSG_20260523'. No Aura glasses grant reported (single outlet, Mixed).",
+"url": "https://mixed-news.com/en/xreal-fcc-grant-folding-keyboard-aura-exhibits/",
+"src": "press",
+"conf": "strong"
+},
+{
+"id": "r4-xreal-6-48",
+"date": "2026-10-07",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "XREAL Aura priced US$1,279 / 1,499; high-res camera + 2 tracking cams; no AF wording",
+"detail": "XREAL Aura priced at US$1,279 (12/256 GB) / US$1,499; first wave \"before the holidays\"; pre-orders \"later this month\". Official page: \"World-facing tracking cameras ×2\" and \"High-resolution camera with privacy LED indica",
+"url": "https://9to5google.com/2026/10/07/xreal-aura-with-android-xr-start-at-1279/",
+"src": "press",
+"conf": "strong"
+}
+]

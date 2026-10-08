@@ -1,0 +1,74 @@
+[
+{
+"id": "r4-vcm-3-9",
+"date": "2024-12-03",
+"precision": "day",
+"cat": "commercial",
+"type": "capacity",
+"title": "TDK Philippines opens second factory at Laguna Technopark, Binan (PHP 2.5bn, 400+ hires)",
+"detail": "TDK Philippines Corp. opens a second factory at Laguna Technopark, Binan (PHP 2.5bn; more than 400 hires over 3 years; products not stated). TDK Philippines has assembled camera-module actuators (CMA) in Laguna since 201",
+"url": "https://www.bworldonline.com/economy/2024/12/05/639732/tdk-corp-opens-second-factory-in-laguna/",
+"src": "press",
+"conf": "strong"
+},
+{
+"id": "r4-vcm-3-12",
+"date": "2025-04-28",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "TDK signs framework agreement to transfer camera-module actuator (CMA) business to Q Tech's controlling shareholder",
+"detail": "TDK signs a framework agreement to transfer its Micro Actuator Solution (camera-module actuator, CMA) business to Q Technology Investment Inc. (Q Tech's controlling shareholder); closing planned by March 2026. TDK's rele",
+"url": "https://www.tdk.com/en/news_center/press/20250428_03.html",
+"src": "company",
+"conf": "confirmed"
+},
+{
+"id": "r4-vcm-3-16",
+"date": "2025-07",
+"precision": "month",
+"cat": "commercial",
+"type": "other",
+"title": "Actutek Philippines Corporation registered with Philippine SEC",
+"detail": "Actutek Philippines Corporation registered with the Philippine SEC (reg. no. 2025070211430-84, \"Year of Establishment: 2025\"; the number's prefix suggests 2025-07-02). Registry aggregator source.",
+"url": "https://companieshouse.ph/actutek-philippines-corporation",
+"src": "other",
+"conf": "strong"
+},
+{
+"id": "r4-vcm-3-18",
+"date": "2025-11-14",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "TDK Taiwan creditor notice: CMA division spun into Actutek, shares to be transferred to Q Tech by end-March 2026",
+"detail": "The \"Camera Module Actuator Solutions\" RM Department is spun into Actutek Corporation effective 2026-01-01, then \"all of its shares in Actutek\" are to be transferred to Q Tech; sale \"expected to close by the end of March",
+"url": "https://www.tdk.com/en/information/202511_01.html",
+"src": "company",
+"conf": "confirmed"
+},
+{
+"id": "r4-vcm-3-19",
+"date": "2026-02-09",
+"precision": "day",
+"cat": "commercial",
+"type": "other",
+"title": "Philippine Bureau of Customs notice lists Actutek Philippines Corporation as consignee (B/L TPEDJJ59456)",
+"detail": "Notice to file entry, discharged February 09, 2026, item 39: bill of lading TPEDJJ59456 (a Taipei-origin prefix), consignee ACTUTEK PHILIPPINES CORPORATION. Shows the Batangas plant importing under its new name. Notices ",
+"url": "https://customs.gov.ph/wp-content/uploads/2026/02/Notice_to_File_Discharged_09_FEBRUARY_2026.pdf",
+"src": "other",
+"conf": "confirmed"
+},
+{
+"id": "r4-vcm-3-25",
+"date": "2026-06-01",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "Actutek share transfer to QT Investment Group completes",
+"detail": "Actutek share transfer to the QT Investment Group completes (Q Tech Aug-2026 circular; round-2/3 dataset). Actutek becomes a connected person of Q Tech.",
+"url": "https://www.qtechsmartvision.com/ueditor/php/upload/file/20260727/1785167184371007.pdf",
+"src": "exchange",
+"conf": "confirmed"
+}
+]

@@ -1,0 +1,189 @@
+[
+{
+"id": "vcm-5-76",
+"date": "2005",
+"precision": "year",
+"cat": "commercial",
+"type": "capacity",
+"title": "MinebeaMitsumi AF VCM / OIS actuator production commenced (Cebu, Philippines)",
+"detail": "Product page: AF VCM and OIS actuators 'commenced operation 2005', developed at Mitsumi Yamagata, made at Cebu Mitsumi; main users 'smartphone makers'; no XR/wearable mention.",
+"url": "https://www.minebeamitsumi.com/english/product/optical_device/1202244_16535.html",
+"conf": "confirmed"
+},
+{
+"id": "vcm-5-2",
+"date": "2015-11-02",
+"precision": "day",
+"cat": "commercial",
+"type": "other",
+"title": "TDK announces $126M purchase of Hutchinson Technology (CML's SMA partner)",
+"detail": "Origin of SMA know-how inside TDK's camera-actuator group; Hutchinson was CML's original SMA OIS manufacturing partner.",
+"url": "https://en.wikipedia.org/wiki/Hutchinson_Technology",
+"conf": "strong"
+},
+{
+"id": "vcm-5-75",
+"date": "2016-01-19",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Alps Alpine ATMC1Z9 bi-directional AF actuator enters mass production",
+"detail": "VCM AF actuator mass-production announcement.",
+"url": "https://www.alpsalpine.com/en-de/news/detail/2016-0119-01/",
+"conf": "confirmed"
+},
+{
+"id": "vcm-5-17",
+"date": "2023-01-10",
+"precision": "day",
+"cat": "commercial",
+"type": "capacity",
+"title": "Alps Alpine begins mass production of SMA actuator (30 µm wire, ~40% smaller than VCM)",
+"detail": "~40% smaller projected area and >10x thrust vs Alps VCM; 60% of VCM footprint for a 1,000 mg lens; no magnets/Hall sensors; Nagaoka plant. Targets smartphones; no XR/CML mention in Alps' text.",
+"url": "https://www.alpsalpine.com/e/news/detail/2023-0110-01/",
+"conf": "confirmed"
+},
+{
+"id": "vcm-5-18",
+"date": "2023-01-24",
+"precision": "day",
+"cat": "product",
+"type": "product_release",
+"title": "Alps Alpine samples piezoelectric zoom actuator (mm–cm travel, 3 V drive)",
+"detail": "Piezo actuator for smartphone optical zoom; samples from Jan 2023; also drones, surveillance, industrial. No XR mention.",
+"url": "https://www.alpsalpine.com/e/news/detail/2023-0124-01/",
+"conf": "confirmed"
+},
+{
+"id": "r2-vcm-0-10",
+"date": "2023-12-06",
+"precision": "day",
+"cat": "ip",
+"type": "patent",
+"title": "Meta moving-element AF filing cites LG Innotek, Samsung, Nidec prior art",
+"detail": "Cross-link: US 2025/0189869 cites Korean/Japanese VCM makers (examiner/applicant citations only, not a supply relationship).",
+"url": "https://patents.google.com/patent/US20250189869A1/en",
+"conf": "circumstantial"
+},
+{
+"id": "vcm-7-13",
+"date": "2025-04-28",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "TDK signs framework to transfer camera-module actuator business to Q Tech chairman's vehicle (QT Investment)",
+"detail": "TDK signed a Framework Agreement to transfer its Micro Actuator Solution (camera-module actuator) business to Q Technology Investment Inc. (BVI; Chairman He Ningning), completion planned March 2026. Q Tech filed an HKEX inside-information notice the same day: ",
+"url": "https://www.tdk.com/en/news_center/press/20250428_03.html",
+"conf": "confirmed"
+},
+{
+"id": "r2-vcm-0-18",
+"date": "2025-06",
+"precision": "month",
+"cat": "ip",
+"type": "hire",
+"title": "Meta-Korea link: Seoul posting prefers VCM AF actuator experience",
+"detail": "Cross-link: Meta Seoul Optical Systems Engineer job (AR glasses optics) names 'AF camera actuator (e.g. VCM)' as preferred; suggests Korean VCM supply-chain familiarity, no supplier named.",
+"url": "https://kr.linkedin.com/jobs/view/optical-systems-engineer-at-meta-4254314813",
+"conf": "circumstantial"
+},
+{
+"id": "vcm-5-54",
+"date": "2025-10-01",
+"precision": "day",
+"cat": "press",
+"type": "press",
+"title": "The Elec: LG Innotek holds over 50% share in iPhone 17 folded-zoom OIS",
+"detail": "Korean VCM/OIS maker coverage (Jahwa, LG Innotek) is all iPhone folded-zoom OIS; no XR actuator row found.",
+"url": "https://www.thelec.net/news/articleView.html?idxno=5447",
+"conf": "strong"
+},
+{
+"id": "vcm-5-56",
+"date": "2025-11-14",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "TDK Taiwan carves out actuator business into Actutek Corp (effective 2026-01-01); sale to Q Tech by end-March 2026",
+"detail": "RM Department of 'Camera Module Actuator Solutions' transferred to wholly-owned Actutek Corporation effective 2026-01-01; 'subsequent sale of Actutek to Q Tech is expected to close by the end of March 2026'.",
+"url": "https://www.tdk.com/en/information/202511_01.html",
+"conf": "confirmed"
+},
+{
+"id": "vcm-1-53",
+"date": "2025-12-17",
+"precision": "day",
+"cat": "press",
+"type": "design_in",
+"title": "ETNews: SEMCO near first FP-coil (AF/OIS actuator) supply to unnamed \"global big tech\"; XR expansion possible",
+"detail": "Samsung Electro-Mechanics in advanced negotiations to supply fine-pitch coils for AF/OIS camera actuators (via Stemco JV with Toray) to an unnamed \"global big tech\" (hundreds of millions of smartphones/yr, notebooks, tablets, wearables, services) with \"potenti",
+"url": "https://www.etnews.com/20251217000384",
+"conf": "strong"
+},
+{
+"id": "vcm-5-58",
+"date": "2026-01-01",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "Actutek Corporation carve-out from TDK Taiwan becomes effective",
+"detail": "Per TDK Taiwan's 2025-11-14 notice, the camera-module actuator business transfers to Actutek effective 2026-01-01 ahead of the sale to Q Tech.",
+"url": "https://www.tdk.com/en/information/202511_01.html",
+"conf": "confirmed"
+},
+{
+"id": "vcm-5-59",
+"date": "2026-01-05",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Alps Alpine CES 2026 driver-monitoring item; no XR/smart-glasses actuator news 2023–2026",
+"detail": "Only XR-adjacent item on Alps Alpine's English news list 2023–2026 is a 2026-01-05 CES driver-monitoring announcement; no smart-glasses actuator announcement found.",
+"url": "https://www.alpsalpine.com/e/news/",
+"conf": "confirmed"
+},
+{
+"id": "r2-vcm-1-20",
+"date": "2026-01-13",
+"precision": "day",
+"cat": "commercial",
+"type": "announcement",
+"title": "TDK: Actutek division effective date moved to 2026-01-15 (MOEA approval 2026-01-06)",
+"detail": "TDK Taiwan changed the Actutek carve-out effective date from 2026-01-01 to 2026-01-15.",
+"url": "https://www.tdk.com/en/information/202601_02.html",
+"conf": "confirmed"
+},
+{
+"id": "vcm-4-72",
+"date": "2026-03-16",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "TDK micro-actuator (VCM) assets being acquired by Q Tech's controlling shareholder",
+"detail": "Q Tech FY2025 deck notes TDK micro-actuator assets being folded into its actuator platform, so Q Tech can offer both VCM and TLens modules.",
+"url": "https://www.qtechsmartvision.com/ueditor/php/upload/file/20260316/1773640185158981.pdf",
+"conf": "confirmed"
+},
+{
+"id": "vcm-7-42",
+"date": "2026-06-01",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "Actutek (ex-TDK actuators, Taiwan/Philippines) share transfer to QT Investment Group completed",
+"detail": "Q Tech's Aug-2026 circular: TDK restructured the business into Actutek in Jan 2026 \"and the subsequent acquisition of Actutek by a member of the QT Investment Group (completed on 1 June 2026)\", making Actutek a connected person. Tokyobrief: transfer effective ",
+"url": "https://www.qtechsmartvision.com/ueditor/php/upload/file/20260727/1785167184371007.pdf",
+"conf": "confirmed"
+},
+{
+"id": "vcm-9-97",
+"date": "2026-09-26",
+"precision": "day",
+"cat": "ip",
+"type": "other",
+"title": "Mitsumi appears among Meta patent references for VCM-based camera solutions",
+"detail": "Meta filings describe VCM-based camera solutions with Mitsumi among references; no identified competing supply to the Meta glasses.",
+"url": "",
+"conf": "circumstantial"
+}
+]

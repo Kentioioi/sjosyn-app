@@ -1,0 +1,1477 @@
+{
+ "leadtimes": [
+  {
+   "window": "w-meta-0-8",
+   "lanes": [
+    "polight",
+    "qtech",
+    "modules",
+    "vcm",
+    "optotune",
+    "cml"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-09-01",
+     "end": "2026-12-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-08-01",
+     "end": "2026-10-31"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-10-01",
+     "end": "2027-02-28"
+    }
+   ],
+   "rationale": "Meta VR Glasses, US$1,299.99, 'Spring 2027' (Mar-May 2027): the only announced consumer device due in 2026-2027 with documented 'passthrough with autofocus and depth' (developer pages, 2026-09-23); Varjo's enterprise XR-4 Focal Edition (2023-11-27) already has gaze-directed autofocus passthrough. Bands use poLight's own record: first production-linked orders 4.8 months (Xiaomi watch), about 3 (Honeywell validation PO) and 10 months (Magic Leap 2, attribution inferred) before launch; disclosed initial MP POs NOK 0.36m (Magic Leap 2) and 2.9m (Meizu, 2.1 months before announcement); design-wins declared before launch, on an unnamed OEM's announcement day (2023-11-27) or with the customer named after launch (Xiaomi). The bands apply only if Program A is this device: its qualification POs (~NOK 1.8m from 2025-08-06, NOK 0.7m on 2026-06-18) sit 18.8 and 8.4 months out, and a first production PO would land in October 2026 to early 2027, probably small; nothing in that band has appeared by 2026-10-06. Producer-side timing: Seeya's Phoenix panel in mass production since May 2026, Q Tech's 'Ramp in 2H26/2027' (2026-08-24) and DBS's sell-side 1H27 sentence (2026-08-26). The 2026-09-20 supplier lists name Goertek, Seeya and Qualcomm for Phoenix but no camera-module or actuator vendor; Sunny is reported for Meta's AI-glasses modules. Meta also holds its own piezo-membrane lens IP and a pending moving-element MEMS autofocus (priority 2023-12-06), and VCM and Optotune's high-volume liquid lens remain alternatives. First teardowns are expected Apr-Sep 2027."
+  },
+  {
+   "window": "w-meta-0-10",
+   "lanes": [
+    "polight",
+    "qtech",
+    "cml",
+    "optotune",
+    "modules",
+    "vcm"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-07-01",
+     "end": "2026-12-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-10-01",
+     "end": "2027-03-31"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-07-01",
+     "end": "2027-09-30"
+    }
+   ],
+   "rationale": "Meta 'Artemis' consumer AR glasses, a full-year 2027 rumour window (Bloomberg/Reuters) that Bosworth 'would not commit to' on 2026-09-24, so the bands are wide (12-18 / 9-15 / 3-6-month norms). poLight's consumer-display precedent is a warning: the 2022-03-15 AR display design-in was 'some years' from release in Feb 2024 and a consumer LBS design-in was removed in Aug 2025 with 'no plan for MP'. Program C, the NOK 5m AR-camera design PO of 2025-10-13 with validation modules shipped end-Q2 2026, falls 14.6 and 6.1 months before 2027-01-01, but the CEO said on 2026-08-19 that Programs A, B and C are different customers, so C can be Meta only if Meta is not the Q Tech backer. Meta's 'camera module with tunable lens' (priority 2024-12-19, filed 2025-11-14, published 2026-06-25) allows 'polymer tunable lens technology or liquid lens technologies' with wafer-level optics, replacing the earlier LC/electrowetting reading, and its exposed-camera filing (priority 2025-02-12) describes a piezo-membrane option for AR glasses. Meta's Sep-2026 sensor and 'auto-focus electrical design' postings are design-phase hires 3-15 months before any 2027 device. No supplier is named."
+  },
+  {
+   "window": "w-meta-0-11",
+   "lanes": [
+    "qtech",
+    "modules",
+    "vcm",
+    "polight"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2026-01-01",
+     "end": "2027-12-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2026-04-01",
+     "end": "2028-03-31"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2027-01-01",
+     "end": "2028-09-30"
+    }
+   ],
+   "rationale": "Quest 4 'Griffin' gaming headset, no earlier than H2 2027 and possibly 2028 (rumor; Bosworth confirmed two devices on the roadmap on 2026-02-10). Quest 3 and 3S shipped 2x4 MP passthrough with no autofocus; if the VR Glasses' autofocus passthrough carries over, design-in would run Jan 2026-Dec 2027 under the 12-18-month norm, and under poLight's own cadence (first orders 4.8-10 months before launch) qualification POs for a 2028 device would surface during 2027. Q Tech's product map lists a 'VR VST TLens AF camera' (2025-08-11), its 2026-09-28 posting for an XR whole-device factory head names 'Meta, Pico' as brand customers, Goertek is the core/exclusive VR ODM for Meta, Sony and Pico with ~80% of high-end assembly (2023-11-18) and Luxshare is building a 9m-unit/yr Vietnam VR line tied to Meta. No direct evidence links any actuator supplier to Griffin."
+  },
+  {
+   "window": "w-meta-0-7",
+   "lanes": [
+    "polight",
+    "qtech",
+    "modules"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-01-01",
+     "end": "2026-12-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-04-01",
+     "end": "2027-03-31"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-01-01",
+     "end": "2027-09-30"
+    }
+   ],
+   "rationale": "Binocular Ray-Ban Display successor 'Hypernova 2', timing unresolved between H2 2026 (The Information, 2026-02-19) and 2027 (Bloomberg, 2025-04-01); not shown at Connect 2026 and Bosworth said on 2026-09-24 there is 'no new version of the hardware', although Citi told clients the same week that a 'Ray-Ban Display 2' is expected early 2027 with Sunny, Konica Minolta and OmniVision positioned (see). Bands follow the same 12-18 / 9-15 / 3-6-month norms. The current Display uses an OmniVision LCoS engine and a 12 MP Sony-sensor camera that TechInsights (2026-06-10) describes without any actuator or autofocus, drawing 1.0-1.7 W; poLight's TWedge wobulation part is not expected to be mass-production ready before about 2028, so a 2027 Hypernova 2 would precede it. Evidence is thin on both display and camera actuators."
+  },
+  {
+   "window": "w-r2-meta-1-2",
+   "lanes": [
+    "polight",
+    "qtech",
+    "modules",
+    "vcm"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-07-01",
+     "end": "2026-03-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-10-01",
+     "end": "2026-06-30"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-07-01",
+     "end": "2026-12-31"
+    }
+   ],
+   "rationale": "Meta Ray-Ban Display 2, 'early 2027' per Citi (via AAStocks/GuruFocus, 2026-09-24/25) with Sunny, Konica Minolta and OmniVision 'poised for growth'; the Q1 bounds are interpretive and the window is contested, because Bosworth said on 2026-09-24 there is 'no new version' of the Display hardware. Generic norms (12-18 / 9-15 / 3-6 months) put every phase in the past or in H2 2026; under poLight's precedents a Q1-2027 device would already be generating production call-offs (Jul-Dec 2026) and none of poLight's disclosed programmes is described as a display-glasses camera (Program B 'launches this year', Programs A and C are 'glasses' and an AR-camera platform). The gen-1 Display camera is a 12 MP Sony-sensor unit with no actuator identified (TechInsights 2026-06-10), Meta's 2025-04-17 paper argues against autofocus in all-day glasses and TWedge is not mass-production ready before 2028. Negative or neutral for TLens; a Display 2 spec sheet claiming autofocus would reopen it."
+  },
+  {
+   "window": "w-apple-1-5",
+   "lanes": [
+    "cml",
+    "vcm",
+    "modules",
+    "optotune",
+    "polight"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2026-04-01",
+     "end": "2026-12-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2026-07-01",
+     "end": "2027-03-31"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2027-04-01",
+     "end": "2027-09-30"
+    }
+   ],
+   "rationale": "Apple N50 display-less AI glasses, shipping 'by the end of 2027' with an unveil at WWDC June 2027 (Gurman 2026-07-26, reiterated 2026-09-27); two camera sensors, one capture and one computer-vision, with no autofocus or module vendor reported. Norms as above; Kuo's Q2 2027 mass-production call would pull production POs into Q1 2027. Apple-side actuator pointers: ex-CML CTO Ben Brown at Apple from about Mar 2026, 18 months before the window; SEMCO's fine-pitch coil supply to a 'global big tech' with possible XR expansion; LG Innotek's exclusive Vision Pro 3D-sensor role; Cowell, Vision Pro's external-camera supplier with Apple at 98.1% of revenue, 'hopes to join the Apple AI-glasses project' (Guojin, 2025-11-03). Talent moved the other way too: Patrick Llull left Apple for Meta (May 2026) and ex-Apple optics inventors lead Meta's tunable-lens camera-module filing. Q Tech has no meaningful Apple exposure and poLight has never referred to Apple; Apple's own tunable-lens patents are prescription see-through lenses, not camera AF."
+  },
+  {
+   "window": "w-samsung-1-17",
+   "lanes": [
+    "polight",
+    "qtech",
+    "vcm",
+    "modules"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-05-01",
+     "end": "2026-07-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-08-01",
+     "end": "2026-04-30"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-05-01",
+     "end": "2026-10-31"
+    }
+   ],
+   "rationale": "Samsung/Google intelligent eyewear SM-O200P (Warby Parker) / SM-O200J (Gentle Monster), November 2026 per a Samsung official (2026-10-01); the FCC filing shows a single 12 MP camera on Snapdragon AR1 Gen 1, and autofocus is claimed only by VRARA 'early reports' (2026-02-09). Bands follow poLight's consumer precedents (Meizu's design-win PO 2.1 months before announcement and 4.5 before sale; Xiaomi's PVT PO 4.8 months before launch), so a November device would show its design-in May-Jul 2026 and production call-offs May-Oct 2026. Program B fits that timing: PoC PO 2025-11-24, follow-ons 2026-04-07 and 2026-05-20, design-in 2026-07-10 (3.7 months before 2026-11-01) with Q4 deliveries, the three 2026 POs at mass-production price. DBS (2026-08-26) says Q Tech's AR optical engines ship to Meta and Samsung, a relationship that does not involve cameras, and Samsung's 2022-priority piezo-membrane 'T-lens' filing concerns a second, depth camera this single-camera product lacks. The CEO's 'U.S. and China, so you pick' was a refusal to locate the customer. A November teardown showing fixed focus, or deliveries that do not step up in Q4, would contradict it."
+  },
+  {
+   "window": "w-google-1-13",
+   "lanes": [
+    "polight",
+    "qtech",
+    "cml",
+    "modules",
+    "vcm"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-07-01",
+     "end": "2026-12-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-10-01",
+     "end": "2027-03-31"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-07-01",
+     "end": "2027-09-30"
+    }
+   ],
+   "rationale": "Android XR in-lens display glasses in 2027, stated by Google at I/O 2026; Samsung's colour-display version 'may launch late 2027' and Kering's Gucci glasses 'probably 2027' sit inside the same window. Full-year window, so bands are wide under the 12-18 / 9-15 / 3-6-month norms. Supplier-side signals that fit a 2027-2028 display device are TWedge sample orders from 'a leading AR platform company' (2026-03-07) and from a 'leading consumer OEM' (2026-09-21), but poLight itself says a mass-production-ready TWedge 'could be needed in two years' from Feb 2026, i.e. 2028. Camera autofocus for these glasses is unreported."
+  },
+  {
+   "window": "w-snap-2-0",
+   "lanes": [
+    "polight",
+    "qtech",
+    "modules",
+    "cml"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-04-01",
+     "end": "2026-06-30"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-07-01",
+     "end": "2026-03-31"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-04-01",
+     "end": "2026-10-31"
+    }
+   ],
+   "rationale": "Snap Specs, US$2,195, shipping 'later this fall' 2026 in the US, UK and France; two RGB and two IR cameras with no megapixel or focus-type specification published as of 2026-10-06; initial run reportedly capped at about 100,000 units. Generic norms put design-in in Apr-Dec 2025 and production POs in Apr-Sep 2026; poLight's own precedents stretch the design-in band to Jun 2026 because its declarations trail the OEM's lock (Meizu 2.1 months before announcement, Varjo-type MR HMD on announcement day). Program B's design-in of 2026-07-10 is 83 days before the window and 24 days after Specs was unveiled (2026-06-16), so Snap fits only the 'declare at or after announcement' pattern; Q4 lens deliveries would then feed a second build, not the October first run. Snap is a U.S. company but poLight labels Program B a 'leading consumer OEM' rather than 'top tier U.S.'. No supplier evidence names Snap."
+  },
+  {
+   "window": "w-xreal-2-4",
+   "lanes": [
+    "polight",
+    "qtech",
+    "modules"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-03-01",
+     "end": "2025-11-30"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-06-01",
+     "end": "2026-02-28"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-03-01",
+     "end": "2026-08-30"
+    }
+   ],
+   "rationale": "Xreal Aura, fall 2026 in the US, UK, Japan, South Korea and Europe at no more than US$1,500; two world-facing tracking cameras plus one high-resolution camera of undisclosed focus type. Xreal's Eye accessory spec page (July 2025) states no focus type, so the 'fixed focus' label in the dataset is unsourced. Xreal ships 125-137k units a year (133,700 in 2025), so volumes would be small and its scale fits poorly the CEO's definition of 'Tier 1 or leading' customers as 'a very sizable company... worldwide known'. Norms as above; Program B's 2026-07-10 design-in is only 53 days before the window start, which only poLight's zero-lag precedent (a design-win declared on an MR-headset maker's announcement day) allows, and the Meizu/Xiaomi 2.1-4.8-month spans point to Q4 2026 at the earliest. Nothing in the supplier lanes names Xreal; its shareholders include Alibaba and Luxshare, whose 'T-LENS Camera' at CIOE (2026-09-11) is one possible module route."
+  },
+  {
+   "window": "w-alibaba-3-3",
+   "lanes": [
+    "modules",
+    "vcm",
+    "qtech"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-04-13",
+     "end": "2025-10-13"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-07-13",
+     "end": "2026-01-13"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-04-13",
+     "end": "2026-07-13"
+    }
+   ],
+   "rationale": "Alibaba Qwen N1 / N1 Pro glasses with a 50 MP camera (N1 Pro adds eye tracking and iris payment), previewed 2026-09-10, pre-orders 2026-09-22, in-stock sale 2026-10-13, China only. Under the generic norms every phase is already past, but under poLight's consumer precedents the timing fits Program B: its design-in of 2026-07-10 came 62 days before the preview and 95 days before the sale date, against Meizu's 2.1 months to announcement and about 4.5 to sale, and its 'release plan is this year'. Alibaba's affiliate Ant Group showed 'Look to Pay' demo glasses with a TLens camera because fixed focus 'didn't work so nice' (poLight CEO, 2026-08-06), and a 50 MP sensor does not rule TLens out, since poLight markets a 48 MP 1/1.5-inch TLens Add-In design. Against it: Ant's demo is not Alibaba's product, N1 is China-only while Program B deliveries run into Q4, and no source names a focus actuator for N1. A poLight design-win release around the sale date, a teardown or an N1 Pro specification claiming autofocus would decide."
+  },
+  {
+   "window": "w-alibaba-3-5",
+   "lanes": [
+    "qtech",
+    "modules",
+    "polight",
+    "vcm"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-07-01",
+     "end": "2026-12-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-10-01",
+     "end": "2027-03-31"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-07-01",
+     "end": "2027-09-30"
+    }
+   ],
+   "rationale": "Inferred next-generation Qwen glasses in 2027, based only on Alibaba's 4-6-month release cadence (preview 2025-07-28, launch 2025-11-27, Qwen Glasses 2026-03-03, N1 2026-09-10) with March (MWC) and September (Apsara) as recurring slots. Bands follow the generic norms across a full-year window. Ant Group's TLens demo of 2026-08-06 would sit 5-17 months before a 2027 device, inside the qualification band, but it is a demo, not an order; Chinese module makers already sell TLens-branded modules (O-Film since 2020, TS-Precision 2025, Luxshare's 'T-LENS Camera' 2026-09-11) and Q Tech counts ten eyewear brands, so a China design-in would not need a new supply chain. Evidence is thin and the window itself is unannounced."
+  },
+  {
+   "window": "w-amazon-3-1",
+   "lanes": [
+    "modules",
+    "vcm",
+    "qtech"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-04-01",
+     "end": "2026-03-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-07-01",
+     "end": "2026-06-30"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-04-01",
+     "end": "2026-12-31"
+    }
+   ],
+   "rationale": "Amazon consumer 'Jayhawk' camera-plus-monocular-display glasses, reported by The Information on 2025-09-10 for 'late 2026 or early 2027' with no follow-up reporting in the 391 days since, suggesting slippage. Bands follow the norms. Amazon's AR patents linked to Jayhawk cover UI and fulfilment, not optics or autofocus, and its only shipping glasses are driver units with 'integrated cameras' scaling to 20,000-plus devices by end-2027, a volume too small to show in any supplier's accounts. The only Amazon-adjacent TLens trace is a forum-posted LinkedIn excerpt of a Foxconn camera-module engineer who 'completed TLens fast-focus camera module driver development' in a Jan-Jun 2024 role serving Microsoft, Amazon and Varjo, which fits Varjo's XR-4 far better. No supplier signal points at Amazon."
+  },
+  {
+   "window": "w-otheroem-3-8",
+   "lanes": [
+    "qtech",
+    "modules",
+    "polight",
+    "vcm"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-04-01",
+     "end": "2026-07-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-07-01",
+     "end": "2026-04-30"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-04-01",
+     "end": "2026-11-30"
+    }
+   ],
+   "rationale": "Pico Space Pro, Q4 2026 (China first) after the 2026-09-02 debut event was cancelled on 2026-08-25; a social leak claims early October at US$2,899. Q Tech counted PICO among its AR/VR optics brands (FY2023 deck), lists a 'VR VST TLens AF camera' on its product map (2025-08-11) and on 2026-09-28 advertised a Kunshan XR factory head whose brand customers are given as '(e.g. Meta, Pico)', an example list, not a supply contract. ByteDance's Lemon/Beijing Zitiao gaze-driven XR camera autofocus application (priority 2023-09-20; US published 2026-08-27) names 'a poLight lens' as one autofocus option, which shows awareness two years before Program B's first PO, not procurement. Bands use poLight's consumer precedents (design-win or MP PO 2.1-5.9 months before launch: Meizu, Xiaomi, XUN): Program B's design-in of 2026-07-10 sits 2.7-5.7 months before an Oct-Dec release. The CEO declined to locate Program B ('U.S. and China, so you pick' describes poLight's AR/MR focus) and called it 'a big company and a major player in the ecosystem', which ByteDance fits, as do Samsung/Google and Alibaba. No teardown yet; nothing names Pico."
+  },
+  {
+   "window": "w-otheroem-2-13",
+   "lanes": [
+    "polight",
+    "qtech",
+    "modules"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-07-01",
+     "end": "2026-03-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-10-01",
+     "end": "2026-06-30"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-07-01",
+     "end": "2026-12-31"
+    }
+   ],
+   "rationale": "Viture Helix enterprise AI safety glasses on NVIDIA XR AI, 12 MP camera, from US$600, shipping Q1 2027; focus type unstated. Bands follow the norms. poLight's enterprise cadence (repeat MR head-mounted design-win with an initial mass-production PO of ~NOK 0.4m on 2025-10-09; IRIS-scanner design-in 2025-10-20) is the type of signal that would fit a Q1 2027 enterprise device, but nothing names Viture, and Viture is being sued by Xreal. Thin."
+  },
+  {
+   "window": "w-xiaomi-3-6",
+   "lanes": [
+    "modules",
+    "vcm",
+    "qtech",
+    "polight"
+   ],
+   "phases": [
+    {
+     "label": "design-in / qualification complete",
+     "start": "2025-04-01",
+     "end": "2026-12-31"
+    },
+    {
+     "label": "qualification orders expected",
+     "start": "2025-07-01",
+     "end": "2027-03-31"
+    },
+    {
+     "label": "production POs / ramp expected",
+     "start": "2026-04-01",
+     "end": "2027-09-30"
+    }
+   ],
+   "rationale": "Xiaomi AI Glasses second generation, rumoured on 2026-08-05 to be 'R&D complete' but paused and possibly slipping to Q4 2026 or 2027; Xiaomi called the report false. Generation one (2025-06-26) used a 12 MP Sony IMX681 with Goertek as ODM. Xiaomi was poLight's first consumer TLens customer (PVT PO 2019-08-15, launch-prep POs 2019-10-11/17, Mitu watch launched 2020-01-07, 4.8 months after the first PO and named by poLight only afterwards) and used a NEXTLENS liquid lens in the Mi MIX Fold (2021-03-30), so it has a history of adopting tunable optics, but there is no signal for gen 2 and CMBI expects Sunny to be its glasses camera supplier (2025-02-13). Bands follow the norms over a rumor window."
+  }
+ ],
+ "matches": [
+  {
+   "from": "polight-4-40",
+   "to": "w-meta-0-8",
+   "title": "Program A qualification PO (Aug 2025, two cash tranches) vs Meta VR Glasses spring 2027",
+   "comment": "The ~NOK 1.8m PO (2025-08-06, 50% firm, final half called 2026-02-11) sits 18.8-21.8 months before Mar-May 2027, beyond poLight's first-order precedents (about 3-10 months), so it reads as qualification, not a launch order. A Q4-2026 report still saying 'qualification' would weaken the VR Glasses link.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "polight-4-81",
+   "to": "w-meta-0-8",
+   "title": "Program A follow-on PO (Jun 2026, NOK 0.7m) lands 8.4-11.4 months before spring 2027",
+   "comment": "The NOK 0.7m follow-on (2026-06-18, 'continuation of the qualification program', deliveries 'likely second half of 2026') is 8.4-11.4 months out, near Magic Leap 2's 10.0 months; 316 days after the first PO and still pre-design-in, so circumstantial. A quiet Q3 report (2026-10-29) would weaken it.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "qtech-7-50",
+   "to": "w-meta-0-8",
+   "title": "Q Tech 'Overseas Key Customers: Ramp in 2H26/2027' vs the 3-6-month ramp band",
+   "comment": "Published 2026-08-24, 189 days before the window: 'TLens + AR Mono Engine: Volume Delivery Achieved' is one bullet shared with the optical engines DBS says ship to Meta and Samsung, so it need not mean TLens volume; Q Tech can also source Actutek VCM/SMA.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "qtech-7-8",
+   "to": "meta-0-68",
+   "title": "'US M brand' vendor code (Aug 2024) to the VR Glasses announcement 25 months later",
+   "comment": "First reported as a 'major US customer' vendor code (2024-03-25), named 'US M brand' on 2024-08-12, 246 days before the poLight investment and 772 days before Connect 2026. 'M' is never expanded; Q Tech's first document naming Meta is a 2026-09-28 job post.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "qtech-7-20",
+   "to": "w-meta-0-8",
+   "title": "'VR VST TLens AF camera' on Q Tech's product map 18.6 months before Meta's VR Glasses, the only announced consumer device with autofocus passthrough",
+   "comment": "Listed on the H1-2025 deck (2025-08-11), 408 days before Meta's 'passthrough with autofocus and depth' page; Huaqin (2022) and Goertek (2024) filings show the category predates it, and Varjo's enterprise XR-4 Focal Edition already has AF passthrough. Pico Space Pro is the other VST host.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "metaip-8-50",
+   "to": "w-meta-0-8",
+   "title": "Ex-Meta actuator architect: piezo tunable-lens AF module passed AR/VR/MR reliability qualification by Apr 2025",
+   "comment": "Huang's LinkedIn snippet says a miniature piezo tunable-lens AF module passed 'full reliability qualifications for AR/VR/MR' by his April-2025 exit, about 22 months before the window. It never says whose lens; Meta's own membrane-lens IP could be built by another MEMS line.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "metaip-6-63",
+   "to": "w-meta-0-8",
+   "title": "US 12,663,619 (granted 2026-06-23): wide-FOV tunable-lens assembly citing three poLight documents",
+   "comment": "Granted eight months before launch; its reference list carries three poLight TLens documents (pages retrieved 2022-10-19, applicant-submitted) and the 107-degree, F/2.2, TTL 5 mm PZT design is passthrough-class. Round 3 adds Meta's piezo driver IC (priority 2023-11-15). Citations prove awareness, not purchase.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "metaip-0-26",
+   "to": "meta-0-69",
+   "title": "Meta's own paper against autofocus in all-day glasses vs Ray-Ban Meta Gen 3 (no autofocus claimed)",
+   "comment": "Reality Labs' 2025-04-17 paper says AF actuators add size, weight and power to always-on glasses; Gen 2 reviews (2025-12-11) found fixed focus and Gen 3 (2026-09-23) claims no AF. Negative match: Meta's 2027 TLens opportunity is the puck-powered VR Glasses.",
+   "strength": "strong"
+  },
+  {
+   "from": "metaip-8-57",
+   "to": "w-meta-0-10",
+   "title": "Meta's 'camera module with tunable lens' application (polymer or liquid lens, wafer-level optics) vs Artemis 2027",
+   "comment": "Filed 2025-11-14 (priority 2024-12-19, published 2026-06-25; Chinese counterpart 2026-06-23), 13.6 months before 2027: existing modules glue on a 3x3 or 5x5 mm tunable lens, replaced here by wafer-level integration of 'polymer' or 'liquid' lens technology. Technology-agnostic next-generation work, not the earlier LC/electrowetting reading.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "polight-4-83",
+   "to": "w-samsung-1-17",
+   "title": "Program B design-in (2026-07-10, Q4 deliveries) vs Samsung/Google glasses in November 2026",
+   "comment": "Design-in is 114 days before November 2026, inside the 3-6-month production-PO band; the three 2026 POs (NOK 4.0m) are at mass-production price. VRARA's 'early reports' of autofocus (2026-02-09) fit, but the FCC filing (2026-10-01) shows one 12 MP camera and no focus data.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "polight-4-83",
+   "to": "w-snap-2-0",
+   "title": "Program B vs Snap Specs (US$2,195, fall 2026)",
+   "comment": "83 days before the 2026-10-01 window; 'probably high-end' suits a US$2,195 product, and a reported ~100,000-unit run with two RGB cameras roughly matches NOK 4.0m of lenses at ~US$2. But poLight keeps 'top tier U.S.' for Programs A and C.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "polight-4-83",
+   "to": "w-xreal-2-4",
+   "title": "Program B vs Xreal Aura (fall 2026, one high-resolution camera)",
+   "comment": "Only 53 days separate the design-in from the window; Xreal states no focus type (the Eye accessory's 'fixed focus' label is unsourced), and 133,700 units in 2025 fits poorly the CEO's 'very sizable... worldwide known' label. Survives only if Aura slips into Q4.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "qtech-7-36",
+   "to": "w-samsung-1-17",
+   "title": "Q Tech 'small-batch deliveries for 2 leading overseas terminal clients' (YE2025) vs a November-2026 launch",
+   "comment": "Small batches at year-end 2025 are 10-11 months before November 2026; by 2026-08-24 the deck says 'Volume Delivery Achieved' and DBS (2026-08-26) names Meta and Samsung. But DBS describes AR optical engines, useless to display-less November eyewear, so this points to a 2027 display model.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "polight-4-48",
+   "to": "w-meta-0-10",
+   "title": "Program C NOK 5m AR-camera design PO (Oct 2025) vs 2027 AR glasses",
+   "comment": "The design PO (2025-10-13) is 14.6 months before 2027 and validation modules (end-Q2 2026) 6.1 months, fitting late 2027; 'several AR head-worn devices' reads as platform work. A, B and C are different customers, so C is Meta only if Meta is not the backer.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "cml-5-64",
+   "to": "w-apple-1-5",
+   "title": "CML CTO Ben Brown moves to Apple (about Mar 2026), 18 months before N50 shipments",
+   "comment": "Brown's LinkedIn now shows Apple after a CML CTO tenure reported as Dec 2022-Mar 2026 (exact dates unverified), 18-21 months before Oct-Dec 2027; Apple's tunable-lens filings with ex-CML CTO Topliss are see-through prescription lenses and N50's two cameras are reported without autofocus.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "cml-5-8",
+   "to": "apple-1-3",
+   "title": "CML's 2021 'US technology giants... AR/VR' engagements vs Vision Pro (shipped 2024-02-02)",
+   "comment": "837 days separate CML's 'US technology giants... AR/VR' statement (2021-10-18) from Vision Pro shipping, a textbook span, yet iFixit identified no actuator supplier and CML's last XR-facing article is dated 2025-05-12. Unresolved; an M5 teardown showing SMA would reverse it.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "cml-5-19",
+   "to": "meta-0-68",
+   "title": "CML 'commercial projects with several industry leaders' (Jan 2023) vs Meta VR Glasses",
+   "comment": "Forty-four months after CML's SPIE 2023 claim no CML-SMA XR product has surfaced; Meta abandoned its CML-citing wearable-camera application on 2025-05-08 and CML skipped SPIE AR/VR/MR 2025-2026, though its 2026 PCT and job ad still cite AR/VR. SMA wires in a teardown would contradict it.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "optotune-6-15",
+   "to": "w-meta-0-8",
+   "title": "Optotune EL-3.1-10.8 launch (2026-09-21) vs spring 2027",
+   "comment": "Launched 161 days before the window as 'designed for high-volume OEM integration', with handling instructions dated 2025-09-17 (17.4 months out); 1.72 mm, 0.3 g and 20 mW at 10 dpt is glasses-class though over three times TLens's <6 mW. No customer named; a competitive marker.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "optotune-6-10",
+   "to": "w-apple-1-5",
+   "title": "Optotune's glasses-class liquid lens documented Sep 2025, 24 months before Apple N50",
+   "comment": "The 2025-09-17 document is 744 days before Oct-Dec 2027, a full qualification cycle, and Apple holds three liquid-lens AF patents in a 2026 landscape, but nothing reports autofocus in N50's two cameras or links Optotune to Apple. Weak placeholder.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "vcm-1-53",
+   "to": "w-apple-1-5",
+   "title": "SEMCO near first fine-pitch-coil supply for a 'global big tech' AF/OIS actuator, XR expansion possible (Dec 2025)",
+   "comment": "Reported 2025-12-17, 21.5 months before late 2027, as advanced negotiations; the unnamed customer's profile matches Apple, and coils imply VCM/OIS actuators, so an autofocus N50 camera would more likely use a coil chain than a tunable lens. A fixed-focus N50 makes it moot.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "modules-0-65",
+   "to": "w-meta-0-8",
+   "title": "Phoenix supply-chain preview (2026-09-20): Goertek assembly and pancake; Sony sensors and Sunny modules are listed for the AI glasses",
+   "comment": "Published 162 days before the window: Phoenix gets Qualcomm, Goertek assembly and pancake, and a Seeya micro-OLED; Sony sensors and Sunny camera modules sit in the AI-glasses paragraph. No camera-module or actuator vendor is named for Phoenix, so the passthrough-module supplier is open.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r2-analysts-4-45",
+   "to": "w-meta-0-8",
+   "title": "DBS (2026-08-26, p.4): Meta project with Q Tech modules + poLight tunable lens 'expected to enter mass production in 1H27'",
+   "comment": "On p.4 of DBS's Q Tech note (BUY, target cut to HKD 12.60 from 15.0): a Meta project pairing Q Tech modules with poLight's tunable lens, MP in 1H27, 2-4 months before a Mar-May launch. Unsourced sell-side inference; DBS's 2026-05-08 Meta note omits poLight.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "polight-4-5",
+   "to": "xiaomi-3-23",
+   "title": "First consumer TLens: Xiaomi Mitu children's watch (2020-01-07)",
+   "comment": "poLight's first consumer product and Xiaomi's Mitu watch coincide in January 2020; the customer was named by the press and by poLight only after launch, and 37.8 months passed before the next XR proof (Magic Leap 2 teardown). Shows the disclosure pattern.",
+   "strength": "confirmed"
+  },
+  {
+   "from": "polight-2-127",
+   "to": "otheroem-4-54",
+   "title": "SnkeXR medical AR design win named on the same day (2025-10-31)",
+   "comment": "poLight's SnkeXR design win was named by both sides on 2025-10-31, showing poLight names customers when permitted; the consumer programmes' anonymity is the customer's choice. Enterprise and medical scale only.",
+   "strength": "confirmed"
+  },
+  {
+   "from": "sheba-6-32",
+   "to": "w-meta-0-8",
+   "title": "Sheba MEMS sensor-shift AF camera for AR/VR/XR (Jan 2024): no customer in 33 months",
+   "comment": "Launched 2024-01-09 with <10 mW and <5 ms claims; 1,001 days later Sheba reported 17 staff and USD 400K sales (January 2026) and an automotive MEMS production partner, not XR. Negative match: not a credible 2027 top-tier supplier.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "varioptic-6-27",
+   "to": "w-apple-1-5",
+   "title": "Corning Varioptic remains an industrial liquid-lens line (Sep 2026)",
+   "comment": "Corning's 2026-09-24 page frames Varioptic as industrial and its Oct 2026-May 2027 show calendar is machine vision; Meta's examiner cited Varioptic only as prior art. Negative for any 2027 consumer role, Apple included.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "qtech-5-46",
+   "to": "w-meta-0-8",
+   "title": "TDK actuator business to Q Tech's controlling shareholder (framework Apr 2025, closed Jun 2026): VCM, SMA or TLens",
+   "comment": "Framework 13 days after the poLight investment, completed 399 days later (2026-06-01) under the controlling-shareholder group, so Q Tech can source VCM, SMA or TLens for the 2H26/2027 ramp. Watch poLight's Q Tech NRE invoices and whether wafer orders resume; inventory covers 'several millions'.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "polight-4-69",
+   "to": "w-google-1-13",
+   "title": "TWedge samples for 'a leading AR platform company' (Mar 2026) vs 2027 display glasses",
+   "comment": "The 2026-03-07 sample order is 10-22 months before a 2027 display device, but TWedge is an LCoS wobulation part that poLight says is two years from mass-production readiness (Feb 2026), i.e. 2028. Google, Samsung, Snap and Meta all fit 'platform company'.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r2-qtech-4-44",
+   "to": "meta-0-68",
+   "title": "DBS: Q Tech's AR optical engines 'already being shipped to Meta and Samsung' (Aug 2026) vs Connect 2026",
+   "comment": "DBS (2026-08-26), 28 days before Connect: monochrome engines in volume, colour in small batches, shipped to Meta and Samsung, matching Q Tech's 'Deliveries to 2 Top Overseas OEMs' (2026-08-24). These are optical engines, development or next-generation parts; nothing concerns cameras or TLens.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r2-qtech-2-35",
+   "to": "w-meta-0-8",
+   "title": "Q Tech recruits an XR whole-device factory head naming 'Meta, Pico' as brand customers (2026-09-28)",
+   "comment": "154 days before the window, Q Tech's Kunshan posting is to build XR OEM/ODM lines and serve brand customers '(e.g. Meta, Pico)', the first primary Q Tech document naming Meta. It proves an XR relationship, not 2027 camera supply, and is silent on TLens.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "metaip-dc-1",
+   "to": "w-meta-0-8",
+   "title": "Forum-posted LinkedIn excerpt: ex-Meta DFx engineer was 'DRI for TLens camera process development, drove 2 Eng mini-builds'",
+   "comment": "Posted 2026-10-05, 147 days before the window; if genuine it places a TLens-branded camera in Meta engineering builds. The role is undated, unverified beyond a screenshot, names no device, and 'promising early results' is early engineering-build language. Profile retrieval or a teardown would confirm.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "metaip-dc-2",
+   "to": "r2-metaip-0-38",
+   "title": "'NTI dToF/TLens camera module process... dual Active Alignments + Flip' vs Meta's Sep-2026 opto-mechanical post (AA process, MP ramp)",
+   "comment": "The 2026-10-05 excerpt's employer is cropped (Reality Labs or a supplier), so it is no established Meta link and may describe dToF and TLens modules on one line. Meta's 2026-09-22 posting asks for Active Alignment and ramp. Neither names a device or vendor.",
+   "strength": "rumor"
+  },
+  {
+   "from": "meta-dc-3",
+   "to": "meta-0-73",
+   "title": "Meta engineer's post: led the autofocus work, years of effort across the whole stack, vs the developer spec 'passthrough with autofocus and depth'",
+   "comment": "A LinkedIn post (late Sep/early Oct 2026) seen only as a forum screenshot of an auto-translation; paraphrased, it says 'Autofocus: Yes' took years across the whole stack, consistent with the gaze-driven AF grant (2026-02-10). It names no actuator; Meta's moving-element MEMS option remains pending.",
+   "strength": "strong"
+  },
+  {
+   "from": "r2-metaip-0-27",
+   "to": "w-meta-0-8",
+   "title": "US 12,547,244 gaze-driven AF passthrough camera granted 2026-02-10, 12.6 months before launch",
+   "comment": "Priority 2023-03-31; claim 1 suspends autofocus when vergence and fixation diverge, a lens-agnostic control layer. One Goertek XR filing (2024-06-03) puts a TLens under a similar gaze-driven VST scheme. Supports 'AF passthrough is deliberate', not 'TLens'; whether the shipped AF is gaze-driven is undocumented.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r2-metaip-0-9",
+   "to": "w-meta-0-8",
+   "title": "Meta's moving-element MEMS AF for pass-through MR (priority 2023-12-06, pending): the non-tunable alternative",
+   "comment": "Filed nine months after the gaze-driven AF priority, this Li/Lerner/Huang application moves one element ~27 um on MEMS arms for +/-2.5 to 4 D, targets pass-through MR, cites LG Innotek, Samsung and Nidec art and is pending. The clearest non-piezo path.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r2-metaip-0-12",
+   "to": "w-meta-0-8",
+   "title": "In-field actuator calibration application names 'piezoelectric (PZT) actuated tunable lens' among calibrated actuators (priority 2024-09-17, published 2026-03-19)",
+   "comment": "Twenty inventors (Xiong, Huang, Finkelstein); recalibration after drops and thermal drift is a shipping-product concern, with priority 29.4 months before the window. The PZT tunable lens is one of several actuator types beside VCM, SMA and MEMS: a modelled production case, not the chosen one.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r2-metaip-0-6",
+   "to": "polight-9-5",
+   "title": "Meta omnibus (priority 2023-03-02): variable lens '~6 mW, ~2 ms, 10 cm-infinity, no moving parts' vs poLight's published '<6 mW incl. driver'",
+   "comment": "Para 0147 describes a PZT-film, glass-membrane, polymer lens for MR pass-through RGB cameras at '~6 mW, ~2 ms, 10 cm-infinity, no moving parts', close to poLight's published figures; Optotune's part is 20 mW. Optional 'e.g.' figures, not a bill of materials; poLight unnamed.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r2-meta-1-26",
+   "to": "w-meta-0-8",
+   "title": "Seeya Phoenix OLEDoS mass production from May 2026, >1m panels by late August (10-12 months pre-launch)",
+   "comment": "Display parts were in mass production 10-12 months out, so camera modules should ramp in H2 2026; yet Program A was still 'qualification' on 2026-06-18 with no design-in by 2026-10-06, while poLight puts design-in after design lock. Timing calibration, silent on the camera actuator.",
+   "strength": "strong"
+  },
+  {
+   "from": "r2-modules-2-30",
+   "to": "modules-0-46",
+   "title": "Luxshare lists a 'T-LENS Camera' among its core AR optical products (CIOE, 2026-09-11) vs its 9m-unit/yr Vietnam VR line tied to Meta",
+   "comment": "Luxshare's CIOE release lists a 'T-LENS Camera' among core AR products; VRAR Xingqiu saw a 6P+1G lens with electric focusing and forum attendees said poLight's lens (rumor). It sits in Luxshare's own Lark glasses demo, not a Meta build, and 'T-Lens' is generic.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r2-analysts-1-9",
+   "to": "qtech-6-73",
+   "title": "Chaodian Zhiku (2025-04-30): poLight's top US customer 'very likely Meta', 15 days after the Q Tech deal",
+   "comment": "The outlet relays supply-chain people's speculation that poLight's top US customer is Meta and that Q Tech may integrate poLight lenses into camera or pancake modules, 15 days after the deal. Press inference; Apple was floated in a DNB-attributed article (2025-06-19) and forums.",
+   "strength": "rumor"
+  },
+  {
+   "from": "r2-polight-3-34",
+   "to": "otheroem-3-86",
+   "title": "Calibration: Magic Leap 2 design-win/first MP PO (2021-12-01) to GA (2022-09-30) = 10.0 months",
+   "comment": "The first AR design-win (NOK 360k, 2021-12-01) preceded Magic Leap 2 GA by 303 days and a NOK 1.2m MP PO (2022-08-16) by 45 days; the customer was unnamed but Yole's teardown (2023-03-02) found TLens in ML2. Sets the small, early initial MP PO pattern.",
+   "strength": "strong"
+  },
+  {
+   "from": "r2-otheroem-3-49",
+   "to": "r2-otheroem-3-57",
+   "title": "Calibration: Meizu design-win PO (2023-01-24) to announcement 2.1 months, to on-sale about 4.5 months",
+   "comment": "A NOK 2.9m MP PO (2023-01-24) for a low-volume flagship announced 2023-03-30 and on sale from June 2023, 41 months after first contact; poLight warned no further POs might follow. Template for a 'release plan is this year' consumer case.",
+   "strength": "confirmed"
+  },
+  {
+   "from": "r2-polight-3-4",
+   "to": "xiaomi-3-23",
+   "title": "Calibration: Xiaomi watch PVT PO (2019-08-15) to launch (2020-01-07) = 4.8 months; launch-prep POs 2.7-2.9 months before",
+   "comment": "33,320 lenses 'for PVT / initial mass production' (2019-08-15) were 'not a design-win'; 45,700 more (2019-10-11/17) prepared the launch 2.7-2.9 months out; poLight named Xiaomi only in its Q1-2020 report. Labels understate maturity and disclosure can trail launch, so silence is a weak negative.",
+   "strength": "confirmed"
+  },
+  {
+   "from": "r2-polight-3-38",
+   "to": "r2-polight-3-87",
+   "title": "Cautionary calibration: AR display design-in (2022-03-15, PO >NOK 3.5m) and the consumer LBS design-in removed in Aug 2025 'since there is currently no plan for MP'",
+   "comment": "The 2022 release names an AR display design-in with a custom package; the Q2-2025 deck removed the consumer LBS design-in for 'no plan for MP', TLens 'still included in the concept'. Linking them (41 months) is inference: it was the only consumer design-in.",
+   "strength": "strong"
+  },
+  {
+   "from": "r2-polight-3-63",
+   "to": "r2-otheroem-2-7",
+   "title": "MR HMD design-win declared the day Varjo announced XR-4 (2023-11-27): the zero-lag disclosure precedent",
+   "comment": "Design-win plus ~NOK 0.4m MP PO 'in a recently announced MR head-mounted device' the day Varjo announced XR-4 (Focal Edition: gaze-directed autofocus); Varjo is inferred, never named. That PO shipped within weeks, unlike a spring-2027 device, so post-Connect silence weighs little.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "polight-4-83",
+   "to": "w-otheroem-3-8",
+   "title": "Program B design-in (2026-07-10) vs Pico Space Pro (Q4 2026)",
+   "comment": "2.7-5.7 months before an Oct-Dec release, inside poLight's 2.1-5.9-month consumer precedents; 'a major player in the ecosystem' fits ByteDance. Q Tech names Pico only as an example customer and ByteDance's 2023 filing lists a poLight lens as one option, so neither is a supply link.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "w-r2-polight-4-11",
+   "to": "meta-0-68",
+   "title": "poLight filed nothing from 2026-09-22 to 2026-10-06, across Connect 2026",
+   "comment": "No filing after the 2026-09-21 TWedge PO, though Analyst Group's rule ('design-win... typically around a product announcement') and the precedents (Meizu, an unnamed MR-headset maker) allowed one. Weak negative: Xiaomi was named after launch and this OEM is 'nervous about being identified'.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r2-qtech-4-40",
+   "to": "w-meta-0-8",
+   "title": "Q Tech-line lenses 'tested and qualified' (2026-08-06), 7-10 months before launch; ramp 'depends on the OEM backing that investment'",
+   "comment": "Status moved from 'under qualification' (2026-03-10) to 'tested and qualified' (2026-08-06), with Q Tech's diopter-QC filing (2026-03-30) between. But the CEO says the line is 'not really built for the capacity of that OEM' and programme units are 'likely coming from the Philippines'.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r2-polight-4-7",
+   "to": "w-meta-0-8",
+   "title": "CEO (2026-08-06): major OEMs 'don't bring new technology immediately into super high volumes', want 'as close to zero inventory'",
+   "comment": "Disclosed initial MP POs were NOK 0.36m (Magic Leap 2, 10 months before GA) and 2.9m (Meizu, about 4.5 months before sale). If Program A is the VR Glasses camera, a small first order in Oct 2026-early 2027 fits; so does a quiet Q3.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r2-metaip-0-39",
+   "to": "w-meta-0-8",
+   "title": "Meta 'Camera and Depth Electrical Engineer' seeking 'auto-focus electrical design' (posted about 2026-09-16 to 09-22), 160 days before launch",
+   "comment": "A design-phase hire this close to launch is for the next device, so autofocus continues at Meta; it names no actuator. No Meta posting mentions tunable lens, piezo or TLens (careers site and six boards, 2026-10-06); a closed Seoul role gives VCM as an example.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r2-analysts-2-34",
+   "to": "w-meta-0-8",
+   "title": "Citi (2026-09-24): Goertek and Sunny key beneficiaries of VR Glasses; volume 'likely to be limited' by price",
+   "comment": "Citi names Goertek and Sunny and expects volume 'likely to be limited' by the US$1,299.99 price; at ~US$2+ per lens any TLens content is revenue-small, the CEO's 'not super high volumes'. Bounds revenue, not probability; names no camera-module or actuator supplier.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-modules-0-11",
+   "to": "w-meta-0-8",
+   "title": "Goertek XR's gaze-driven VST focus filing claims a camera 'including a tunable lens TLens' (filed 2024-06-03) vs Meta VR Glasses",
+   "comment": "CN118741292A (published 2024-10-01, in examination) sets focus from eye-tracking fixation and calls VCM focus of ~1 s unacceptable for VR VST. Goertek builds Meta and Pico headsets, but only unattributed 2026-09-20 reports place it on Phoenix; poLight and customers are unnamed. ODM familiarity, not supply.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-modules-0-15",
+   "to": "w-xiaomi-3-6",
+   "title": "Goertek XR's T-Lens camera-glasses filing (2024-09-02) vs a Goertek-built Xiaomi AI Glasses successor",
+   "comment": "Claim 6 drives a 'T-Lens' zoom lens from binocular gaze distance in display-less camera glasses, filed 72 days before 36Kr reported Goertek as Xiaomi's AI-glasses ODM (2024-11-13); gen 1 (2025-06-26) claimed no autofocus and gen 2 is reportedly paused. A technology option, not an order.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "w-r3-modules-0-0",
+   "to": "w-r2-analysts-0-4",
+   "title": "Goertek's four TLens-claiming applications in substantive examination vs first VR Glasses teardowns (Apr-Sep 2027)",
+   "comment": "Examination began 2024-10-18 to 2026-03-27; first actions or grants (projected 2026-Q4 to 2027) show claim scope, not the Phoenix actuator. A teardown identifying poLight's PZT-MEMS lens would make these filings the design record; a VCM or moving-element module would leave them as unused options.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-otheroem-0-6",
+   "to": "w-otheroem-3-8",
+   "title": "Lemon/ByteDance XR gaze-driven camera AF lists 'a poLight lens' (priority 2023-09-20) vs Pico Space Pro (Q4 2026)",
+   "comment": "The only XR-maker camera filing naming poLight: AF options end with 'a poLight lens incorporating piezoelectric actuators' and a poLight lens may compensate temperature (WO 2025-03-27, US 2026-08-27). Filed by ByteDance's Lemon/Beijing Zitiao, not Pico, two years before Program B's first PO. Awareness, not procurement.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-samsung-0-3",
+   "to": "w-samsung-1-18",
+   "title": "Samsung's smart-glasses depth camera with 'tunable lens (T-lens)' (priority 2022-10-31) vs Samsung display glasses 2027",
+   "comment": "The second camera's focus-variable lens 'may be a tunable lens (T-lens)' of piezo film, glass membrane, glass panel and polymer for depth-from-focus (US 2025-07-31, pending). No announced Samsung product has that camera, poLight is unnamed, and Samsung holds its own piezo-option tunable-lens grant (2025-12-02).",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-modules-0-30",
+   "to": "w-meta-0-8",
+   "title": "Zhejiang Sunny Optics' AR/VR wearable front-camera lens with an autofocus 'Tlens module' (filed 2026-03-04) vs spring 2027",
+   "comment": "Filed about 12 months out (published 2026-05-12): five elements plus a liquid-filled 'Tlens module' (substrate, liquid, bendable film), a generic term, poLight unnamed. Sunny is reported for Meta's AI-glasses modules and named a VR Glasses beneficiary by Citi, not Phoenix's module maker.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-qtech-0-32",
+   "to": "w-qtech-7-2",
+   "title": "Q Tech's inline diopter QC 'throughout mass production' for TLens-structured devices (filed 2026-03-30) vs the Q Tech TLens ramp",
+   "comment": "Filed between 'under qualification' (2026-03-10) and 'tested and qualified' (2026-08-06), published 2026-06-09: a point-cloud warpage-to-diopter test 'taking tunable lens TLens as an example', claim 10 reciting the stack. Q Tech's own TLens production engineering; classed general camera, customer unnamed.",
+   "strength": "strong"
+  },
+  {
+   "from": "r3-qtech-0-33",
+   "to": "w-meta-0-8",
+   "title": "Q Tech's Tlens + metalens autofocus TOF module (filed 2026-04-24) vs 'passthrough with autofocus and depth'",
+   "comment": "Published 2026-09-04: a depth-sensing receiver pairing a MEMS-piezo 'Tlens' (generic term, poLight unnamed) with metalenses, near focus 50-100 cm, classed general camera. Meta pairs autofocus with depth, but nothing ties this module to Meta; Q Tech also serves Pico, HTC and phones. Speculative.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-otheroem-0-1",
+   "to": "r2-polight-3-38",
+   "title": "Bosch names 'a TLens from poLight' for retinal-scanning data glasses (priority 2022-08-23) vs poLight's AR display design-in (2022-03-15)",
+   "comment": "Five months after a display design-in with a custom package, Bosch's varifocal lens between MEMS scanner and HOE 'could be configured as a TLens from poLight' (published 2024-02-29), beside other options. Timing and the scanning path fit; no source links Bosch to it.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-otheroem-0-29",
+   "to": "w-polight-4-11",
+   "title": "Zhuhai Mojie lists Tlens beside VCM for AR/VR glasses cameras (filed 2025-12-30) vs 'autofocus common within 2-3 years'",
+   "comment": "An AR-glasses maker's zoom device 'may include a tunable lens (Tlens), a VCM, a zoom lens' (published 2026-03-27 and 2026-05-01); Honor lists a T-lens beside liquid lenses. Chinese filers treat Tlens as one option, consistent with management's 2028-2029 adoption curve, not a design-win.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-modules-0-4",
+   "to": "w-meta-0-8",
+   "title": "Huaqin's VR see-through camera lens with a 'T lens' at the stop (filed 2022-12-30, granted 2025-04-08) vs Meta's VR Glasses",
+   "comment": "F/2.1, 120-degree, TTL 10 mm, 20 cm-5 m focus with 'millisecond autofocus, no magnetic interference, no gravity-pose error', 50 months before the window. 'T lens' appears once in the description and the claims say adjustable lens; Huaqin has no reported Phoenix role. Design precedent only.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-metaip-0-7",
+   "to": "w-meta-0-8",
+   "title": "Meta's +/-50 V piezo-actuator driver IC with capacitance sensing (priority 2023-11-15) vs spring 2027",
+   "comment": "A driver for a 'piezoelectrically-driven tunable lens' (priority 39.5 months before the window, published 2025-06-05) is productization work, but it fits a Meta-designed membrane lens as well as TLens; Program A's first PO was 'TLens plus driver', so the driver's source is open too.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-metaip-0-22",
+   "to": "w-meta-0-10",
+   "title": "Meta 'Exposed camera architectures' with a deformable-surface tunable lens (priority 2025-02-12) vs Artemis AR glasses 2027",
+   "comment": "Huang's last filing (published 2026-08-13): an exposed front lens group, a protective sleeve and a tunable lens with deformable surface; a 0 to +/-5 D piezo membrane is one embodiment, for AR glasses, smart glasses or VR headsets. The latest Meta piezo-lens text.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-polight-0-70",
+   "to": "w-meta-0-8",
+   "title": "poLight's low-power piezo driver PCT (priority 2025-02-03, published 2026-08-06) vs spring 2027",
+   "comment": "A hold-mode driver minimising quiescent power, refreshing every 60 ms, with 'TLens Silver Premium' as test load, filed about two months before the Q Tech deal and 25 months before the window. It addresses the power objection in Meta's 2025-04-17 paper but names no customer.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-polight-0-20",
+   "to": "w-polight-derived-wafer",
+   "title": "poLight's hexagonal wafer-packing lens (priority 2024-12-20) vs the derived wafer-order checkpoint",
+   "comment": "Polygonal dies maximising lenses per wafer (published 2026-06-25) are cost-down work, yet poLight ordered no MEMS wafers in 2025 or H1 2026; the Q3-2025 deck put inventory at 'several millions' of lenses, so a first ramp needs no wafers and a missing order says little.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "r3-modules-0-0",
+   "to": "r2-analysts-2-34",
+   "title": "Sunny Opotech's internal-focusing family criticises TLENS field curvature (granted 2026-01-30) vs Citi naming Sunny a VR Glasses beneficiary",
+   "comment": "A 2021-priority, general-camera text says liquid-lens or TLENS focusing 'often introduces overlarge field curvature' and moves an internal group instead; granted 13 months before the window. Sunny also filed a 2026 AR/VR liquid 'Tlens module' lens, so this is supplier hedging, not a decision.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "polight-4-83",
+   "to": "w-alibaba-3-3",
+   "title": "Program B design-in (2026-07-10) vs Alibaba Qwen N1 in-stock sale (2026-10-13)",
+   "comment": "N1 was previewed 62 days after the design-in (Meizu: 2.1 months to announcement) and goes on sale after 95; Alibaba fits 'a big company and a major player in the ecosystem', and affiliate Ant Group's demo glasses use a TLens camera. N1's actuator is unnamed.",
+   "strength": "circumstantial"
+  },
+  {
+   "from": "polight-4-91",
+   "to": "polight-4-48",
+   "title": "CEO (2026-08-19): Programs A, B and C are 'different' customers, so Program C's top-tier US OEM is not the Q Tech backer",
+   "comment": "Asked whether the design-in, the Q Tech qualification programme and the AR-camera programme are three different end customers, the CEO said 'Those three are different, but there are more'. Two distinct top-tier US consumer OEMs therefore run TLens programmes; Meta can be at most one.",
+   "strength": "confirmed"
+  },
+  {
+   "from": "r2-polight-3-30",
+   "to": "r2-polight-3-69",
+   "title": "Cautionary calibration: Xenocor's NOK 4.0m MP-preparation POs (Aug-Sep 2021) removed on 2024-02-27 after a redesign without autofocus",
+   "comment": "POs 'for mass production preparation' (2021-08-20 and 09-21) ended 30 months later when the Q4-2023 report removed Xenocor (redesign without AF). With the 2021 smartphone cancellation (9 months) and the 2022 display design-in (41 months), failures surfaced 9-41 months after first orders.",
+   "strength": "confirmed"
+  }
+ ],
+ "commentary": [
+  {
+   "lane": "polight",
+   "segments": [
+    {
+     "start": "2005-01-01",
+     "end": "2018-12-31",
+     "title": "IP, foundry and IPO",
+     "text": "Founded in Horten in 2005, with the core TLens patent priorities from 2006-09-21 (expiring from September 2026) and the Meta-cited filings of 2014-07-18 and 2017-06-30. ST became the thin-film piezo partner in 2014-09 with 'volume production H2 2015', after an SVTC deal in 2011 that already targeted ~1M units/month; the 2017 plan was 400 to 1,000 wafers/month. Funding ran ahead of revenue: NOK 145m pre-IPO (2015-02-03), NOK 160m at a NOK 610m post-money (2016-08-15) and the IPO of 2018-09-27 (NOK 130m at NOK 50, market cap NOK 401m) with TLens 'ready for introduction in the smartphone camera module market'; first trading day 2018-10-01."
+    },
+    {
+     "start": "2019-08-15",
+     "end": "2021-12-31",
+     "title": "First launches: the lead-time record",
+     "text": "The wearable PVT PO of 2019-08-15 (33,320 lenses, 'not a design-win') and the launch-prep POs of 2019-10-11/17 led to the Xiaomi Mitu watch on 2020-01-07, 4.8 months after the first order and named by poLight only in the Q1-2020 report; XUN Max Pro followed 5.9 months after its PO (2020-02-10) and 125k lenses shipped in 2019. Honeywell's EX30 went from design-in PO (2020-03-05, NOK 0.5m) to release (2020-10-14) in 7.3 months with a validation PO three months out; MAXHUB's webcam took 5.4 months PoC-to-launch (2021-04-06). The other side of the record began at once: the smartphone project was cancelled for 'portfolio' reasons (2021-07-29), Xenocor's NOK 4.0m mass-production-preparation POs (Aug-Sep 2021) never shipped, and the '19 AR projects' deck of 2021-10-29 promised three design-wins within 1H 2022 and 1.5M/month capacity by mid-2022. The first AR design-win (Magic Leap 2, NOK 360k) came 2021-12-01; placements of NOK 40m (2020-04) and NOK 125m at NOK 110 (2021-09-13) funded it."
+    },
+    {
+     "start": "2022-01-01",
+     "end": "2024-12-31",
+     "title": "Enterprise XR wins, consumer stalls",
+     "text": "Magic Leap 2 reached GA on 2022-09-30, 10.0 months after the design-win, with follow-on MP POs 1.5 months before GA (NOK 1.2m) and in Nov 2023 (NOK 0.35m); Yole's teardown confirmed the lens on 2023-03-02. Meizu's design-win PO (2023-01-24, NOK 2.9m) was followed by announcement in 2.1 months and sale in about 4.5; LLVision's Leion Pro went design-in to MP in 1.2 months (2023-04-04); the MR HMD design-win was declared the day Varjo announced XR-4 (2023-11-27); Vuzix Shield's TLens win was confirmed on 2024-04-08 after the 'mid-2023' release slipped about ten months; XVisio never converted. The consumer AR display design-in of 2022-03-15 (PO >NOK 3.5m, follow-on NOK 2.9m on 2023-12-19) was 'some years' from release by Feb 2024 and removed in Aug 2025 with 'no plan for MP', 41 months later. Rights issues of NOK 135m at NOK 10.45 (2023) and NOK 140m at NOK 2.3085 (2024, TERP -30%) carried the company; the pipeline sat at 4 design-wins, 3-4 design-ins and 11-14 PoCs through 2024, the first paid TWedge kits were ordered in Q2 2024, and FY2024 revenue was NOK 9.6m with TLens in 28 products."
+    },
+    {
+     "start": "2024-01-09",
+     "end": "2025-02-03",
+     "title": "Filing cadence 2024-2025: cost, power, thermal",
+     "text": "The sweep's full-text read of poLight's own filings shows a new priority every two to three months from mid-2024: a lead-free tunable lens and an optical assembly citing two Meta filings (2024-07-16), a ring-actuated lens with a 3-30 mm membrane (2024-10-29), hexagonal lenses to maximise wafer packing (2024-12-20) and a low-power hold-mode driver (Danish filing, 2025-02-03) whose text names 'TLens Silver Premium' as its test load. Grants ran in parallel: US 11,870,371 (2024-01-09), US 12,066,619 (2024-08-20), US 12,164,101 (2024-12-10). The subject matter is mostly cost per wafer, power, drivers and reliability, plus one larger form factor, consistent with preparing volume. Nothing names a customer, XR device or product; apart from the driver text the descriptions never use the TLens trade name, describing 'a deformable, non-fluid lens body' between a bendable membrane and a back substrate. Priorities after about April 2025 would still be unpublished, so the apparent stop after February 2025 is not evidence of a stop."
+    },
+    {
+     "start": "2025-01-01",
+     "end": "2027-12-31",
+     "title": "Publications, grants and 2027 national phases",
+     "text": "Publications arrived roughly monthly through 2026: the tunable-astigmatism family (January 2025, listing 'a pair of AR-VR glass/spectacles' among uses), wobulation calibration (2025-10-30), an optical assembly citing Meta prior art (2026-01-22), ghost/flare mitigation (2026-03-05), passive thermal compensation (2026-03-25), the hexagonal lens (2026-06-25), wobulation video (2026-08-05) and the driver PCT (filed 2026-02-02, published 2026-08-06), found by the round-3 check after an earlier 'PCT not found' verdict. Grants: US 12,405,406 (2025-09-02), US 12,493,178 (2025-12-09) and the 2021-priority thermal-expansion family (EP 2026-03-11, US 2026-05-12). National-phase entries for the 2024-10-29 and 2024-12-20 priorities fall due between late April and late July 2027, a dated checkpoint on which markets poLight pays to protect. The trail is mostly manufacturing and maintenance (thermal, flare, packing, drivers, TWedge) and says nothing about who buys the lens; with the 2006 core priorities expiring from September 2026, the moat shifts to these filings."
+    },
+    {
+     "start": "2025-04-15",
+     "end": "2026-06-18",
+     "title": "Q Tech alliance and Program A",
+     "text": "Q Tech bought 32.97% at NOK 2.69 (NOK 171.5m) on 2025-04-15, a deal management said one long-standing top-tier U.S. OEM 'triggered' after qualifying TLens 'for many years'. Program A's first qualification PO (~NOK 1.7-1.8m, 50% firm) came 2025-08-06, its final 50% was called on 2026-02-11 and a second PO of NOK 0.7m followed on 2026-06-18 with deliveries 'likely second half of 2026' and 'still several milestones to pass'; on 2026-02-25 the CEO called it a 'mature PoC' that becomes a design-in only when the OEM locks the design and completes component qualification, with qualification units partly made at Q Tech and programme units 'likely coming from the Philippines'. Program C, a NOK 5m PO of 2025-10-13 to design a TLens camera for AR head-worn devices, shipped validation modules at end-Q2 2026. Cash rose from NOK 135.8m (Q1 2025) to NOK 298.2m (Q3 2025); no new MEMS wafers were ordered in 2025 or H1 2026 because inventory covers several million lenses, written down for age only."
+    },
+    {
+     "start": "2025-11-24",
+     "end": "2026-07-10",
+     "title": "Program B from PoC to design-in",
+     "text": "A 'leading consumer OEM' placed POs of NOK 0.9m (2025-11-24, a 'mature proof-of-concept' order), 2.4m (2026-04-07), 0.8m (2026-05-20) and 0.8m (2026-07-10), NOK 4.9m in 228 days and one project per the CEO; on the fourth PO poLight declared its first consumer AR|MR design-in, with 'release plan is this year' and Q4-2026 deliveries. The three 2026 POs (NOK 4.0m) are at mass-production price (~US$2+ per lens) for 'a big company and a major player in the ecosystem' (2026-08-19). The CEO declined to locate it; 'U.S. and China, so you pick' described poLight's AR/MR focus. Only Alibaba's Qwen N1 was unveiled after the design-in (previewed 2026-09-10, 62 days later, close to Meizu's 2.1 months); Pico Space Pro, Samsung/Google eyewear, Snap Specs and Xreal Aura were shown earlier and fit only a Q4-2026 sale. AR|MR reached 86% of Q2-2026 revenue and H1-2026 revenue (NOK 20.6m) exceeded FY2025 (NOK 20.5m)."
+    },
+    {
+     "start": "2026-08-06",
+     "end": "2027-02-24",
+     "title": "Watch window",
+     "text": "On the Q2 call (2026-08-06) the CEO called Q Tech-line lenses 'tested and qualified', said a ramp 'depends on the OEM backing that investment' and that major OEMs hold near-zero inventory and avoid 'super high volumes' at first; on 2026-08-19 he said Programs A, B and C are 'different' customers ('but there are more'), that labels are 'confusing you by design', that the design-in OEM is already engaged on other cases and that two lines and a new final-test machine double capacity by end-2026. The CEO, COO and CTO sold 1,109,586 shares at an average NOK 12.13 after an option exercise (reported 2026-08-27); a ninth TWedge sample PO (NOK 1.2m, still TS5) came 2026-09-21; Luxshare showed a 'T-LENS Camera' at CIOE (2026-09-10/11); and poLight filed nothing from 2026-09-22 to 2026-10-06, across Meta's announcement, the longest gap since the Q2 report. The stock closed near NOK 14.90 on 2026-09-25. Dated checkpoints: the Q3 report (2026-10-29), the Capital Markets Day with an external market review (2026-10-30) and the Q4 report (2027-02-24, five days before the VR Glasses window). Only if Program A is the VR Glasses camera do poLight's precedents put a first, probably small, production PO in October 2026 to early 2027."
+    }
+   ]
+  },
+  {
+   "lane": "qtech",
+   "segments": [
+    {
+     "start": "2020-03-31",
+     "end": "2027-12-31",
+     "title": "Q Tech's own TLens filings",
+     "text": "Q Tech's register trail predates and then tracks the poLight alliance. CN111277742B (priority 2020-03-31, granted 2024-07-19) mentions a 'T-lens camera' only in its background; utility model CN220798387U (filed 2023-07-25, granted 2024-04-16) claims a 'T-lens device' between sensor and lens with a glass-support/polymer/glass-film/piezo-film stack, about 21 months before the 2025 stake. Then two filings 25 days apart during line qualification: CN122171171A (filed 2026-03-30, published 2026-06-09) derives diopter from polymer warpage 'taking tunable lens TLens as an example', so every device can be measured 'throughout mass production', claim 10 reciting the stack; CN122690782A (filed 2026-04-24, published 2026-09-04) pairs a generically named 'Tlens' with metalenses in a TOF module. Both published 2.3-4.4 months after filing and are in examination; the register check classes both as general camera. Neither names a customer or device, and no patent matches the 'VR VST TLens AF camera' on the 2025 product map."
+    },
+    {
+     "start": "2021-10-01",
+     "end": "2025-04-28",
+     "title": "Vendor code to alliance",
+     "text": "Chris Liu took over the IoT business unit in October 2021. The FY2023 deck (2024-03-25) reported a 'vendor code of major US customer'; 140 days later the H1-2024 deck named it 'US M brand' with a design-win target 'within this year'. The FY2024 deck (2025-03-18) said Q Tech was 'qualified as the supplier for multiple international leading manufacturers' of VR/AR/AI glasses, echoed by 开源证券 (2025-03-10) and 国盛证券 (2025-03-19); 28 days later it invested NOK 171.5m in poLight 'backed by a top tier U.S. consumer electronics customer', which 潮电智库 read within 15 days as 'very likely Meta' (2025-04-30), and 13 days after that signed the framework to buy TDK's camera-actuator business, including SMA routes and a Philippines plant."
+    },
+    {
+     "start": "2025-06-09",
+     "end": "2026-03-31",
+     "title": "Line build, qualification and roadmap",
+     "text": "The HKEX note of 2025-06-09 called poLight's piezo actuator 'the best solution for XR optical modules'. The H1-2025 deck (2025-08-11) put 'VR VST TLens AF camera' and 'AR SWIS TLens AF camera' on the product map with a '2026: Light Engine, TLens, TWedge, AR DSA' roadmap. By Q3 2025 the dedicated TLens line had 'all equipment installed' and was producing for trials (poLight call, 2025-10-30); the 河源友华 VCM procurement agreement was renewed for 2025-2027 (2025-11-10). In February-March 2026 the CEO said Q Tech was involved in all three top-tier programmes 'but not alone', that Q Tech-made units were going through temperature, humidity and drop qualification against Philippines units, and that the line was 'limited by only having one test machine' which 'that U.S. OEM' would need to fund; poLight invoiced USD 313,141 of 2025 NRE in March 2026. The FY2025 results (2026-03-16: revenue RMB 20.88bn, profit +435%) reported 'small-batch deliveries for 2 leading overseas terminal clients', 10 brands, a 2026-2030 plan to be top-2 in XR opto-mechanical modules, and the TDK closing 'well underway'."
+    },
+    {
+     "start": "2026-04-24",
+     "end": "2026-10-05",
+     "title": "Volume wording and the Meta name",
+     "text": "The annual report (2026-04-24) showed a 29.96% poLight stake (29.90% at 30 June); the Actutek (ex-TDK actuator) acquisition completed 2026-06-01 under the controlling-shareholder group, a connected person rather than the listed company, with purchase caps of RMB 325m (Sep-Dec 2026, EGM 2026-09-11), 765m (2027) and 870m (2028). On 2026-08-06 the poLight CEO called Q Tech-line lenses 'tested and qualified' and said the ramp depends on the OEM's investment; on 2026-08-13 Q Tech replaced Louis So with Fan Fuqiang on poLight's board; on 2026-08-19 the CEO said two lines of similar capacity are 'a doubling' but the Q Tech line is 'not really built for the capacity of that OEM'. The H1-2026 deck (2026-08-24) moved to 'TLens + AR Mono Engine: Volume Delivery Achieved', 'Deliveries to 2 Top Overseas OEMs', '22 Partners (+4)' and 'Overseas Key Customers: Ramp in 2H26 / 2027'. DBS's note of 2026-08-26 (BUY, target cut to HKD 12.60 from 15.0) says Q Tech's AR optical engines 'are already being shipped to Meta and Samsung' and, on p.4, that a Meta project with Q Tech modules and poLight's tunable lens should enter mass production in 1H27, sell-side inference. A 2026-09-28 posting for an 'AR/VR manufacturing centre head' in Kunshan names '(e.g. Meta, Pico)' as example brand customers of a new XR whole-device factory; a Xueqiu post tying Q Tech modules to Meta Quest (2026-09-22) has no primary source; the IR head bought 218,000 shares with a one-year lock on 2026-10-05."
+    }
+   ]
+  },
+  {
+   "lane": "cml",
+   "segments": [
+    {
+     "start": "1995-06-21",
+     "end": "2021-08-06",
+     "title": "Smartphone-scale SMA",
+     "text": "Incorporated 1995-06-21; first SMA OIS design wins with Hutchinson and Foxconn shipped in September 2014; a TDK manufacturing licence followed in 2017 (TDK had bought Hutchinson for US$126m in 2015). 2021 brought ultra-slim OIS+AF (2021-04-21), first driver ICs (2021-07-02) and a Tokyo office. Everything shipped was smartphone volume, tens of millions of units."
+    },
+    {
+     "start": "2021-10-18",
+     "end": "2024-02-13",
+     "title": "XR push",
+     "text": "The San Francisco office opening (2021-10-18) claimed 'multiple commercial engagements with the US technology giants... AR/VR devices'; SPIE AR/VR/MR talks followed on 2022-01-20, 2023-01-25 ('already engaged in commercial projects with several industry leaders') and 2024-01-29, with a CES 2023 showcase of zero-hold-power focus for displays and cameras. Patents climbed from 500 (2021-12-22) to 700 (2024-02-09) and the US$40m round closed 2024-02-13 with Intel Capital and Sony. Meta's 2022-05-31 wearable-camera filing cited four CML documents, the only producer trace of these engagements."
+    },
+    {
+     "start": "2024-03-04",
+     "end": "2026-10-06",
+     "title": "Pivot and silence",
+     "text": "Two XR patent priorities (2024-03-04 and 2024-10-24) describe SMA-driven deformable or liquid lenses 'for glasses and... VR/AR headsets' (published 2025-09-12 and 2026-04-30), but CML was absent from SPIE 2025 and 2026 and its last XR-facing article is dated 2025-05-12, 512 days ago. A new CEO arrived 2025-04-10, Meta abandoned its CML-citing application on 2025-05-08, and CTO Ben Brown's tenure ended in March 2026 with his headline now 'Apple'. Share allotments on 2024-06-26, 2024-09-26, 2026-04-08 and 2026-06-01 suggest rolling equity raises; the live 'AI Vision Product Manager' ad cites 'AI glasses' and ~850 patents, so the ambition persists without a named XR customer."
+    }
+   ]
+  },
+  {
+   "lane": "optotune",
+   "segments": [
+    {
+     "start": "2008-01-01",
+     "end": "2023-03-14",
+     "title": "Industrial liquid-lens leader",
+     "text": "ETH spin-off founded 2008; Slovakia plant 2017; 100 employees 2018; one-millionth component 2021. The December 2022 brochure listed 250 employees, >300k units/yr cleanroom capacity and AR/VR as a market, while the EL-3-10 datasheet (revisions 2020-12-01 and 2023-03-14) remained a 3 mm industrial part. Stanford's 2017 focus-tunable VR display work used Optotune lenses, the lane's only XR research trace."
+    },
+    {
+     "start": "2023-08-30",
+     "end": "2026-09-21",
+     "title": "A glasses-class part surfaces",
+     "text": "Eyewear-specific patents were filed 2023-08-30 (non-circular ring-actuated lens) and 2024-06-24 (gravity-coma compensation for smart glasses). The EL-3.1-10.8 handling instructions carry a 2025-09-17 date, a US Sales Manager for 'industrial and consumer applications' was posted 2026-01-08, and the datasheet (2026-09-18: 1.72 mm high, 0.3 g, 3.1 mm aperture, 20 mW at 10 dpt, 1 ms response) preceded the LinkedIn launch on 2026-09-21, 369 days after the handling document and two days before Connect 2026. Headcount is now 180+ (from 250) with 2+ million units shipped; no customer is named and the CCM page lists phones, action cams and robotics."
+    }
+   ]
+  },
+  {
+   "lane": "varioptic",
+   "segments": [
+    {
+     "start": "2007-01-01",
+     "end": "2019-06-30",
+     "title": "Pioneer, then Corning",
+     "text": "Liquid autofocus lenses deployed since 2007 and a smartphone OIS+AF lens (B617, 2011-01-24, 'up to 90% less power' than VCM) never reached phone volume; Parrot sold Varioptic to Invenios (2016-12-29) and Corning absorbed it in 2017, nearly doubling capacity in 2018 and delivering the 2-millionth lens by June 2019, all to machine vision, barcode and medical."
+    },
+    {
+     "start": "2022-01-28",
+     "end": "2027-05-31",
+     "title": "Industrial only",
+     "text": "Corning's XR presence is high-index waveguide glass (2022-01-28, 2023-12-19) with no liquid-lens mention; the Varioptic page of 2026-09-24 reads 'adjustable lens solutions for industrial applications' and the Oct 2026-May 2027 show calendar (VISION Stuttgart, ITE, Photonics West, Vision China, Automate) contains no consumer or XR event. Meta's lens-barrel examiner cited Varioptic as prior art only. Seven-plus years without a consumer signal."
+    }
+   ]
+  },
+  {
+   "lane": "sheba",
+   "segments": [
+    {
+     "start": "2015-01-01",
+     "end": "2024-10-10",
+     "title": "Launches without customers",
+     "text": "Founded 2015 (or 2016), Sheba launched an athermalising MEMS AF actuator on 2023-09-21, a sensor-shift AF camera 'for AR/VR/XR headsets' (<10 mW, <5 ms) on 2024-01-09, and the Sharp-7 automotive AF camera on 2024-05-16 with a DXOMARK report on 2024-10-10; no XR customer has been named in any release."
+    },
+    {
+     "start": "2026-01-06",
+     "end": "2026-06-25",
+     "title": "Scale check",
+     "text": "The CES 2026 Ontario delegation listed 17 staff and USD 400K annual sales (2026-01-06); a COO was appointed 2026-06-09 and Teledyne named as MEMS production partner for ADAS actuators on 2026-06-25. 1,001 days after the XR camera launch the company remains an automotive-leaning start-up, not a candidate for a 2027 top-tier programme."
+    }
+   ]
+  },
+  {
+   "lane": "vcm",
+   "segments": [
+    {
+     "start": "2005-01-01",
+     "end": "2023-01-24",
+     "title": "Incumbents",
+     "text": "MinebeaMitsumi has built VCM/OIS actuators in Cebu since 2005 and Alps Alpine's bi-directional AF actuator entered mass production 2016-01-19; TDK bought Hutchinson (CML's SMA partner) in 2015-11. Alps started SMA actuator mass production on 2023-01-10 (30 um wire, ~40% smaller than VCM) and sampled a piezo zoom actuator on 2023-01-24, showing the incumbents already own alternatives to piezo membranes."
+    },
+    {
+     "start": "2025-04-28",
+     "end": "2026-09-26",
+     "title": "Consolidation into Q Tech's orbit",
+     "text": "TDK's framework to sell its camera-actuator business to Q Tech's controlling shareholder (2025-04-28) led to the Actutek carve-out (2025-11-14), effective 2026-01-15, and a completed transfer on 2026-06-01 to the controlling-shareholder group, a connected person of the listed company rather than Q Tech itself; Everbright counted 2,000+ patents and 2,000+ employees and called micro actuators 'decisive' for AF and zoom. Q Tech's connected-transaction caps for actuators and related products run RMB 325m (Sep-Dec 2026, EGM passed 2026-09-11), 765m (2027) and 870m (2028), covering motors, connectors, brackets, housings and tooling, so VCM and SMA volumes will flow through Q Tech whatever happens to TLens and poLight's main module partner can offer either. LG Innotek held over 50% of iPhone 17 folded-zoom OIS (2025-10-01), and SEMCO was negotiating a first fine-pitch-coil supply to an unnamed 'global big tech' with 'potential expansion to XR devices' (2025-12-17). On the Meta side, a closed Seoul posting gave 'AF camera actuator (e.g. VCM)' as a preferred skill and the moving-element AF application cites LG Innotek, Samsung and Nidec art; Alps showed no XR actuator at CES 2026; Mitsumi appears among Meta's VCM patent references (2026-09-26). No row covers Samsung's own camera-actuator sourcing."
+    }
+   ]
+  },
+  {
+   "lane": "modules",
+   "segments": [
+    {
+     "start": "2014-09-23",
+     "end": "2021-06-30",
+     "title": "ST and Tong Hsing backbone",
+     "text": "ST unveiled its thin-film piezo process on 2014-09-23 with poLight as 'one of the first customers' and Agrate 200 mm volume for mid-2015; by Q1 2017 ST made the actuator and Tong Hsing assembled, with a 400 to 1,000 wafers/month plan and wafers buffered for 1H 2018 delivery. The 2020 assembly line slipped to Q4 2020 'due to resource constraints' while ST wafer deliveries ran Q4 2020-Q2 2021 and production moved toward a lower-cost factory (the Philippines); that buffered inventory is why no new wafers were needed in 2025-2026."
+    },
+    {
+     "start": "2020-03-01",
+     "end": "2025-10-30",
+     "title": "The module-maker TLens trail",
+     "text": "O-Film's product page has carried a 'T-Lens' miniaturised AF module since March 2020 (smaller X/Y, faster, ultra-low power, no magnetic interference); Sunny Opotech filed CN115877539A on 2021-09-29 for a 'liquid lens (T-lens)' integrated inside an AF/OIS motor; a 2022 forum thread called TLens 'the focus of many CM vendors (Sunny, QTech, O-Film)'. A forum-posted LinkedIn excerpt has a Foxconn camera-module engineer completing 'TLens fast-focus camera module driver development' in Jan-Jun 2024 in a role serving Microsoft, Amazon and Varjo; Primax's HOC module for AR/VR glasses (2024-08-29) names no actuator; Shenzhen United Imaging's 12 MP module for AI glasses (2025-04-11) is fixed focus; Luxshare's CIOE 2025 glasses used a Sony IMX681 with EIS and no AF; and Chongqing TS-Precision markets a 'TLens Camera Module' for smart glasses, which poLight's CEO described on 2025-10-30 as an off-the-shelf camera. 'T-Lens' is used generically by some of these makers, so a module brand name alone does not prove poLight's part."
+    },
+    {
+     "start": "2021-06-01",
+     "end": "2025-12-17",
+     "title": "Meta and Apple assembly chains",
+     "text": "ST-Metalenz metasurface optics went from partnership (2021-06) to a 300 mm fab licence with >140M units shipped (2025-07-10). Luxshare was the sole Vision Pro contract manufacturer (2023-07-03), LG Innotek its exclusive 3D-sensor supplier (2024-02-14) and Cowell its external-camera supplier with Apple at 98.1% of revenue (Guojin, 2025-10-30); LG Innotek had also pushed to supply camera modules for Google's AR glasses (2022-04-07) and took a stake in AOE Optronics for XR lenses (2024-01-18). Goertek is the core or exclusive ODM for Meta, Sony and Pico with ~80% of high-end VR/AR assembly (财联社, 2023-11-18), joined the Ray-Ban/Oakley Meta chain in 2025 (OFweek, 2025-08-09) and built Hypernova (2025-09-16); Sunny supplied Quest Pro camera lenses and modules (Zhihu teardown), is 'global No.1' in smart-glasses imaging modules (FY2024, H1 2025) and is reported, with hedges, as the Ray-Ban Meta 12 MP module maker (2025-09-10); on 2025-12-17 Sunny took 33.33% of Goertek Optics for ~RMB 1.9bn. Actuator technology is unstated throughout."
+    },
+    {
+     "start": "2021-09-09",
+     "end": "2027-12-31",
+     "title": "ODM and lens-maker TLens filings",
+     "text": "Full-text checks show lens, module and ODM makers designing around a voltage-driven TLens-type element, none naming poLight, and the construction differs. Goertek's, Q Tech's and Jiangxi Shengtai's texts (Shengtai's AF module granted 2024-12-27) describe poLight's construction, a piezo film deforming a membrane over polymer; Sunny's describe liquid-filled elements: Sunny Opotech's T-lens in a motor (2021-09-29), Zhejiang Sunny's 'bendable film, liquid material and filter' T-LENS (2024-03-14) and its AR/VR front-camera 'Tlens module' (filed 2026-03-04). Sunny Opotech's internal-focusing grant (priority 2021-09-09, granted 2026-01-30) rejects TLENS for field curvature. Huaqin's VR see-through lens (granted 2025-04-08; F/2.1, 120 degrees, 20 cm-5 m) glosses its adjustable element as a 'T lens' once; Kinko cites TLens only in background. Goertek XR filed four applications in 91 days (2024-06-03, 2024-09-02) with TLens or T-Lens in dependent claims, one for gaze-driven VST focus; all are in examination. No filing names a product, customer or supplier."
+    },
+    {
+     "start": "2026-01-05",
+     "end": "2027-12-31",
+     "title": "2026 ramp signals and the CIOE sighting",
+     "text": "Luxshare announced a US$520m, 9m-unit/yr Vietnam VR line tied to Meta (2026-01-05); ChinaTalk mapped Goertek assembly and Sunny camera modules for Ray-Ban Meta and Display (2026-01-07); Goertek's CES 2026 reference designs used an electrically tunable liquid-crystal lens for displays, not camera AF. Sunny's FY2025 XR revenue rose 20.8% to ~RMB 8.58bn with AR camera-module revenue up ~800% (DBS, 2026-04-01), though 2026 'may remain soft' on overseas launch timing; Seeya put the Phoenix OLEDoS panel into mass production in May 2026 (>1m by late August); TechInsights found a Sony 12 MP sensor and no actuator in the Display (2026-06-10). Sunny's H1-2026 results (2026-08-26/27) said smart glasses 'have entered the volume ramp-up phase', listed 'compact high-resolution AF' for AR glasses and called 'large-scale AR product orders from top clients' for next year still in verification; DBS (2026-08-28) made the FY27 smart-glasses ramp its catalyst and Citi (2026-09-24) named Goertek and Sunny VR Glasses beneficiaries. At CIOE (2026-09-09/11) Luxshare listed a 'T-LENS Camera' among its AR optical products beside its Lark glasses; Sunny showed no AF module but advertised for a variable-focus lens engineer. The 2026-09-20 supplier lists give Phoenix Qualcomm, Goertek assembly and pancake, and a Seeya panel; the Sony sensors and Sunny modules sit in the AI-glasses paragraph, so no camera-module or actuator vendor is named for Phoenix."
+    }
+   ]
+  },
+  {
+   "lane": "metaip",
+   "segments": [
+    {
+     "start": "2017-12-01",
+     "end": "2023-08-28",
+     "title": "Lidu Huang era filings",
+     "text": "Huang moved from Western Digital to Apple as a camera-system researcher in Dec 2017 (named on Apple's US 10,881,028) and joined Meta Reality Labs as 'Camera Actuator Architect' in 2020, 'working on miniature AF/OIS cameras optimized for AR/VR devices'. His first Meta filing was a metamaterial projector (2021-10-28) and a VCM-based power-saving AF camera (2022-04-12) marks the pre-piezo phase; then came the dense tunable-lens run: wristband AF citing poLight (2022-01-04), a wearable camera citing four CML documents (2022-05-31), macro low-power AF (2022-07-12), a 'flat-surfaced tunable optical lens' with PZT film for smart-glasses cameras (2022-07-22), the lens-barrel provisional (2022-07-26), retrieval of poLight's TLens Add-In pages (2022-10-19), an FPCB-mounted tunable lens (2022-11-08), the wide-FOV 107-degree, F/2.2, TTL 5.0 mm assembly (2023-02-08), the omnibus with '~6 mW, ~2 ms, no moving parts' (2023-03-02), the gaze-driven AF passthrough camera (2023-03-31) and closed-loop capacitance sensing (2023-08-28). Seven piezo-relevant priorities in 20 months describe a TLens-like stack; later piezo-lens priorities (driver IC 2023-11-15, exposed camera 2025-02-12) continue the run, none naming a supplier."
+    },
+    {
+     "start": "2023-09-13",
+     "end": "2025-12-12",
+     "title": "Alternatives, qualification and productization",
+     "text": "Meta also filed MEMS Alvarez lenses over SPAD pixels for eye tracking (2023-09-13, granted 2026-05-12) and, nine months after the gaze-driven AF priority, a moving-single-element MEMS autofocus for pass-through MR (priority 2023-12-06, published 2025-06-12, pending) citing LG Innotek, Samsung and Nidec. An in-field actuator calibration application (priority 2024-09-17) names a 'piezoelectric (PZT) actuated tunable lens' among the VCM, SMA and MEMS actuators recalibrated after drops and drift, and a camera module with a tunable lens and wafer-level optics (priority 2024-12-19, filed 2025-11-14) allows 'polymer' or 'liquid' tunable-lens technology. Jason Hartlove opened SPIE 2025 for Meta; the CML-citing wearable camera was allowed 2025-01-21 and abandoned 2025-05-08. Huang left in April 2025 with a profile saying a piezo tunable-lens module passed 'full reliability qualifications for AR/VR/MR'; Reality Labs' 2025-04-17 paper argued against autofocus in all-day glasses; a closed Seoul optical-systems posting gave 'AF camera actuator (e.g. VCM)' as a preferred skill; the wide-FOV application took a final rejection on 2025-07-10. Productization-type filings followed: camera hazard protection with 20 inventors including Huang (2025-08-22), the non-provisional calibration filing (2025-09-17), the US 12,493,197 macro-AF grant (2025-12-09) and unibody camera anchoring into the frame (2025-12-12)."
+    },
+    {
+     "start": "2023-11-15",
+     "end": "2026-08-13",
+     "title": "In Meta's own words: no 'TLens'",
+     "text": "Full-text reading of Meta's own filings in round 3: the +/-50 V piezo-actuator driver IC (priority 2023-11-15, WO2025117178A1 published 2025-06-05, 278k characters) speaks only of a 'piezoelectrically-driven tunable lens' and a 'tunable lens driver integrated circuit'; 'Exposed camera architectures' (priority 2025-02-12, published 2026-08-13; Huang, Chen, Li) claims an exposed front group and a deformable-surface tunable lens, uses a sleeve to route shock past it, and describes a 0 to +/-5 D piezo membrane for 'AR glasses, smartglasses, or a VR headset'. Neither text, nor the camera-module and barrel-via applications or a thermal filing whose 'Tlens' is a chart label, names TLens or poLight; poLight appears only as cited prior art. Cadence: the driver IC came 11 weeks after the closed-loop priority (2023-08-28), the exposed camera 15 months later; publication trails priority by 18-19 months. The texts fit a bought TLens-class part or an own membrane lens and name no supplier, product or date."
+    },
+    {
+     "start": "2026-02-05",
+     "end": "2027-12-31",
+     "title": "Grants, hires and job posts before launch",
+     "text": "Huang's exposed-camera filing was lodged 2026-02-05; US 12,547,244 (gaze-driven AF passthrough) was granted 2026-02-10; the wide-FOV application was allowed 2026-02-23; the calibration application published 2026-03-19; a barrel-via continuation followed (2026-04-30); US 12,631,847 (lens barrel with an integrated tunable lens) was granted 2026-05-19 and US 12,663,619 (citing three poLight documents) 2026-06-23; US 2026/0177877 and 0177835 published 2026-06-25 and the barrel-via continuation publication six days before Connect (2026-09-17). Patrick Llull joined from Apple as sensor-to-display architect (May 2026), and a Reality Labs engineer's LinkedIn post, seen as a forum screenshot of an auto-translation, is paraphrased as saying he led the VR Glasses autofocus work over years. Job posts cluster around Connect: Opto-Mechanical Engineer, Camera (Active Alignment, ramp, 2026-09-22), Camera and Depth Electrical Engineer ('auto-focus electrical design', about 2026-09-16 to 22), a next-generation smart-glasses sensor lead (about 2026-09-30), camera-systems software and sensor research roles (2026-10-05), and a camera-IQ lead and an undated camera-system role live on 2026-10-06. Meta's careers site (via mirrors) and six job boards show no tunable-lens, piezo, MEMS-actuator or TLens wording. A forum-posted, undated excerpt of a former Meta DFx engineer ('DRI for TLens camera process development, drove 2 Eng mini-builds') is the closest Meta-TLens link; a second excerpt's employer is cropped, so it may be a supplier. First actions on the 2025-11-14 filings are projections."
+    }
+   ]
+  },
+  {
+   "lane": "analysts",
+   "segments": [
+    {
+     "start": "2022-03-10",
+     "end": "2025-06-19",
+     "title": "Technology comparisons and the first Meta guesses",
+     "text": "Pareto's 2022-03-10 TV interview is its only public poLight item (Pareto hosts the 2026-10-30 CMD). Karl Guttag's CES 2023 notes set CML's 8-wire SMA (~3.2 V/20 mA) against TLens's '<6 mW' (2023-03-04); Yole inferred a CML licence behind Alps's SMA production (2023-04-14); the VR market was 6.9m units in 2024 with Meta at ~77%. CMBI expected Sunny to be 'a major camera supplier for new AI glasses from leading brands, such as Meta, Xiaomi and Samsung' (2025-02-13); 开源 (2025-03-10) and 国盛 (2025-03-19, 'supplier qualifications at several international top brands') covered Q Tech's XR progress; 潮电智库 wrote on 2025-04-30 that poLight's top US customer is 'very likely Meta' and that Q Tech may integrate poLight lenses into camera or pancake modules; Everbright sized the TDK deal at 2,000+ patents and 2,000+ employees and called micro actuators 'decisive' for AF (2025-05-13); VRAR星球 cited an undated DNB Markets note on Meta or Apple adopting TLens-like solutions (2025-06-19). Nobody yet connected these actuators to a dated glasses launch."
+    },
+    {
+     "start": "2025-10-30",
+     "end": "2026-08-06",
+     "title": "Sell-side turns to glasses",
+     "text": "Guojin put Cowell in Vision Pro's camera chain and 'possibly' Apple's AI glasses (2025-10-30/11-03); CTEE reported Phoenix pushed from 2H 2026 to 1H 2027 (2025-12-07, after Business Insider's 12-05 memo story); a 东方财富 column on poLight-Q Tech dwelt on LiDAR and named no XR customer (2026-01-15), the same day a Finansavisen forum thread began speculating about Meta/Apple with an unverified 'DNB says volume orders in 8-16 months' claim; 国元 repeated the TLens/piezo rationale (2026-02-04); a commissioned Analyst Group initiation valued poLight at NOK 9.0 (2026-02-06); Omdia counted 7.4m Meta AI glasses in 2025 (2026-03-05); DBS put Sunny's AR camera-module revenue up ~800% with 2026 soft on overseas launch timing (2026-04-01) and its 2026-05-08 Meta note never mentioned poLight; DeviceBriefing's grant roundup (2026-05-15), TechInsights' Display teardown with no actuator stated (2026-06-10), DBS's Lens Technology initiation with zero poLight/Q Tech/Meta hits (2026-06-16) and UBS on Sunny's 50m-glasses, waveguide-to-ODM ambition (2026-07-05) followed. Analyst Group's Q2 comment (2026-08-06) noted ~NOK 1.8m of Q Tech line support, named no Meta and no 2027, and stated the rule that 'a design-win is classified once the product is confirmed for market release, typically around a product announcement'."
+    },
+    {
+     "start": "2026-08-24",
+     "end": "2027-09-30",
+     "title": "DBS names Meta; Connect commentary; the teardown clock",
+     "text": "Everbright's 1H26 Q Tech note mentioned XR only as a second curve (2026-08-24). DBS's Q Tech note of 2026-08-26 (BUY, target cut to HKD 12.60 from 15.0) cites 'low-power tunable lenses', says Q Tech's AR optical engines are 'already being shipped to Meta and Samsung' and states on p.4 that a Meta project combining Q Tech modules with poLight's tunable lens 'is expected to enter mass production in 1H27': located in the PDF, but unsourced sell-side inference, and DBS's 2026-05-08 Meta note never mentions poLight. TDN Direkt reported the poLight insider sale the next day; DBS's Sunny note (2026-08-28) made the FY27 smart-glasses ramp its catalyst. September brought leaked Phoenix renders (2026-09-12), Digitimes' >80% Chinese supplier share (2026-09-17), Patsnap's liquid-lens landscape (LG Innotek 7, Corning 5, Meta 3, Apple 3), the AR圈 supplier list with no camera-module vendor (2026-09-20), Omdia's 3.4m Meta glasses in 1H26 (2026-09-22), Connect hands-ons with the focus mechanism undescribed (2026-09-23), Morgan Stanley's 'VR glasses a 2027 growth driver' and Citi's 'Goertek and Sunny beneficiaries, volume likely limited' (2026-09-24), and AI-assistant estimates (2026-09-25) that are model output, not evidence. No public Pareto, Arctic, SB1, Redeye or DNB Carnegie note was found, but Norwegian research is paywalled. First VR Glasses teardowns are expected Apr-Sep 2027 (Display precedent: shipped 2025-09-30, iFixit 2025-10-08, TechInsights 2026-06-10)."
+    }
+   ]
+  },
+  {
+   "lane": "meta",
+   "segments": [
+    {
+     "start": "2019-09-17",
+     "end": "2023-10-17",
+     "title": "Fixed-focus glasses, camera headsets",
+     "text": "Luxottica co-development began 2019-09-17; Quest 2 shipped 2020-10-13 without colour passthrough; Ray-Ban Stories (2021-09-09) were torn down as fixed focus with 'no voice coil or magnets'. Quest Pro (2022-10-25) and Quest 3 (teased 2023-06-01, shipped 2023-10-10, 131 days, 2x4 MP passthrough) added colour passthrough without autofocus, and Ray-Ban Meta shipped 20 days after its 2023-09-27 announcement. The pattern: glasses ship within weeks of announcement, headsets within months."
+    },
+    {
+     "start": "2024-08-29",
+     "end": "2026-09-13",
+     "title": "Roadmap churn and the Phoenix build",
+     "text": "'Puffin' was first reported on 2024-08-29 for 2027, pulled in to end-2026 (2025-06-02), delayed to H1 2027 (Business Insider memo 2025-12-05, CTEE 2025-12-07) and confirmed by Bosworth on 2026-02-10 alongside Quest 4 'Griffin' (no earlier than H2 2027). Orion was shown 2024-09-25 with commercial AR 'expected 2027'; Aria Gen 2 research glasses (2025-06-04) are fixed-focus global-shutter cameras; the EssilorLuxottica long-term deal (2024-09-17) and ~3% stake (2025-07-09) underpinned 2m Ray-Ban Meta by Feb 2025 and 7m AI glasses in 2025. Meta Ray-Ban Display shipped 13 days after its 2025-09-17 reveal (~84k units in 2025) with a Sony 12 MP camera and no actuator identified (TechInsights 2026-06-10); Gen 2 was confirmed 'simple fixed focus' on 2025-12-11. Phoenix firmware leaks began 2026-02-25; Seeya started mass production of its 0.91-inch OLEDoS panel in May 2026 with >1m shipped by late August after BOE failed qualification; UDN's 2026-09-13 renders show a 'miniature stereo camera array' and a launch 'pushed to 1H 2027'."
+    },
+    {
+     "start": "2026-06-23",
+     "end": "2027-09-30",
+     "title": "Connect 2026 and the autofocus line",
+     "text": "The own-brand Meta Glasses line launched 2026-06-23. Connect 2026 (2026-09-23) announced Meta VR Glasses at US$1,299.99 for spring 2027: ~100 g, 2412x2288 per eye, 37/26 PPD, four outward cameras for hand tracking and colour passthrough plus four eye-tracking cameras; consumer copy says 'full-color passthrough' while developer pages say 'passthrough with autofocus and depth sensing'. A Reality Labs engineer's LinkedIn post, seen as a forum screenshot of an auto-translation, is paraphrased as saying he led the autofocus work; hands-ons praised the passthrough without describing the focus mechanism. The v207 SDK (2026-09-24) exposes no focus-distance API, the agenda had no camera-hardware session, and no Connect coverage links poLight, TLens or Q Tech. Ray-Ban Meta Gen 3 shipped the same day with no autofocus claim, and Bosworth said there is 'no new version' of Display hardware (Citi still expects a Display 2 in early 2027) and would not commit to AR glasses in 2027. Announce-to-ship is 159-250 days against 13-34 days for glasses; Varjo's enterprise XR-4 Focal Edition (2023) already offers autofocus passthrough. Connect 2027 falls around September 2027, after the first teardowns."
+    }
+   ]
+  },
+  {
+   "lane": "apple",
+   "segments": [
+    {
+     "start": "2018-09-21",
+     "end": "2025-10-22",
+     "title": "Vision Pro cycle, no actuator evidence",
+     "text": "Apple's tunable-lens patents (2018-09-21, 2023-05-03, 2023-07-21 with ex-CML CTO Topliss, 2024-03-12 with SMA) are all see-through prescription lenses, not camera autofocus. Vision Pro shipped 242 days after its 2023-06-05 announcement with 12 cameras and no actuator or module supplier identified; the M5 refresh shipped 7 days after announcement (2025-10-22) while production fell to 45,000 units in Q4 2025 from ~390,000 in 2024. The display-accessory glasses were paused Q4 2024 and cancelled January 2025."
+    },
+    {
+     "start": "2024-01-01",
+     "end": "2026-10-06",
+     "title": "Register sweep: no Apple TLens trace",
+     "text": "The round-3 full-text sweep for 'TLens' and 'poLight' across all assignees returned no Apple text that survived the register check: a lens-power metrology grant (US 12,523,846, 2026-01-13) whose variable-focus camera uses liquid-filled or liquid-crystal lenses was left off the map as off-topic, a head-mounted lens-mounting grant matched only on 'lens tabs', and two further Apple list hits were not opened. Apple's tunable-lens patents already on the map (2018-09-21, 2023-05-03, 2023-07-21 with ex-CML CTO Topliss, 2024-03-12 with SMA actuators) remain fluid-filled see-through prescription optics. Across 2024-2026 publications there is no Apple text on a piezo-membrane camera autofocus, no poLight citation and no N50-related camera filing. The absence fits Gurman's two-sensor design with no autofocus reported, but a buyer need not patent a part, and the 18-month publication lag hides anything filed after about April 2025."
+    },
+    {
+     "start": "2025-05-23",
+     "end": "2027-12-31",
+     "title": "N50 slippage",
+     "text": "Gurman's targets moved from end-2026 (2025-05-23, with 'large quantities of prototypes' at end-2025) to reveal-2026/ship-2027 (2025-12-12), mass production December 2026 and launch early 2027 (2026-02-18), late 2027 (2026-05-31) and a WWDC June 2027 unveil with shipments by end-2027 (2026-07-26, reiterated 2026-09-27): about 12 months of slip over 492 days. The design has two camera sensors, capture and computer vision, with no autofocus reported; Kuo expects Q2 2027 mass production and 3-5m+ units in 2027, display glasses in 2029 and the N224 headset on 'life support'. Supplier-side evidence is thin: ex-CML CTO Ben Brown's move and SEMCO's coil deal point to Apple's existing actuator chain, not poLight. Round 2 added only chain-level pointers: Cowell, Vision Pro's external-camera supplier with Apple at 98.1% of revenue, 'hopes to join the Apple AI-glasses project' (Guojin, 2025-11-03); Patrick Llull left Apple for Meta in May 2026 and ex-Apple optics inventors lead Meta's tunable-lens camera-module filing; a forum-posted profile of an Apple Grenoble hardware engineer with PZT tunable-lens research background is rumor-grade."
+    }
+   ]
+  },
+  {
+   "lane": "google",
+   "segments": [
+    {
+     "start": "2024-05-01",
+     "end": "2025-12-08",
+     "title": "Platform assembly",
+     "text": "The Magic Leap partnership (May 2024, extended three years on 2025-10-30), Qualcomm's confirmation of joint glasses work (2024-09-05), Android XR's unveiling (2024-12-12), the US$250m HTC acqui-hire (2025-01-23) and Google I/O 2025 prototypes with Gentle Monster, Warby Parker (US$150m commitment) and Kering set the stage; Galaxy XR launched 2025-10-21 and Google said on 2025-12-08 'the first glasses will arrive next year'."
+    },
+    {
+     "start": "2026-04-16",
+     "end": "2027-12-31",
+     "title": "2026 launch, 2027 display",
+     "text": "Kering's CEO put Gucci glasses at 'probably next year, 2027' (2026-04-16); I/O 2026 (2026-05-19) committed Samsung/Google eyewear to 'this fall', display glasses to 2027 and Xreal Aura to before end-2026; Unpacked London (2026-07-22) formally introduced the eyewear and the FCC cleared SM-O200P/SM-O200J on 2026-10-01 with a Samsung official naming November 2026, 689 days after the Android XR unveil and 166 days after I/O. Nothing from Google addresses camera focus; the 2027 display generation is the window where any new camera module would be designed in."
+    }
+   ]
+  },
+  {
+   "lane": "samsung",
+   "segments": [
+    {
+     "start": "2021-07-15",
+     "end": "2027-12-31",
+     "title": "Samsung's T-lens depth-camera family",
+     "text": "Samsung's register trail is two families, neither naming poLight. US 12,487,379 (priority 2021-07-15, granted 2025-12-02) claims a 7-element lens with a tunable lens between the second and third elements, a polymer plate over sealed liquid-gel pressed by a ring whose actuator 'may include a piezoelectric actuator or a motor'; a Meta application cites it. KR priority 2022-10-31 and its US continuation 19/182,755 (filed 2025-04-18, published 2025-07-31, docketed, no office action) describe a glasses-type device whose second camera's 'focus-variable lens 280 may be a tunable lens (T-lens)' of piezo film, glass membrane, glass panel and transparent polymer, for depth-from-focus. Cadence: priorities in 2021 and 2022, then a US continuation 30 months later, six months before Galaxy XR and 19 months before SM-O200P. The T-lens serves a depth camera that the single-camera FCC device lacks, so it neither confirms nor contradicts the VRARA autofocus rumour; a 2027 examination outcome is a projection."
+    },
+    {
+     "start": "2023-01-01",
+     "end": "2025-10-31",
+     "title": "Headset first",
+     "text": "Joint OS/silicon/hardware design with Google and Qualcomm began in 2023; Project Moohan was named 2024-12-12 and shipped as Galaxy XR on 2025-10-31, ten days after its unveil, at US$1,799.99 with 2x6.5 MP passthrough plus 10 tracking cameras; an aggregator estimates ~40,000 units in 2025. No autofocus was claimed for the passthrough cameras."
+    },
+    {
+     "start": "2025-03-21",
+     "end": "2026-11-30",
+     "title": "Glasses: a 19-month slip and an autofocus rumour",
+     "text": "ETNews reported 'Haean' glasses for 'later this year' on 2025-03-21; three weeks later the target became 2026, confirmed in the Q4-2025 earnings call, at MWC (2026-03-06, camera 'at your eye level'), at I/O (2026-05-19, 'this fall'), at Unpacked (2026-07-22) and by the FCC filing (2026-10-01: single 12 MP camera, AR1 Gen 1, 9 h) with a November 2026 launch, 590 days after the first report. VRARA's 2026-02-09 'early reports' of 12 MP with autofocus (234 days before the FCC filing) remain unconfirmed by Samsung; the leaked spec sheet names a Sony IMX681 at US$379-499. Samsung cites ~200 patent applications and a colour-display 'Haean' for 2027, possibly late 2027."
+    }
+   ]
+  },
+  {
+   "lane": "snap",
+   "segments": [
+    {
+     "start": "2016-09-24",
+     "end": "2025-09-15",
+     "title": "Five Spectacles generations",
+     "text": "Spectacles shipped in 2016 (vending machines), 2018 (220,000 pairs cumulative by May 2018), 2019, 2021 (first AR display, developer-only) and 2024-09-17 (gen 5, 2 RGB + 2 IR cameras, 226 g, US$99/month for developers). Snap's IR release of 2025-06-10 committed to 'lightweight, immersive Specs in 2026', and Spectacles OS 2.0 (2025-09-15) promised a 'lighter and smaller' sixth generation 'next year'; Guttag called gen 5 'a developer kit, not a consumer product'."
+    },
+    {
+     "start": "2026-01-28",
+     "end": "2026-12-31",
+     "title": "Consumer Specs",
+     "text": "Specs Inc. was formed 2026-01-28 and a multi-year Qualcomm deal signed 2026-04-10; AWE 2026 (2026-06-16, 371 days after the IR commitment) unveiled Specs at US$2,195, 51-degree FOV, 132/136 g, four cameras with no megapixel or focus figure; pre-orders opened 2026-09-16 (92 days later) with a US$200 deposit and shipping 'later this fall' in the US, UK and France, the initial run reportedly capped at ~100,000 units. As of 2026-10-06 specs.com still publishes no camera megapixel or focus specification, so the autofocus question for Specs is open."
+    }
+   ]
+  },
+  {
+   "lane": "xreal",
+   "segments": [
+    {
+     "start": "2023-01-01",
+     "end": "2025-07-31",
+     "title": "Display-glasses volume, flat units",
+     "text": "Xreal sold 137,200 glasses in 2023, 124,900 in 2024 and 133,700 in 2025 (revenue RMB 390m, 395m and 516m; adjusted net loss RMB 250m in 2025) and claimed 51% of worldwide AR share in Q3 2023. One Pro was promised for March 2025 and reached general availability on 2025-07-01, a 122-day slip. The Eye camera accessory shipped in July 2025 as 12 MP, f/2.25, 1.35 g with EIS; its spec page states no focus type, so the 'fixed focus, autofocus not supported' reading carried in the dataset is unsourced. At this volume Xreal is a small buyer of any camera actuator, and it fits poorly the 'very sizable, worldwide known' label poLight gives its leading customers."
+    },
+    {
+     "start": "2025-05-20",
+     "end": "2026-11-30",
+     "title": "Aura",
+     "text": "Project Aura was announced with Google on 2025-05-20, shown at AWE 2025 and CES 2026, and revealed in full at AWE 2026 (2026-06-16, 392 days later): 70-degree FOV, Snapdragon 'Reality Elite' puck, two tracking cameras plus one high-resolution camera of undisclosed focus type, no more than US$1,500, fall 2026 in five countries. A US$100m Series D (Jan 2026), an HKEX filing for up to US$400m (2026-04-01, Luxshare and Alibaba as shareholders) and a patent suit against Viture (2026-01-15) frame the launch; Android Authority's 2026-09-06 hands-on still said 'before the end of 2026'."
+    }
+   ]
+  },
+  {
+   "lane": "rokid",
+   "segments": [
+    {
+     "start": "2024-04-23",
+     "end": "2025-12-29",
+     "title": "From AR Lite to Rokid Glasses",
+     "text": "AR Lite (2024-04-23) was a display product; Rokid Glasses, unveiled 2024-11-14 for Q2 2025, reached Kickstarter only on 2025-08-26 (285 days later) with a 12 MP Sony IMX681 f/2.25 camera, passed US$1m in four days, closed at US$3.6m on 2025-10-10, exceeded US$4m by 2025-11-21 and delivered in November 2025, about five months late. Taiwan crowdfunding set a NT$62m record on 2025-12-12."
+    },
+    {
+     "start": "2026-01-06",
+     "end": "2026-09-28",
+     "title": "Volume, fixed focus",
+     "text": "Ai Glasses Style (38.5 g, 12 MP Sony camera, US$299) was shown at CES on 2026-01-06, available globally 13 days later and past 15,000 units sold by 2026-02-02; Japan crowdfunding took ¥200m in ten days (2026-03-12). A 2026-07-30 review confirmed the camera is fixed focus with a 34 cm minimum distance, so Rokid's volume product carries no actuator at all. Rokid claims 41% of global AR and AI glasses shipments in H1 2026 (its own PR, 2026-09-28)."
+    }
+   ]
+  },
+  {
+   "lane": "rayneo",
+   "segments": [
+    {
+     "start": "2023-01-04",
+     "end": "2025-12-20",
+     "title": "X2 to X3 Pro",
+     "text": "RayNeo X2 went from CES 2023 to a China debut in November 2023 (~10 months); X2 Lite's 'Q3 2024' promise has no sourced ship date. X3 Pro (CES 2025-01-06) launched in China on 2025-05-27 (141 days) and globally on 2025-12-17 (345 days) with a 12 MP camera of unstated focus type; the V3 camera glasses promised at the same CES with '12 MP IMX681 with HDR and OIS', which would imply an actuator in a 39 g frame, have no ship date 638 days later. Counterpoint gave RayNeo 24% of global AR glasses in Q3 2025."
+    },
+    {
+     "start": "2026-01-04",
+     "end": "2026-09-04",
+     "title": "Fast refresh, camera-free turn",
+     "text": "Air 4 Pro went from CES (2026-01-06) to sale in 19 days; the X3 Pro camera was confirmed as 12 MP IMX681 colour plus a monochrome 6DoF tracking camera on 2026-08-04, focus unstated; the camera-free iO, GT and GT Max were unveiled 2026-08-21 and retailed 14 days later, with X3 Pro cut to US$1,099. RayNeo claims the #1 global AR shipment position for H1 2026. Its newest products drop the camera entirely, the opposite of an autofocus roadmap."
+    }
+   ]
+  },
+  {
+   "lane": "even",
+   "segments": [
+    {
+     "start": "2024-06-26",
+     "end": "2025-11-12",
+     "title": "Camera-free by design",
+     "text": "G1 was unveiled 2024-06-26 and G2 (US$599) with the R1 ring followed 504 days later on 2025-11-12 with a 27.5-degree display and no cameras or speakers."
+    },
+    {
+     "start": "2026-03-26",
+     "end": "2027-12-31",
+     "title": "Funding without cameras",
+     "text": "A US$150m pre-Series B at a US$1bn valuation (2026-07-06, Meituan and Tencent) was followed a day later by the CEO stating G3 'will not launch in 2026' and that cameras are not the company's direction; a software overhaul was promised within 1-3 months (2026-07-17). No addressable market for camera autofocus suppliers in 2026-2027."
+    }
+   ]
+  },
+  {
+   "lane": "amazon",
+   "segments": [
+    {
+     "start": "2019-09-25",
+     "end": "2023-09-20",
+     "title": "Audio frames",
+     "text": "Echo Frames generations 1 (2019-09-25, US$179.99), 2 (2020-11-19) and 3 (2023-09-20, from US$269.99) are audio-only with no camera or display, giving Amazon no consumer camera-glasses track record."
+    },
+    {
+     "start": "2024-11-11",
+     "end": "2027-12-31",
+     "title": "Driver glasses and the Jayhawk rumour",
+     "text": "Reuters reported driver glasses 'Amelia' on 2024-11-11; The Information reported consumer 'Jayhawk' (camera plus monocular display) for late 2026/early 2027 on 2025-09-10, with no follow-up in the 391 days since. The delivery glasses with 'integrated cameras' were unveiled 2025-10-22 (763 days after Echo Frames 3), and the 2026-09-21 update counts 275,000 deliveries by 500+ drivers over 18 months, 5,000 more devices in 2026 and 20,000+ by end-2027, an order of magnitude below the rumoured 100,000 initial run. Amazon's AR patents cover UI and fulfilment, not optics or autofocus. The only Amazon-adjacent TLens trace is a forum-posted Foxconn engineer's 'TLens fast-focus camera module driver development' in a 2024 role serving Microsoft, Amazon and Varjo, which fits Varjo's XR-4 rather than Amazon."
+    }
+   ]
+  },
+  {
+   "lane": "alibaba",
+   "segments": [
+    {
+     "start": "2025-07-28",
+     "end": "2026-05-08",
+     "title": "Quark to Qwen",
+     "text": "Quark AI Glasses were previewed at WAIC on 2025-07-28 and launched 122 days later (2025-11-27; S1 from 3,799 yuan, G1 from 1,899 yuan, 12 MP, Qualcomm AR1); the renamed Qwen Glasses appeared at MWC 96 days after that (2026-03-03, 12 MP Sony IMX681) with China sales from 2026-03-08 and an international release 'within 2026' that has not yet been dated. Alibaba claimed 53% of China's online smart-glasses sales on 2026-05-08."
+    },
+    {
+     "start": "2026-09-10",
+     "end": "2027-12-31",
+     "title": "N1 at 50 MP",
+     "text": "The N1 series was previewed on 2026-09-10, opened pre-orders 2026-09-22 and goes on sale 2026-10-13 (33 days preview-to-sale) with a 50 MP camera and iris payment, China only, 191 days after the Qwen Glasses drop. The 4-6-month cadence makes a mid-2027 successor likely but unannounced. The only tunable-lens trace in the Alibaba ecosystem is Ant Group's 'Look to Pay' demo glasses with a TLens camera (2026-08-06)."
+    }
+   ]
+  },
+  {
+   "lane": "xiaomi",
+   "segments": [
+    {
+     "start": "2017-06-01",
+     "end": "2021-03-30",
+     "title": "Tunable-lens early adopter",
+     "text": "NEXTLENS was founded in Dietikon in June 2017; Xiaomi's Mitu Children's Learning Watch 4Pro (2020-01-07, 1,299 yuan) shipped an 8 MP 'T-LENS ultra-fast focus' camera, the first commercial poLight TLens product, 4.8 months after poLight's PVT PO of 2019-08-15 and 2.7-2.9 months after the launch-prep POs of 2019-10-11/17, and was named by poLight only in its Q1-2020 report; the Mi MIX Fold (2021-03-30) used a NEXTLENS liquid lens in its telephoto/macro camera."
+    },
+    {
+     "start": "2024-11-13",
+     "end": "2027-12-31",
+     "title": "AI Glasses",
+     "text": "36Kr reported a Goertek ODM partnership with Lei Jun expecting >300,000 units (2024-11-13); the AI Glasses launched 225 days later (2025-06-26) with a 12 MP Sony IMX681 and Snapdragon AR1 from 1,999 yuan, no autofocus claimed. IT Home's 2026-08-05 report of a completed-but-paused gen 2 slipping to Q4 2026 or 2027 was denied by Xiaomi, 405 days after launch; no supplier signal points at Xiaomi."
+    }
+   ]
+  },
+  {
+   "lane": "otheroem",
+   "segments": [
+    {
+     "start": "2020-02-10",
+     "end": "2023-11-27",
+     "title": "poLight's named customers: the lead-time ledger",
+     "text": "XUN's Smartwatch Max Pro (2020-02-10) was the second smartwatch design-win, 5.9 months after its PO; Honeywell's EX30 scan engine with TLens autofocus (2020-10-14) came 7.3 months after the design-in PO; MAXHUB's UC W20 webcam (2021-04-06) launched 5.4 months after its PoC with POs placed after launch. Magic Leap 2's 12.6 MP AF camera was disclosed at SPIE in January 2022 and shipped 2022-09-30; Vuzix Shield was unveiled at CES 2022 but its TLens win was only confirmed 2024-04-08; Xvisio's SeerLens One (2022-07) never became a confirmed design-win; Sharp showed a polymer-tunable-lens camera module and a 175 g VR HMD at CES 2023 (poLight is 'in dialogue with SHARP', 2026-08-19); Meizu went from design-win PO (2023-01-24) to announcement (2023-03-30) to sale (June 2023); LLVision's Leion Pro went to mass production 1.2 months after being named (2023-04-04); and Varjo announced XR-4 (dual 20 MP passthrough, Focal Edition autofocus) on 2023-11-27, the day poLight declared its MR HMD design-win. First PO to launch has never exceeded ten months for a product that shipped."
+    },
+    {
+     "start": "2021-01-10",
+     "end": "2023-03-02",
+     "title": "Enterprise XR and the Magic Leap 2 proof",
+     "text": "Lenovo ThinkReality A3 (2021-01-10), the US$21.88bn IVAS award (2021-03-26), Pico 4 (2022-10-18), PS VR2 (2023-02-22) and Magic Leap 2 (2022-09-30) defined the period; Yole's teardown 153 days after ML2's release (2023-03-02) found poLight's TLens in its 13 MP camera, still the only teardown-confirmed TLens in an XR headset."
+    },
+    {
+     "start": "2022-08-23",
+     "end": "2027-12-31",
+     "title": "XR makers' TLens filings: poLight named twice",
+     "text": "Outside the Meta chain the sweep found TLens in filings from three XR makers and a tail of phone, industrial and lab applicants. Bosch's retinal-scanning data glasses (priority 2022-08-23, published 2024-02-29) say the varifocal lens 'could be configured as a TLens from poLight (Skoppum, Norway)', in the display path, not a camera. Lemon/ByteDance's gaze-driven XR camera autofocus (priority 2023-09-20, WO 2025-03-27, US published 2026-08-27, no office action) names 'a poLight lens' twice, once for thermal compensation: the only XR-maker camera text naming poLight, from Pico's parent. Zhuhai Mojie's AR-glasses filings (2025-12-30, published 2026-03-27 and 2026-05-01) list Tlens beside VCM and a zoom lens. OPPO (from 2022-10-21), Vivo, Hikrobot, Honor (beside liquid lenses), Yingda, a microscope maker and Zebra use the term generically. About one XR-maker filing a year since 2022; no Apple, Google, Snap or Xreal text uses it, and none ties a filing to a product."
+    },
+    {
+     "start": "2024-01-09",
+     "end": "2025-09-09",
+     "title": "Platform exits and pivots",
+     "text": "Microsoft discontinued HoloLens 2 (2024-10-01) and handed IVAS to Anduril (2025-02-11), which teamed with Meta on EagleEye (2025-05-29) and won US$159m (2025-09-09); HTC sold part of its XR division to Google (Jan 2025); Magic Leap partnered with Google (2024-05-30, extended 2025-10-29) and Pegatron (2025-12-30) before pivoting to waveguide supply (2026-07-09); Quanta put US$20m into Vuzix. The enterprise headset market that bought TLens via Magic Leap has largely dissolved into component supply."
+    },
+    {
+     "start": "2024-11-12",
+     "end": "2026-04-30",
+     "title": "China AI-glasses wave, fixed focus",
+     "text": "Baidu's Xiaodu glasses took 364 days from unveil (2024-11-12) to sale; HTC Vive Eagle (12 MP, <49 g) went from announcement to Taiwan availability in 18 days (2025-08-14 to 2025-09-01); Meizu StarV Snap (2025-10-30), Mentra Live (Dec 2025) and INMO Air 3 (2025) list 12-16 MP cameras with no autofocus stated; Huawei's AI Glasses (2026-04-20, 12 MP, 35.5 g) came 23 months after its audio-only Eyewear 2 and 12 days after the tease. Across this wave no shipping product discloses an autofocus actuator."
+    },
+    {
+     "start": "2025-10-31",
+     "end": "2027-03-31",
+     "title": "Headsets and enterprise autofocus wins",
+     "text": "SnkeXR named TLens in its medical AR headset on 2025-10-31; Valve released Steam Frame (2026-09-18), 310 days after announcing it, with four monochrome tracking cameras; Pico teased Project Swan on 2026-03-02, named it Space Pro, cancelled its 2026-09-02 event and moved release to Q4 2026 (a leak says early October at US$2,899); Ant Group showed 'Look to Pay' demo glasses with a TLens camera (poLight CEO, 2026-08-06), an Alibaba-side trace beside Qwen N1 (previewed 2026-09-10, on sale 2026-10-13); Viture's Helix ships Q1 2027. Vuzix booked follow-on orders four times between 2026-03-31 and 2026-08-11. Q Tech's 2026-09-28 posting names '(e.g. Meta, Pico)' as example brand customers, and ByteDance's 2023 filing lists a poLight lens as one autofocus option; neither is a supply link. The CEO declined to locate Program B, so Pico Space Pro is one of several Q4-2026 candidates, with Alibaba's N1 the closest fit on timing."
+    }
+   ]
+  }
+ ],
+ "headline_findings": [
+  "Meta VR Glasses (announced at Connect on 2026-09-23, US$1,299.99, spring 2027) are the only announced consumer device due in 2026-2027 with documented autofocus passthrough ('passthrough with autofocus and depth' on Meta's developer pages); Varjo's enterprise XR-4 Focal Edition (announced 2023-11-27) already offers gaze-directed autofocus passthrough, and poLight declared an MR-headset design-win that day without naming the customer. A Reality Labs engineer's LinkedIn post, seen only as a forum screenshot of an auto-translation, is paraphrased as saying he led the autofocus work, which took years across the whole stack; Meta's gaze-driven autofocus passthrough patent (priority 2023-03-31) was granted 2026-02-10. None of these names an actuator or supplier.",
+  "Meta's own filings describe a window/polymer/glass-membrane/piezo tunable lens in TLens-like terms: the lens barrel with integrated tunable lens (priority 2022-07-26, granted 2026-05-19, continuation published 2026-09-17), the wide-FOV assembly (granted 2026-06-23), closed-loop capacitance sensing (priority 2023-08-28), a +/-50 V piezo driver IC (priority 2023-11-15) and an exposed-camera protective-sleeve design whose tunable lens may use a 0 to +/-5 D piezo membrane (priority 2025-02-12, published 2026-08-13). They fit an integrated bought part as well as an own membrane lens: Meta's side retrieved poLight's TLens Add-In pages on 2022-10-19, and a 2023 omnibus quotes TLens-class figures (~6 mW, ~2 ms, 10 cm to infinity) without naming poLight.",
+  "The five Meta texts read in full in round 3 (the driver IC; camera-module, exposed-camera and barrel-via applications published 2026-06-25, 2026-08-13 and 2026-09-17, the only tunable-lens camera items in an unverified listing of ~70 recent Meta publications; a thermal filing) never refer to TLens or poLight: the thermal 'Tlens' labels a temperature, and poLight appears only as cited prior art. The camera-module application (priority 2024-12-19; Chinese counterpart 2026-06-23) says existing modules glue on a 3x3 or 5x5 mm tunable lens, a size fitting TLens (3.2 mm element) or a liquid lens, and integrates one with wafer-level optics. With the pending moving-element MEMS autofocus, Meta covers three architectures and never says whether it buys or builds the tunable element.",
+  "Qingdao Goertek Vision, the XR arm of the assembler that builds Meta's and Pico's headsets, filed four head-mounted-device applications on 2024-06-03 and 2024-09-02 (published 2024-09-27, 2024-10-01 twice and 2026-03-10; all in substantive examination) whose dependent claims name a 'tunable lens TLens' or a 'T-Lens' zoom lens of piezo film over polymer. One sets VR video see-through focus from eye-tracking fixation and calls VCM focus of about 1 s unacceptable; the others cover sub-0.1 s multi-focus fusion, binocular-gaze focus for camera glasses and ROI focus. None names poLight or a customer, and Goertek's place on Phoenix rests on unattributed 2026-09-20 supply-chain reports plus Citi's 2026-09-24 note naming Goertek and Sunny key beneficiaries of the VR Glasses, so this is ODM familiarity with TLens-type autofocus, not a Meta supply link.",
+  "Other device makers drew the same stack without proving a purchase. Lemon/ByteDance's gaze-driven XR camera autofocus application (priority 2023-09-20, US published 2026-08-27) is the only XR-maker camera filing naming poLight: its options include 'a poLight lens incorporating piezoelectric actuators, deformable membranes' and a poLight lens for thermal compensation; Bosch's 2022 data-glasses filing names a poLight TLens only for a display-path varifocal lens. Samsung's smart-glasses filing (KR priority 2022-10-31, US published 2025-07-31) uses a 'tunable lens (T-lens)' of piezo film, glass membrane and polymer, without naming poLight, in a depth camera no announced Samsung product has (its November eyewear has one 12 MP camera, FCC 2026-10-01); Samsung also holds its own piezo-option tunable-lens grant (2025-12-02).",
+  "Chinese lens, module and ODM filings use 'Tlens' or 'T-lens' as a class term for voltage-driven membrane lenses, and five false positives were dropped from the sweep. Q Tech's 'T-lens device' (filed 2023-07-25, granted 2024-04-16), Jiangxi Shengtai's AF module (granted 2024-12-27) and Goertek's texts spell out poLight's piezo-film-on-polymer construction; Sunny's texts describe a liquid-filled element, from Sunny Opotech's T-lens-in-motor application (filed 2021-09-29, pending) to Zhejiang Sunny Optics' AR/VR front-camera lens with a 'Tlens module' (filed 2026-03-04, published 2026-05-12). Huaqin's VR see-through lens (granted 2025-04-08) mentions a 'T lens' once. Sunny Opotech's internal-focusing grant (2026-01-30) rejects TLENS for field curvature. Sunny is reported as the camera-module maker for Meta's AI glasses, and Citi (2026-09-24) names it a VR Glasses beneficiary without saying for which part; no source names the VR Glasses camera-module or actuator vendor.",
+  "Q Tech's 2026 filings concern TLens-type parts: an inline diopter QC method 'taking tunable lens TLens as an example' so every lens can be measured 'throughout mass production' (filed 2026-03-30, published 2026-06-09; claim 10 recites the stack) and a TOF module pairing a generically named 'Tlens' with metalenses (filed 2026-04-24, published 2026-09-04), both classed general camera. They sit between the CEO's 'under qualification', with capacity 'limited by only having one test machine' (2026-03-10), and 'tested and qualified' (2026-08-06). Two lines and a new final-test machine double capacity by end-2026, but the CEO says the Q Tech line is 'not really built for the capacity of that OEM' (2026-08-19) and programme units are 'likely coming from the Philippines'.",
+  "poLight's 2024-2026 publications and grants name no customer and are mostly manufacturing and reliability work: hexagonal dies for wafer packing (priority 2024-12-20), a lead-free lens (priority 2024-07-16; first lead-free lenses assembled by February 2026; 'some of the very biggest' OEMs want lead removed), a low-power hold-mode driver (Danish filing 2025-02-03, PCT 2026-08-06), thermal compensation from a 2021 priority (EP granted 2026-03-11) and ghost/flare mitigation (published 2026-03-05); the rest add a ring-actuated lens with a 3-30 mm membrane (priority 2024-10-29) and wobulation (published 2025-10-30, 2026-08-05). Only the driver's description uses the TLens name, so a customer's silence on the brand proves little, while Meta's own lens, barrel, control and driver filings keep an in-house membrane lens a live alternative.",
+  "Meta remains the leading candidate for the Q Tech-backed OEM, on one inference chain. Q Tech reported a vendor code from a 'major US customer' (2024-03-25), called it the 'US M brand' (2024-08-12) and on 2026-09-28 advertised an XR factory head serving brand customers '(e.g. Meta, Pico)'. DBS's 2026-08-26 Q Tech note (target cut to HKD 12.60) says on p.4 that a Meta project pairing Q Tech modules with poLight's lens is 'expected to enter mass production in 1H27' and that Q Tech's AR optical engines ship to Meta and Samsung. That is sell-side inference: DBS's 2026-05-08 Meta note omits poLight, Apple has been floated in DNB-attributed and forum posts, and Program C is a different top-tier US OEM.",
+  "Program A has two orders in three announcements: a ~NOK 1.7-1.8m qualification PO (2025-08-06, 50% firm, final half called 2026-02-11) and a NOK 0.7m follow-on (2026-06-18, deliveries 'likely second half of 2026'), about NOK 2.5m and still 'qualification' 14 months after the first order. poLight's first production-linked orders came 4.8 months before launch (Xiaomi watch), about 3 (Honeywell validation) and 10 (Magic Leap 2, attribution inferred); disclosed initial MP POs were NOK 0.36m (Magic Leap 2) and 2.9m (Meizu); failures surfaced 9-41 months after first orders. If Program A is the VR Glasses camera, a first production PO would fall in October 2026 to early 2027, probably small; a Q3 report still saying 'qualification' would weaken that reading.",
+  "Program B became poLight's first consumer AR|MR design-in on 2026-07-10: NOK 4.9m of POs since 2025-11-24, the three 2026 orders (NOK 4.0m) at mass-production price, 'release plan is this year' and Q4-2026 deliveries for 'a big company and a major player in the ecosystem'; the CEO declined to locate it. Alibaba's Qwen N1 fits the timing best: previewed 2026-09-10, two months after the design-in as at Meizu, on sale 2026-10-13, and affiliate Ant Group showed TLens 'Look to Pay' demo glasses. Pico Space Pro, Samsung/Google eyewear, Snap Specs and, weakly, Xreal Aura were unveiled earlier and fit only a Q4 sale. Only a teardown identifying poLight's PZT-MEMS lens, not just a membrane or 'T-Lens' part, settles it.",
+  "Meta's hiring around Connect is actuator-agnostic: a Camera and Depth Electrical Engineer for 'auto-focus electrical design' (posted about 2026-09-16 to 09-22), an Opto-Mechanical Engineer, Camera, for Active Alignment and mass-production ramp (2026-09-22), a next-generation smart-glasses sensor lead (about 2026-09-30) and an undated camera-system role live on 2026-10-06. Meta's careers site (via mirrors) and six job boards (2026-10-06) show no tunable-lens, piezo or TLens wording, and the only actuator-specific Meta posting, a closed Seoul role, gives VCM as an example. The closest Meta-TLens link is a forum-posted, undated excerpt of a former Meta DFx engineer ('DRI for TLens camera process development, drove 2 Eng mini-builds'), engineering-build language; a second excerpt's employer is cropped.",
+  "Negative or neutral signals: poLight has filed nothing since its 2026-09-21 TWedge order (checked to 2026-10-06), a weak negative because its same-day disclosure precedent, an unnamed MR-headset maker, shipped within weeks while the VR Glasses ship in spring 2027; the CEO, COO and CTO sold 1,109,586 shares at an average NOK 12.13 after an option exercise (reported 2026-08-27); no source reports autofocus on Ray-Ban Meta Gen 3, Ray-Ban Display or Aria Gen 2; Meta's moving-element MEMS autofocus for passthrough is pending. The sweep's cautions: Bosch's 2022 TLens-naming display filing has no product and Zhuhai Mojie lists Tlens beside VCM; separately, poLight dropped a consumer laser-display design-in in August 2025 with 'no plan for MP'.",
+  "No merchant competitor has announced an XR camera win. CML's last XR-facing article is dated 2025-05-12, though a 2026-04-30 PCT and an October-2026 job ad cite glasses and AR/VR, and its CTO reportedly left for Apple around March 2026; Optotune launched its 0.3 g EL-3.1-10.8 for 'high-volume OEM integration' on 2026-09-21 (20 mW against TLens's <6 mW); Varioptic stays industrial; Sheba had 17 staff in January 2026. The live alternatives are Meta's own membrane lens, its moving-element MEMS design or a VCM, which Q Tech's affiliate Actutek can supply. Decisive checkpoints: poLight's Q3 report (2026-10-29), CMD (2026-10-30) and Q4 report (2027-02-24) and VR Glasses teardowns (Apr-Sep 2027); 2027 patent actions show claim scope, not suppliers."
+ ],
+ "subtitle": "Supplier signals from poLight, Q Tech, CML, Optotune and the module chain, dated against Meta, Apple, Samsung/Google, Snap, Xreal, Pico, Alibaba and other 2026-2027 launches; lead-time bands calibrated to poLight's 2019-2024 record, extended with Meta patents, job posts, Chinese supply-chain reports, module-maker sightings and a full-text patent sweep for 'TLens' and 'poLight' across all applicants.",
+ "foot": "Sources: poLight/Q Tech filings, decks and transcripts, patent registers, Meta developer docs and job posts, Chinese supply-chain press, broker notes and forum-posted LinkedIn excerpts; 964 events and 133 windows, whose 69 round-3 patent items were checked twice on the registers (51 confirmed, 12 partly supported, 6 wrong; 5 false positives dropped). Patents name options, not supply contracts; poLight has never named Meta or said '2027'; the DBS 1H27 sentence is sell-side inference; 'T-Lens' is a generic Chinese term. Round 3: full-text patent sweep for TLens/poLight (2024-2026), every row checked on the registers by two independent checkers, synthesis audited by a 18-skeptic panel before publication.",
+ "estimate": {
+  "p_tlens_in_meta_vr_glasses": 0.58,
+  "p_meta_is_qtech_backed_oem": 0.78,
+  "reasoning": "Round 2 closed at 0.62 (TLens in the VR Glasses at launch) and 0.80 (Meta is the Q Tech-backed OEM); round 3 lowers them to 0.58 and 0.78, because the patent sweep found no OEM text that ties TLens or poLight to a product and because two round-2 shortcuts are undone. Round 2's +0.02 rested on items that only show the VR Glasses have autofocus (the paraphrased engineer post, the gaze-driven AF grant of 2026-02-10, a calibration filing listing a PZT lens beside VCM, SMA and MEMS) and on Q Tech line status counted twice ('tested and qualified' on 2026-08-06; 'TLens + AR Mono Engine: Volume Delivery Achieved' on 2026-08-24, a bullet shared with optical engines), none of which discriminates the actuator. Decomposed, the first number is about 0.78 for Meta backing Program A, times about 0.8 that Program A is the VR Glasses camera rather than a later, higher-volume Meta glasses device (the OEM's need is 'much higher' than the Q Tech line, while Citi expects VR Glasses volume to be limited), times about 0.88 that qualification completes and TLens ships at launch, plus about 0.02 for routes outside Program A, which gives 0.57-0.58. Those terms are held down by dated counter-evidence: Program A was still 'qualification' on 2026-06-18 with no design-in, though the Phoenix display has been in mass production since May 2026 and poLight puts design-in after design lock and component qualification; programme units are to come from the Philippines; no Phoenix supplier list or Connect coverage names a camera-module or actuator vendor or links poLight; and alternatives are live (Meta's pending moving-element MEMS design, Optotune's high-volume liquid lens of 2026-09-21, Q Tech's affiliated Actutek VCM source, the CEO's read that AR/MR cameras mostly use VCM or no AF). The sweep's new rows net to about zero: Goertek's 2024 filings (one of four puts a TLens under gaze-driven VST focus; Goertek also builds for Pico, Sony and Xiaomi and is placed on Phoenix by unattributed supply-chain reports and by Citi's 2026-09-24 beneficiary note, neither naming a camera part) and Meta's +/-50 V piezo driver IC (priority 2023-11-15) add about +0.01, while Sunny's liquid-type 'Tlens module', Sunny Opotech's TLENS field-curvature critique and Meta's newer membrane texts that name no supplier take about -0.01; the camera-module application, now read as polymer or liquid, and the calibration filing were already round-2 evidence. Meta's piezo-membrane filings stay neutral on the supplier, since they fit a bought TLens-class part (its side retrieved poLight's TLens Add-In pages on 2022-10-19 and a 2023 omnibus quotes ~6 mW, ~2 ms, 10 cm to infinity) as well as an in-house membrane lens, and the first number stays above 0.5 mainly because the CEO described Program A as very advanced, high-end glasses for a big US OEM seven weeks before Meta announced a US$1,299.99 'VR Glasses' with autofocus passthrough. On identity, Q Tech's own documents (a 'major US customer' vendor code of 2024-03-25, called 'US M brand' on 2024-08-12; a 2026-09-28 posting naming Meta and Pico as example XR brand customers) and DBS's p.4 sentence keep Meta well ahead, but they form one chain: DBS's own Meta note (2026-05-08) omits poLight, Apple (camera glasses in mass production from Q2 2027 per Kuo) has been floated in a DNB-attributed article and forums, Google, Amazon and Snap run 2026-2027 camera-glasses programmes, and Programs A, B and C are different customers (CEO, 2026-08-19), so a second top-tier US OEM is in TLens camera design and Meta could be C rather than A. The sweep is neutral on identity: no US OEM's own text names TLens (Meta cites poLight only as prior art), Apple's tunable-lens filings are fluid-filled or SMA-driven prescription lenses and its one camera-side hit, a lens-measurement method, was dropped as off-topic, and Samsung and ByteDance hold pending US applications on the same stack, so 0.80 is trimmed to 0.78 rather than raised. The ByteDance filing naming 'a poLight lens' (priority 2023-09-20) moves neither number and does not single out Pico for Program B, because Samsung's 2022 smart-glasses T-lens filing is as specific and Alibaba's Qwen N1, previewed two months after the design-in and on sale 2026-10-13, with affiliate Ant Group's TLens demo glasses, fits the timing better. The dated tests are the Q3 report (2026-10-29) and CMD (2026-10-30), a Program A design-in or first production PO (if Program A is the VR Glasses camera, poLight's precedents put it in October 2026 to early 2027), the Q4 report (2027-02-24) and the first teardowns able to identify a poLight PZT-MEMS lens (Apr-Sep 2027)."
+ }
+}

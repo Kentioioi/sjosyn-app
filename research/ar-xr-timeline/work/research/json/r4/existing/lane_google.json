@@ -1,0 +1,167 @@
+[
+{
+"id": "google-1-26",
+"date": "2024-05",
+"precision": "month",
+"cat": "commercial",
+"type": "partnership",
+"title": "Google and Magic Leap announce strategic AR optics/manufacturing partnership",
+"detail": "Partnership on AR optics and manufacturing; date per 9to5Google's later recap (no primary page found for the exact day).",
+"url": "https://9to5google.com/2025/10/30/google-android-xr-glasses-extended-magic-leap-deal/",
+"conf": "strong"
+},
+{
+"id": "google-1-27",
+"date": "2024-09-05",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "Qualcomm CEO Amon: working on mixed-reality smart glasses with Google and Samsung",
+"detail": "Cristiano Amon tells CNBC Qualcomm is developing mixed-reality smart glasses together with Google and Samsung.",
+"url": "https://www.cnbc.com/2024/09/05/qualcomm-working-on-mixed-reality-smart-glasses-with-google-samsung.html",
+"conf": "confirmed"
+},
+{
+"id": "google-1-28",
+"date": "2024-12-12",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Google unveils Android XR with Samsung and Qualcomm; glasses prototype testing \"soon\"",
+"detail": "Google blog: Samsung's \"Project Moohan\" headset \"will be available for purchase next year\"; Google \"will soon begin real-world testing of prototype glasses running Android XR with a small group of users\"; Xreal, Lynx, Sony on Qualcomm dev path; Magic Leap coll",
+"url": "https://blog.google/products/android/android-xr/",
+"conf": "confirmed"
+},
+{
+"id": "google-1-29",
+"date": "2025-01-23",
+"precision": "day",
+"cat": "commercial",
+"type": "other",
+"title": "Google pays HTC US$250M to acqui-hire part of HTC XR team for Android XR",
+"detail": "HTC/Vive newsroom: \"certain members of HTC XR team\" join Google to \"accelerate the development of the Android XR platform across the headsets and glasses ecosystem\".",
+"url": "https://www.vive.com/us/newsroom/2025-01-23/",
+"conf": "confirmed"
+},
+{
+"id": "google-1-30",
+"date": "2025-04",
+"precision": "month",
+"cat": "product",
+"type": "announcement",
+"title": "Google demos its own Android XR glasses prototype at TED2025",
+"detail": "Referenced by Android Headlines 2025-04-11.",
+"url": "https://www.androidheadlines.com/2025/04/samsungs-xr-glasses-2026.html",
+"conf": "strong"
+},
+{
+"id": "google-1-31",
+"date": "2025-05-20",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "Google I/O 2025: Android XR glasses prototypes; Gentle Monster, Warby Parker, Kering partners",
+"detail": "Google blog: prototypes with \"a camera, microphones, speakers, and an optional in-lens display\"; eyewear partners Gentle Monster and Warby Parker, Kering Eyewear \"future\"; Samsung to build \"a software and reference hardware platform\"; Project Moohan \"coming la",
+"url": "https://blog.google/products/android/android-xr-gemini-glasses-headsets/",
+"conf": "confirmed"
+},
+{
+"id": "google-1-32",
+"date": "2025-05-20",
+"precision": "day",
+"cat": "commercial",
+"type": "financing",
+"title": "Warby Parker 8-K: Google commits up to US$150M (US$75M development + US$75M equity)",
+"detail": "SEC 8-K: Google commits up to US$75 million for product development/commercialization and up to a further US$75 million equity investment subject to milestones; first products \"after 2025\"; WBY +16%.",
+"url": "https://www.sec.gov/Archives/edgar/data/1504776/000095014225001434/eh250630168_ex9901.htm",
+"conf": "confirmed"
+},
+{
+"id": "google-1-35",
+"date": "2025-10-21",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Galaxy XR launches as first Android XR device; Samsung/Google say AI glasses are next (2026)",
+"detail": "GSMArena: alongside Galaxy XR, Samsung and Google announce AI glasses with Gentle Monster and Warby Parker, reported for \"2026\".",
+"url": "https://m.gsmarena.com/samsung_to_collaborate_with_gentle_monster_and_warby_parker_for_ai_glasses-news-70007.php",
+"conf": "strong"
+},
+{
+"id": "google-1-36",
+"date": "2025-10-30",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "Google and Magic Leap extend deal 3 years; Raxium microLED + Magic Leap waveguide reference glasses",
+"detail": "9to5Google: Android XR glasses reference design shown at FII Riyadh using Google's Raxium microLED light engine and Magic Leap waveguides; Magic Leap positions itself as \"AR ecosystem partner\" building reference designs for other manufacturers.",
+"url": "https://9to5google.com/2025/10/30/google-android-xr-glasses-extended-magic-leap-deal/",
+"conf": "confirmed"
+},
+{
+"id": "google-1-37",
+"date": "2025-12-08",
+"precision": "day",
+"cat": "product",
+"type": "roadmap",
+"title": "Android Show XR Edition: \"The first glasses will arrive next year\" (2026); two glasses types",
+"detail": "Google blog: \"AI glasses designed for screen-free assistance, which use built-in speakers, microphones and cameras\" and \"display AI glasses\" with in-lens display; Android XR SDK Developer Preview 3; Warby Parker: \"We expect to launch these glasses next year\".",
+"url": "https://blog.google/products-and-platforms/platforms/android/android-show-xr-edition-updates/",
+"conf": "confirmed"
+},
+{
+"id": "google-1-39",
+"date": "2026-04-16",
+"precision": "day",
+"cat": "commercial",
+"type": "partnership",
+"title": "Kering CEO: Gucci-branded Google smart glasses \"Probably next year, 2027\"",
+"detail": "Luca de Meo (Reuters, Florence capital markets day) on Kering Eyewear's Android XR glasses timing.",
+"url": "https://gvwire.com/2026/04/16/gucci-owner-kering-aims-to-launch-luxury-google-glasses-next-year-ceo-says/",
+"conf": "strong"
+},
+{
+"id": "google-1-40",
+"date": "2026-05-19",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Google I/O 2026: Samsung/Google eyewear \"this fall\"; display glasses 2027; Aura before end-2026",
+"detail": "Samsung + Google give \"first look\" at intelligent eyewear (Gentle Monster and Warby Parker styles) \"scheduled to launch this fall in select markets\"; Google says display versions come in 2027; Android XR SDK Developer Preview 4; Developer Catalyst Program; Xre",
+"url": "https://news.samsung.com/us/samsung-google-first-look-new-intelligent-eyewear/",
+"conf": "confirmed"
+},
+{
+"id": "google-1-42",
+"date": "2026-07-22",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "Galaxy Unpacked London: intelligent eyewear formally introduced on Android XR with Gemini",
+"detail": "Google's Sameer Samat quoted; hardware details in Samsung lane.",
+"url": "https://news.samsung.com/global/samsung-brings-galaxy-ecosystem-into-everyday-eyewear",
+"conf": "confirmed"
+},
+{
+"id": "google-1-43",
+"date": "2026-09-23",
+"precision": "day",
+"cat": "press",
+"type": "press",
+"title": "vr.org retracts I/O 2026 recap details (\"Oct 14\", \"$799\", \"Pixel Buds Sight\") as inaccurate",
+"detail": "vr.org's 2026-05-19 Google I/O recap with specific ship dates/prices appended a correction on 2026-09-23 saying those details were \"inaccurate\" and never announced by Google.",
+"url": "https://vr.org/articles/google-io-2026-android-xr-glasses-ship-date-recap",
+"conf": "rumor"
+},
+{
+"id": "google-1-44",
+"date": "2026-10-01",
+"precision": "day",
+"cat": "product",
+"type": "announcement",
+"title": "FCC clears SM-O200P/SM-O200J; Samsung official confirms November 2026 Android XR glasses launch",
+"detail": "Road to VR / 9to5Google: FCC clearance of the Warby Parker and Gentle Monster models; Korea Herald cites a Samsung official confirming a November 2026 launch (hardware details in Samsung lane).",
+"url": "https://roadtovr.com/samsung-fcc-gentle-monster-warby-parker-smart-glasses/",
+"conf": "strong"
+}
+]
