@@ -1,5 +1,5 @@
 {
- "summary": "270 load-bearing items re-checked against their cited sources by eight independent fact-checking agents: confirmed 196, partially_supported 65, date_wrong 4, not_found 2, source_unreachable 2, claim_wrong 1. Round 2: 128 load-bearing items checked by two independent Sonnet fact-checkers each (dates lens + claims lens; the more skeptical verdict wins): confirmed 67, partially_supported 49, date_wrong 10, source_unreachable 2.",
+ "summary": "270 load-bearing items re-checked against their cited sources by eight independent fact-checking agents: confirmed 196, partially_supported 65, date_wrong 4, not_found 2, source_unreachable 2, claim_wrong 1. Round 2: 128 load-bearing items checked by two independent Sonnet fact-checkers each (dates lens + claims lens; the more skeptical verdict wins): confirmed 67, partially_supported 49, date_wrong 10, source_unreachable 2. Round 3 (patent sweep): 69 rows and windows checked on the patent registers by 24 independent checkers (dates lens + claims lens per batch; the more skeptical verdict wins): confirmed 51, partially_supported 12, claim_wrong 6.",
  "rows": [
   {
    "id": "polight-8-4",
@@ -2786,6 +2786,489 @@
    "date": "2026-10-30→2026-10-30",
    "verdict": "confirmed",
    "note": "MFN invitation 6 Aug 2026: Friday 30 Oct 2026, 09:00-15:00 CET, Pareto Securities, Oslo; deep-dives plus external review of key markets. Placeholder notice; program to follow. | poLight release 6 Aug 2026: 30 Oct 2026, 09.00-15.00 CET, Pareto Securities Oslo, deep-dives plus external review of key s"
+  },
+  {
+   "id": "r3-modules-0-0",
+   "title": "Ningbo Sunny Opotech priority: internal-focusing lens/camera module family in TLens full-text lists",
+   "date": "2021-09-09",
+   "verdict": "confirmed",
+   "note": "Google Patents: CN115793184B (Ningbo Sunny Opotech) priority and filing 2021-09-09, published 2023-03-14, granted 2026-01-30. CN120686445A is a divisional of CN202111055410.2, same 2021-09-09 priority, published 2025-09-23. All row dates match. | Ningbo Sunny Opotech; priority/filing 2021-09-09; CN115793184B granted 2026-01-30; CN120686445A (same family) published 2025-09-23. TLENS appears only in"
+  },
+  {
+   "id": "r3-otheroem-0-8",
+   "title": "Bosch US20240069333A1 published (TLens named for retinal-scanning data glasses)",
+   "date": "2024-02-29",
+   "verdict": "confirmed",
+   "note": "Google Patents: Robert Bosch GmbH, priority DE 10 2022 208 691.0 of 2022-08-23, US filed 2023-08-09, published 2024-02-29. Publication date and priority match the row. | Robert Bosch GmbH, 'Device for monitoring an eye position... virtual retinal display, data glasses'; priority 2022-08-23, filed 2023-08-09, published 2024-02-29. TLens/poLight named as example varifocal lens. Lens serves both disp"
+  },
+  {
+   "id": "r3-modules-0-18",
+   "title": "Kinko Optical priority: zoom-lens assembly method citing 'deformable lens, such as TLens'",
+   "date": "2024-10-30",
+   "verdict": "confirmed",
+   "note": "Google Patents: Kinko Optical, US 19/053,664 filed 2025-02-14, published 2026-04-30, priority TW113141742A of 2024-10-30. TW202618370A filed 2024-10-30, published 2026-05-01. Every date in the row matches. | Kinko Optical Co Ltd, 'Assembly method of zoom lens', US 19/053,664 filed 2025-02-14, published 2026-04-30, priority TW113141742 2024-10-30 (TW202618370A pub 2026-05-01). Wire bonding, LDS pin"
+  },
+  {
+   "id": "r3-samsung-0-27",
+   "title": "Samsung US20250245846A1 published (smart-glasses T-lens depth camera)",
+   "date": "2025-07-31",
+   "verdict": "confirmed",
+   "note": "Google Patents: Samsung, US 19/182,755 filed 2025-04-18, published 2025-07-31, priorities KR 10-2022-0142551 (2022-10-31) and KR 10-2022-0178365 (2022-12-19). Publication, filing and earliest priority match the row. | Samsung Electronics, 'Electronic device for acquiring distance information'; US 19/182,755 filed 2025-04-18, continuation of PCT/KR2023/016927; KR priorities 10-2022-0142551 (2022-10"
+  },
+  {
+   "id": "r3-polight-0-52",
+   "title": "poLight WO2026047047A1 (ghost/flare mitigation) published",
+   "date": "2026-03-05",
+   "verdict": "confirmed",
+   "note": "Google Patents: Polight ASA, PCT/EP2025/074397 filed 2025-08-27, priority 2024-09-02, published 2026-03-05 as WO2026047047A1 (ghost spot/flare mitigation in compact imaging camera). Publication date matches. | Polight ASA, 'Method and system for mitigating ghost spots and/or flares within a compact imaging camera system'; PCT/EP2025/074397, priority EP24197893.1 2024-09-02, published 2026-03-05. T"
+  },
+  {
+   "id": "r3-polight-0-41",
+   "title": "poLight US20260267168A1 spectacle lens with transparent deformable non-fluid body published",
+   "date": "2026-09-10",
+   "verdict": "confirmed",
+   "note": "Google Patents returned 404; patentguru and Espacenet both show Polight ASA, US 19/391,877 filed 2025-11-17, published 2026-09-10, earliest priority EP19190462 of 2019-08-07 (continuation chain via US 17/628,359). Dates match. | Polight ASA, 'Spectacles with sandwiched polymer structure', US 19/391,877 filed 2025-11-17, published 2026-09-10; continuation of 17/628,359 (PCT/EP2020/072130), priority"
+  },
+  {
+   "id": "r3-otheroem-0-1",
+   "title": "Bosch priority: varifocal lens 'could be configured as a TLens from poLight' in retinal-scanning data glasses",
+   "date": "2022-08-23",
+   "verdict": "confirmed",
+   "note": "Google Patents: priority 2022-08-23 (DE 10 2022 208 691.0), filed 2023-08-09 (US18/447,131), published 2024-02-29, pending; Robert Bosch GmbH; inventors Meyer, Fischer, Schlebusch. Date and precision exact. | Robert Bosch GmbH; inventors Meyer/Fischer/Schlebusch; priority 2022-08-23, filed 2023-08-09, pub 2024-02-29. Varifocal lens 'between the scanner (MEMS micromirror) and the HOE' in virtual re"
+  },
+  {
+   "id": "r3-modules-0-60",
+   "title": "Zhejiang Sunny CN118519248A / CN222070937U in TLens list",
+   "date": "2024-03-14",
+   "verdict": "confirmed",
+   "note": "Both numbers filed/priority 2024-03-14 by Zhejiang Sunny Optics. CN118519248A published 2024-08-20, substantive exam 2024-09-06; CN222070937U granted/published 2024-11-26. Row date equals filing date of both; title names no event. | Zhejiang Sunny Optics; priority/filing 2024-03-14; CN118519248A pub 2024-08-20, utility model CN222070937U pub 2024-11-26. Mobile camera module (4-lens imaging system)"
+  },
+  {
+   "id": "r3-xiaomi-0-62",
+   "title": "Xiaomi CN119031240A in TLens full-text list",
+   "date": "2024-11-26",
+   "verdict": "claim_wrong",
+   "note": "Beijing Xiaomi Mobile Software; filed 2023-05-24, pub 2024-11-26; title 'Lens switching method'. Auto-switching between fixed-focus ultra-wide/wide/tele phone lenses by focus duration, exposure, zoom ratio. No tunable lens. False-positive TLens hit; discard. | Google Patents: Beijing Xiaomi Mobile Software, filed/priority 2023-05-24, published 2024-11-26, pending. Row date equals publication date."
+  },
+  {
+   "id": "r3-otheroem-0-28",
+   "title": "Guangzhou Chaoweijing priority CN121069612A: multiphoton microscope with 'Tlens miniature zoom lens'",
+   "date": "2025-08-20",
+   "verdict": "confirmed",
+   "note": "Google Patents: filed/priority 2025-08-20, published 2025-12-05, substantive exam request 2025-12-23; applicants Guangzhou Chaoweijing Biotechnology and Peking University; miniaturized multiphoton microscope. Both dates exact. | Applicants Guangzhou Chaoweijing Biotechnology AND Peking University (row omits PKU); filed 2025-08-20, pub 2025-12-05. Miniaturized multiphoton microscope for freely-movi"
+  },
+  {
+   "id": "r3-modules-0-31",
+   "title": "Goertek XR CN121644992A published ('zoom lens is a T-Lens lens')",
+   "date": "2026-03-10",
+   "verdict": "confirmed",
+   "note": "Google Patents: Qingdao Goertek Vision Technology, filed/priority 2024-09-02, published 2026-03-10, substantive exam 2026-03-27, pending. Publication and filing dates exact. | Assignee Qingdao Goertek Vision Technology (Goertek subsidiary); filed 2024-09-02, pub 2026-03-10; 'Device focusing method, apparatus, device and medium'. Text targets smart glasses that 'usually have no display screen' and "
+  },
+  {
+   "id": "r3-metaip-0-42",
+   "title": "Espacenet check of 70 Meta publications since 2026-06-01: only three tunable-lens camera items",
+   "date": "2026-10-06",
+   "verdict": "partially_supported",
+   "note": "Espacenet confirms all three Meta Platforms Tech publications post-2026-06-01: US20260177877A1 'Camera module with tunable lens' pub 2026-06-25; US20260235936A1 'Exposed camera architectures' pub 2026-08-13; US20260276939A1 continuation (priority 2022-07-26, parent US12631847B1) pub 2026-09-17. The 'only three of 70' negative claim was not re-run. | All three resolve to Meta Platforms Technologies"
+  },
+  {
+   "id": "r3-otheroem-0-2",
+   "title": "OPPO priority CN117970725A focus-adjustable lens control; 10 further OPPO 'TLens' list hits",
+   "date": "2022-10-21",
+   "verdict": "partially_supported",
+   "note": "CN117970725A: Xi'an OPPO, filed/priority 2022-10-21, published 2024-05-03; voltage-vs-phase-difference fitting polyline confirmed; 'Tlens' in description. Of listed extra hits, CN115550553B and CN118283393A contain Tlens/T-lens; CN120881394A and WO2026103442A1 do not (false positives). CN118631920A/CN118450243A/CN119545182A/CN120238743A unopened. | Google Patents: CN117970725A Xi'an OPPO, priority"
+  },
+  {
+   "id": "r3-otheroem-0-10",
+   "title": "Hikrobot priority CN118354201A quick-zoom-lens industrial camera; 6 Hikvision/Hikrobot TLens hits",
+   "date": "2024-04-15",
+   "verdict": "confirmed",
+   "note": "Google Patents: CN118354201A Hangzhou Hikrobot, priority and filing 2024-04-15, published 2024-07-16, pending. WO2025039820A1, EP4369247A1, CN119729173A exist, all Hikrobot and all mention T-Lens; CN121279331A/CN121967834A not opened. | CN118354201A: Hangzhou Hikrobot, filed/priority 2024-04-15, published 2024-07-16; ranging module, fast/quick zoom lens, focusing voltage from focal length plus len"
+  },
+  {
+   "id": "r3-polight-0-45",
+   "title": "poLight US12164101B2 granted",
+   "date": "2024-12-10",
+   "verdict": "confirmed",
+   "note": "Google Patents: US12164101B2 Polight ASA, MEMS optical device with lens and actuator; divisional filed 2023-07-25, priority 2019-04-15, granted/published 2024-12-10, active. | US12164101B2 assignee Polight ASA, priority 2019-04-15, granted/published 2024-12-10; MEMS variable-focus polymer micro-lens with piezo-deformed membrane for autofocus in portable devices. No 'TLens' string; 'Polight' appear"
+  },
+  {
+   "id": "r3-polight-0-47",
+   "title": "poLight US12405406B2 (flexure-joint lens) granted",
+   "date": "2025-09-02",
+   "verdict": "confirmed",
+   "note": "Google Patents: US12405406B2 Polight ASA 'Controllable lens actuated via flexure joints', filed 2021-06-22, priority 2020-06-22, pre-grant pub US20230296814A1 2023-09-21, granted 2025-09-02. | US12405406B2 'Controllable lens actuated via flexure joints', Polight ASA, priority 2020-06-22, filed 2021-06-22, granted 2025-09-02; piezo/electromagnetic actuated variable-focal-length lens for smartphones"
+  },
+  {
+   "id": "r3-polight-0-53",
+   "title": "poLight EP4713722A1 (passive thermal compensation) published",
+   "date": "2026-03-25",
+   "verdict": "confirmed",
+   "note": "Google Patents: EP4713722A1 Polight ASA 'Tunable lens comprising passive thermal compensation means', priority 2023-06-30, filed 2024-06-27, published 2026-03-25, pending. | EP4713722A1 Polight ASA (inventors Kilpinen, Craen), priority 2023-06-30, filed 2024-06-27, published 2026-03-25; 'tunable lens comprising passive thermal compensation means' via CTE-mismatched coatings/rings, 'without the pre"
+  },
+  {
+   "id": "w-r3-modules-0-0",
+   "title": "Goertek XR four TLens-claiming applications in substantive examination",
+   "date": "2026-10-01→2027-12-31",
+   "verdict": "partially_supported",
+   "note": "All four are Qingdao Goertek Vision (青岛歌尔视界科技有限公司) head-mounted-device applications with TLens/T-Lens in claims, and PatentGuru shows 'Application / Substantial Examination' for each. Filed 2024-06-03 (CN118741292A, CN118714451A) and 2024-09-02 (CN118741073A, CN121644992A, the latter published 2026-03-10). The 2026-Q4 to 2027 window is a forecast, not a register fact. | All four Goertek apps show "
+  },
+  {
+   "id": "r3-samsung-0-3",
+   "title": "Samsung KR priority: smart-glasses depth camera with 'tunable lens (T-lens)' drawn as poLight stack",
+   "date": "2022-10-31",
+   "verdict": "confirmed",
+   "note": "Google Patents US20250245846A1: priorities KR10-2022-0142551 (2022-10-31, earliest) and KR10-2022-0178365 (2022-12-19); US 19/182,755 filed 2025-04-18, published 2025-07-31. KR20240061529A published 2024-05-08. Date and day precision correct. | US20250245846A1: Samsung Electronics, US 19/182,755 filed 2025-04-18, priority KR 2022-10-31 (KR1020220178365A, pub KR20240061529A 2024-05-08). Text: focus"
+  },
+  {
+   "id": "r3-modules-0-11",
+   "title": "Goertek XR files CN118741292A: HMD camera 'including a tunable lens TLens' for gaze-driven VST focus",
+   "date": "2024-06-03",
+   "verdict": "confirmed",
+   "note": "Google Patents CN118741292A: CN202410711124.4 filed 2024-06-03 (also priority), published 2024-10-01 (PB01), substantive examination request in force 2024-10-22 (SE01); applicant Qingdao Goertek Vision Technology. Filing date exact. | CN118741292A: applicant Qingdao Goertek Vision Technology (视界=Shijie), filed 2024-06-03, published 2024-10-01. Gaze point from eye-tracking sets target focus distanc"
+  },
+  {
+   "id": "r3-polight-0-20",
+   "title": "poLight priority WO2026131419A1: polygonal/hexagonal tunable lens maximising wafer packing",
+   "date": "2024-12-20",
+   "verdict": "confirmed",
+   "note": "Google Patents and patentguru return 404; Espacenet: WO2026131419A1 'Polygonal tunable lens', applicant poLight ASA, priority EP24222045A 2024-12-20, PCT EP2025086521W filed 2025-12-11, published 2026-06-25. Priority date exact. | Espacenet (Google Patents 404s): WO2026131419A1 'POLYGONAL TUNABLE LENS', applicant poLight ASA, inventors Kartashov/Craen, PCT WO2025EP86521 filed 2025-12-11, priority "
+  },
+  {
+   "id": "r3-otheroem-0-64",
+   "title": "Zebra US12417364B2 granted (one of 15 Zebra TLens hits 2024-2026)",
+   "date": "2025-09-16",
+   "verdict": "partially_supported",
+   "note": "US12417364B2 (Zebra, 'Miniature long range imaging engine with auto-focus and auto-zoom') granted 2025-09-16; 'T-lens' listed as alternative in description and 'T-len' in claims 4 and 20. US12596899B1 (Zebra, specular reflection, granted 2026-04-07) contains NO TLens/tunable-lens term (VCM/ball-bearing only) - false-positive hit. '15 hits' and 'known Zebra component' not verifiable on register. | "
+  },
+  {
+   "id": "r3-qtech-0-32",
+   "title": "Q Tech files CN122171171A: mass-production inline diopter QC for TLens-structured devices",
+   "date": "2026-03-30",
+   "verdict": "confirmed",
+   "note": "Google Patents 404; patentguru and Espacenet: CN122171171A, app CN202610397957.7 filed 2026-03-30, published 2026-06-09, applicant Kunshan Qiutai Zhixing Zhiyuan, inventor Wang Qingyun, status 'Substantial Examination'. Filing date exact. | patentguru full text (Google Patents blocked): CN122171171A, app CN202610397957.7 filed 2026-03-30, pub 2026-06-09, applicant 昆山丘钛智行致远科技有限公司 (Kunshan Q Tech af"
+  },
+  {
+   "id": "w-r3-qtech-0-1",
+   "title": "Q Tech CN122171171A and CN122690782A in substantive examination; further 2026-H1 filings could publish 2027-H2",
+   "date": "2026-10-01→2027-12-31",
+   "verdict": "partially_supported",
+   "note": "Register confirms both in 'Substantial Examination': CN122171171A (filed 2026-03-30, pub 2026-06-09) and CN122690782A (Kunshan Q Technology Microelectronics, TOF module with 'Tlens, TunableLens' plus metalens, filed 2026-04-24, pub 2026-09-04). But both published 2.5-4.5 months after filing, so the '~18 months -> 2027-H2' projection for further 2026-H1 filings is inference that Q Tech's own early-"
+  },
+  {
+   "id": "r3-modules-0-4",
+   "title": "Huaqin files CN116184628B: VR see-through camera lens with T lens at the stop (granted 2025-04-08)",
+   "date": "2022-12-30",
+   "verdict": "partially_supported",
+   "note": "Google Patents CN116184628B: Huaqin Technology Co Ltd, filed 2022-12-30, granted 2025-04-08, 'Optical system and virtual reality device'. 7 lenses, F/2.1, FOV 120, TTL 10 mm, 20 cm-5 m, millisecond AF, no magnetic/gravity-pose effects, see-through confirmed. No 8 MP figure anywhere in text. | Google Patents + patentguru: CN202211731928.8 filed 2022-12-30 (priority 2022-12-30), A published 2023-05-"
+  },
+  {
+   "id": "r3-modules-0-12",
+   "title": "Goertek XR files CN118714451A: multi-focus frame fusion within 0.1 s using TLens",
+   "date": "2024-06-03",
+   "verdict": "confirmed",
+   "note": "Google Patents: priority/filing 2024-06-03, published 2024-09-27, assignee Qingda Goertech (Goertek) Vision Technology, status pending. Dates match. | Google Patents CN118714451A (CN202410711427.6): applicant Qingdao Goertek Vision Technology Co Ltd (Goertek's XR unit, not literally 'Goertek XR'), filed 2024-06-03, published 2024-09-27, inventor Zhou Mingqi. Text has 0.05/0.1/0.5 s windows, 99.99 "
+  },
+  {
+   "id": "r3-modules-0-63",
+   "title": "Jiangxi Shengtai CN114710609B 'Auto-focus camera module' granted",
+   "date": "2024-12-27",
+   "verdict": "confirmed",
+   "note": "Google Patents + patentguru: CN202210343018.6 filed 2022-03-31, B grant published 2024-12-27, assignee Jiangxi Shengtai (Shinetech) Precision Optical. Grant date matches. | Google Patents CN114710609B 'Auto-focus camera module and assembly method': original assignee Jiangxi Shinetech Precision Optical Co Ltd (now Shengtai (Xinyu) Electronics Industry), filed 2022-03-31, A pub 2022-07-05, B granted"
+  },
+  {
+   "id": "r3-polight-0-48",
+   "title": "poLight WO2025224146A1 (wobulation) published",
+   "date": "2025-10-30",
+   "verdict": "confirmed",
+   "note": "Google Patents: WO2025224146A1 'Method of optimizing wobulation stroke for super resolution', Polight ASA, priority 2024-04-26, filed 2025-04-23, published 2025-10-30. EP4641487A1 published 2025-10-29; EP4787877A1 filed 2025-01-30, published 2026-08-05 (patentguru). | Google Patents + Espacenet: WO2025224146A1 'Method of optimizing wobulation stroke for super resolution', applicant Polight ASA, in"
+  },
+  {
+   "id": "r3-qtech-0-33",
+   "title": "Q Tech files CN122690782A: Tlens + metalens auto-focus camera/TOF module",
+   "date": "2026-04-24",
+   "verdict": "confirmed",
+   "note": "Google Patents 404 (too new); patentguru: CN202610559649.X filed 2026-04-24, published 2026-09-04, Kunshan Q Tech Microelectronics, inventors Yuan Wenxia, Li Pan, status substantive examination. Dates match. | Patentguru CN122690782A (CN202610559649.X): assignee 昆山丘钛微电子科技股份有限公司 (Kunshan Q Tech Microelectronics), inventors 袁文霞, 李盼, filed 2026-04-24, published 2026-09-04, title 'Auto-focus camera mo"
+  },
+  {
+   "id": "w-r3-metaip-0-2",
+   "title": "Meta US 19/390,390 and 19/530,747 first office actions; possible foreign counterparts",
+   "date": "2027-01-01→2027-12-31",
+   "verdict": "partially_supported",
+   "note": "Espacenet/Patentguru: US19/390,390 = US20260177877A1 'Camera module with tunable lens', Meta Platforms Technologies, prio 63/736,516 2024-12-19, filed 2025-11-14, pub 2026-06-25. US19/530,747 = US20260235936A1 'Exposed camera architectures', prio 63/757,718 2025-02-12, filed 2026-02-05, pub 2026-08-13 (protective sleeve, not tunable lens). Contradiction: a Chinese counterpart of the 2024-12-19 pri"
+  },
+  {
+   "id": "r3-qtech-0-5",
+   "title": "Q Tech utility model CN220798387U: T-lens device between sensor and lens in AF module",
+   "date": "2023-07-25",
+   "verdict": "confirmed",
+   "note": "Google Patents: CN220798387U 'AF camera module miniaturized structure', Kunshan Q Tech; priority/filing 2023-07-25, grant publication 2024-04-16. Row date and detail dates both match. | Google Patents: CN220798387U 'AF camera module miniaturized structure', applicant Kunshanqiu Titanium (Kunshan Q Tech) Optoelectronic, filed 2023-07-25, granted/published 2024-04-16. Claim 1 puts a 'T-lens device' "
+  },
+  {
+   "id": "r3-otheroem-0-13",
+   "title": "Honor priority CN120742531A: one lens for main and wide camera via 'T-lens' voltage-driven lens",
+   "date": "2024-07-04",
+   "verdict": "confirmed",
+   "note": "Google Patents: CN120742531A, Honor Device Co Ltd, priority and filing 2024-07-04, published 2025-10-03, status pending. Row priority date and publication date match. | Google Patents: CN120742531A, applicant Honor Device Co Ltd (荣耀设备有限公司), priority/filing 2024-07-04, published 2025-10-03. Chinese text: '可调焦距镜片可以为液态镜片、T-lens(T型透镜)镜片或者其他焦距可以调节的镜片' with example device 'mobile phone 100'; one lens gr"
+  },
+  {
+   "id": "r3-polight-0-46",
+   "title": "poLight tunable-astigmatism stack family published (WO2025003224A1 / CA3295797A1 / EP4485016A1)",
+   "date": "2025-01",
+   "verdict": "confirmed",
+   "note": "Google Patents: WO2025003224A1 published 2025-01-02, CA3295797A1 published 2025-01-02, EP4485016A1 published 2025-01-01; all Polight ASA, priority 2023-06-29 (EP23182353.5). All three in January 2025; month precision correct. | Google Patents: WO2025003224A1 'A lens stack for creating tunable astigmatism', applicant Polight ASA, priority EP 2023-06-29, PCT filed 2024-06-26, published 2025-01-02; E"
+  },
+  {
+   "id": "r3-polight-0-49",
+   "title": "poLight TWI904185B granted",
+   "date": "2025-11-11",
+   "verdict": "partially_supported",
+   "note": "Google Patents: TWI904185B 'Light beam scanner', granted 2025-11-11 (TW110123889A filed 2021-06-29, priority EP20182810.0 2020-06-29; family WO2022002907A1, EP4172676A1, US20230236413A1). Co-assigned: Polight ASA AND Brighterwave Inc (Finland), so not solely poLight's; no TLens content. | Google Patents: TWI904185B 'Light beam scanner', Polight/Lightwave, TW110123889A filed 2021-06-29, priority 20"
+  },
+  {
+   "id": "r3-modules-0-34",
+   "title": "Kinko US20260118740A1 published (zoom-lens assembly with TLens-type deformable lens)",
+   "date": "2026-04-30",
+   "verdict": "confirmed",
+   "note": "Google Patents: US20260118740A1, Kinko Optical, application US19/053,664 filed 2025-02-14, priority TW113141742A 2024-10-30, published 2026-04-30. All row facts match register. | Google Patents: US20260118740A1 'Assembly method of zoom lens', Kinko Optical Co Ltd, inventor Chin-Chieh Lin, US 19/053,664 filed 2025-02-14, priority TW113141742A 2024-10-30, published 2026-04-30. Zoom lens assembly = s"
+  },
+  {
+   "id": "w-r3-polight-0-3",
+   "title": "poLight DK202500085A1 PCT publication expected ~2026-08 but not found",
+   "date": "2026-07-01→2027-12-31",
+   "verdict": "claim_wrong",
+   "note": "PCT does exist: Espacenet family 094538404 lists WO2026162805A1 'Low-power driver circuit for piezoelectric actuator', Polight ASA, PCT EP2026052622W filed 2026-02-02, published 2026-08-06, priority DKPA202500085A 2025-02-03 (DK202500085A1 published 2025-02-14). Window should become an event dated 2026-08-06. | DK202500085A1 confirmed: Polight ASA, filed/priority 2025-02-03, published 2025-02-14, "
+  },
+  {
+   "id": "r3-otheroem-0-6",
+   "title": "Lemon/ByteDance priority: XR gaze-driven camera AF names 'a poLight lens'",
+   "date": "2023-09-20",
+   "verdict": "confirmed",
+   "note": "Google Patents: WO2025060865A1 (PCT/CN2024/116148) priority 2023-09-20, filed 2024-08-30, published 2025-03-27; applicants Beijing Zitiao / Lemon Inc. Patentguru: US18/877,241 published 2026-08-27 as US20260255058A1. All dates match. | Google (WO) and patentguru (US) register pages: applicants Lemon Inc + Beijing Zitiao; priority CN 2023112237799 filed 2023-09-20; WO pub 2025-03-27; US 18/877,241 "
+  },
+  {
+   "id": "r3-modules-0-14",
+   "title": "Zhejiang Sunny Optics priority: lens barrel structure/camera module family in TLens lists",
+   "date": "2024-07-10",
+   "verdict": "claim_wrong",
+   "note": "Read full text of CN118642246A (Zhejiang Sunny Optics, pub 2024-09-13) and CN222784616U on Google Patents: lens-barrel transition piece to buffer thermal stress of adhesive in smartphone variable-aperture modules. No TLens/T-lens/poLight/piezo string anywhere; false-positive list hit. Priority date not checked. | Google Patents: CN118642246A priority/filed 2024-07-10, published 2024-09-13, substan"
+  },
+  {
+   "id": "r3-polight-0-21",
+   "title": "poLight files DK202500085A1 'Low-power driver circuit' (Tlens hold mode)",
+   "date": "2025-02-03",
+   "verdict": "confirmed",
+   "note": "Google Patents: DK202500085A1 (DKPA202500085A), Polight ASA, 'Low-power driver circuit', priority/filed 2025-02-03, published 2025-02-14. Filing date and publication date match. No PCT family member shown on register page. | Google register: DK202500085A1, Polight ASA, filed 2025-02-03, published 2025-02-14, 'Low-power driver circuit', abstract matches (piezo driver minimising quiescent power). 'I"
+  },
+  {
+   "id": "r3-samsung-0-65",
+   "title": "Samsung US12487379B2 lens assembly with tunable lens between L2 and L3 granted",
+   "date": "2025-12-02",
+   "verdict": "partially_supported",
+   "note": "Google register: Samsung, priority 2021-07-15, filed 2022-04-19, granted 2025-12-02; claim 1 = 7 lenses with tunable lens between second and third lens; transparent plate/polymer plate/sealed liquid-gel/ring pressing member confirmed. But text DOES say actuator 'may include a piezoelectric actuator or a motor', contradicting 'no piezo string'. EP search-report citation unverified; Google shows cit"
+  },
+  {
+   "id": "r3-polight-0-54",
+   "title": "poLight WO2026093265A1 (ring actuator) published",
+   "date": "2026-05-07",
+   "verdict": "confirmed",
+   "note": "Google Patents: WO2026093265A1 (PCT/EP2025/081063), Polight ASA, 'An optical tuneable lens assembly', priority 2024-10-29, filed 2025-10-28, published 2026-05-07. Ring-formed actuator deforming membranes over non-fluid lens body. Dates match. | Google register: WO2026093265A1 'An optical tuneable lens assembly', Polight ASA, priority 2024-10-29, filed 2025-10-28, published 2026-05-07; claims a rin"
+  },
+  {
+   "id": "w-r3-polight-0-4",
+   "title": "poLight WO2026131419A1 and WO2026093265A1 national-phase entries due mid-2027",
+   "date": "2027-01-01→2027-12-31",
+   "verdict": "confirmed",
+   "note": "Espacenet: WO2026131419A1 'Polygonal tunable lens', Polight ASA, priority 2024-12-20, filed 2025-12-11, published 2026-06-25. Google: WO2026093265A1 priority 2024-10-29. 30/31-month deadlines: 2027-04-29/05-29 and 2027-06-20/07-20, inside the stated 2027 window; tighter window offered. | Espacenet: WO2026131419A1 'Polygonal tunable lens', Polight ASA, priority EP24222045A 2024-12-20, PCT filed 202"
+  },
+  {
+   "id": "r3-metaip-0-7",
+   "title": "Meta priority WO2025117178A1: +/-50 V piezo-actuator driver IC with capacitance sensing",
+   "date": "2023-11-15",
+   "verdict": "confirmed",
+   "note": "Google Patents: WO2025117178A1, Meta Platforms Technologies, priority 2023-11-15, PCT/US2024/055448 filed 2024-11-12, published 2025-06-05. Priority date and day precision match. | Google Patents WO2025117178A1: Meta Platforms Technologies LLC; priority 2023-11-15, filed 2024-11-12, published 2025-06-05. Claim 1: bidirectional output of at least approximately +/-50 V, sub-micro-Farad capacitance s"
+  },
+  {
+   "id": "r3-qtech-0-61",
+   "title": "Q Tech CN111277742B 'Camera assembly' granted (priority 2020-03-31)",
+   "date": "2024-07-19",
+   "verdict": "confirmed",
+   "note": "Google Patents: CN111277742B, Kunshan Q Technology, application CN202010242732.7 filed/priority 2020-03-31, A publication 2020-06-12, grant published 2024-07-19. Grant date and priority match. | Google Patents CN111277742B 'Camera assembly': applicant Kunshan Q Technology Co Ltd, inventor Chen Gang, filed/priority 2020-03-31, granted 2024-07-19. 'T-lens' appears in the Background as prior art (aux"
+  },
+  {
+   "id": "r3-metaip-0-22",
+   "title": "Meta priority US20260235936A1 'Exposed camera architectures' with piezo-capable tunable lens (inventor Lidu Huang)",
+   "date": "2025-02-12",
+   "verdict": "confirmed",
+   "note": "Google Patents returned 404; patentguru: US20260235936A1 'Exposed camera architectures', US 19/530,747 filed 2026-02-05, published 2026-08-13, Meta Platforms Technologies, inventors Huang/Chen/Li; claims priority to US provisional 63/757,718 filed 2025-02-12. Matches. | PatentGuru US20260235936A1 'Exposed camera architectures': Meta Platforms Technologies LLC; US 19/530,747 filed 2026-02-05, pub 2"
+  },
+  {
+   "id": "r3-polight-0-50",
+   "title": "poLight US12493178B2 (sensor-based control) granted",
+   "date": "2025-12-09",
+   "verdict": "confirmed",
+   "note": "Google Patents: US12493178B2 'Sensor based control of an optical device with a variable optical power...', Polight ASA, US 18/550,097 filed 2022-03-30, priority 2021-03-30, pre-grant pub 2024-05-09, granted 2025-12-09. Matches. | Google Patents US12493178B2 'Sensor based control of an optical device with a variable optical power or a variable beam deflection': assignee Polight ASA; priority 2021-0"
+  },
+  {
+   "id": "r3-modules-0-35",
+   "title": "Sunny CN122018118A published (AR/VR front-camera lens with Tlens module)",
+   "date": "2026-05-12",
+   "verdict": "confirmed",
+   "note": "Google Patents: CN122018118A, Zhejiang Sunny Optics, application CN202610257730.2 filed/priority 2026-03-04, published (PB01) 2026-05-12. Publication and filing dates match. | PatentGuru/Google Patents CN122018118A '光学成像镜头' (Optical imaging lens): applicant 浙江舜宇光学有限公司 (Zhejiang Sunny Optics), app CN202610257730.2 filed 2026-03-04, published 2026-05-12, status substantive examination. Background ci"
+  },
+  {
+   "id": "w-r3-otheroem-0-5",
+   "title": "Lemon/ByteDance US 18/877,241 examination outcome",
+   "date": "2027-01-01→2027-12-31",
+   "verdict": "partially_supported",
+   "note": "patentguru: US 18/877,241 (US20260255058A1), Lemon Inc./Beijing Zitiao, filed 2024-08-30, published 2026-08-27, CN priority 2023-09-20. No examination/office-action events on register; 2027 outcome window is a projection, plausible given filing date but unsupported by legal-status data. | PatentGuru US20260255058A1 'Method, apparatus and device, and storage medium for imaging': US 18/877,241 filed"
+  },
+  {
+   "id": "r3-polight-0-43",
+   "title": "poLight US11870371B2 granted",
+   "date": "2024-01-09",
+   "verdict": "confirmed",
+   "note": "Google Patents US11870371B2 (Polight ASA, 'Determining and applying a voltage to a piezoelectric actuator'): priority 2018-03-07, PCT filed 2019-03-07, granted/published 2024-01-09. Day precision correct. | Google Patents: US11870371B2 'Determining and applying a voltage to a piezoelectric actuator', assignee Polight ASA (orig. Polight AS), app 16/978,561, priority 2018-03-07, granted 2024-01-09. "
+  },
+  {
+   "id": "r3-polight-0-44",
+   "title": "poLight US12066619B2 granted",
+   "date": "2024-08-20",
+   "verdict": "confirmed",
+   "note": "Google Patents US12066619B2 (Polight ASA, 'Optical device with a light ray deflector'): priority 2018-10-12, filed 2019-10-11, granted 2024-08-20. Day precision correct. | Google Patents: US12066619B2 'Optical device with a light ray deflector', assignee Polight ASA, app 17/283,230, priority 2018-10-12, granted 2024-08-20. Deformable non-fluid lens body plus reflection surface for AF/OIS/beam stee"
+  },
+  {
+   "id": "r3-otheroem-0-23",
+   "title": "Shenzhen Yingda priority CN120264151A 'TLens adaptive control method and system'",
+   "date": "2025-03-28",
+   "verdict": "confirmed",
+   "note": "Google Patents CN120264151A (Shenzhen Yingda Information Technology): filed and priority 2025-03-28 (CN202510382985.7), published 2025-07-04, substantive examination request effective 2025-07-22. Priority date and publication date in detail both match. | Google Patents: CN120264151A 'Tlens adaptive control method and system', applicant Shenzhen Yingda Information Technology Co Ltd, filed 2025-03-2"
+  },
+  {
+   "id": "r3-otheroem-0-29",
+   "title": "Zhuhai Mojie (AR glasses maker) files CN121967885A and CN121750968A: zoom device may be a Tlens or VCM",
+   "date": "2025-12-30",
+   "verdict": "confirmed",
+   "note": "Google Patents: CN121967885A and CN121750968A both filed/priority 2025-12-30 (CN202512035246.3, CN202512035141.8), applicant Meta Bounds Inc (Zhuhai Mojie); published 2026-05-01 and 2026-03-27 respectively. All dates match. | Both filed 2025-12-30 by 珠海莫界科技有限公司 (PatentGuru) = Meta Bounds Inc (Google Patents), Zhuhai AR-glasses maker. CN121967885A pub 2026-05-01, CN121750968A pub 2026-03-27. Zoom l"
+  },
+  {
+   "id": "r3-polight-0-55",
+   "title": "poLight US12625363B2 (thermal expansion compensation) granted",
+   "date": "2026-05-12",
+   "verdict": "confirmed",
+   "note": "Google Patents US12625363B2 (Polight ASA, 'Thermal expansion compensation in tunable lenses', app 18/550,095): priority 2021-03-29, filed 2022-03-29, 'Application granted' and publication 2026-05-12 (USPTO 'Patented case' event 2026-04-29 is internal). Day precision correct. | Google Patents: US12625363B2 'Thermal expansion compensation in tunable lenses', assignee Polight ASA, app 18/550,095, pri"
+  },
+  {
+   "id": "w-r3-samsung-0-6",
+   "title": "Samsung US 19/182,755 examination outcome",
+   "date": "2027-01-01→2027-12-31",
+   "verdict": "partially_supported",
+   "note": "Google Patents US20250245846A1 = US 19/182,755, Samsung, continuation of PCT/KR2023/016927; filed 2025-04-18, published 2025-07-31, docketed for examination 2025-04-29, no office action recorded. A 2027 outcome is plausible but is a forecast, not a register fact; 'confirmed' overstates it. | US20250245846A1, app 19/182,755, Samsung Electronics, filed 2025-04-18, continuation of PCT/KR2023/016927 ("
+  },
+  {
+   "id": "r3-otheroem-0-57",
+   "title": "Vivo US20240040257A1 in TLens full-text list",
+   "date": "2024-02-01",
+   "verdict": "confirmed",
+   "note": "Google Patents: Vivo US20240040257A1 'Camera apparatus and electronic device' published 2024-02-01; priority 2021-04-15, filed 2023-10-13, granted 2025-12-16 as US12501160B2. JP7544985B2 (granted 2024-08-06) is a different Vivo family with no T-lens mention. | Google Patents: US20240040257A1 'Camera apparatus and electronic device', Vivo Mobile Communication Co Ltd, published 2024-02-01, priority "
+  },
+  {
+   "id": "r3-modules-0-15",
+   "title": "Goertek XR files CN118741073A: zoom lens is a 'T-Lens lens' driven from binocular gaze distance (camera glasses)",
+   "date": "2024-09-02",
+   "verdict": "confirmed",
+   "note": "Google Patents: CN118741073A filed and priority 2024-09-02, published 2024-10-01, substantive examination entered 2024-10-22; applicant Qingdao Goertek Vision, inventors Liu Chengjin, Xu Fangfang, Wang Pingping. | Google Patents: CN118741073A 'Control method, device, head-mounted device and medium based on eye tracking', applicant Qingdao Goertek Vision Technology Co Ltd (Goertek subsidiary), inve"
+  },
+  {
+   "id": "r3-modules-0-24",
+   "title": "Huaqin CN116184628B granted: only granted XR-camera patent naming a T lens",
+   "date": "2025-04-08",
+   "verdict": "partially_supported",
+   "note": "Google Patents: CN116184628B 'Optical system and virtual reality device', Huaqin Technology Co Ltd (华勤技术), filed 2022-12-30, granted 2025-04-08. F# 2.1, FOV 120 deg, TTL 10 mm and third lens at the aperture/stop verified; see-through camera in background. No '8 MP' or pixel count anywhere in text. 'T lens' appears once, parenthetically, in the description only (claims say 可调透镜/adjustable lens). 'O"
+  },
+  {
+   "id": "r3-apple-0-66",
+   "title": "Apple US12523846B1 'Measuring optical power of a lens using a variable focus camera' granted",
+   "date": "2026-01-13",
+   "verdict": "confirmed",
+   "note": "Google Patents: Apple US12523846B1 granted and published 2026-01-13; filed 2024-03-20; priority 2023-04-25 (provisional). No TLens/poLight hits; 'piezoelectric actuators' mentioned generically in one summary pass only. | Google Patents: US12523846B1 'Measuring optical power of a lens using a variable focus camera', Apple Inc, inventors Hollands and Pedder, filed 2024-03-20, priority 2023-04-25, gr"
+  },
+  {
+   "id": "r3-polight-0-56",
+   "title": "poLight EP4787877A1 (wobulation video) published",
+   "date": "2026-08-05",
+   "verdict": "confirmed",
+   "note": "Google Patents returned 404/503; Espacenet and patentguru both show EP4787877A1 'A video camera system and a method for recording an output video', poLight ASA, application EP25154853 filed 2025-01-30, published 2026-08-05 (also WO2026162303A1). | Google Patents returned 404 and Espacenet 500; PatentGuru register page: EP4787877A1 'A video camera system and a method for recording an output video w"
+  },
+  {
+   "id": "r3-otheroem-0-58",
+   "title": "Huawei CN117501704A in TLens full-text list",
+   "date": "2024-02-02",
+   "verdict": "claim_wrong",
+   "note": "Google Patents: Huawei Technologies, 'A camera module and electronic equipment', CN202180099228.9A, filed 2021-09-28, published 2024-02-02. Dual-sensor beam-splitting phone camera module. No 'TLens'/'T-lens'/'poLight' in text; the hit is the reference label 'lens t'. False positive. | Google Patents: Huawei CN117501704A 'camera module and electronic equipment', filed/priority 2021-09-28, published"
+  },
+  {
+   "id": "r3-modules-0-16",
+   "title": "Goertek XR files CN121644992A: ROI focusing then 'zoom lens is a T-Lens lens' (published 2026-03-10)",
+   "date": "2024-09-02",
+   "verdict": "confirmed",
+   "note": "Google Patents: Qingdao Goertek Vision CN121644992A 'Focusing methods, devices, equipment and media', filed/priority 2024-09-02, published 2026-03-10, pending. Filing date and publication date both exact. | Google Patents: 'Focusing methods, devices, equipment and media', applicant Qingdao Goertek Vision Technology Co Ltd (Goertek XR arm), CN202411223819.4A filed 2024-09-02, published 2026-03-10. "
+  },
+  {
+   "id": "r3-metaip-0-25",
+   "title": "Meta US20250155732A1 thermal architecture published: 'Tlens' only a chart label (false positive)",
+   "date": "2025-05-15",
+   "verdict": "confirmed",
+   "note": "Google Patents: Meta Platforms Technologies US20250155732A1 thermal architecture for head-worn device; priority 2023-11-14, filed 2024-11-04, published 2025-05-15, pending. All three dates exact. | Google Patents: Meta Platforms Technologies LLC, 'Thermal architecture designs for a head-worn device', published 2025-05-15, filed 2024-11-04, priority 2023-11-14. Verbatim: 'line 441 (labelled Tlens) "
+  },
+  {
+   "id": "r3-polight-0-51",
+   "title": "poLight publications: WO2026017447A1 (lead-free), WO2026017435A1 (optical assembly), AU2020344807B2",
+   "date": "2026-01-22",
+   "verdict": "confirmed",
+   "note": "All three on Google Patents, Polight ASA, published 2026-01-22: WO2026017447A1 lead-free tunable lens (prio 2024-07-16, filed 2025-07-04); WO2026017435A1 optical assembly (prio 2024-07-16, filed 2025-07-03); AU2020344807B2 granted 2026-01-22 (prio 2019-09-10). | All three resolved on Google Patents, assignee Polight ASA, published 2026-01-22: WO2026017447A1 'A lead-free tunable lens' (filed 2025-0"
+  },
+  {
+   "id": "r3-metaip-0-38",
+   "title": "Meta US20260235936A1 'Exposed camera architectures' published",
+   "date": "2026-08-13",
+   "verdict": "confirmed",
+   "note": "Google Patents returned 404; Espacenet and patentguru: US20260235936A1 'Exposed camera architectures', Meta Platforms Tech LLC, inventors Huang Lidu, Chen Peng, Li Likai; priority US63/757,718 2025-02-12, filed 2026-02-05, published 2026-08-13. Exact. | Google Patents returns 404 (not yet indexed); patentguru full text: 'Exposed camera architectures', Meta Platforms Technologies LLC, US19/530,747 "
+  },
+  {
+   "id": "r3-apple-0-59",
+   "title": "Apple US11892701B2 'Lens mounting structures for head-mounted devices' in TLens list",
+   "date": "2024-02-06",
+   "verdict": "claim_wrong",
+   "note": "Apple US11892701B2 granted 2024-02-06 (filed 2021-03-04); display-lens mounting tabs for HMD optical modules. Full text (patentguru + Google) has no TLens/T-lens/poLight, no focus/autofocus, no vision-correction text; 'TLens list' hit is a false positive. US11953755B2 'T lens' = lens temperature symbol; KR20250004986A = THz lens. | Google Patents: US11892701B2 (Apple, US17/192,728) priority 2020-0"
+  },
+  {
+   "id": "r3-otheroem-0-17",
+   "title": "Qualcomm priority WO2026085748A1 'Sparse frame focus system' listed under TLens",
+   "date": "2024-10-23",
+   "verdict": "claim_wrong",
+   "note": "Google Patents confirms Qualcomm Inc, 'Sparse frame focus system', priority 2024-10-23, published 2026-04-30, phase-shift-threshold AF using second-sensor phase data and 'moving a lens'. But full description and claims contain no TLens/T-lens/poLight; examples are smartphones and standalone cameras, not XR. 'Listed under TLens' is a false positive. | Google Patents: WO2026085748A1 (Qualcomm, PCT/C"
+  },
+  {
+   "id": "r3-metaip-0-26",
+   "title": "Meta WO2025117178A1 piezo-actuator driver IC published",
+   "date": "2025-06-05",
+   "verdict": "confirmed",
+   "note": "Google Patents: WO2025117178A1 (Meta Platforms Technologies, PCT/US2024/055448) priority US63/598,964 2023-11-15, filed 2024-11-12, published 2025-06-05. Driver IC with +/-50 V output, nF capacitance sensing, feedback for piezo tunable lens. | Google Patents: Meta Platforms Technologies LLC, 'Actuator driver delivering high voltage with capacitance sensing and feedback control', published 2025-06-"
+  },
+  {
+   "id": "r3-modules-0-30",
+   "title": "Zhejiang Sunny Optics files CN122018118A: AR/VR wearable front-camera lens with AF 'Tlens module'",
+   "date": "2026-03-04",
+   "verdict": "confirmed",
+   "note": "Google Patents: CN122018118A (CN202610257730.2, Zhejiang Sunny Optics) priority/filing 2026-03-04, published 2026-05-12; inventors Ding Minghao et al. Claim 2 recites first barrel with variable-curvature autofocus assembly on stepped surface. | Patentguru register: CN122018118A, 浙江舜宇光学有限公司 (Zhejiang Sunny Optics), app CN202610257730.2 filed 2026-03-04, published 2026-05-12, inventors 丁明昊 et al. Fi"
+  },
+  {
+   "id": "r3-otheroem-0-39",
+   "title": "Lemon/ByteDance US20260255058A1 published (names 'a poLight lens' for XR gaze AF)",
+   "date": "2026-08-27",
+   "verdict": "confirmed",
+   "note": "Espacenet and patentguru: US20260255058A1 (Lemon Inc / Beijing Zitiao, US18/877,241, filed 2024-08-30) published 2026-08-27; priorities CN202311223779A 2023-09-20 and PCT/CN2024/116148 2024-08-30. Google Patents returned 404. | Patentguru register (Google Patents 404): US20260255058A1, app US18/877,241 filed 2024-08-30, published 2026-08-27, assignees Lemon Inc. and Beijing Zitiao Network Technolo"
   }
  ]
 }

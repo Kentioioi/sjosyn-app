@@ -6,12 +6,12 @@ timelines line up with the producers' future releases?
 
 | File | What it is |
 |---|---|
-| `timeline-map.html` | Interactive swimlane map: 23 lanes (13 producers, 10 supplier/evidence lanes), 689 dated signals, 109 launch windows, expected supplier-milestone strips per focused launch, 28 supplier↔launch matches, per-lane commentary with cadence strips (days between updates), full table view. Open locally in a browser or use the published artifact link. |
+| `timeline-map.html` | Interactive swimlane map: 23 lanes (13 producers, 10 supplier/evidence lanes), 964 dated signals, 134 launch windows, expected supplier-milestone strips per focused launch, 70 supplier↔launch matches, per-lane commentary with cadence strips (days between updates), full table view. Open locally in a browser or use the published artifact link. |
 | `REPORT.md` | Written report: headline findings, launch windows, lead-time logic, matches, commentary per lane, the earlier ChatGPT thread's state, verification results, full event table with sources. |
 | `data/timeline_data.json` | The dataset behind the map (events, windows, lead-times, matches, commentary, critic notes). |
-| `data/verification.json` | 270 load-bearing items re-checked against their cited sources (verdict per item). |
+| `data/verification.json` | 467 load-bearing items re-checked against their cited sources (verdict per item). |
 | `data/chatgpt_thread_digest.json`, `sources/chatgpt_thread_digest.md` | Digest of the shared ChatGPT thread "Meta–poLight Evidence Watch" (the starting research). |
-| `sources/*.md` | The nine research files compiled per producer / supplier group, each row dated and sourced. |
+| `sources/*.md` | The research files compiled per producer / supplier group (round 1: nine files; round 2: Meta autofocus program, Chinese supply chain, module makers, poLight lead times, document retrieval; round 3: full-text patent sweep), each row dated and sourced. |
 
 Method: nine research agents compiled dated timelines from company newsrooms, Oslo Børs / HKEX / USPTO
 records, developer documentation and press; rows were converted to one schema, de-duplicated per lane,
@@ -19,3 +19,5 @@ cross-matched against launch windows with generic optics-industry lead-time norm
 and the load-bearing dates were re-verified against their cited sources by eight independent fact-checkers.
 Confidence tags: confirmed (primary source), strong (several reputable outlets), circumstantial (inference),
 rumor (forum / unnamed sources). This is research material, not investment advice.
+
+Rounds 2 and 3 (same date): five further research agents covered Meta's autofocus program (patents, job posts, public role descriptions), the Chinese supply-chain and analyst trail (DBS, Q Tech decks, HKEX filings), module makers' TLens sightings, poLight's own historical order-to-launch lead times and the primary documents (quarterly reports, Q&A PDFs, the Investorweb Q&A index); a full-text patent sweep for TLens/poLight (2024-2026) added the register trail (Goertek XR, Samsung, Sunny, Huaqin, Q Tech, Meta, Bosch, ByteDance). Every round-2 and round-3 row that carries weight was re-checked by two independent fact-checkers (dates lens and claims lens), and the round-3 synthesis was audited by a panel of eighteen skeptics (evidence, logic, arithmetic) before the editor of record rewrote the findings and the estimate.
