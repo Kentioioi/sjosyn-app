@@ -44,7 +44,9 @@ export default function ForecastBar({
         {available.map(h => (
           <button
             key={h}
-            className={`horizon-btn${scrub == null && horizon === h ? ' active' : ''}`}
+            // Valgt tidsrom forblir markert under scrub: det er også sliderens rekkevidde.
+            className={`horizon-btn${horizon === h ? ' active' : ''}`}
+            aria-pressed={horizon === h}
             onClick={() => { onScrub(null); onHorizon(h) }}
           >
             {horizonLabel(h)}
