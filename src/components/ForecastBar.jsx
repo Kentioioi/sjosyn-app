@@ -17,7 +17,10 @@ export default function ForecastBar({
 }) {
   // Tilby KUN vinduer dataene faktisk fyller — aldri lov mer varsel enn vi har.
   const available = HORIZONS.filter(h => h <= maxOffsetH)
-  const pct = ((scrub ?? 0) / Math.max(1, maxOffsetH)) * 100
+  // Slideren spenner over valgt tidsrom, ikke hele varselet: «6 t» gir 0–6 t.
+  const sliderMax = Math.max(1, Math.min(horizon, maxOffsetH))
+  const sliderValue = Math.min(scrub ?? 0, sliderMax)
+  const pct = (sliderValue / sliderMax) * 100
   // Scrub-avlesing vises i statuslinja UNDER slideren — en flytende boble over
   // tommelen dekket horisont-knappene og ble stående etter draget.
   const scrubLabel = scrub != null
@@ -50,14 +53,14 @@ export default function ForecastBar({
       </div>
 
       <div className="fc-slider-sec">
-        <div className="fc-bar-hint">…eller bla deg time for time gjennom varselet:</div>
+        <div className="fc-bar-hint">…eller bla deg time for time gjennom tidsrommet:</div>
         <div className="fc-slider-wrap">
           <input
             type="range"
             className="timeline-slider fc-slider"
             min={0}
-            max={Math.max(1, maxOffsetH)}
-            value={scrub ?? 0}
+            max={sliderMax}
+            value={sliderValue}
             style={{ '--pct': `${pct}%` }}
             onChange={e => onScrub(Number(e.target.value))}
             aria-label="Tidslinje: timer fram i tid"
